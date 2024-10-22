@@ -6,7 +6,7 @@ const App = () => (
     <AppRoot>
         <Placeholder
             header="Title"
-            description="Description"
+            description="NoonFog test"
         >
             <img
                 alt="Telegram sticker"
