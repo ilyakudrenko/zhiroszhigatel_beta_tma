@@ -4,18 +4,18 @@ const tg = window.Telegram.WebApp;
 
 function App() {
 
-    // useEffect(() => {
-    //     tg.ready();
-    // }, [])
-    //
-    // const onClose = () => {
-    //     tg.close();
-    // }
+    useEffect(() => {
+        tg.ready();
+    }, [])
+
+    const onClose = () => {
+        tg.close();
+    }
 
   return (
     <div className="App">
       Hello World
-        <button>Закрыть</button>
+        <button onClick={onClose}>Закрыть</button>
     </div>
   );
 }
