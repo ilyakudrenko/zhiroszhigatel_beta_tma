@@ -1,23 +1,27 @@
 import './App.css';
-import {useEffect} from "react";
-const tg = window.Telegram.WebApp;
+import { useEffect } from "react";
 
 function App() {
+    const tg = window.Telegram ? window.Telegram.WebApp : null;
 
     useEffect(() => {
-        tg.ready();
-    }, [])
+        if (tg) {
+            tg.ready();
+        }
+    }, [tg]);
 
     const onClose = () => {
-        tg.close();
+        if (tg) {
+            tg.close();
+        }
     }
 
-  return (
-    <div className="App">
-      Hello World
-        <button onClick={onClose}>Закрыть</button>
-    </div>
-  );
+    return (
+        <div className="App">
+            Hello World
+            <button onClick={onClose}>Закрыть</button>
+        </div>
+    );
 }
 
 export default App;
