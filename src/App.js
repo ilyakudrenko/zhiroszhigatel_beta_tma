@@ -19,7 +19,7 @@ function App() {
     return (
         <div className="App">
             Hello World
-            <button onClick={onClose}>Закрыть</button>
+            <button className={'button'} onClick={onClose}>Закрыть</button>
         </div>
     );
 }
