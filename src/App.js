@@ -1,6 +1,8 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 
-import { AppRoot, Placeholder } from '@telegram-apps/telegram-ui';
+import { AppRoot, Placeholder, Button } from '@telegram-apps/telegram-ui';
+
+
 
 const App = () => (
     <AppRoot>
@@ -13,6 +15,12 @@ const App = () => (
                 src="https://xelene.me/telegram.gif"
                 style={{ display: 'block', width: '144px', height: '144px' }}
             />
+            <Button
+                mode="filled"
+                size="m"
+            >
+                Action
+            </Button>
         </Placeholder>
     </AppRoot>
 );
