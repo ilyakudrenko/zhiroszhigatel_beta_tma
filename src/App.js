@@ -16,7 +16,7 @@ const App = () => (
                 style={{ display: 'block', width: '144px', height: '144px' }}
             />
             <Button
-                mode="primary"
+                mode="bezeled"
                 size="m"
             >
                 Action
