@@ -6,7 +6,7 @@ import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import React from "react";
 import {
     HorizontalScroll
-} from "@telegram-apps/telegram-ui/dist/cjs/components/Service/HorizontalScroll/HorizontalScroll";
+} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 
 
 const App = () => (
