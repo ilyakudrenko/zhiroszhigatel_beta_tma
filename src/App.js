@@ -15,17 +15,17 @@ const App = () => (
             header="Title"
             description="NoonFog test"
         >
-            {/*<img*/}
-            {/*    alt="Telegram sticker"*/}
-            {/*    src="https://xelene.me/telegram.gif"*/}
-            {/*    style={{ display: 'block', width: '144px', height: '144px' }}*/}
-            {/*/>*/}
-            {/*<Button*/}
-            {/*    mode="bezeled"*/}
-            {/*    size="m"*/}
-            {/*>*/}
-            {/*    Action*/}
-            {/*</Button>*/}
+            <img
+                alt="Telegram sticker"
+                src="https://xelene.me/telegram.gif"
+                style={{ display: 'block', width: '144px', height: '144px' }}
+            />
+            <Button
+                mode="bezeled"
+                size="m"
+            >
+                Action
+            </Button>
             {/*<HorizontalScroll>*/}
             {/*    <Card type="ambient">*/}
             {/*        <React.Fragment key=".0">*/}
@@ -74,31 +74,28 @@ const App = () => (
             {/*        </React.Fragment>*/}
             {/*    </Card>*/}
             {/*</HorizontalScroll>*/}
-            <HorizontalScroll showArrows>
-
-                    <Card size="l">
-                        <img
-                            alt="City view"
-                            src="https://xelene.me/telegram.gif"
-                            style={{ width: '100%', borderRadius: '12px' }}
-                        />
-                        <div style={{ padding: '12px' }}>
-                            <h3>New York</h3>
-                            <p>United States</p>
-                        </div>
-                    </Card>
-                    <Card size="l">
-                        <img
-                            alt="Weights"
-                            src="https://example.com/dumbbell.jpg"
-                            style={{ width: '100%', borderRadius: '12px' }}
-                        />
-                        <div style={{ padding: '12px' }}>
-                            <h3>Course 1</h3>
-                            <p>Course for Beginners</p>
-                        </div>
-                    </Card>
-                    {/* Add more cards as needed */}
+            <HorizontalScroll>
+                <CardCell
+                    size="l"
+                    header="New York"
+                    subheader="United States"
+                    tagText="Hot place"
+                    backgroundImage="https://example.com/image1.jpg"
+                />
+                <CardCell
+                    size="l"
+                    header="Paris"
+                    subheader="France"
+                    tagText="Romantic"
+                    backgroundImage="https://example.com/image2.jpg"
+                />
+                <CardCell
+                    size="l"
+                    header="Tokyo"
+                    subheader="Japan"
+                    tagText="Modern"
+                    backgroundImage="https://example.com/image3.jpg"
+                />
             </HorizontalScroll>
         </Placeholder>
     </AppRoot>
