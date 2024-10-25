@@ -26,77 +26,55 @@ const App = () => (
             >
                 Action
             </Button>
-            {/*<HorizontalScroll>*/}
-            {/*    <Card type="ambient">*/}
-            {/*        <React.Fragment key=".0">*/}
-            {/*            <CardChip readOnly>*/}
-            {/*                Hot place*/}
-            {/*            </CardChip>*/}
-            {/*            <img*/}
-            {/*                alt="Dog"*/}
-            {/*                src="https://i.imgur.com/892vhef.jpeg"*/}
-            {/*                style={{*/}
-            {/*                    display: 'block',*/}
-            {/*                    height: 308,*/}
-            {/*                    objectFit: 'cover',*/}
-            {/*                    width: 254*/}
-            {/*                }}*/}
-            {/*            />*/}
-            {/*            <CardCell*/}
-            {/*                readOnly*/}
-            {/*                subtitle="United states"*/}
-            {/*            >*/}
-            {/*                New York*/}
-            {/*            </CardCell>*/}
-            {/*        </React.Fragment>*/}
-            {/*    </Card>*/}
-            {/*    <Card type="ambient">*/}
-            {/*        <React.Fragment key=".0">*/}
-            {/*            <CardChip readOnly>*/}
-            {/*                Hot place*/}
-            {/*            </CardChip>*/}
-            {/*            <img*/}
-            {/*                alt="Dog"*/}
-            {/*                src="https://i.imgur.com/892vhef.jpeg"*/}
-            {/*                style={{*/}
-            {/*                    display: 'block',*/}
-            {/*                    height: 308,*/}
-            {/*                    objectFit: 'cover',*/}
-            {/*                    width: 254*/}
-            {/*                }}*/}
-            {/*            />*/}
-            {/*            <CardCell*/}
-            {/*                readOnly*/}
-            {/*                subtitle="United states"*/}
-            {/*            >*/}
-            {/*                New York*/}
-            {/*            </CardCell>*/}
-            {/*        </React.Fragment>*/}
-            {/*    </Card>*/}
-            {/*</HorizontalScroll>*/}
             <HorizontalScroll>
-                <CardCell
-                    size="l"
-                    header="New York"
-                    subheader="United States"
-                    tagText="Hot place"
-                    backgroundImage="https://example.com/image1.jpg"
-                />
-                <CardCell
-                    size="l"
-                    header="Paris"
-                    subheader="France"
-                    tagText="Romantic"
-                    backgroundImage="https://example.com/image2.jpg"
-                />
-                <CardCell
-                    size="l"
-                    header="Tokyo"
-                    subheader="Japan"
-                    tagText="Modern"
-                    backgroundImage="https://example.com/image3.jpg"
-                />
+                <Card type="ambient">
+                    <React.Fragment key=".0">
+                        <CardChip readOnly>
+                            Hot place
+                        </CardChip>
+                        <img
+                            alt="Dog"
+                            src="https://i.imgur.com/892vhef.jpeg"
+                            style={{
+                                display: 'block',
+                                height: 308,
+                                objectFit: 'cover',
+                                width: 254
+                            }}
+                        />
+                        <CardCell
+                            readOnly
+                            subtitle="United states"
+                        >
+                            New York
+                        </CardCell>
+                    </React.Fragment>
+                </Card>
+                <Card type="ambient">
+                    <React.Fragment key=".0">
+                        <CardChip readOnly>
+                            Hot place
+                        </CardChip>
+                        <img
+                            alt="Dog"
+                            src="https://i.imgur.com/892vhef.jpeg"
+                            style={{
+                                display: 'block',
+                                height: 308,
+                                objectFit: 'cover',
+                                width: 254
+                            }}
+                        />
+                        <CardCell
+                            readOnly
+                            subtitle="United states"
+                        >
+                            New York
+                        </CardCell>
+                    </React.Fragment>
+                </Card>
             </HorizontalScroll>
+
         </Placeholder>
     </AppRoot>
 );
