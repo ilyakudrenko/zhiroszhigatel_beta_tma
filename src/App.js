@@ -32,17 +32,17 @@ const App = () => (
             header="Title"
             description="App.js test"
         >
-            <img
-                alt="Telegram sticker"
-                src="https://xelene.me/telegram.gif"
-                style={{ display: 'block', width: '144px', height: '144px' }}
-            />
-            <Button
-                mode="bezeled"
-                size="m"
-            >
-                Action
-            </Button>
+            {/*<img*/}
+            {/*    alt="Telegram sticker"*/}
+            {/*    src="https://xelene.me/telegram.gif"*/}
+            {/*    style={{ display: 'block', width: '144px', height: '144px' }}*/}
+            {/*/>*/}
+            {/*<Button*/}
+            {/*    mode="bezeled"*/}
+            {/*    size="m"*/}
+            {/*>*/}
+            {/*    Action*/}
+            {/*</Button>*/}
 
             <Banner
                 background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
