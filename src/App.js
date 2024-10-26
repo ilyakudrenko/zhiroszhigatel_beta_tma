@@ -1,6 +1,5 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-
-import {AppRoot, Placeholder, Button, Card, } from '@telegram-apps/telegram-ui';
+import {AppRoot, Placeholder, Button, Card, Banner, List, Section, Cell, IconContainer} from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import React from "react";
@@ -11,9 +10,27 @@ import {
 
 const App = () => (
     <AppRoot>
+
+        <List
+            style={{
+                background: 'var(--tgui--secondary_bg_color)',
+            }}
+        >
+            <Section
+                header=""
+            >
+                <Cell before={<IconContainer></IconContainer>}>
+                    Profile
+                </Cell>
+                <Cell before={<IconContainer></IconContainer>}>
+                    Support
+                </Cell>
+            </Section>
+        </List>
+
         <Placeholder
             header="Title"
-            description="NoonFog test"
+            description="App.js test"
         >
             <img
                 alt="Telegram sticker"
@@ -26,53 +43,94 @@ const App = () => (
             >
                 Action
             </Button>
+
+            <Banner
+                background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
+                callout="Urgent notification"
+                description="Start exploring TON in a new, better way"
+                header="Introducing TON Space"
+                // onCloseIcon={function noRefCheck(){}}
+                type="section"
+            >
+                <React.Fragment key=".0">
+                    <Button size="s">
+                        Try it out
+                    </Button>
+                </React.Fragment>
+            </Banner>
+
             <HorizontalScroll>
-                <Card type="ambient">
-                    <React.Fragment key=".0">
-                        <CardChip readOnly>
-                            Hot place
-                        </CardChip>
-                        <img
-                            alt="Dog"
-                            src="https://i.imgur.com/892vhef.jpeg"
-                            style={{
-                                display: 'block',
-                                height: 308,
-                                objectFit: 'cover',
-                                width: 254
-                            }}
-                        />
-                        <CardCell
-                            readOnly
-                            subtitle="United states"
-                        >
-                            New York
-                        </CardCell>
-                    </React.Fragment>
-                </Card>
-                <Card type="ambient">
-                    <React.Fragment key=".0">
-                        <CardChip readOnly>
-                            Hot place
-                        </CardChip>
-                        <img
-                            alt="Dog"
-                            src="https://i.imgur.com/892vhef.jpeg"
-                            style={{
-                                display: 'block',
-                                height: 308,
-                                objectFit: 'cover',
-                                width: 254
-                            }}
-                        />
-                        <CardCell
-                            readOnly
-                            subtitle="United states"
-                        >
-                            New York
-                        </CardCell>
-                    </React.Fragment>
-                </Card>
+                <div style={{ display: 'flex', overflowX: 'scroll', whiteSpace: 'nowrap', gap: '16px' }}>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                </div>
             </HorizontalScroll>
 
         </Placeholder>
