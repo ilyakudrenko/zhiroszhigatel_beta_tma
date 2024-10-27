@@ -1,5 +1,16 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {AppRoot, Placeholder, Button, Card, Banner, List, Section, Cell, IconContainer} from '@telegram-apps/telegram-ui';
+import {
+    AppRoot,
+    Placeholder,
+    Button,
+    Card,
+    Banner,
+    List,
+    Section,
+    Cell,
+    IconContainer,
+    Navigation
+} from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import React from "react";
@@ -25,6 +36,9 @@ const App = () => (
                 <Cell before={<IconContainer></IconContainer>}>
                     Support
                 </Cell>
+                <Navigation>
+                    Profile
+                </Navigation>
             </Section>
         </List>
 
