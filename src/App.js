@@ -22,30 +22,15 @@ import {
 const App = () => (
     <AppRoot>
 
-        <List
-            style={{
-                background: 'var(--tgui--secondary_bg_color)',
-            }}
-        >
-            <Section
-                header=""
-            >
-                <Cell before={<IconContainer></IconContainer>}>
-                    Profile
-                </Cell>
-                <Cell before={<IconContainer></IconContainer>}>
-                    Support
-                </Cell>
-                <Navigation>
-                    Profile
-                </Navigation>
-            </Section>
-        </List>
+
 
         <Placeholder
             header="Title"
             description="App.js test"
         >
+            <Navigation>
+                Action
+            </Navigation>
             {/*<img*/}
             {/*    alt="Telegram sticker"*/}
             {/*    src="https://xelene.me/telegram.gif"*/}
