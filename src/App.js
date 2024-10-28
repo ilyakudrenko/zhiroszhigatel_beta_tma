@@ -18,6 +18,7 @@ import {
 } from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
+import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 
 
 const App = () => (
@@ -35,13 +36,22 @@ const App = () => (
                     width: '100%',
                 }}
             >
-                <Section>
+                <Section
+                    style={{'borderRadius':'30px'}}
+                >
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
 
                     >
                     Profile
+                    </Cell>
+                    <Cell
+                        after={<Icon24ChevronRight />}
+                        before={<Icon24Chat />}
+
+                    >
+                        Support
                     </Cell>
                 </Section>
             </List>
