@@ -9,7 +9,7 @@ import {
     Section,
     Cell,
     IconContainer,
-    Navigation
+    Navigation, Badge, Avatar
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
@@ -28,21 +28,22 @@ const App = () => (
             header="Title"
             description="App.js test"
         >
-            <Navigation>
-                Action
-            </Navigation>
-            {/*<img*/}
-            {/*    alt="Telegram sticker"*/}
-            {/*    src="https://xelene.me/telegram.gif"*/}
-            {/*    style={{ display: 'block', width: '144px', height: '144px' }}*/}
-            {/*/>*/}
-            {/*<Button*/}
-            {/*    mode="bezeled"*/}
-            {/*    size="m"*/}
-            {/*>*/}
-            {/*    Action*/}
-            {/*</Button>*/}
+            <List
+                style={{
+                    backgroundColor: 'var(--tgui--secondary_bg_color)',
+                    padding: '2rem'
+                }}
+            >
+                <Section>
+                    <Cell
+                        after={<Badge type="arrow">></Badge>}
+                        before={<Avatar size={48} />}
 
+                    >
+                    Profile
+                    </Cell>
+                </Section>
+            </List>
             <Banner
                 background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
                 callout="Urgent notification"
