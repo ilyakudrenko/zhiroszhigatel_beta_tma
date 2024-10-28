@@ -34,11 +34,10 @@ const App = () => (
                 style={{
                     backgroundColor: 'var(--tgui--secondary_bg_color)',
                     width: '100%',
+                    borderRadius: '16px',
                 }}
             >
-                <Section
-                    style={{'borderRadius':'30px'}}
-                >
+                <Section>
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
