@@ -33,14 +33,16 @@ const App = () => (
             <List
                 style={{
                     backgroundColor: 'var(--tgui--secondary_bg_color)',
-                    padding: '10'
+                    padding: '2'
                 }}
             >
                 <Section>
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
-
+                        style={{
+                            borderRadius: '10%',
+                        }}
                     >
                     Profile
                     </Cell>
