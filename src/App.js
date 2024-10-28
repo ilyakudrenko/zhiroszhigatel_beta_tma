@@ -41,7 +41,7 @@ const App = () => (
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
                         style={{
-                            borderRadius: '10%',
+                            borderRadius: '50%',
                         }}
                     >
                     Profile
