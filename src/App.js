@@ -31,7 +31,7 @@ const App = () => (
             <List
                 style={{
                     backgroundColor: 'var(--tgui--secondary_bg_color)',
-                    padding: '2rem'
+                    padding: '10'
                 }}
             >
                 <Section>
