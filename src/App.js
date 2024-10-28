@@ -17,6 +17,8 @@ import React from "react";
 import {
     HorizontalScroll
 } from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
+import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
+import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 
 
 const App = () => (
@@ -36,8 +38,8 @@ const App = () => (
             >
                 <Section>
                     <Cell
-                        after={<Badge type="arrow">></Badge>}
-                        before={<Avatar size={48} />}
+                        after={<Icon24ChevronRight />}
+                        before={<Icon32ProfileColoredSquare />}
 
                     >
                     Profile
