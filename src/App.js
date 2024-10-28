@@ -8,8 +8,7 @@ import {
     List,
     Section,
     Cell,
-    IconContainer,
-    Navigation, Badge, Avatar
+
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
@@ -33,14 +32,9 @@ const App = () => (
             <List
                 style={{
                     backgroundColor: 'var(--tgui--secondary_bg_color)',
-                    padding: '2'
                 }}
             >
-                <Section
-                    style={{
-                        borderRadius: '50%',
-                    }}
-                >
+                <Section>
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
