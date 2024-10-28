@@ -20,6 +20,11 @@ import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 
+const roundedCellStyle = {
+    borderRadius: '16px',
+    overflow: 'hidden', // Ensures rounded corners display properly
+};
+
 
 const App = () => (
     <AppRoot>
@@ -46,7 +51,7 @@ const App = () => (
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
                         style={{
-                            borderRadius: '16px',
+                            roundedCellStyle
                         }}
                     >
                     Profile
