@@ -36,13 +36,15 @@ const App = () => (
                     padding: '2'
                 }}
             >
-                <Section>
+                <Section
+                    style={{
+                        borderRadius: '50%',
+                    }}
+                >
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<Icon32ProfileColoredSquare />}
-                        style={{
-                            borderRadius: '50%',
-                        }}
+
                     >
                     Profile
                     </Cell>
