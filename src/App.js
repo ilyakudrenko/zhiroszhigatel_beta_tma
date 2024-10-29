@@ -118,16 +118,9 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <Section>
-        <HorizontalScroll
-            style={{backgroundColor: 'transparent',}}
-        >
-            <INITCardsList items={data} />
-        </HorizontalScroll>
-        </Section>
         <List>
             <HorizontalScroll
-                style={{backgroundColor: 'transparent',}}
+                // style={{backgroundColor: 'transparent',}}
             >
                 <INITCardsList items={data} />
             </HorizontalScroll>
@@ -165,22 +158,6 @@ const App = () => (
 
         {/*</List>*/}
 
-
-        {/*<Section>*/}
-        {/*    <SectionHeader*/}
-        {/*    >*/}
-        {/*        /!*<Button*!/*/}
-        {/*        /!*    mode="plain"*!/*/}
-        {/*        /!*    size="s"*!/*/}
-        {/*        /!*>*!/*/}
-        {/*        /!*    See All*!/*/}
-        {/*        /!*</Button>*!/*/}
-        {/*        /!*Courses For You*!/*/}
-        {/*    </SectionHeader>*/}
-
-
-
-        {/*    */}
         {/*</Section>*/}
 
     </AppRoot>
