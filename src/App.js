@@ -1,14 +1,12 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {
     AppRoot,
-    Placeholder,
     Button,
     Card,
-    Banner,
     List,
     Section,
     Cell,
-    IconContainer,
+    Title,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -20,9 +18,7 @@ import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 import {
     SectionHeader
 } from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
-import {Icon28Chat} from "@telegram-apps/telegram-ui/dist/icons/28/chat";
-import {Icon28Devices} from "@telegram-apps/telegram-ui/dist/icons/28/devices";
-import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
+import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -79,176 +75,122 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <Section
-            footer="Courses"
-            header="Bottom"
+
+        <List
+            style={{
+                background: 'var(--tgui--secondary_bg_color)',
+                padding: '40px',
+                width: 500
+            }}
         >
-            <Cell before={<IconContainer><Icon28Chat /></IconContainer>}>
-                Chat Settings
-            </Cell>
-            <Cell before={<IconContainer><Icon28Devices /></IconContainer>}>
-                Data and Storage
-            </Cell>
-            <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                Devices
-            </Cell>
-        </Section>
+            <section>
+                <SectionHeader>
+                    <Title
+                        style={{
+                            width: '80%',
+
+                    }}
+                    >Available courses</Title>
+                    <Button
+                        mode="plain"
+                        size="s"
+                    >
+                        See All
+                    </Button>
+                </SectionHeader>
+                <HorizontalScroll>
+                    <div style={{ display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' }}>
+                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                            <React.Fragment key=".0">
+                                <CardChip readOnly>
+                                    Hot place
+                                </CardChip>
+                                <img
+                                    alt="Dog"
+                                    src="https://i.imgur.com/892vhef.jpeg"
+                                    style={{
+                                        display: 'block',
+                                        height: 308,
+                                        objectFit: 'cover',
+                                        width: 254
+                                    }}
+                                />
+                                <CardCell
+                                    readOnly
+                                    subtitle="United States"
+                                >
+                                    New York
+                                </CardCell>
+                            </React.Fragment>
+                        </Card>
+                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                            <React.Fragment key=".0">
+                                <CardChip readOnly>
+                                    Hot place
+                                </CardChip>
+                                <img
+                                    alt="Dog"
+                                    src="https://i.imgur.com/892vhef.jpeg"
+                                    style={{
+                                        display: 'block',
+                                        height: 308,
+                                        objectFit: 'cover',
+                                        width: 254
+                                    }}
+                                />
+                                <CardCell
+                                    readOnly
+                                    subtitle="United States"
+                                >
+                                    New York
+                                </CardCell>
+                            </React.Fragment>
+                        </Card>
+                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                            <React.Fragment key=".0">
+                                <CardChip readOnly>
+                                    Hot place
+                                </CardChip>
+                                <img
+                                    alt="Dog"
+                                    src="https://i.imgur.com/892vhef.jpeg"
+                                    style={{
+                                        display: 'block',
+                                        height: 308,
+                                        objectFit: 'cover',
+                                        width: 254
+                                    }}
+                                />
+                                <CardCell
+                                    readOnly
+                                    subtitle="United States"
+                                >
+                                    New York
+                                </CardCell>
+                            </React.Fragment>
+                        </Card>
+                    </div>
+                </HorizontalScroll>
+            </section>
+
+        </List>
+
 
         {/*<Section>*/}
         {/*    <SectionHeader*/}
         {/*    >*/}
-        {/*        <Button*/}
-        {/*            mode="plain"*/}
-        {/*            size="s"*/}
-        {/*        >*/}
-        {/*            See All*/}
-        {/*        </Button>*/}
-        {/*        Courses For You*/}
+        {/*        /!*<Button*!/*/}
+        {/*        /!*    mode="plain"*!/*/}
+        {/*        /!*    size="s"*!/*/}
+        {/*        /!*>*!/*/}
+        {/*        /!*    See All*!/*/}
+        {/*        /!*</Button>*!/*/}
+        {/*        /!*Courses For You*!/*/}
         {/*    </SectionHeader>*/}
 
-        {/*    <HorizontalScroll>*/}
-        {/*        <div style={{ display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' }}>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            <Card style={{ flexShrink: 0, minWidth: '254px' }}>*/}
-        {/*                <React.Fragment key=".0">*/}
-        {/*                    <CardChip readOnly>*/}
-        {/*                        Hot place*/}
-        {/*                    </CardChip>*/}
-        {/*                    <img*/}
-        {/*                        alt="Dog"*/}
-        {/*                        src="https://i.imgur.com/892vhef.jpeg"*/}
-        {/*                        style={{*/}
-        {/*                            display: 'block',*/}
-        {/*                            height: 308,*/}
-        {/*                            objectFit: 'cover',*/}
-        {/*                            width: 254*/}
-        {/*                        }}*/}
-        {/*                    />*/}
-        {/*                    <CardCell*/}
-        {/*                        readOnly*/}
-        {/*                        subtitle="United States"*/}
-        {/*                    >*/}
-        {/*                        New York*/}
-        {/*                    </CardCell>*/}
-        {/*                </React.Fragment>*/}
-        {/*            </Card>*/}
-        {/*            /!* Повторите <Card> компоненты для создания прокрутки *!/*/}
-        {/*        </div>*/}
-        {/*    </HorizontalScroll>*/}
+
+
+        {/*    */}
         {/*</Section>*/}
 
     </AppRoot>
