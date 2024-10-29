@@ -6,7 +6,7 @@ import {
     List,
     Section,
     Cell,
-    Title,
+    Title, Text,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -83,14 +83,13 @@ const App = () => (
                 width: 500
             }}
         >
-            <section>
+            <Section>
                 <SectionHeader>
-                    <Title
-                        style={{
-                            width: '80%',
-
-                    }}
-                    >Available courses</Title>
+                    <Text
+                        weight="=3"
+                    >
+                        Available Courses
+                    </Text>
                     <Button
                         mode="plain"
                         size="s"
@@ -171,7 +170,7 @@ const App = () => (
                         </Card>
                     </div>
                 </HorizontalScroll>
-            </section>
+            </Section>
 
         </List>
 
