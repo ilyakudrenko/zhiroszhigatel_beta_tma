@@ -117,10 +117,14 @@ const App = () => (
 
         {/*Courses*/}
         <List>
-            <HorizontalScroll
+            <Section
+                header={"Available Courses"}
             >
-                <INITCardsList items={data} />
-            </HorizontalScroll>
+                <HorizontalScroll
+                >
+                    <INITCardsList items={data} />
+                </HorizontalScroll>
+            </Section>
         </List>
 
 
