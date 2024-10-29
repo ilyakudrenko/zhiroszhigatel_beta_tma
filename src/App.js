@@ -46,7 +46,7 @@ const App = () => (
             >
                 <Cell
                     after={<Icon24ChevronRight />}
-                    before={<Icon24 />}
+                    before={<Icon32ProfileColoredSquare />}
                 >
                     Profile
                 </Cell>
