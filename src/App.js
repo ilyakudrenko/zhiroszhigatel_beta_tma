@@ -85,8 +85,8 @@ const App = () => (
 
         <List
             // style={{
-                 // background: 'var(--tgui--secondary_bg_color)',
-                 //width: '100%',
+            //      background: 'var(--tgui--secondary_bg_color)',
+            //      width: '100%',
             //
             // }}
         >
