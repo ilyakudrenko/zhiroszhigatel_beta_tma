@@ -5,7 +5,7 @@ import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {Card} from "@telegram-apps/telegram-ui";
 
 
-const INITCardItem = ({cardChip, imageSRC, title, description}) => (
+const INITCardItem = ({cardChip, imageSrc, title, description}) => (
     <Card style={{ flexShrink: 0, minWidth: '254px' }}>
         <React.Fragment key=".0">
             <CardChip readOnly>
@@ -13,7 +13,7 @@ const INITCardItem = ({cardChip, imageSRC, title, description}) => (
             </CardChip>
             <img
                 alt={title}
-                src={imageSRC}
+                src={imageSrc}
                 style={{
                     display: 'block',
                     height: 308,
@@ -38,7 +38,7 @@ const INITCardsList = ({ items }) => (
             <INITCardItem
                 key={i}
                 cardChip={item.cardChip}
-                imageSRC={item.imageSRC}
+                imageSrc={item.imageSrc}
                 title={item.title}
                 description={item.description}
             />

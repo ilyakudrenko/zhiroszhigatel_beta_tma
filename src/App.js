@@ -39,26 +39,32 @@ const data = [
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
         title: 'New York',
-        subtitle: 'United States',
-        label: 'Hot place',
+        description: 'United States',
+        cardChip: 'Hot place',
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
-        title: 'Los Angeles',
-        subtitle: 'United States',
-        label: 'Popular',
+        title: 'New York',
+        description: 'United States',
+        cardChip: 'Hot place',
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
-        title: 'Los Angeles',
-        subtitle: 'United States',
-        label: 'Popular',
+        title: 'New York',
+        description: 'United States',
+        cardChip: 'Hot place',
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
-        title: 'Los Angeles',
-        subtitle: 'United States',
-        label: 'Popular',
+        title: 'New York',
+        description: 'United States',
+        cardChip: 'Hot place',
+    },
+    {
+        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        title: 'New York',
+        description: 'United States',
+        cardChip: 'Hot place',
     },
     // Добавьте столько объектов, сколько вам нужно
 ];
