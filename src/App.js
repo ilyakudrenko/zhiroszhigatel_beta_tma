@@ -17,6 +17,7 @@ import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "./INIT-projects/CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "./INIT-projects/CustomComponents/Dividers/Divider";
+import INITMessageBadgeIcon from "./INIT-projects/CustomComponents/Icons/MessageBadgeIcon";
 
 
 // Custom Bullshit
@@ -88,7 +89,7 @@ const App = () => (
                 </Cell>
                 <Cell
                     after={<Icon24ChevronRight />}
-                    before={<Icon24Chat />}
+                    before={<INITMessageBadgeIcon color="white" />}
                 >
                     Support
                 </Cell>
@@ -131,7 +132,7 @@ const App = () => (
             </HorizontalScroll>
         </List>
 
-        {/*Some banner for meal plan*/}
+        {/*Meal plan*/}
         <INITDivider color = 'transparent' thickness="10%" />
         <List
         >
