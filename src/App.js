@@ -29,11 +29,6 @@ const roundedCellStyle = {
     overflow: 'hidden', // Ensures rounded corners display properly
 };
 
-const headerForItemListStyle = {
-    color: 'var(--tgui--primary_text_color)',
-    overflow: 'hidden',
-};
-
 const handleClick = () => {
     alert("Button clicked!");
 };
@@ -90,7 +85,7 @@ const App = () => (
 
         <List
             style={{
-                background: 'var(--tgui--secondary_bg_color)',
+                // background: 'var(--tgui--secondary_bg_color)',
                 width: '100%',
 
             }}
