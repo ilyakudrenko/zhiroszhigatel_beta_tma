@@ -80,6 +80,47 @@ const App = () => (
         {/*Courses*/}
 
         <Section>
+            <HorizontalScroll>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+                <Cell>
+                    1
+                </Cell>
+            </HorizontalScroll>
+        </Section>
+
+        <Section>
             <SectionHeader
             >
                 <Button
@@ -91,8 +132,9 @@ const App = () => (
                 Courses For You
             </SectionHeader>
 
-            <HorizontalScroll>
-              <div style={{ display: 'flex', overflowX: 'scroll', whiteSpace: 'nowrap', gap: '16px' }}>
+            <HorizontalScroll
+                style={{ display: 'flex', overflowX: 'scroll', whiteSpace: 'nowrap', gap: '16px' }}
+            >
                   <Card type="ambient">
                       <React.Fragment key=".0">
                          <CardChip readOnly>
@@ -162,7 +204,6 @@ const App = () => (
                             </CardCell>
                         </React.Fragment>
                     </Card>
-                </div>
             </HorizontalScroll>
         </Section>
 
