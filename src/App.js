@@ -91,10 +91,11 @@ const App = () => (
             <Section>
                 <SectionHeader
                 >
-                    <div style={headerForItemListStyle}>Available Courses</div>
+                    Available Courses
                     <Button
                         mode="plain"
                         size="s"
+                        style={{align:'right'}}
                     >
                         See All
                     </Button>
