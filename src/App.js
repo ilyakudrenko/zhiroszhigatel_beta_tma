@@ -92,9 +92,8 @@ const App = () => (
                 <SectionHeader>
                     <Text
                         weight="=3"
-                        style{headerForItemListStyle}
                     >
-                        Available Courses
+                        <div style={headerForItemListStyle}> Available Courses</div>
                     </Text>
                     <Button
                         mode="plain"
