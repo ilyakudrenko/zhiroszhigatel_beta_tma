@@ -84,11 +84,11 @@ const App = () => (
         {/*Courses*/}
 
         <List
-            style={{
-                // background: 'var(--tgui--secondary_bg_color)',
-                width: '100%',
-
-            }}
+            // style={{
+                 // background: 'var(--tgui--secondary_bg_color)',
+                 //width: '100%',
+            //
+            // }}
         >
             <Section
                 header="Available Courses"
