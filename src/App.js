@@ -19,6 +19,7 @@ import {
     SectionHeader
 } from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
+import INITCardsList from "../INIT-projects/CustomComponents/ScrollItemsSections/CardList";
 
 
 // Custom Bullshit
@@ -33,6 +34,35 @@ const handleClick = () => {
     alert("Button clicked!");
 };
 
+
+const data = [
+    {
+        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        title: 'New York',
+        subtitle: 'United States',
+        label: 'Hot place',
+    },
+    {
+        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        title: 'Los Angeles',
+        subtitle: 'United States',
+        label: 'Popular',
+    },
+    {
+        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        title: 'Los Angeles',
+        subtitle: 'United States',
+        label: 'Popular',
+    },
+    {
+        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        title: 'Los Angeles',
+        subtitle: 'United States',
+        label: 'Popular',
+    },
+    // Добавьте столько объектов, сколько вам нужно
+];
+
 const App = () => (
     <AppRoot>
 
@@ -40,7 +70,7 @@ const App = () => (
 
         <List
             style={{
-                //backgroundColor: 'var(--tgui--secondary_bg_color)',
+                backgroundColor: 'var(--tgui--secondary_bg_color)',
                 width: '100%',
 
             }}
@@ -106,77 +136,7 @@ const App = () => (
                 {/*    </Button>*/}
                 {/*</SectionHeader>*/}
                 <HorizontalScroll>
-                    <div style={{ display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' }}>
-                        <Card style={{ flexShrink: 0, minWidth: '254px' }} onClick={handleClick}>
-                            <React.Fragment key=".0">
-                                <CardChip readOnly>
-                                    Hot place
-                                </CardChip>
-                                <img
-                                    alt="Dog"
-                                    src="https://i.imgur.com/892vhef.jpeg"
-                                    style={{
-                                        display: 'block',
-                                        height: 308,
-                                        objectFit: 'cover',
-                                        width: 254
-                                    }}
-                                />
-                                <CardCell
-                                    readOnly
-                                    subtitle="United States"
-                                >
-                                    New York
-                                </CardCell>
-                            </React.Fragment>
-                        </Card>
-                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
-                            <React.Fragment key=".0">
-                                <CardChip readOnly>
-                                    Hot place
-                                </CardChip>
-                                <img
-                                    alt="Dog"
-                                    src="https://i.imgur.com/892vhef.jpeg"
-                                    style={{
-                                        display: 'block',
-                                        height: 308,
-                                        objectFit: 'cover',
-                                        width: 254
-                                    }}
-                                />
-                                <CardCell
-                                    readOnly
-                                    subtitle="United States"
-                                >
-                                    New York
-                                </CardCell>
-                            </React.Fragment>
-                        </Card>
-                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
-                            <React.Fragment key=".0">
-                                <CardChip readOnly>
-                                    Hot place
-                                </CardChip>
-                                <img
-                                    alt="Dog"
-                                    src="https://i.imgur.com/892vhef.jpeg"
-                                    style={{
-                                        display: 'block',
-                                        height: 308,
-                                        objectFit: 'cover',
-                                        width: 254
-                                    }}
-                                />
-                                <CardCell
-                                    readOnly
-                                    subtitle="United States"
-                                >
-                                    New York
-                                </CardCell>
-                            </React.Fragment>
-                        </Card>
-                    </div>
+                    <INITCardsList items={data} />
                 </HorizontalScroll>
             </Section>
 
