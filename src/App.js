@@ -5,7 +5,7 @@ import {
     Section,
     Cell,
     Caption,
-    Divider,
+    Divider, Banner,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
@@ -94,25 +94,25 @@ const App = () => (
         </List>
 
         {/*Some banner for sales*/}
-
-        {/*<Banner*/}
-        {/*    background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}*/}
-        {/*    callout="Urgent notification"*/}
-        {/*    description="Start exploring TON in a new, better way"*/}
-        {/*    header="Introducing TON Space"*/}
-        {/*    // onCloseIcon={function noRefCheck(){}}*/}
-        {/*    type="section"*/}
-        {/*    style={roundedCellStyle}*/}
-        {/*>*/}
-        {/*    <React.Fragment key=".0">*/}
-        {/*        <Button size="s">*/}
-        {/*            Try it out*/}
-        {/*        </Button>*/}
-        {/*    </React.Fragment>*/}
-        {/*</Banner>*/}
+        <INITDivider color = 'transparent' thickness="10%" />
+        <Banner
+            background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
+            callout="Urgent notification"
+            description="Start exploring TON in a new, better way"
+            header="Introducing TON Space"
+            // onCloseIcon={function noRefCheck(){}}
+            type="section"
+            style={roundedCellStyle}
+        >
+            <React.Fragment key=".0">
+                <Button size="s" onClick={handleClick}>
+                    Try it out
+                </Button>
+            </React.Fragment>
+        </Banner>
 
         {/*Courses*/}
-        <INITDivider color = 'transparent' thickness="20px" />
+        <INITDivider color = 'transparent' thickness="10%" />
         <List
         >
             <Caption
