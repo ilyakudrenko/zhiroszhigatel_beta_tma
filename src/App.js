@@ -85,31 +85,24 @@ const App = () => (
         <List
             style={{
                 background: 'var(--tgui--secondary_bg_color)',
+                color: 'green',
                 width: '100%',
 
             }}
         >
-            <Section>
+            <Section
+                after={<Button>See All</Button>}
+            >
                 <SectionHeader
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between', // Aligns text to the left and button to the right
-                        alignItems: 'center', // Centers content vertically
-
-                    }}
                 >
                     <Text
                         weight="=3"
-                        style={{headerForItemListStyle, flexGrow: 1 }}
                     >
                         Available Courses
                     </Text>
                     <Button
                         mode="plain"
                         size="s"
-                        style={{
-                            marginLeft: 'auto' // Ensures the button stays on the far right
-                        }}
                     >
                         See All
                     </Button>
