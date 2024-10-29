@@ -125,6 +125,121 @@ const App = () => (
                             </CardCell>
                         </React.Fragment>
                     </Card>
+                    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United States"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United States"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United States"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United States"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United States"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
                     {/* Повторите <Card> компоненты для создания прокрутки */}
                 </div>
             </HorizontalScroll>
