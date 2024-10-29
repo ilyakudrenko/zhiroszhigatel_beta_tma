@@ -125,9 +125,11 @@ const App = () => (
             //      width: '100%',
             //
             // }}
+            style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
         >
             <Section
                 header="Available Courses"
+                style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
             >
 
                 {/*<SectionHeader*/}
@@ -141,7 +143,9 @@ const App = () => (
                 {/*        See All*/}
                 {/*    </Button>*/}
                 {/*</SectionHeader>*/}
-                <HorizontalScroll>
+                <HorizontalScroll
+                    style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
+                >
                     <INITCardsList items={data} />
                 </HorizontalScroll>
             </Section>
