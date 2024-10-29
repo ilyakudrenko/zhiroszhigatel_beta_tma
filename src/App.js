@@ -111,15 +111,12 @@ const App = () => (
 
         {/*Courses*/}
         <List
-            style={{
-                marginTop: '5%'
-            }}
         >
             <Caption
                 caps
                 level="1"
                 weight="3"
-                // style={{color:'(var)'}}
+                style={{ margin: '5%'}}
             >
                 Available Courses
             </Caption>
