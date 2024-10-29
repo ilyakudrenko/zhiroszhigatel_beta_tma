@@ -26,7 +26,8 @@ const roundedCellStyle = {
 };
 
 const headerForItemListStyle = {
-    color: 'var(--tgui--primary_text_color)',
+    // color: 'var(--tgui--primary_text_color)',
+    color: 'green',
     overflow: 'hidden',
 };
 
@@ -94,17 +95,21 @@ const App = () => (
                         display: 'flex',
                         justifyContent: 'space-between', // Aligns text to the left and button to the right
                         alignItems: 'center', // Centers content vertically
+
                     }}
                 >
                     <Text
                         weight="=3"
-                        style={headerForItemListStyle}
+                        style={{headerForItemListStyle, flexGrow: 1 }}
                     >
                         Available Courses
                     </Text>
                     <Button
                         mode="plain"
                         size="s"
+                        style={{
+                            marginLeft: 'auto' // Ensures the button stays on the far right
+                        }}
                     >
                         See All
                     </Button>
