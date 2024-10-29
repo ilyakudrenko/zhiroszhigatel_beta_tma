@@ -28,6 +28,7 @@ export const App = () => (
     </AppRoot>
 );
 
+export default App;
 // < < < < < < < < < < < < < < O L D   C O D E > > > > > > > > > > > > > > > > > > >
 
 
