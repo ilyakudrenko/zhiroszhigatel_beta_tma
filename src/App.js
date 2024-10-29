@@ -118,39 +118,45 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-
-        <List
-            // style={{
-            //      background: 'var(--tgui--secondary_bg_color)',
-            //      width: '100%',
-            //
-            // }}
-            style={{backgroundColor: 'yellow',}}
+        <Section>
+        <HorizontalScroll
+            style={{backgroundColor: 'red',}}
         >
-            <Section
-                header="Available Courses"
-                style={{backgroundColor: 'green',}}
-            >
+            <INITCardsList items={data} />
+        </HorizontalScroll>
+        </Section>
+        {/*<List*/}
+        {/*    // style={{*/}
+        {/*    //      background: 'var(--tgui--secondary_bg_color)',*/}
+        {/*    //      width: '100%',*/}
+        {/*    //*/}
+        {/*    // }}*/}
+        {/*    style={{backgroundColor: 'yellow',}}*/}
+        {/*>*/}
+        {/*    <Section*/}
+        {/*        header="Available Courses"*/}
+        {/*        style={{backgroundColor: 'green',}}*/}
+        {/*    >*/}
 
-                {/*<SectionHeader*/}
-                {/*>*/}
-                {/*    Available Courses*/}
-                {/*    <Button*/}
-                {/*        mode="plain"*/}
-                {/*        size="s"*/}
-                {/*        style={{align:'right'}}*/}
-                {/*    >*/}
-                {/*        See All*/}
-                {/*    </Button>*/}
-                {/*</SectionHeader>*/}
-                <HorizontalScroll
-                    style={{backgroundColor: 'red',}}
-                >
-                    <INITCardsList items={data} />
-                </HorizontalScroll>
-            </Section>
+        {/*        /!*<SectionHeader*!/*/}
+        {/*        /!*>*!/*/}
+        {/*        /!*    Available Courses*!/*/}
+        {/*        /!*    <Button*!/*/}
+        {/*        /!*        mode="plain"*!/*/}
+        {/*        /!*        size="s"*!/*/}
+        {/*        /!*        style={{align:'right'}}*!/*/}
+        {/*        /!*    >*!/*/}
+        {/*        /!*        See All*!/*/}
+        {/*        /!*    </Button>*!/*/}
+        {/*        /!*</SectionHeader>*!/*/}
+        {/*        <HorizontalScroll*/}
+        {/*            style={{backgroundColor: 'red',}}*/}
+        {/*        >*/}
+        {/*            <INITCardsList items={data} />*/}
+        {/*        </HorizontalScroll>*/}
+        {/*    </Section>*/}
 
-        </List>
+        {/*</List>*/}
 
 
         {/*<Section>*/}
