@@ -26,8 +26,7 @@ const roundedCellStyle = {
 };
 
 const headerForItemListStyle = {
-    // color: 'var(--tgui--primary_text_color)',
-    color: 'green',
+    color: 'var(--tgui--primary_text_color)',
     overflow: 'hidden',
 };
 
@@ -85,21 +84,14 @@ const App = () => (
         <List
             style={{
                 background: 'var(--tgui--secondary_bg_color)',
-                color: 'green',
                 width: '100%',
 
             }}
         >
-            <Section
-                after={<Button>See All</Button>}
-            >
+            <Section>
                 <SectionHeader
                 >
-                    <Text
-                        weight="=3"
-                    >
-                        Available Courses
-                    </Text>
+                    <div style={headerForItemListStyle}>Available Courses</div>
                     <Button
                         mode="plain"
                         size="s"
