@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Divider = ({ color = 'red', thickness, margin = '16px 0' }) => (
+const INITDivider = ({ color = 'red', thickness, margin = '16px 0' }) => (
     <div
         style={{
             backgroundColor: color,
@@ -11,4 +11,4 @@ const Divider = ({ color = 'red', thickness, margin = '16px 0' }) => (
     />
 );
 
-export default Divider;
+export default INITDivider;

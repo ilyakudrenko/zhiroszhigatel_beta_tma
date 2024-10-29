@@ -14,6 +14,7 @@ import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevr
 import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "./INIT-projects/CustomComponents/ScrollItemsSections/CardList";
+import INITDivider from "./INIT-projects/CustomComponents/Dividers/Divider";
 
 
 // Custom Bullshit
@@ -111,7 +112,7 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <Divider color = 'red' thickness="60px" />
+        <INITDivider color = 'red' thickness="60px" />
         <List
         >
             <Caption
