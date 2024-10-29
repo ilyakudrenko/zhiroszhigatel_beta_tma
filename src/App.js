@@ -6,7 +6,7 @@ import {
     List,
     Section,
     Cell,
-    Text, Placeholder,
+    Text, Placeholder, Caption,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -77,7 +77,7 @@ const App = () => (
         <List
             style={{
                 //backgroundColor: 'var(--tgui--secondary_bg_color)',
-                marginBottom: '10px'
+                // marginBottom: '10px'
             }}
         >
             <Section
@@ -119,16 +119,17 @@ const App = () => (
         {/*Courses*/}
         <List
             style={{
-                marginTop: '24px'
+                marginTop: '5%'
             }}
         >
-            <Text
+            <Caption
                 caps
-                weight = "3"
+                level="2"
+                weight="3"
                 // style={{color:'(var)'}}
             >
                 Available Courses
-            </Text>
+            </Caption>
             <HorizontalScroll
             >
                 <INITCardsList items={data} />
