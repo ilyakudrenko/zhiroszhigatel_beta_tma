@@ -19,6 +19,9 @@ import {
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
+import {
+    SectionHeader
+} from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -65,6 +68,7 @@ const App = () => (
             header="Introducing TON Space"
             // onCloseIcon={function noRefCheck(){}}
             type="section"
+            style={roundedCellStyle}
         >
             <React.Fragment key=".0">
                 <Button size="s">
@@ -75,80 +79,92 @@ const App = () => (
 
         {/*Courses*/}
 
-        <HorizontalScroll>
-            <div style={{ display: 'flex', overflowX: 'scroll', whiteSpace: 'nowrap', gap: '16px' }}>
-                <Card type="ambient">
-                    <React.Fragment key=".0">
-                        <CardChip readOnly>
-                            Hot place
-                        </CardChip>
-                        <img
-                            alt="Dog"
-                            src="https://i.imgur.com/892vhef.jpeg"
-                            style={{
-                                display: 'block',
-                                height: 308,
-                                objectFit: 'cover',
-                                width: 254
-                            }}
-                        />
-                        <CardCell
-                            readOnly
-                            subtitle="United states"
-                        >
-                            New York
-                        </CardCell>
-                    </React.Fragment>
-                </Card>
-                <Card type="ambient">
-                    <React.Fragment key=".0">
-                        <CardChip readOnly>
-                            Hot place
-                        </CardChip>
-                        <img
-                            alt="Dog"
-                            src="https://i.imgur.com/892vhef.jpeg"
-                            style={{
-                                display: 'block',
-                                height: 308,
-                                objectFit: 'cover',
-                                width: 254
-                            }}
-                        />
-                        <CardCell
-                            readOnly
-                            subtitle="United states"
-                        >
-                            New York
-                        </CardCell>
-                    </React.Fragment>
-                </Card>
-                <Card type="ambient">
-                    <React.Fragment key=".0">
-                        <CardChip readOnly>
-                            Hot place
-                        </CardChip>
-                        <img
-                            alt="Dog"
-                            src="https://i.imgur.com/892vhef.jpeg"
-                            style={{
-                                display: 'block',
-                                height: 308,
-                                objectFit: 'cover',
-                                width: 254
-                            }}
-                        />
-                        <CardCell
-                            readOnly
-                            subtitle="United states"
-                        >
-                            New York
-                        </CardCell>
-                    </React.Fragment>
-                </Card>
-            </div>
-        </HorizontalScroll>
+        <Section>
+            <SectionHeader
+            >
+                <Button
+                    mode="plain"
+                    size="s"
+                >
+                    See All
+                </Button>
+                Courses For You
+            </SectionHeader>
 
+            <HorizontalScroll>
+              <div style={{ display: 'flex', overflowX: 'scroll', whiteSpace: 'nowrap', gap: '16px' }}>
+                  <Card type="ambient">
+                      <React.Fragment key=".0">
+                         <CardChip readOnly>
+                              Hot place
+                          </CardChip>
+                                <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
+                </div>
+            </HorizontalScroll>
+        </Section>
 
     </AppRoot>
 );
