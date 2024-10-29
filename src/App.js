@@ -6,7 +6,7 @@ import {
     List,
     Section,
     Cell,
-    Title, Text,
+    Text,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -23,6 +23,11 @@ import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Servi
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
+};
+
+const headerForItemListStyle = {
+    color: '--tgui--primary_text_color',
+    overflow: 'hidden',
 };
 
 
@@ -79,12 +84,15 @@ const App = () => (
         <List
             style={{
                 background: 'var(--tgui--secondary_bg_color)',
+                width: '100%',
+
             }}
         >
             <Section>
                 <SectionHeader>
                     <Text
                         weight="=3"
+                        style{headerForItemListStyle}
                     >
                         Available Courses
                     </Text>
