@@ -117,13 +117,11 @@ const App = () => (
 
         {/*Courses*/}
         <List>
-            <Placeholder>
-               <Text
-                   weight = "3"
-               >
-                   Available Courses
-               </Text>
-            </Placeholder>
+            <Text
+                weight = "3"
+            >
+                Available Courses
+            </Text>
             <HorizontalScroll
             >
                 <INITCardsList items={data} />
