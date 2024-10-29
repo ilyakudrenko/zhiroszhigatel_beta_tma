@@ -76,9 +76,7 @@ const App = () => (
 
         <List
             style={{
-                backgroundColor: 'var(--tgui--secondary_bg_color)',
-                width: '100%',
-
+                //backgroundColor: 'var(--tgui--secondary_bg_color)',
             }}
         >
             <Section
