@@ -14,7 +14,7 @@ import {Card} from "@telegram-apps/telegram-ui";
  * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
  */
 const INITCardItem = ({cardChip, imageSrc, title, description}) => (
-    <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+    <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
         <React.Fragment key=".0">
             <CardChip readOnly>
                 {cardChip}

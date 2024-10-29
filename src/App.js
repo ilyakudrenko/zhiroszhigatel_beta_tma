@@ -77,6 +77,7 @@ const App = () => (
         <List
             style={{
                 //backgroundColor: 'var(--tgui--secondary_bg_color)',
+                marginBottom: '10px'
             }}
         >
             <Section
@@ -116,9 +117,15 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <List>
+        <List
+            style={{
+                marginTop: '24px'
+            }}
+        >
             <Text
+                caps
                 weight = "3"
+                // style={{color:'(var)'}}
             >
                 Available Courses
             </Text>
