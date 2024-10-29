@@ -19,7 +19,7 @@ import {
     SectionHeader
 } from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
-import INITCardsList from "../INIT-projects/CustomComponents/ScrollItemsSections/CardList";
+import INITCardsList from "./INIT-projects/CustomComponents/ScrollItemsSections/CardList";
 
 
 // Custom Bullshit
