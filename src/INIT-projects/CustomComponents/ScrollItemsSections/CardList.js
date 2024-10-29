@@ -33,7 +33,7 @@ const INITCardItem = ({cardChip, imageSrc, title, description}) => (
 
 
 const INITCardsList = ({ items }) => (
-    <div style={{display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap'}}>
+    <div style={{display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' background: 'transparent'}}>
         {items.map((item, i) => (
             <INITCardItem
                 key={i}
