@@ -120,7 +120,7 @@ const App = () => (
         {/*Courses*/}
         <Section>
         <HorizontalScroll
-            style={{backgroundColor: 'red',}}
+            // style={{backgroundColor: 'red',}}
         >
             <INITCardsList items={data} />
         </HorizontalScroll>
