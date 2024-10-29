@@ -5,7 +5,9 @@ import {
     Section,
     Cell,
     Caption,
-    Divider, Banner, Button,
+    Divider,
+    Banner,
+    Button,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
@@ -122,6 +124,24 @@ const App = () => (
                 style={{ margin: '5%'}}
             >
                 Available Courses
+            </Caption>
+            <HorizontalScroll
+            >
+                <INITCardsList items={data} />
+            </HorizontalScroll>
+        </List>
+
+        {/*Some banner for meal plan*/}
+        <INITDivider color = 'transparent' thickness="10%" />
+        <List
+        >
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{ margin: '5%'}}
+            >
+                Available Meal Plans
             </Caption>
             <HorizontalScroll
             >
