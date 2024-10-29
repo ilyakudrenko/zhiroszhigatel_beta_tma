@@ -6,7 +6,7 @@ import {
     List,
     Section,
     Cell,
-    Text,
+    Text, Placeholder,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -117,14 +117,17 @@ const App = () => (
 
         {/*Courses*/}
         <List>
-            <Section
-                header={"Available Courses"}
+            <Placeholder>
+               <Text
+                   weight = "3"
+               >
+                   Available Courses
+               </Text>
+            </Placeholder>
+            <HorizontalScroll
             >
-                <HorizontalScroll
-                >
-                    <INITCardsList items={data} />
-                </HorizontalScroll>
-            </Section>
+                <INITCardsList items={data} />
+            </HorizontalScroll>
         </List>
 
 
