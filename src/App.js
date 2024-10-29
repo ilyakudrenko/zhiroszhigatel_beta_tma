@@ -88,18 +88,21 @@ const App = () => (
 
             }}
         >
-            <Section>
-                <SectionHeader
-                >
-                    Available Courses
-                    <Button
-                        mode="plain"
-                        size="s"
-                        style={{align:'right'}}
-                    >
-                        See All
-                    </Button>
-                </SectionHeader>
+            <Section
+                header="Available Courses"
+            >
+
+                {/*<SectionHeader*/}
+                {/*>*/}
+                {/*    Available Courses*/}
+                {/*    <Button*/}
+                {/*        mode="plain"*/}
+                {/*        size="s"*/}
+                {/*        style={{align:'right'}}*/}
+                {/*    >*/}
+                {/*        See All*/}
+                {/*    </Button>*/}
+                {/*</SectionHeader>*/}
                 <HorizontalScroll>
                     <div style={{ display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' }}>
                         <Card style={{ flexShrink: 0, minWidth: '254px' }}>
