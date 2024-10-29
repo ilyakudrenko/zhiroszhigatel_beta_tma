@@ -144,7 +144,7 @@ const App = () => (
                 {/*    </Button>*/}
                 {/*</SectionHeader>*/}
                 <HorizontalScroll
-                    style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
+                    style={{backgroundColor: 'var(--tgui--primary_bg_color)',}}
                 >
                     <INITCardsList items={data} />
                 </HorizontalScroll>
