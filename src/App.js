@@ -112,7 +112,7 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <INITDivider color = 'red' thickness="60px" />
+        <INITDivider color = 'transparent' thickness="20px" />
         <List
         >
             <Caption
