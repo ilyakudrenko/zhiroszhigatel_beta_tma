@@ -125,11 +125,11 @@ const App = () => (
             //      width: '100%',
             //
             // }}
-            style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
+            style={{backgroundColor: 'yellow',}}
         >
             <Section
                 header="Available Courses"
-                style={{backgroundColor: 'var(--tgui--secondary_bg_color)',}}
+                style={{backgroundColor: 'green',}}
             >
 
                 {/*<SectionHeader*/}
