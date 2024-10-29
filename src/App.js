@@ -111,7 +111,7 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
-        <Divider color = 'red' thickness="10%" />
+        <Divider color = 'red' thickness="60px" />
         <List
         >
             <Caption
