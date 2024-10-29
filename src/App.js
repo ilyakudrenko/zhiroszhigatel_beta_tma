@@ -1,12 +1,10 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {
     AppRoot,
-    Button,
-    Card,
     List,
     Section,
     Cell,
-    Text, Placeholder, Caption,
+    Caption,
 
 } from '@telegram-apps/telegram-ui';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
@@ -124,8 +122,8 @@ const App = () => (
         >
             <Caption
                 caps
-                level="2"
-                weight="2"
+                level="1"
+                weight="3"
                 // style={{color:'(var)'}}
             >
                 Available Courses
