@@ -20,6 +20,10 @@ import {
 } from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 
+
+// Custom Bullshit
+
+
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
@@ -30,6 +34,9 @@ const headerForItemListStyle = {
     overflow: 'hidden',
 };
 
+const handleClick = () => {
+    alert("Button clicked!");
+};
 
 const App = () => (
     <AppRoot>
@@ -105,7 +112,7 @@ const App = () => (
                 {/*</SectionHeader>*/}
                 <HorizontalScroll>
                     <div style={{ display: 'flex', overflowX: 'scroll', gap: '16px', whiteSpace: 'nowrap' }}>
-                        <Card style={{ flexShrink: 0, minWidth: '254px' }}>
+                        <Card style={{ flexShrink: 0, minWidth: '254px' }} onClick={handleClick}>
                             <React.Fragment key=".0">
                                 <CardChip readOnly>
                                     Hot place
