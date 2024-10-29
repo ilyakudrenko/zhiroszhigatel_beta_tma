@@ -120,45 +120,11 @@ const App = () => (
         {/*Courses*/}
         <List>
             <HorizontalScroll
-                // style={{backgroundColor: 'transparent',}}
             >
                 <INITCardsList items={data} />
             </HorizontalScroll>
         </List>
-        {/*<List*/}
-        {/*    // style={{*/}
-        {/*    //      background: 'var(--tgui--secondary_bg_color)',*/}
-        {/*    //      width: '100%',*/}
-        {/*    //*/}
-        {/*    // }}*/}
-        {/*    style={{backgroundColor: 'yellow',}}*/}
-        {/*>*/}
-        {/*    <Section*/}
-        {/*        header="Available Courses"*/}
-        {/*        style={{backgroundColor: 'green',}}*/}
-        {/*    >*/}
 
-        {/*        /!*<SectionHeader*!/*/}
-        {/*        /!*>*!/*/}
-        {/*        /!*    Available Courses*!/*/}
-        {/*        /!*    <Button*!/*/}
-        {/*        /!*        mode="plain"*!/*/}
-        {/*        /!*        size="s"*!/*/}
-        {/*        /!*        style={{align:'right'}}*!/*/}
-        {/*        /!*    >*!/*/}
-        {/*        /!*        See All*!/*/}
-        {/*        /!*    </Button>*!/*/}
-        {/*        /!*</SectionHeader>*!/*/}
-        {/*        <HorizontalScroll*/}
-        {/*            style={{backgroundColor: 'red',}}*/}
-        {/*        >*/}
-        {/*            <INITCardsList items={data} />*/}
-        {/*        </HorizontalScroll>*/}
-        {/*    </Section>*/}
-
-        {/*</List>*/}
-
-        {/*</Section>*/}
 
     </AppRoot>
 );
