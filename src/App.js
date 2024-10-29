@@ -125,7 +125,7 @@ const App = () => (
             <Caption
                 caps
                 level="2"
-                weight="3"
+                weight="2"
                 // style={{color:'(var)'}}
             >
                 Available Courses
