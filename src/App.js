@@ -120,11 +120,18 @@ const App = () => (
         {/*Courses*/}
         <Section>
         <HorizontalScroll
-            // style={{backgroundColor: 'red',}}
+            style={{backgroundColor: 'transparent',}}
         >
             <INITCardsList items={data} />
         </HorizontalScroll>
         </Section>
+        <List>
+            <HorizontalScroll
+                style={{backgroundColor: 'transparent',}}
+            >
+                <INITCardsList items={data} />
+            </HorizontalScroll>
+        </List>
         {/*<List*/}
         {/*    // style={{*/}
         {/*    //      background: 'var(--tgui--secondary_bg_color)',*/}
