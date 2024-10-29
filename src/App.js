@@ -4,7 +4,7 @@ import {
     List,
     Section,
     Cell,
-    Caption,
+    Caption, Divider,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
@@ -110,6 +110,7 @@ const App = () => (
         {/*</Banner>*/}
 
         {/*Courses*/}
+        <Divider thickness="2px" />
         <List
         >
             <Caption
