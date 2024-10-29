@@ -6,7 +6,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import { AppRoot, Cell, List, Section } from '@telegram-apps/telegram-ui';
 
 // Example data for rendering list cells
-const cellsTexts = ['Chat Settings', 'Data and Storage', 'Devices'];
+// const cellsTexts = ['Chat Settings', 'Data and Storage', 'Devices'];
 
 export const App = () => (
     <AppRoot>
@@ -14,12 +14,15 @@ export const App = () => (
         <List>
             {/* Section component to group items within the list */}
             <Section header="Header for the section" footer="Footer for the section">
-                {/* Mapping through the cells data to render Cell components */}
-                {cellsTexts.map((cellText, index) => (
-                    <Cell key={index}>
-                        {cellText}
-                    </Cell>
-                ))}
+                <Cell>
+                    Chat Settings
+                </Cell>
+                <Cell>
+                    Data and Storage
+                </Cell>
+                <Cell>
+                    Devices
+                </Cell>
             </Section>
         </List>
     </AppRoot>
