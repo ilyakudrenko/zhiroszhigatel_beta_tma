@@ -40,7 +40,7 @@ const INITCardItem = ({cardChip, imageSrc, title, description}) => (
 );
 
 const handleClick = (title) => {
-    alert("Button clicked! " + title);
+    alert("Card clicked! " + title);
 };
 
 /**
