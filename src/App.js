@@ -26,9 +26,9 @@ const roundedCellStyle = {
     overflow: 'hidden', // Ensures rounded corners display properly
 };
 
-// const handleClick = () => {
-//     alert("Button clicked!");
-// };
+const handleClick = () => {
+    alert("Button clicked!");
+};
 
 
 const data = [
