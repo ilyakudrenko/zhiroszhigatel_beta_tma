@@ -70,12 +70,7 @@ const App = () => (
 
         {/*The button section*/}
 
-        <List
-            style={{
-                //backgroundColor: 'var(--tgui--secondary_bg_color)',
-                // marginBottom: '10px'
-            }}
-        >
+        <List>
             <Section
                 style={roundedCellStyle}
             >
@@ -113,6 +108,7 @@ const App = () => (
         </Banner>
 
         {/*Courses*/}
+
         <INITDivider color = 'transparent' thickness="10%" />
         <List
         >
