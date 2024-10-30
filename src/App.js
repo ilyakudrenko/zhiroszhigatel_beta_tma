@@ -33,10 +33,10 @@ const handleClick = () => {
 
 const data = [
     {
-        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
-        title: 'New York',
+        imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg',
+        title: 'Los Angeles',
         description: 'United States',
-        cardChip: 'Hot place',
+        cardChip: 'Пупсик',
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
