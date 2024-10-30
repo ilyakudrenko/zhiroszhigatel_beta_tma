@@ -136,7 +136,7 @@ const App = () => (
                 weight="3"
                 style={{ margin: '5%'}}
             >
-                Available Meal Plans
+                Available Meal Plans Test for Ilya
             </Caption>
             <HorizontalScroll
             >
