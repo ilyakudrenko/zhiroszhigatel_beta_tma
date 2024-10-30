@@ -5,15 +5,12 @@ import {
     Section,
     Cell,
     Caption,
-    Divider,
     Banner,
     Button,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
-import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
-import {Icon24Chat} from "@telegram-apps/telegram-ui/dist/icons/24/chat";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "./INIT-projects/CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "./INIT-projects/CustomComponents/Dividers/Divider";
@@ -36,10 +33,10 @@ const handleClick = () => {
 
 const data = [
     {
-        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
-        title: 'New York',
+        imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg',
+        title: 'Los Angeles',
         description: 'United States',
-        cardChip: 'Hot place',
+        cardChip: 'Пупсик',
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
