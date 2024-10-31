@@ -53,7 +53,7 @@ const handleClick = (title) => {
  *   - title: Main title of the card
  *   - description: Subtitle or additional information for the card
  */
-const INITCardsList = ({ items }) => (
+const INITCardsList = ({ items = [] }) => (
     <div
         style={{display: 'flex',
             overflowX: 'scroll', gap: '16px',
