@@ -14,7 +14,7 @@ import {Card} from "@telegram-apps/telegram-ui";
  * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
  */
 const INITCardItem = ({cardChip, imageSrc, title, description}) => (
-    <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={() =>handleClick(title)}>
+    <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={() => {handleClick(title)}}>
         <React.Fragment key=".0">
             <CardChip readOnly>
                 {cardChip}
@@ -39,13 +39,9 @@ const INITCardItem = ({cardChip, imageSrc, title, description}) => (
     </Card>
 );
 
-
-const handleClick = (info) => {
-    alert("Button clicked! with" + info);
+const handleClick = (title) => {
+    alert("Card clicked! " + title);
 };
-
-
-
 
 /**
  * Component for displaying a list of card items horizontally.
