@@ -3,6 +3,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import {Card} from "@telegram-apps/telegram-ui";
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Component representing a single card item.
@@ -13,9 +14,15 @@ import {Card} from "@telegram-apps/telegram-ui";
  * @param {string} title - The main title displayed on the card (e.g., location name).
  * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
  */
-const INITCardItem = ({cardChip, imageSrc, title, description}) => (
-    <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={() => {handleClick(title)}}>
-        <React.Fragment key=".0">
+const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/item');
+    };
+
+    return (
+        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={handleClick}>
             <CardChip readOnly>
                 {cardChip}
             </CardChip>
@@ -29,18 +36,11 @@ const INITCardItem = ({cardChip, imageSrc, title, description}) => (
                     width: 254
                 }}
             />
-            <CardCell
-                readOnly
-                subtitle={description}
-            >
+            <CardCell readOnly subtitle={description}>
                 {title}
             </CardCell>
-        </React.Fragment>
-    </Card>
-);
-
-const handleClick = (title) => {
-    alert("Card clicked! " + title);
+        </Card>
+    );
 };
 
 /**
