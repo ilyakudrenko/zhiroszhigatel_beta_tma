@@ -1,5 +1,4 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {AppRoot,} from '@telegram-apps/telegram-ui';
 import React from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 import HomePage from "./INIT-projects/HomePage/HomePage";
@@ -45,17 +44,17 @@ const App = () => {
 
     return (
         isHomePage ? (
-            <AppRoot>
+
                 <Routes>
                     <Route path="/" element={<HomePage data={data} />} />
                     <Route path="/item" element={<ItemCourse />} />
                 </Routes>
-            </AppRoot>
+
         ) : (
-            <Routes>
-                <Route path="/" element={<HomePage data={data} />} />
-                <Route path="/item" element={<ItemCourse />} />
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<HomePage data={data} />} />
+                    <Route path="/item" element={<ItemCourse />} />
+                </Routes>
         )
     );
 };

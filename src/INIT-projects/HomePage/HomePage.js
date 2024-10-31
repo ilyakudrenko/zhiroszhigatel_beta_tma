@@ -5,7 +5,7 @@ import {
     Cell,
     Caption,
     Banner,
-    Button,
+    Button, AppRoot,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
@@ -26,7 +26,7 @@ const handleClick = () => {
 };
 
 const HomePage = ({ data }) => (
-    <div>
+    <AppRoot>
         <List>
             <Section
                 style={roundedCellStyle}
@@ -100,7 +100,7 @@ const HomePage = ({ data }) => (
                 <INITCardsList items={data} />
             </HorizontalScroll>
         </List>
-    </div>
+    </AppRoot>
 );
 
 export default HomePage;
