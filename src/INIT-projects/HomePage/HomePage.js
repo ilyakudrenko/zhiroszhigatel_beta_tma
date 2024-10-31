@@ -5,7 +5,8 @@ import {
     Cell,
     Caption,
     Banner,
-    Button, AppRoot,
+    Button,
+    AppRoot,
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Card} from "@telegram-apps/telegram-ui";
+import {Card, Modal, Placeholder, Button} from "@telegram-apps/telegram-ui";
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
  * @param {string} title - The main title displayed on the card (e.g., location name).
  * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
  */
-const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
+const INITCardItem = ({ cardChip, imageSrc, title, description, onClick }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -22,7 +22,7 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
     };
 
     return (
-        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={handleClick}>
+        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={onClick}>
             <CardChip readOnly>
                 {cardChip}
             </CardChip>
@@ -53,23 +53,77 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
  *   - title: Main title of the card
  *   - description: Subtitle or additional information for the card
  */
-const INITCardsList = ({ items = [] }) => (
-    <div
-        style={{display: 'flex',
-            overflowX: 'scroll', gap: '16px',
-            whiteSpace: 'nowrap',
-            background: 'transparent',
-        }}>
-        {items.map((item, i) => (
-            <INITCardItem
-                key={i}
-                cardChip={item.cardChip}
-                imageSrc={item.imageSrc}
-                title={item.title}
-                description={item.description}
-            />
-        ))}
-    </div>
-        );
+const INITCardsList = ({ items = [] }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const openModal = (item) => {
+        setSelectedItem(item);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedItem(null);
+    };
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/item');
+    };
+
+    return (
+        <div>
+            <div
+                style={{
+                    display: 'flex',
+                    overflowX: 'scroll',
+                    gap: '16px',
+                    whiteSpace: 'nowrap',
+                    background: 'transparent',
+                }}
+            >
+                {items.map((item, i) => (
+                    <INITCardItem
+                        key={i}
+                        cardChip={item.cardChip}
+                        imageSrc={item.imageSrc}
+                        title={item.title}
+                        description={item.description}
+                        onClick={() => openModal(item)}
+                    />
+                ))}
+            </div>
+
+            {isModalOpen && (
+                <Modal open={isModalOpen} onClose={closeModal}>
+                    <Placeholder
+                        description={selectedItem?.description}
+                        header={selectedItem?.title}
+                    >
+                        <img
+                            alt="Telegram sticker"
+                            src="https://xelene.me/telegram.gif"
+                            style={{
+                                display: 'block',
+                                height: '144px',
+                                width: '144px',
+                            }}
+                        />
+                        <Button
+                            mode="filled"
+                            size="s"
+                            stretched
+                            onClick={handleClick}
+                        >
+                            Buy
+                        </Button>
+                    </Placeholder>
+                </Modal>
+            )}
+        </div>
+    );
+};
 
 export default INITCardsList;

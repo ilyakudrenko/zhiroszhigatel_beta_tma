@@ -8,7 +8,6 @@ const ItemCourse = () => {
     return (
         <AppRoot>
             <Modal
-                header={<ModalHeader>Only iOS header</ModalHeader>}
                 trigger={<Button size="m">Open modal</Button>}
             >
                 <Placeholder
