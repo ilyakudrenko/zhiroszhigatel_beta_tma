@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Card, Modal, Placeholder, Button} from "@telegram-apps/telegram-ui";
+import {Card, Modal, Placeholder, Button, IconButton} from "@telegram-apps/telegram-ui";
+import { Icon28Close } from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -64,13 +65,14 @@ const INITCardsList = ({ items = [] }) => {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedItem(null);
+        setSelectedItem(null); // Reset selected item
     };
 
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate('/item');
+    const handleBuyClick = () => {
+        closeModal(); // Close modal first
+        navigate('/item'); // Then navigate to the item page
     };
 
     return (
@@ -98,6 +100,14 @@ const INITCardsList = ({ items = [] }) => {
 
             {isModalOpen && (
                 <Modal open={isModalOpen} onClose={closeModal}>
+                    {/* Custom Modal Header with Close Button */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px' }}>
+                        <h3 style={{ margin: 0 }}></h3>
+                        <IconButton onClick={closeModal}>
+                            <Icon28Close style={{ color: 'var(--tgui--plain_foreground)' }} />
+                        </IconButton>
+                    </div>
+
                     <Placeholder
                         description={selectedItem?.description}
                         header={selectedItem?.title}
@@ -115,7 +125,7 @@ const INITCardsList = ({ items = [] }) => {
                             mode="filled"
                             size="s"
                             stretched
-                            onClick={handleClick}
+                            onClick={handleBuyClick} // Ensure Buy button also closes modal
                         >
                             Buy
                         </Button>
