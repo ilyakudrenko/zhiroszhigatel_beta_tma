@@ -20,7 +20,7 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
     //     navigate('/item');
     // };
     return (
-        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient" onClick={}>
+        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
             <CardChip readOnly>
                 {cardChip}
             </CardChip>
