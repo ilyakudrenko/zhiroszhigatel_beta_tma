@@ -2,7 +2,7 @@ import React from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Button, Card, Modal, Placeholder} from "@telegram-apps/telegram-ui";
+import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui";
 
 /**
  * Component representing a single card item.
@@ -70,31 +70,31 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
 //       </Modal>
 //     );
 // };
-
-const INITModalCardItem = ({ cardChip, imageSrc, title, description }) => {
-    return(
-      <Modal
-        trigger={
-            <Button size="m">Open modal</Button>
-        }
-      >
-          <Placeholder
-              description={description}
-              header={title}
-          >
-              <img
-                  alt="Telegram sticker"
-                  src="https://xelene.me/telegram.gif"
-                  style={{
-                      display: 'block',
-                      height: '144px',
-                      width: '144px'
-                  }}
-              />
-          </Placeholder>
-      </Modal>
-    );
-};
+//
+// const INITModalCardItem = ({ cardChip, imageSrc, title, description }) => {
+//     return(
+//       <Modal
+//         trigger={
+//
+//       }
+//       >
+//           <Placeholder
+//               description={description}
+//               header={title}
+//           >
+//               <img
+//                   alt="Telegram sticker"
+//                   src="https://xelene.me/telegram.gif"
+//                   style={{
+//                       display: 'block',
+//                       height: '144px',
+//                       width: '144px'
+//                   }}
+//               />
+//           </Placeholder>
+//       </Modal>
+//     );
+// };
 
 /**
  * Component for displaying a list of card items horizontally.
@@ -139,7 +139,7 @@ const INITCardsList = ({ items = [] }) => {
                 }}
             >
                 {items.map((item, i) => (
-                    <INITModalCardItem
+                    <INITCardItem
                         key={i}
                         cardChip={item.cardChip}
                         imageSrc={item.imageSrc}
