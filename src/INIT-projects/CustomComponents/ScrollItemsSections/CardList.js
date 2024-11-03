@@ -2,7 +2,7 @@ import React from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Card, Modal, Placeholder} from "@telegram-apps/telegram-ui";
+import {Button, Card, Modal, Placeholder} from "@telegram-apps/telegram-ui";
 
 /**
  * Component representing a single card item.
@@ -41,16 +41,41 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => {
     );
 };
 
+// const INITModalCardItem = ({ cardChip, imageSrc, title, description }) => {
+//     return(
+//       <Modal
+//         trigger={
+//           <INITCardItem
+//               cardChip={cardChip}
+//               imageSrc={imageSrc}
+//               title={title}
+//               description={description}
+//           />
+//         }
+//       >
+//           <Placeholder
+//               description={description}
+//               header={title}
+//           >
+//               <img
+//                   alt="Telegram sticker"
+//                   src="https://xelene.me/telegram.gif"
+//                   style={{
+//                       display: 'block',
+//                       height: '144px',
+//                       width: '144px'
+//                   }}
+//               />
+//           </Placeholder>
+//       </Modal>
+//     );
+// };
+
 const INITModalCardItem = ({ cardChip, imageSrc, title, description }) => {
     return(
       <Modal
         trigger={
-          <INITCardItem
-              cardChip={cardChip}
-              imageSrc={imageSrc}
-              title={title}
-              description={description}
-          />
+            <Button size="m">Open modal</Button>
         }
       >
           <Placeholder
