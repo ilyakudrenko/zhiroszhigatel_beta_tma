@@ -16,7 +16,6 @@ import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
-import INITBanner from "../CustomComponents/Banner/Banner";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -50,7 +49,21 @@ const HomePage = ({ data }) => (
 
         {/*Some banner for sales*/}
         <INITDivider color = 'transparent' thickness="10%" />
-        <INITBanner />
+        <Banner
+            background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
+            callout="Urgent notification"
+            description="Start exploring TON in a new, better way"
+            header="Introducing TON Space"
+            // onCloseIcon={function noRefCheck(){}}
+            type="section"
+            style={roundedCellStyle}
+        >
+            <React.Fragment key=".0">
+                <Button size="s" onClick={handleClick}>
+                    Try it out
+                </Button>
+            </React.Fragment>
+        </Banner>
 
         {/*Free Guides*/}
 
