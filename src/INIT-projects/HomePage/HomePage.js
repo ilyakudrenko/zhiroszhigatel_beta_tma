@@ -10,60 +10,38 @@ import {
 
 } from '@telegram-apps/telegram-ui';
 import React from "react";
-import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "../CustomComponents/Dividers/Divider";
-import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
-import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
-
-const roundedCellStyle = {
-    borderRadius: '16px',
-    overflow: 'hidden', // Ensures rounded corners display properly
-};
-
-const handleClick = () => {
-    alert("Button clicked!");
-};
+import INITBanner from "../CustomComponents/Banner/Banner";
+import Navigation from "../CustomComponents/Navigation/Navigation";
 
 const HomePage = ({ data }) => (
     <AppRoot>
-        <List>
-            <Section
-                style={roundedCellStyle}
-            >
-                <Cell
-                    after={<Icon24ChevronRight />}
-                    before={<INITProfileIcon />}
-                >
-                    Profile
-                </Cell>
-                <Cell
-                    after={<Icon24ChevronRight />}
-                    before={<INITMessageBadgeIcon color="white" />}
-                >
-                    Support
-                </Cell>
-            </Section>
-        </List>
+        <Navigation />
 
         {/*Some banner for sales*/}
         <INITDivider color = 'transparent' thickness="10%" />
-        <Banner
-            background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
-            callout="Urgent notification"
-            description="Start exploring TON in a new, better way"
-            header="Introducing TON Space"
-            // onCloseIcon={function noRefCheck(){}}
-            type="section"
-            style={roundedCellStyle}
+        <INITBanner />
+
+        {/*Free Guides*/}
+
+        <INITDivider color = 'transparent' thickness="10%" />
+        <List
         >
-            <React.Fragment key=".0">
-                <Button size="s" onClick={handleClick}>
-                    Try it out
-                </Button>
-            </React.Fragment>
-        </Banner>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{ margin: '5%'}}
+            >
+                Available Free Guides
+            </Caption>
+            <HorizontalScroll
+            >
+                <INITCardsList items={data} />
+            </HorizontalScroll>
+        </List>
 
         {/*Courses*/}
 

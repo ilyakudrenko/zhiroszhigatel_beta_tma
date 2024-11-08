@@ -2,7 +2,8 @@ import React from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui";
+import {Button, Card, Modal, Placeholder, Text, Image} from "@telegram-apps/telegram-ui";
+import GuideList from "../GuudeList/GuideList";
 
 /**
  * Component representing a single card item.
@@ -32,17 +33,7 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
             </Card>
         }
     >
-        <Placeholder description={description} header={title}>
-            <img
-                alt="Telegram sticker"
-                src="https://xelene.me/telegram.gif"
-                style={{
-                    display: 'block',
-                    height: '144px',
-                    width: '144px'
-                }}
-            />
-        </Placeholder>
+        <GuideList />
     </Modal>
 );
 
