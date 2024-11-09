@@ -20,6 +20,7 @@ import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
+    backgroundColor: 'var(--tgui--bg_color)',
 };
 
 const handleClick = () => {
@@ -31,6 +32,7 @@ const HomePage = ({ data }) => (
         <List>
             <Section
                 style={roundedCellStyle}
+
             >
                 <Cell
                     after={<Icon24ChevronRight />}
