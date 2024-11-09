@@ -31,11 +31,11 @@ const imageStyle = {
 const INITGuide_1 = ({info = [],}) => {
     return (
         <List
-            // style={{
-            //     padding: '3%',
-            //     // backgroundColor: "var(--tgui--background)",
-            //     // backgroundColor: "darkred",
-            // }}
+            style={{
+                padding: '5%',
+                // backgroundColor: "var(--tgui--background)",
+                // backgroundColor: "darkred",
+            }}
 
         >
 
