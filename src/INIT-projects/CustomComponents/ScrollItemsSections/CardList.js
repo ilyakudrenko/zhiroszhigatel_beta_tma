@@ -6,6 +6,10 @@ import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui
 import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
 
+const modal_back_color = {
+    backgroundColor: "var(--tgui--background)",
+};
+
 /**
  * Component representing a single card item.
  * This card displays an image, a chip label, and a description.
@@ -17,6 +21,9 @@ import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
  */
 const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
     <Modal
+        style={
+            modal_back_color
+        }
         trigger={
             <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
                 <CardChip readOnly>{cardChip}</CardChip>

@@ -9,6 +9,7 @@ const roundedCellStyle = {
     overflow: 'hidden', // Ensures rounded corners display properly
 };
 
+
 const INITGuide_1 = ({info = [],  }) => {
     return (
         <List>
