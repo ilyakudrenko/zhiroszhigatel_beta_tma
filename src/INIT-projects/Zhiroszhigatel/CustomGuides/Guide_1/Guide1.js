@@ -23,11 +23,9 @@ const INITGuide_1 = ({info = [],  }) => {
                     Пояснение
                 </Text>
                 <Cell>
-                    <Text weight="3">
                         Здесь будут группы
                         продуктов и мои
                         пояснения к ним.
-                    </Text>
                 </Cell>
                 <Cell>
                     <Text weight="3">
