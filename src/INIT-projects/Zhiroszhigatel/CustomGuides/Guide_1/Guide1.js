@@ -11,12 +11,12 @@ const roundedCellStyle = {
 };
 
 
-const containerStyle = {
-    width: "100%",       // Занимает всю возможную ширину
-    height: "300px",     // Фиксированная высота; можно изменить при необходимости
-    overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
-    position: "relative",
-};
+// const containerStyle = {
+//     width: "100%",       // Занимает всю возможную ширину
+//     height: "300px",     // Фиксированная высота; можно изменить при необходимости
+//     overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
+//     position: "relative",
+// };
 
 const imageStyle = {
     width: "100%",
@@ -39,13 +39,13 @@ const INITGuide_1 = ({info = [],}) => {
 
         >
 
-            <div style={containerStyle}>
+            {/*<div style={containerStyle}>*/}
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"
                     alt="Background"
                     style={imageStyle}
                 />
-            </div>
+            {/*</div>*/}
 
             <div style={{padding: '5%'}}>
 
