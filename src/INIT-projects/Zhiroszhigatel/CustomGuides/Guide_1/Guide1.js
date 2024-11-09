@@ -13,7 +13,7 @@ const roundedCellStyle = {
 
 const containerStyle = {
     width: "100%",       // Занимает всю возможную ширину
-    height: "20%",     // Фиксированная высота; можно изменить при необходимости
+    height: "300px",     // Фиксированная высота; можно изменить при необходимости
     overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
     position: "relative",
 };
@@ -46,8 +46,6 @@ const INITGuide_1 = ({info = [],}) => {
                     style={imageStyle}
                 />
             </div>
-
-            <div style={{padding: '5%'}}>
 
 
                 <Title level="1" weight="bold">
@@ -111,7 +109,6 @@ const INITGuide_1 = ({info = [],}) => {
 
                 {/*    </Cell>*/}
                 {/*</Section>*/}
-            </div>
         </List>
     );
 };
