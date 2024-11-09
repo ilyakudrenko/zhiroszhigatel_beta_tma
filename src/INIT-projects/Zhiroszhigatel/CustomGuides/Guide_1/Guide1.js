@@ -1,6 +1,7 @@
 import React from 'react';
-import {Image, List, Section, Title, Text, Cell,} from "@telegram-apps/telegram-ui";
+import {Image, List, Section, Title, Text, Cell, Card,} from "@telegram-apps/telegram-ui";
 import logo from "./Images/Logo.jpg";
+import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 // import logo from "./Images/Logo.jpg";
 
 const roundedCellStyle = {
@@ -12,44 +13,53 @@ const INITGuide_1 = ({info = [],  }) => {
     return (
         <List>
             <Image
-                src={"./Images/Logo.jpg"}
+                size={96}
+                src={"https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"}
             />
+            <Title level="1" weight="bold">
+                Гайд по продуктовой корзине
+            </Title>
             <Section
+                header="Пояснение"
                 style={roundedCellStyle}
             >
-                <Text
-                    weight="1"
+                <Cell
+                    multiline
+                    interactiveAnimation="background"
                 >
-                    Пояснение
-                </Text>
-                <Cell>
-                        Здесь будут группы
-                        продуктов и мои
-                        пояснения к ним.
+                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья и самочувствия.
                 </Cell>
-                <Cell>
-                    <Text weight="3">
-                        Наиболее оптимальные
-                        продукты для питания,
-                        то есть энергетически не
-
-                        плотные и богатые содер-
-                        жанию витаминов, минералов (содержат отно-
-                        сительно немного калорий на 100гр продукта).
-                    </Text>
+                <Cell
+                    multiline
+                    interactiveAnimation="background"
+                >
+                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья и самочувствия.
                 </Cell>
-                <Cell>
-                    <Text weight="3">
-                        Выбор таких продуктов, хорошая стратегия
-                        для поддержания оптимального здоровья,
-
-                        самочувствия, а главное поможет в построе-
-                        нии или поддержании здорового подтянутого
-
-                        тела, без лишних килограмм.
-                    </Text>
+                <Cell
+                    multiline
+                    interactiveAnimation="background"
+                >
+                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья и самочувствия.
                 </Cell>
+                <Cell
+                    multiline
+                    interactiveAnimation="background"
+                >
+                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья и самочувствия.
+                </Cell>
+
             </Section>
+            {/*<Image*/}
+            {/*    src={"./Images/Logo.jpg"}*/}
+            {/*/>*/}
+            {/*<Section*/}
+            {/*    style={roundedCellStyle}*/}
+            {/*>*/}
+            {/*    <Cell>*/}
+
+            {/*    </Cell>*/}
+            {/*</Section>*/}
+
         </List>
     );
 };
