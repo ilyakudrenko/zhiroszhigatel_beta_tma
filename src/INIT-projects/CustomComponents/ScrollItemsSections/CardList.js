@@ -21,9 +21,9 @@ const modal_back_color = {
  */
 const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
     <Modal
-        style={
-            modal_back_color
-        }
+        style={{
+            backgroundColor: "var(--tgui--background)",
+        }}
         trigger={
             <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
                 <CardChip readOnly>{cardChip}</CardChip>

@@ -12,7 +12,11 @@ const roundedCellStyle = {
 
 const INITGuide_1 = ({info = [],  }) => {
     return (
-        <List>
+        <List
+            style = {{
+                padding: '3%',
+            }}
+        >
             <Image
                 size={96}
                 src={"https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"}
