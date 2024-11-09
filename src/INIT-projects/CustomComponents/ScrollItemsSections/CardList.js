@@ -22,7 +22,7 @@ const modal_back_color = {
 const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
     <Modal
         style={{
-            backgroundColor: "darkred",
+            backgroundColor: "var(--tgui--bgcolor)",
         }}
         trigger={
             <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
