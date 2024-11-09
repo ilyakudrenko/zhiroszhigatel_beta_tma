@@ -7,7 +7,7 @@ import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo
 import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
 
 const modal_back_color = {
-    backgroundColor: "var(--tgui--background)",
+    backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
 /**
@@ -22,7 +22,7 @@ const modal_back_color = {
 const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
     <Modal
         style={{
-            backgroundColor: "var(--tgui--bgcolor)",
+            backgroundColor: 'var(--tgui--secondary_bg_color)',
         }}
         trigger={
             <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
