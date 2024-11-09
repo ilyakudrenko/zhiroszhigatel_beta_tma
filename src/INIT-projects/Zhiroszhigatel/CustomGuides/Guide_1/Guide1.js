@@ -15,7 +15,9 @@ const INITGuide_1 = ({info = [],  }) => {
         <List
             style = {{
                 padding: '3%',
+                backgroundColor: "var(--tgui--background)",
             }}
+
         >
             <Image
                 size={96}
