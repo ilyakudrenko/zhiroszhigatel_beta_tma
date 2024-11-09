@@ -12,7 +12,7 @@ const INITGuide_1 = ({info = [],  }) => {
     return (
         <List>
             <Image
-                src={"./Images/Loxgo.jpg"}
+                src={"./Images/Logo.jpg"}
             />
             <Section
                 style={roundedCellStyle}
