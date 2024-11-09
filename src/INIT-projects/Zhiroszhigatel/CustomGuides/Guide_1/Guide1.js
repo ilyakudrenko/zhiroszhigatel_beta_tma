@@ -16,7 +16,7 @@ const INITGuide_1 = ({info = [],  }) => {
             style = {{
                 padding: '3%',
                 // backgroundColor: "var(--tgui--background)",
-                backgroundColor: "darkred",
+                // backgroundColor: "darkred",
             }}
 
         >
