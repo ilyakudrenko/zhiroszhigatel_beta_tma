@@ -27,14 +27,14 @@ const imageStyle = {
 };
 
 
-const INITGuide_1 = ({info = [],  }) => {
+const INITGuide_1 = ({info = [],}) => {
     return (
         <List
-            style={{
-                padding: '3%',
-                // backgroundColor: "var(--tgui--background)",
-                // backgroundColor: "darkred",
-            }}
+            // style={{
+            //     padding: '3%',
+            //     // backgroundColor: "var(--tgui--background)",
+            //     // backgroundColor: "darkred",
+            // }}
 
         >
 
@@ -46,61 +46,68 @@ const INITGuide_1 = ({info = [],  }) => {
                 />
             </div>
 
-            <Title level="1" weight="bold">
-                Гайд по продуктовой корзине
-            </Title>
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{margin: '5%'}}
-            >
-                Пояснение
-            </Caption>
-            <Section
-                style={roundedCellStyle}
-            >
-                <Cell
-                    multiline
-                    interactiveAnimation="background"
-                >
-                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья
-                    и самочувствия.
-                </Cell>
-                <Cell
-                    multiline
-                    interactiveAnimation="background"
-                >
-                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья
-                    и самочувствия.
-                </Cell>
-                <Cell
-                    multiline
-                    interactiveAnimation="background"
-                >
-                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья
-                    и самочувствия.
-                </Cell>
-                <Cell
-                    multiline
-                    interactiveAnimation="background"
-                >
-                    Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ здоровья
-                    и самочувствия.
-                </Cell>
+            <div style={{padding: '5%'}}>
 
-            </Section>
-            {/*<Image*/}
-            {/*    src={"./Images/Logo.jpg"}*/}
-            {/*/>*/}
-            {/*<Section*/}
-            {/*    style={roundedCellStyle}*/}
-            {/*>*/}
-            {/*    <Cell>*/}
 
-            {/*    </Cell>*/}
-            {/*</Section>*/}
+                <Title level="1" weight="bold">
+                    Гайд по продуктовой корзине
+                </Title>
+                <Caption
+                    caps
+                    level="1"
+                    weight="3"
+                    style={{margin: '5%'}}
+                >
+                    Пояснение
+                </Caption>
+                <Section
+                    style={roundedCellStyle}
+                >
+                    <Cell
+                        multiline
+                        interactiveAnimation="background"
+                    >
+                        Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ
+                        здоровья
+                        и самочувствия.
+                    </Cell>
+                    <Cell
+                        multiline
+                        interactiveAnimation="background"
+                    >
+                        Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ
+                        здоровья
+                        и самочувствия.
+                    </Cell>
+                    <Cell
+                        multiline
+                        interactiveAnimation="background"
+                    >
+                        Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ
+                        здоровья
+                        и самочувствия.
+                    </Cell>
+                    <Cell
+                        multiline
+                        interactiveAnimation="background"
+                    >
+                        Выбор наиболее оптимальных продуктов для похудения, рекомпозиции тела, улучшения СОСТОЯНИЯ
+                        здоровья
+                        и самочувствия.
+                    </Cell>
 
+                </Section>
+                {/*<Image*/}
+                {/*    src={"./Images/Logo.jpg"}*/}
+                {/*/>*/}
+                {/*<Section*/}
+                {/*    style={roundedCellStyle}*/}
+                {/*>*/}
+                {/*    <Cell>*/}
+
+                {/*    </Cell>*/}
+                {/*</Section>*/}
+            </div>
         </List>
     );
 };
