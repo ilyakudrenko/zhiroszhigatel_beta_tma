@@ -2,7 +2,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import React from "react";
 import {Route, Routes, useLocation} from "react-router-dom";
 import HomePage from "./INIT-projects/HomePage/HomePage";
-import ItemCourse from "./INIT-projects/ItemCourse/ItemCourse";
+import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 
 const data = [
     {
@@ -47,13 +47,13 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<HomePage data={data} />} />
-                    <Route path="/item" element={<ItemCourse />} />
+                    <Route path="/item" element={<ItemCoursePromo />} />
                 </Routes>
 
         ) : (
                 <Routes>
                     <Route path="/" element={<HomePage data={data} />} />
-                    <Route path="/item" element={<ItemCourse />} />
+                    <Route path="/item" element={<ItemCoursePromo />} />
                 </Routes>
         )
     );

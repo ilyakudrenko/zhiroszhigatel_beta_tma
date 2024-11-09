@@ -2,7 +2,9 @@ import React from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Button, Card, Modal, Placeholder, Text, Image} from "@telegram-apps/telegram-ui";
+import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui";
+import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo";
+import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
 
 /**
  * Component representing a single card item.
@@ -32,16 +34,8 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
             </Card>
         }
     >
-        <Placeholder
-            action={<Button size="l" stretched>Action</Button>}
-            description={description}
-            header={title}
-        >
-            <Image
-                size={250}
-                src="https://avatars.githubusercontent.com/u/84640980?v=4"
-            />
-        </Placeholder>
+        <INITGuide_1  />
+        {/*<INITItemCoursePromo  />*/}
     </Modal>
 );
 
