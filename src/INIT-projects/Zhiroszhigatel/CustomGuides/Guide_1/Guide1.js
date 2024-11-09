@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, List, Section, Title, Text, Cell, Card, Caption,} from "@telegram-apps/telegram-ui";
 import logo from "./Images/Logo.jpg";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
+import INITDivider from "../../../CustomComponents/Dividers/Divider";
 // import logo from "./Images/Logo.jpg";
 
 const roundedCellStyle = {
@@ -52,6 +53,9 @@ const INITGuide_1 = ({info = [],}) => {
                 <Title level="1" weight="bold">
                     Гайд по продуктовой корзине
                 </Title>
+
+                <INITDivider color = 'transparent' thickness="10%" />
+
                 <Caption
                     caps
                     level="1"
