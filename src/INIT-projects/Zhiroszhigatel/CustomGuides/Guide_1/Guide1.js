@@ -21,7 +21,7 @@ const containerStyle = {
 const imageStyle = {
     width: "100%",
     height: "100%",
-    objectFit: "cover",  // Масштабирует изображение, сохраняя пропорции, заполняя контейнер
+    // objectFit: "cover",  // Масштабирует изображение, сохраняя пропорции, заполняя контейнер
     position: "absolute",
     top: 0,
     left: 0,
