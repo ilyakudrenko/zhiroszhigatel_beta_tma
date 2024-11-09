@@ -14,14 +14,14 @@ const roundedCellStyle = {
 const containerStyle = {
     width: "100%",       // Занимает всю возможную ширину
     height: "20%",     // Фиксированная высота; можно изменить при необходимости
-    overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
+    // overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
     position: "relative",
 };
 
 const imageStyle = {
     width: "100%",
     height: "100%",
-    objectFit: "cover",  // Масштабирует изображение, сохраняя пропорции, заполняя контейнер
+    // objectFit: "cover",  // Масштабирует изображение, сохраняя пропорции, заполняя контейнер
     position: "absolute",
     top: 0,
     left: 0,
@@ -54,7 +54,7 @@ const INITGuide_1 = ({info = [],}) => {
                     Гайд по продуктовой корзине
                 </Title>
 
-                <INITDivider color = 'transparent' thickness="10%" />
+                <INITDivider color='transparent' thickness="10%"/>
 
                 <Caption
                     caps
