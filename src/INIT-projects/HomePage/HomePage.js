@@ -20,7 +20,7 @@ import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
-    backgroundColor: 'var(--tgui--bg_color)',
+    backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
 const handleClick = () => {
