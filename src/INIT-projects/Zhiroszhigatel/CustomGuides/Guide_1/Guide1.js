@@ -35,8 +35,6 @@ const INITGuide_1 = ({info = [],}) => {
                 padding: '5%',
                 // backgroundColor: "var(--tgui--background)",
                 // backgroundColor: "darkred",
-                userSelect: "none",
-                pointerEvents: "none",
             }}
 
         >
@@ -51,7 +49,7 @@ const INITGuide_1 = ({info = [],}) => {
 
 
                 <Title level="1" weight="bold">
-                    Апдейт 2ю0
+                    Гайд по продуктовой корзине
                 </Title>
 
                 <INITDivider color='transparent' thickness="10%"/>
