@@ -1,9 +1,9 @@
 import React from 'react';
 import {Image, List, Section, Title, Text, Cell, Card, Caption,} from "@telegram-apps/telegram-ui";
-import logo from "./Images/Logo.jpg";
+
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
-// import logo from "./Images/Logo.jpg";
+
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -520,16 +520,7 @@ const INITGuide_1 = ({info = [],}) => {
             {/*</Section>*/}
 
 
-                {/*<Image*/}
-                {/*    src={"./Images/Logo.jpg"}*/}
-                {/*/>*/}
-                {/*<Section*/}
-                {/*    style={roundedCellStyle}*/}
-                {/*>*/}
-                {/*    <Cell>*/}
 
-                {/*    </Cell>*/}
-                {/*</Section>*/}
         </List>
     );
 };

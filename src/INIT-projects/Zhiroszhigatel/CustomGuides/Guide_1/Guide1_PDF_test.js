@@ -20,11 +20,21 @@ const INITGuide_1_PDF = () => {
             {/*    height="100%"*/}
             {/*    type="application/pdf"/>*/}
 
-            <PDFViewer
-                document={{
-                    url: pdfUrl,
-                }}
-            />
+            <div style="overflow: auto; -webkit-overflow-scrolling: touch;">
+                <embed
+                    src="https://drive.google.com/file/d/1dGXOJgnDkjSaq-1MpLFJeK0woT73A43K/view"
+                    width="100%"
+                    height="600px"
+                    type="application/pdf"
+                    style="display: block; margin: 0 auto;"/>
+            </div>
+
+
+            {/*<PDFViewer*/}
+            {/*    document={{*/}
+            {/*        url: pdfUrl,*/}
+            {/*    }}*/}
+            {/*/>*/}
         </div>
     );
 };
