@@ -35,6 +35,7 @@ const INITGuide_1 = ({info = [],}) => {
                 padding: '5%',
                 // backgroundColor: "var(--tgui--background)",
                 // backgroundColor: "darkred",
+                userSelect: "none",
             }}
 
         >
