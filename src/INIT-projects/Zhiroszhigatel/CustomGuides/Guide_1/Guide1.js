@@ -36,6 +36,7 @@ const INITGuide_1 = ({info = [],}) => {
                 // backgroundColor: "var(--tgui--background)",
                 // backgroundColor: "darkred",
                 userSelect: "none",
+                pointerEvents: "none",
             }}
 
         >
