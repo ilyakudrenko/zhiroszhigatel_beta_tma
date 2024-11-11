@@ -18,7 +18,7 @@ const PdfViewer = ({ pdfUrl }) => (
 const INITGuide_1_PDF = () => {
     return (
         <List>
-            <PdfViewer pdfUrl={pdfFile}/>
+            <PdfViewer pdfUrl={"https://drive.google.com/file/d/1dGXOJgnDkjSaq-1MpLFJeK0woT73A43K/view?usp=sharing"}/>
         </List>
     )
 }
