@@ -1,18 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import { Document, Page } from 'react-pdf';
 import {Image, List} from "@telegram-apps/telegram-ui";
 import pdfFile from "./guide_1_pdf_version.pdf"
+import { Document, Page,pdfjs } from 'react-pdf';
+
+const url = "https://www.escaux.com/rsrc/CustomerDocs/DRD_T38Support_AdminGuide/T38_TEST_PAGES.pdf"
 
 // Use require to import the PDF file
 
 const INITGuide_1_PDF = () => {
+    pdfjs.GlobalWorkerOptions.workerSrc =
+        `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+    const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
+
+    function onDocumentLoadSuccess({ numPages }) {
+        setNumPages(numPages);
+        setPageNumber(1);
+    }
+
     return (
         <List>
-            <object data="http://africau.edu/images/default/sample.pdf" type="application/pdf" width="100%"
-                    height="100%">
-                <p>Alternative text - include a link <a href="http://africau.edu/images/default/sample.pdf">to the
-                    PDF!</a></p>
-            </object>
+            <Document
+                file={url}
+                onLoadSuccess={onDocumentLoadSuccess}
+            >
+                <Page pageNumber={pageNumber} />
+            </Document>
         </List>
     );
 };
