@@ -49,7 +49,7 @@ const INITGuide_1 = ({info = [],}) => {
 
 
                 <Title level="1" weight="bold">
-                    Гайд по продуктовой корзине
+                    Апдейт 2ю0
                 </Title>
 
                 <INITDivider color='transparent' thickness="10%"/>
