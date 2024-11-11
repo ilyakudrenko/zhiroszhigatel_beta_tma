@@ -1,5 +1,6 @@
 import React from 'react';
 import {List} from "@telegram-apps/telegram-ui";
+import pdfFile from './guide_1_pdf_version.pdf'
 
 const PdfViewer = ({ pdfUrl }) => (
     <iframe
@@ -17,7 +18,7 @@ const PdfViewer = ({ pdfUrl }) => (
 const INITGuide_1_PDF = () => {
     return (
         <List>
-            <PdfViewer pdfUrl={"https://drive.google.com/file/d/15s3sZcgNA1arqj7Pn7gj5nvIpPsZgJmV/view?usp=drivesdk"}/>
+            <PdfViewer pdfUrl={pdfFile}/>
         </List>
     )
 }
