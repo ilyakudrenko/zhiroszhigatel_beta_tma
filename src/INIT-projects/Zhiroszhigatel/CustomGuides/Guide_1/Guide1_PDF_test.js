@@ -22,7 +22,7 @@ const INITGuide_1_PDF = () => {
 
             <PDFViewer
                 document={{
-                    url: 'https://www.escaux.com/rsrc/CustomerDocs/DRD_T38Support_AdminGuide/T38_TEST_PAGES.pdf',
+                    url: pdfUrl,
                 }}
             />
         </div>
