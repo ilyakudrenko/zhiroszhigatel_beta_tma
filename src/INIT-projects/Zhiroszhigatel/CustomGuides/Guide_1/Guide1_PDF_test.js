@@ -1,6 +1,7 @@
 import React from 'react';
 import {List} from "@telegram-apps/telegram-ui";
 import pdfUrl from './guide_1_pdf_version.pdf'
+import PDFViewer from 'pdf-viewer-reactjs';
 
 const INITGuide_1_PDF = () => {
     return (
@@ -13,11 +14,17 @@ const INITGuide_1_PDF = () => {
             {/*    style={{border: 'none'}}*/}
             {/*/>*/}
 
-            <embed
-                src="https://www.escaux.com/rsrc/CustomerDocs/DRD_T38Support_AdminGuide/T38_TEST_PAGES.pdf"
-                width="100%"
-                height="100%"
-                type="application/pdf"/>
+            {/*<embed*/}
+            {/*    src="https://drive.google.com/file/d/1dGXOJgnDkjSaq-1MpLFJeK0woT73A43K/view"*/}
+            {/*    width="100%"*/}
+            {/*    height="100%"*/}
+            {/*    type="application/pdf"/>*/}
+
+            <PDFViewer
+                document={{
+                    url: 'https://www.escaux.com/rsrc/CustomerDocs/DRD_T38Support_AdminGuide/T38_TEST_PAGES.pdf',
+                }}
+            />
         </div>
     );
 };
