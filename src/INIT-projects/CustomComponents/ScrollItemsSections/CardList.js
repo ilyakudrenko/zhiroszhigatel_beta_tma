@@ -5,6 +5,7 @@ import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui";
 import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
+import INITGuide_1_PDF from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1_PDF_test";
 
 const modal_back_color = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
@@ -41,7 +42,8 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
             </Card>
         }
     >
-        <INITGuide_1  />
+        <INITGuide_1_PDF />
+        {/*<INITGuide_1  />*/}
         {/*<INITItemCoursePromo  />*/}
     </Modal>
 );
