@@ -27,7 +27,6 @@ const INITGuideTemplate = ({guideKey, totalPages}) => {
     // Если ни одного изображения не найдено, показываем сообщение об ошибке
     if (guideImages.length === 0) {
         return (
-
             <Placeholder
                 description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
                 header="Что-то пошло не так"
