@@ -10,6 +10,8 @@ import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/M
 /**
  * INITCardItem Component
  *
+ * илья лох подсказка
+ * 
  * This component represents a single card item that opens a modal when clicked.
  * Each card displays an image, title, description, and a chip label. Upon clicking,
  * a modal with additional guide content opens.
