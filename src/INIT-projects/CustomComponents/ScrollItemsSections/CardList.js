@@ -22,6 +22,22 @@ import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
 
 
 
+/**
+ * INITCardItem Component
+ *
+ * This component represents a single card item that opens a modal when clicked.
+ * Each card displays an image, title, description, and a chip label. Upon clicking,
+ * a modal with additional guide content opens.
+ *
+ * @param {string} imageSrc - The URL of the image to display in the card.
+ * @param {string} title - The main title displayed on the card.
+ * @param {string} description - Additional information displayed below the title.
+ * @param {string} cardChip - A label displayed at the top of the card.
+ * @param {string} guideKey - A unique key to identify the guide.
+ * @param {number} numPage - The total number of pages for the guide in the modal.
+ *
+ * @returns {JSX.Element} A card component that opens a modal with guide details when clicked.
+ */
 const INITCardItem = ({ imageSrc, title, description, cardChip, guideKey, numPage }) => (
     <Modal
         style={{
@@ -53,14 +69,20 @@ const INITCardItem = ({ imageSrc, title, description, cardChip, guideKey, numPag
 );
 
 /**
- * Component for displaying a list of card items horizontally.
- * This component receives an array of card data and renders each as a card.
+ * INITCardsList Component
  *
- * @param {Array} items - Array of objects, where each object contains:
- *   - cardChip: Label text displayed on the card's chip (e.g., "Hot Place")
- *   - imageSrc: URL of the image to display in the card
- *   - title: Main title of the card
- *   - description: Subtitle or additional information for the card
+ * This component renders a list of INITCardItem components horizontally.
+ * It takes an array of guide data as props and maps each item to an INITCardItem.
+ *
+ * @param {Array} items - An array of objects, each representing a guide. Each object contains:
+ *   - imageSrc {string}: URL of the image to display in the card
+ *   - title {string}: Main title of the card
+ *   - description {string}: Subtitle or additional information for the card
+ *   - cardChip {string}: Label text displayed on the card's chip
+ *   - guideKey {string}: Unique key to identify the guide
+ *   - numPage {number}: Total number of pages in the guide
+ *
+ * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
 const INITCardsList = ({ items = [] }) => {
     return (
