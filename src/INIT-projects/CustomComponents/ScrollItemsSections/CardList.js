@@ -44,7 +44,7 @@ const INITCardItem = ({ imageSrc, title, description, cardChip, guideKey, numPag
                         width: 254
                     }}
                 />
-                <CardCell readOnly subtitle={description}>{title}</CardCell>
+                <CardCell readOnly></CardCell>
             </Card>
         }
     >
