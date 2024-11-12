@@ -142,13 +142,13 @@ const App = () => {
         isHomePage ? (
 
                 <Routes>
-                    <Route path="/" element={<HomePage data={data_1} />} />
+                    <Route path="/" element={<HomePage/>} />
                     <Route path="/item" element={<ItemCoursePromo />} />
                 </Routes>
 
         ) : (
                 <Routes>
-                    <Route path="/" element={<HomePage data={data_1} />} />
+                    <Route path="/" element={<HomePage />}/>
                     <Route path="/item" element={<ItemCoursePromo />} />
                 </Routes>
         )
