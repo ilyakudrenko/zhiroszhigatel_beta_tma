@@ -4,7 +4,6 @@ import {Route, Routes, useLocation} from "react-router-dom";
 import HomePage from "./INIT-projects/HomePage/HomePage";
 import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 
-
 const data = [
     {
         imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg',
