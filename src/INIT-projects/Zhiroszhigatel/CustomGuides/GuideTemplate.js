@@ -1,5 +1,4 @@
 import React from 'react';
-import {List} from "@telegram-apps/telegram-ui";
 
 
 const INITGuideTemplate = ({guideKey, totalPages}) => {
@@ -9,18 +8,17 @@ const INITGuideTemplate = ({guideKey, totalPages}) => {
     });
 
     return (
-        <List>
-            <div>
-                {guideImages.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src.default || src} // In case of different export formats
-                        alt={`Guide Page ${index + 1}`}
-                        style={{width: '100%', display: 'block'}}
-                    />
-                ))}
-            </div>
-        </List>
+
+        <div>
+            {guideImages.map((src, index) => (
+                <img
+                    key={index}
+                    src={src.default || src} // In case of different export formats
+                    alt={`Guide Page ${index + 1}`}
+                    style={{width: '100%', display: 'block'}}
+                />
+            ))}
+        </div>
     );
 };
 

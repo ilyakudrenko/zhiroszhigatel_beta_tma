@@ -83,7 +83,7 @@ const HomePage = ({ data }) => (
             </Caption>
             <HorizontalScroll
             >
-                <INITCardsList items={guidesData} />
+                <INITCardsList items={data} />
             </HorizontalScroll>
         </List>
 
@@ -102,7 +102,7 @@ const HomePage = ({ data }) => (
             </Caption>
             <HorizontalScroll
             >
-                <INITCardsList items={guidesData} />
+                <INITCardsList items={data} />
             </HorizontalScroll>
         </List>
 
@@ -120,7 +120,7 @@ const HomePage = ({ data }) => (
             </Caption>
             <HorizontalScroll
             >
-                <INITCardsList items={guidesData} />
+                <INITCardsList items={data} />
             </HorizontalScroll>
         </List>
     </AppRoot>
