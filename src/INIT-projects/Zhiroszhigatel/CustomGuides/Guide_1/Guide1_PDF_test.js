@@ -6,8 +6,8 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 const totalPages = 12; // Set this to the actual number of images in your folder
 
 // Generate an array of image paths based on the total page count
-const guideImages = Array.from({ length: totalPages }, (_, index) => {
-    return require(`./Images/Guide_1_page_${index+1}.jpg`);
+const guideImages = Array.from({length: totalPages}, (_, index) => {
+    return require(`./Images/Guide_1_page_${index + 1}.jpg`);
 });
 
 const containerStyle = {

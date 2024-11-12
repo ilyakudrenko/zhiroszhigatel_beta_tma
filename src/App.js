@@ -13,7 +13,7 @@ const data = [
         guideComponent: 'INITGuide_1_PDF'
     },
     {
-        imageSrc: 'https://i.imgur.com/892vhef.jpeg',
+        imageSrc: 'https://imgur.com/a/G0HsUNg',
         title: 'New York',
         description: 'United States',
         cardChip: 'Hot place',
