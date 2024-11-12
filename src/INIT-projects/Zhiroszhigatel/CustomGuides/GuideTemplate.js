@@ -6,7 +6,7 @@ const INITGuideTemplate = ({guideKey, totalPages}) => {
         // return require(`./Images/Guide_1_page_${index + 1}.jpg`);
         // return require(`${guideKey}/Images/${index + 1}.jpg`);
         // return require(`./Guide_2/Images/${index + 1}.jpg`);
-        return require('Guide_2/Images/2.jpg')
+        return require('./Guide_2/Images/2.jpg')
     });
 
     return (
