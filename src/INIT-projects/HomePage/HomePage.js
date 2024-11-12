@@ -16,6 +16,7 @@ import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
+import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json"
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -82,7 +83,7 @@ const HomePage = ({ data }) => (
             </Caption>
             <HorizontalScroll
             >
-                <INITCardsList items={data} />
+                <INITCardsList items={guidesData} />
             </HorizontalScroll>
         </List>
 

@@ -2,38 +2,27 @@ import React from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
-import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui";
-import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo";
-import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
-import INITGuide_1_PDF from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1_PDF_test";
-import INITGuide_2_PDF from "../../Zhiroszhigatel/CustomGuides/Guide_2/Guide2_PDF_test";
+import {Card, Modal,} from "@telegram-apps/telegram-ui";
+import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
 
-const modal_back_color = {
-    backgroundColor: 'var(--tgui--secondary_bg_color)',
-};
+// const modal_back_color = {
+//     backgroundColor: 'var(--tgui--secondary_bg_color)',
+// };
 
-const getGuideComponent = (guideComponent, imageSrc, title) => {
-    switch (guideComponent) {
-        case 'INITGuide_1_PDF':
-            return <INITGuide_1_PDF imageSrc={imageSrc} title={title} />;
-        case 'INITGuide_2_PDF':
-            return <INITGuide_2_PDF imageSrc={imageSrc} title={title} />;
-        default:
-            return <p>No Guide Available</p>;
-    }
-};
+// const getGuideComponent = (guideComponent, imageSrc, title) => {
+//     switch (guideComponent) {
+//         case 'INITGuide_1_PDF':
+//             return <INITGuide_1_PDF imageSrc={imageSrc} title={title} />;
+//         case 'INITGuide_2_PDF':
+//             return <INITGuide_2_PDF imageSrc={imageSrc} title={title} />;
+//         default:
+//             return <p>No Guide Available</p>;
+//     }
+// };
 
 
-/**
- * Component representing a single card item.
- * This card displays an image, a chip label, and a description.
- *
- * @param {string} cardChip - The label displayed at the top of the card (e.g., "Hot Place").
- * @param {string} imageSrc - The URL of the image to display in the card.
- * @param {string} title - The main title displayed on the card (e.g., location name).
- * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
- */
-const INITCardItem = ({ cardChip, imageSrc, title, description, guideComponent}) => (
+
+const INITCardItem = ({ imageSrc, title, description, cardChip, guideKey, numPage }) => (
     <Modal
         style={{
             backgroundColor: 'var(--tgui--secondary_bg_color)',
@@ -55,10 +44,11 @@ const INITCardItem = ({ cardChip, imageSrc, title, description, guideComponent})
             </Card>
         }
     >
-        {getGuideComponent(guideComponent, imageSrc, title)}
-        {/*<INITGuide_1_PDF />*/}
-        {/*<INITGuide_1  />*/}
-        {/*<INITItemCoursePromo  />*/}
+        <INITGuideTemplate
+            guideKey={guideKey}
+            totalPages={numPage}
+            />
+
     </Modal>
 );
 
@@ -87,11 +77,12 @@ const INITCardsList = ({ items = [] }) => {
                 {items.map((item, i) => (
                     <INITCardItem
                         key={i}
-                        cardChip={item.cardChip}
                         imageSrc={item.imageSrc}
                         title={item.title}
                         description={item.description}
-                        guideComponent={item.guideComponent}
+                        cardChip={item.cardChip}
+                        guideKey={guideKey}
+                        numPage={numPage}
                     />
                 ))}
             </div>
