@@ -1,5 +1,5 @@
 import React from 'react';
-import { Placeholder } from '@telegram-apps/telegram-ui';
+import {Placeholder} from "@telegram-apps/telegram-ui";
 
 /**
  * INITGuideTemplate Component

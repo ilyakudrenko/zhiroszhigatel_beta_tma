@@ -5,8 +5,7 @@ import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {Card, Modal,} from "@telegram-apps/telegram-ui";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
 import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
-import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
-import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
+
 
 /**
  * INITCardItem Component
@@ -26,7 +25,7 @@ import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Mo
  */
 const INITCardItem = ({ imageSrc, title, description, cardChip, guideKey, numPage }) => (
     <Modal
-        header={<ModalHeader>after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}} /></ModalClose>}>{title}</ModalHeader>}
+        header={<ModalHeader>{title}</ModalHeader>}
         style={{
             backgroundColor: 'var(--tgui--secondary_bg_color)',
         }}
