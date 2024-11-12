@@ -12,11 +12,11 @@ const guideImages = Array.from({ length: totalPages }, (_, index) => {
 
 const containerStyle = {
     width: "100%",       // Занимает всю возможную ширину
-    height: "500px",     // Фиксированная высота; можно изменить при необходимости
+    height: "300px",     // Фиксированная высота; можно изменить при необходимости
     overflow: "hidden",  // Обрезает изображение, чтобы соответствовать контейнеру
     position: "relative",
     borderRadius: '16px',
-    marginTop: '3%',
+    marginTop: '5%',
 };
 
 const imageStyle = {
