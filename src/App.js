@@ -7,33 +7,38 @@ import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCours
 const data = [
     {
         imageSrc: 'https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg',
-        title: 'Los Angeles',
-        description: 'United States',
+        title: 'Гайд по продуктовой корзине',
+        description: 'Гайд по продуктовой корзине(description)',
         cardChip: 'Пупсик',
+        guideComponent: 'INITGuide_1_PDF'
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
         title: 'New York',
         description: 'United States',
         cardChip: 'Hot place',
+        guideComponent: 'INITGuide_2_PDF'
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
         title: 'New York',
         description: 'United States',
         cardChip: 'Hot place',
+        guideComponent: 'INITGuide_3_PDF'
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
         title: 'New York',
         description: 'United States',
         cardChip: 'Hot place',
+        guideComponent: 'INITGuide_4_PDF'
     },
     {
         imageSrc: 'https://i.imgur.com/892vhef.jpeg',
         title: 'New York',
         description: 'United States',
         cardChip: 'Hot place',
+        guideComponent: 'INITGuide_5_PDF'
     },
     // Добавьте столько объектов, сколько вам нужно
 ];

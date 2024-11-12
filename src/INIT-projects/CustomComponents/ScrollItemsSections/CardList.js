@@ -6,10 +6,23 @@ import {Button, Card, Modal, Placeholder, Text} from "@telegram-apps/telegram-ui
 import INITItemCoursePromo from "../../Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 import INITGuide_1 from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1";
 import INITGuide_1_PDF from "../../Zhiroszhigatel/CustomGuides/Guide_1/Guide1_PDF_test";
+import INITGuide_2_PDF from "../../Zhiroszhigatel/CustomGuides/Guide_2/Guide2_PDF_test";
 
 const modal_back_color = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
+
+const getGuideComponent = (guideComponent, imageSrc, title) => {
+    switch (guideComponent) {
+        case 'INITGuide_1_PDF':
+            return <INITGuide_1_PDF imageSrc={imageSrc} title={title} />;
+        case 'INITGuide_2_PDF':
+            return <INITGuide_2_PDF imageSrc={imageSrc} title={title} />;
+        default:
+            return <p>No Guide Available</p>;
+    }
+};
+
 
 /**
  * Component representing a single card item.
@@ -20,7 +33,7 @@ const modal_back_color = {
  * @param {string} title - The main title displayed on the card (e.g., location name).
  * @param {string} description - Additional information displayed below the title (e.g., subtitle or country name).
  */
-const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
+const INITCardItem = ({ cardChip, imageSrc, title, description, guideComponent}) => (
     <Modal
         style={{
             backgroundColor: 'var(--tgui--secondary_bg_color)',
@@ -42,7 +55,8 @@ const INITCardItem = ({ cardChip, imageSrc, title, description }) => (
             </Card>
         }
     >
-        <INITGuide_1_PDF />
+        {getGuideComponent(guideComponent, imageSrc, title)}
+        {/*<INITGuide_1_PDF />*/}
         {/*<INITGuide_1  />*/}
         {/*<INITItemCoursePromo  />*/}
     </Modal>
@@ -77,6 +91,7 @@ const INITCardsList = ({ items = [] }) => {
                         imageSrc={item.imageSrc}
                         title={item.title}
                         description={item.description}
+                        guideComponent={item.guideComponent}
                     />
                 ))}
             </div>

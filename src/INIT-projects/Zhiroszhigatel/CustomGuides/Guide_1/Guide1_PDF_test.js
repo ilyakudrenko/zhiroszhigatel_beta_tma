@@ -28,19 +28,19 @@ const imageStyle = {
     left: 0,
 };
 
-const INITGuide_1_PDF = () => {
+const INITGuide_1_PDF = ({imageSrc, title}) => {
     return (
         <div>
             <div style={containerStyle}>
                 <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/3/32/20190616154621%21Echo_Park_Lake_with_Downtown_Los_Angeles_Skyline.jpg"
+                    src={imageSrc}
                     alt="Background"
                     style={imageStyle}
                 />
             </div>
 
             <Title level="1" weight="bold">
-                Гайд по продуктовой корзине
+                {title}
             </Title>
 
             <INITDivider color='transparent' thickness="20%"/>
