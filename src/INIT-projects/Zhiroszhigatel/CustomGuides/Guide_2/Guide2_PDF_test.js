@@ -3,11 +3,11 @@ import {Title} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 
 // Define the total number of pages in the guide
-const totalPages = 12; // Set this to the actual number of images in your folder
+const totalPages = 10; // Set this to the actual number of images in your folder
 
 // Generate an array of image paths based on the total page count
 const guideImages = Array.from({ length: totalPages }, (_, index) => {
-    return require(`./Images/Guide_1_page_${index+1}.jpg`);
+    return require(`./Images/Guide_2_page_${index+1}.jpg`);
 });
 
 const containerStyle = {
