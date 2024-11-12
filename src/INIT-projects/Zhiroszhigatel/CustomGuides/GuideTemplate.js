@@ -13,9 +13,9 @@ import {Placeholder} from "@telegram-apps/telegram-ui";
  *
  * @returns {JSX.Element} A list of images that represent each page of the guide, or an error message if none are found.
  */
-const INITGuideTemplate = ({ guideKey, totalPages }) => {
+const INITGuideTemplate = ({guideKey, totalPages}) => {
     // Загружаем изображения, если не найдено, добавляем `null`
-    const guideImages = Array.from({ length: totalPages }, (_, index) => {
+    const guideImages = Array.from({length: totalPages}, (_, index) => {
         try {
             return require(`./${guideKey}/Images/${index + 1}.jpg`);
         } catch (error) {
@@ -27,18 +27,17 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
     // Если ни одного изображения не найдено, показываем сообщение об ошибке
     if (guideImages.length === 0) {
         return (
-            <div className="HIJtihMA8FHczS02iWF5">
-                <Placeholder
-                    description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
-                    header="Что-то пошло не так"
-                >
-                    <img
-                        alt="Telegram sticker"
-                        className="blt0jZBzpxuR4oDhJc8s"
-                        src="https://xelene.me/telegram.gif"
-                    />
-                </Placeholder>
-            </div>
+
+            <Placeholder
+                description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
+                header="Что-то пошло не так"
+            >
+                <img
+                    alt="Telegram sticker"
+                    className="blt0jZBzpxuR4oDhJc8s"
+                    src="https://xelene.me/telegram.gif"
+                />
+            </Placeholder>
         );
     }
 
@@ -50,7 +49,7 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                     key={index}
                     src={src.default || src}
                     alt={`Guide Page ${index + 1}`}
-                    style={{ width: '100%', display: 'block' }}
+                    style={{width: '100%', display: 'block'}}
                 />
             ))}
         </div>
