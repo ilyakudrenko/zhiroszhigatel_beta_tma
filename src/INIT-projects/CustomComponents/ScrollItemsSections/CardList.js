@@ -5,23 +5,6 @@ import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {Card, Modal,} from "@telegram-apps/telegram-ui";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
 
-// const modal_back_color = {
-//     backgroundColor: 'var(--tgui--secondary_bg_color)',
-// };
-
-// const getGuideComponent = (guideComponent, imageSrc, title) => {
-//     switch (guideComponent) {
-//         case 'INITGuide_1_PDF':
-//             return <INITGuide_1_PDF imageSrc={imageSrc} title={title} />;
-//         case 'INITGuide_2_PDF':
-//             return <INITGuide_2_PDF imageSrc={imageSrc} title={title} />;
-//         default:
-//             return <p>No Guide Available</p>;
-//     }
-// };
-
-
-
 /**
  * INITCardItem Component
  *
