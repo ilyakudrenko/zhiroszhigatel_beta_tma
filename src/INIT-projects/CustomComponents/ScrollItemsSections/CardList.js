@@ -103,8 +103,8 @@ const INITCardsList = ({ items = [] }) => {
                         title={item.title}
                         description={item.description}
                         cardChip={item.cardChip}
-                        guideKey={guideKey}
-                        numPage={numPage}
+                        guideKey={item.guideKey}
+                        numPage={item.numPage}
                     />
                 ))}
             </div>
