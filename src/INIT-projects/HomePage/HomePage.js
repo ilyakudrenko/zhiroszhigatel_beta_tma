@@ -44,14 +44,14 @@ const HomePage = () => {
                         after={<Icon24ChevronRight />}
                         before={<INITProfileIcon />}
                     >
-                        Profile
+                        Профиль
                     </Cell>
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<INITMessageBadgeIcon color="white" />}
                         onClick={() => navigate("/support")}
                     >
-                        Support
+                        Задать вопрос
                     </Cell>
                 </Section>
             </List>
@@ -85,7 +85,7 @@ const HomePage = () => {
                     weight="3"
                     style={{ margin: '5%'}}
                 >
-                    Available Free Guides
+                    Гайды
                 </Caption>
                 <HorizontalScroll
                 >
@@ -104,7 +104,7 @@ const HomePage = () => {
                     weight="3"
                     style={{ margin: '5%'}}
                 >
-                    Available Courses
+                    Курсы
                 </Caption>
                 <HorizontalScroll
                 >
@@ -122,7 +122,7 @@ const HomePage = () => {
                     weight="3"
                     style={{ margin: '5%'}}
                 >
-                    Available Meal Plans test
+                    Питание
                 </Caption>
                 <HorizontalScroll
                 >
