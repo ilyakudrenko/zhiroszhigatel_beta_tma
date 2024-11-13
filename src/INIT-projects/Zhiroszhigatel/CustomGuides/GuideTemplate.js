@@ -62,7 +62,6 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                 >
                     <img
                         alt="Telegram sticker"
-                        className="blt0jZBzpxuR4oDhJc8s"
                         src="https://xelene.me/telegram.gif"
                     />
                 </Placeholder>
