@@ -31,10 +31,7 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
             }
 
             setGuideImages(images);
-            
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 5000);
+            setIsLoading(false);
         };
 
         loadImages();
