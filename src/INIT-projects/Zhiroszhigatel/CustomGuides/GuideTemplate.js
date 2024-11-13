@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {List, Placeholder, Spinner} from "@telegram-apps/telegram-ui";
+import { List, Placeholder, Spinner } from '@telegram-apps/telegram-ui';
 
 /**
  * INITGuideTemplate Component
@@ -14,65 +14,32 @@ import {List, Placeholder, Spinner} from "@telegram-apps/telegram-ui";
  * @returns {JSX.Element} A list of images that represent each page of the guide, or an error message if none are found.
  */
 const INITGuideTemplate = ({ guideKey, totalPages }) => {
-    const [isLoading, setIsLoading] = useState(true);
     const [guideImages, setGuideImages] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Load images dynamically, adding `null` if not found
-        const images = Array.from({ length: totalPages }, (_, index) => {
-            try {
-                return require(`./${guideKey}/Images/${index + 1}.jpg`);
-            } catch (error) {
-                console.error(`File not found: ./Images/${guideKey}/Guide_page_${index + 1}.jpg`, error);
-                return null;
-            }
-        }).filter(src => src !== null); // Filter out `null` values
+        const loadImages = async () => {
+            const images = [];
 
-        setGuideImages(images);
+            for (let i = 1; i <= totalPages; i++) {
+                try {
+                    const image = require(`./${guideKey}/Images/${i}.jpg`);
+                    images.push(image);
+                } catch (error) {
+                    console.error(`File not found: ./${guideKey}/Images/${i}.jpg`, error);
+                }
+            }
+
+            setGuideImages(images);
+            
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 5000);
+        };
+
+        loadImages();
     }, [guideKey, totalPages]);
 
-    // Check if all images are loaded
-    useEffect(() => {
-        if (guideImages.length > 0) {
-            const loadImagePromises = guideImages.map(src => {
-                return new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.src = src.default || src;
-                    img.onload = resolve;
-                    img.onerror = reject;
-                });
-            });
-
-            Promise.all(loadImagePromises).then(() => {
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, 5000); // 5-second delay
-            });
-        } else {
-            setIsLoading(false); // No images to load, so stop loading
-        }
-    }, [guideImages]);
-
-    // Display error placeholder if no images are found
-    if (!isLoading && guideImages.length === 0) {
-        return (
-
-            <List>
-            <Placeholder
-                description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
-                header="Что-то пошло не так"
-            >
-                <img
-                    alt="Telegram sticker"
-                    className="blt0jZBzpxuR4oDhJc8s"
-                    src="https://xelene.me/telegram.gif"
-                />
-            </Placeholder>
-            </List>
-        );
-    }
-
-    // Display spinner if loading, otherwise show images
     if (isLoading) {
         return (
             <div
@@ -84,11 +51,28 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                 }}
             >
                 <Spinner size="l" />
-                <p>Загрузка контентаю Пожалуйста подождите...</p>
+                <p>Загрузка контента. Пожалуйста, подождите...</p>
             </div>
         );
     }
-    // Display images if they are loaded
+
+    if (guideImages.length === 0) {
+        return (
+            <List>
+                <Placeholder
+                    description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
+                    header="Что-то пошло не так"
+                >
+                    <img
+                        alt="Telegram sticker"
+                        className="blt0jZBzpxuR4oDhJc8s"
+                        src="https://xelene.me/telegram.gif"
+                    />
+                </Placeholder>
+            </List>
+        );
+    }
+
     return (
         <div>
             {guideImages.map((src, index) => (
