@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, Placeholder, Spinner } from '@telegram-apps/telegram-ui';
+import {Placeholder, Spinner } from '@telegram-apps/telegram-ui';
 
 /**
  * INITGuideTemplate Component
