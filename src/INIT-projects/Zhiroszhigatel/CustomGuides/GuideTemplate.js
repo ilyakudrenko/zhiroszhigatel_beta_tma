@@ -56,8 +56,8 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
     if (guideImages.length === 0) {
         return (
             <Placeholder
-                header="Title"
-                description="NoonFog test"
+                header="ТРО-ЛО-ЛО ЖИРНОТА"
+                description="ДЛЯ ТЕБЯ ГАЙД ЗАБАНЕН - ВРЕМЯ КУШАТЬ ТОРТИК"
             >
                 <img
                     alt="Telegram sticker"
