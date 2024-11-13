@@ -1,7 +1,6 @@
 import React from 'react';
 import {AppRoot, Button, Section, Blockquote, Accordion} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
-import {SectionHeader} from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
 import {AccordionSummary} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
 import {AccordionContent} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
@@ -17,7 +16,7 @@ const Support = () => {
 
     return (
         <AppRoot>
-            <SectionHeader>
+            <div>
                 <Button
                     mode="plain"
                     size="s"
@@ -25,7 +24,9 @@ const Support = () => {
                 >
                     Назад
                 </Button>
-            </SectionHeader>
+            </div>
+
+            <INITDivider color = 'transparent' thickness="10%" />
 
             <Section
                 style={roundedCellStyle}

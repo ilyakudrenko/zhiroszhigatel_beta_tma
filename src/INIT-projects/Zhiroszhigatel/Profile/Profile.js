@@ -1,7 +1,7 @@
 import React from 'react';
 import {AppRoot, Button, Input, Section} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
-import {SectionHeader} from "@telegram-apps/telegram-ui/dist/components/Blocks/Section/components/SectionHeader/SectionHeader";
+import INITDivider from "../../CustomComponents/Dividers/Divider";
 
 
 const roundedCellStyle = {
@@ -15,7 +15,7 @@ const Profile = () => {
 
     return (
         <AppRoot>
-            <SectionHeader>
+            <div>
                 <Button
                     mode="plain"
                     size="s"
@@ -23,15 +23,17 @@ const Profile = () => {
                 >
                     Назад
                 </Button>
-            </SectionHeader>
+            </div>
+
+            <INITDivider color='transparent' thickness="10%"/>
 
             <Section
                 style={roundedCellStyle}
                 header="Login"
             >
-                <Input header="Name" placeholder="Введите имя" />
-                <Input header="Email" placeholder="Введите email" />
-                <Input header="Password" placeholder="Введите пароль" />
+                <Input header="Name" placeholder="Введите имя"/>
+                <Input header="Email" placeholder="Введите email"/>
+                <Input header="Password" placeholder="Введите пароль"/>
                 {/*<Input status="error" header="Input" placeholder="I am error input, don't make my mistakes..." />*/}
                 {/*<Input status="focused" header="Input" placeholder="I am focused input, are u focused on me?" />*/}
                 {/*<Input disabled header="Input" placeholder="I am disabled input" />*/}
