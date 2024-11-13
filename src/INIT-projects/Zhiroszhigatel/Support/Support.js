@@ -31,7 +31,7 @@ const Support = () => {
                 header="Questions"
             >
                 <Accordion
-                    //expanded = {false}
+                    expanded
                     onChange={function noRefCheck(){}}
                 >
                     <AccordionSummary>
