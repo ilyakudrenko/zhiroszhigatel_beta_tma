@@ -4,6 +4,7 @@ import {Route, Routes, useLocation} from "react-router-dom";
 import HomePage from "./INIT-projects/HomePage/HomePage";
 import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCoursePromo";
 import Support from "./INIT-projects/Zhiroszhigatel/Support/Support";
+import Profile from "./INIT-projects/Zhiroszhigatel/Profile/Profile";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                     <Route path="/" element={<HomePage/>} />
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
 
         ) : (
@@ -24,6 +26,7 @@ const App = () => {
                     <Route path="/" element={<HomePage />}/>
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
         )
     );

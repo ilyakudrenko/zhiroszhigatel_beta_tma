@@ -43,6 +43,7 @@ const HomePage = () => {
                     <Cell
                         after={<Icon24ChevronRight />}
                         before={<INITProfileIcon />}
+                        onClick={() => navigate("/profile")}
                     >
                         Профиль
                     </Cell>
