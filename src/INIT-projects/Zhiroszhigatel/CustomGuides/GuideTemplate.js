@@ -44,7 +44,9 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
             });
 
             Promise.all(loadImagePromises).then(() => {
-                setIsLoading(false); // Set loading to false when all images are loaded
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 5000); // 5-second delay
             });
         } else {
             setIsLoading(false); // No images to load, so stop loading
@@ -86,7 +88,6 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
             </div>
         );
     }
-
     // Display images if they are loaded
     return (
         <div>
