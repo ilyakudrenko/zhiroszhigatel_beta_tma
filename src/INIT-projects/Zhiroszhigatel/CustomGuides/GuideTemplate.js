@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Placeholder, Spinner } from "@telegram-apps/telegram-ui";
+import {List, Placeholder, Spinner} from "@telegram-apps/telegram-ui";
 
 /**
  * INITGuideTemplate Component
@@ -54,6 +54,8 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
     // Display error placeholder if no images are found
     if (!isLoading && guideImages.length === 0) {
         return (
+
+            <List>
             <Placeholder
                 description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
                 header="Что-то пошло не так"
@@ -64,6 +66,7 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                     src="https://xelene.me/telegram.gif"
                 />
             </Placeholder>
+            </List>
         );
     }
 
@@ -75,14 +78,11 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    border: '1px dashed #9747FF',
-                    borderRadius: '5px',
-                    padding: '20px',
                     width: '100%',
                 }}
             >
-                <Spinner size="m" />
-                <p>Loading content, please wait...</p>
+                <Spinner size="l" />
+                <p>Загрузка контентаю Пожалуйста подождите...</p>
             </div>
         );
     }
