@@ -17,7 +17,9 @@ import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 // import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
-import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json"
+import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
+import {useNavigate} from "react-router-dom";
+
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
@@ -28,102 +30,107 @@ const handleClick = () => {
     alert("Button clicked!");
 };
 
-const HomePage = () => (
-    <AppRoot>
-        <List>
-            <Section
+const HomePage = () => {
+    const navigate = useNavigate();
+
+    return (
+        <AppRoot>
+            <List>
+                <Section
+                    style={roundedCellStyle}
+
+                >
+                    <Cell
+                        after={<Icon24ChevronRight />}
+                        before={<INITProfileIcon />}
+                    >
+                        Profile
+                    </Cell>
+                    <Cell
+                        after={<Icon24ChevronRight />}
+                        before={<INITMessageBadgeIcon color="white" />}
+                        onClick={() => navigate("/support")}
+                    >
+                        Support
+                    </Cell>
+                </Section>
+            </List>
+
+            {/*Some banner for sales*/}
+            <INITDivider color = 'transparent' thickness="10%" />
+            <Banner
+                background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
+                callout="Urgent notification"
+                description="Start exploring TON in a new, better way"
+                header="Introducing TON Space"
+                // onCloseIcon={function noRefCheck(){}}
+                type="section"
                 style={roundedCellStyle}
-
             >
-                <Cell
-                    after={<Icon24ChevronRight />}
-                    before={<INITProfileIcon />}
+                <React.Fragment key=".0">
+                    <Button size="s" onClick={handleClick}>
+                        Try it out
+                    </Button>
+                </React.Fragment>
+            </Banner>
+
+            {/*Free Guides*/}
+
+            <INITDivider color = 'transparent' thickness="10%" />
+            <List
+            >
+                <Caption
+                    caps
+                    level="1"
+                    weight="3"
+                    style={{ margin: '5%'}}
                 >
-                    Profile
-                </Cell>
-                <Cell
-                    after={<Icon24ChevronRight />}
-                    before={<INITMessageBadgeIcon color="white" />}
+                    Available Free Guides
+                </Caption>
+                <HorizontalScroll
                 >
-                    Support
-                </Cell>
-            </Section>
-        </List>
+                    <INITCardsList items={guidesData} />
+                </HorizontalScroll>
+            </List>
 
-        {/*Some banner for sales*/}
-        <INITDivider color = 'transparent' thickness="10%" />
-        <Banner
-            background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
-            callout="Urgent notification"
-            description="Start exploring TON in a new, better way"
-            header="Introducing TON Space"
-            // onCloseIcon={function noRefCheck(){}}
-            type="section"
-            style={roundedCellStyle}
-        >
-            <React.Fragment key=".0">
-                <Button size="s" onClick={handleClick}>
-                    Try it out
-                </Button>
-            </React.Fragment>
-        </Banner>
+            {/*Courses*/}
 
-        {/*Free Guides*/}
+            <INITDivider color = 'transparent' thickness="10%" />
+            <List
+            >
+                <Caption
+                    caps
+                    level="1"
+                    weight="3"
+                    style={{ margin: '5%'}}
+                >
+                    Available Courses
+                </Caption>
+                <HorizontalScroll
+                >
+                    <INITCardsList items={guidesData} />
+                </HorizontalScroll>
+            </List>
 
-        <INITDivider color = 'transparent' thickness="10%" />
-        <List
-        >
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{ margin: '5%'}}
+            {/*Meal plan*/}
+            <INITDivider color = 'transparent' thickness="10%" />
+            <List
             >
-                Available Free Guides
-            </Caption>
-            <HorizontalScroll
-            >
-                <INITCardsList items={guidesData} />
-            </HorizontalScroll>
-        </List>
-
-        {/*Courses*/}
-
-        <INITDivider color = 'transparent' thickness="10%" />
-        <List
-        >
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{ margin: '5%'}}
-            >
-                Available Courses
-            </Caption>
-            <HorizontalScroll
-            >
-                <INITCardsList items={guidesData} />
-            </HorizontalScroll>
-        </List>
-
-        {/*Meal plan*/}
-        <INITDivider color = 'transparent' thickness="10%" />
-        <List
-        >
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{ margin: '5%'}}
-            >
-                Available Meal Plans test
-            </Caption>
-            <HorizontalScroll
-            >
-                <INITCardsList items={guidesData} />
-            </HorizontalScroll>
-        </List>
-    </AppRoot>
-);
+                <Caption
+                    caps
+                    level="1"
+                    weight="3"
+                    style={{ margin: '5%'}}
+                >
+                    Available Meal Plans test
+                </Caption>
+                <HorizontalScroll
+                >
+                    <INITCardsList items={guidesData} />
+                </HorizontalScroll>
+            </List>
+        </AppRoot>
+    );
+};
 
 export default HomePage;

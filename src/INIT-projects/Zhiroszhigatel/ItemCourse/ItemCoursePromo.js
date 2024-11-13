@@ -3,16 +3,9 @@ import {AppRoot, Button, Image, List, Modal, Placeholder, Section} from "@telegr
 
 const INITItemCoursePromo = ({info = [],  }) => {
     return (
-        <List>
-            <Section>
-                <Image
-                    src={info.imageSrc}
-                />
-            </Section>
-            <Section>
-
-            </Section>
-        </List>
+        <div>
+            Item Page!
+        </div>
     );
 };
 
