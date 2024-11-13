@@ -55,17 +55,16 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
 
     if (guideImages.length === 0) {
         return (
-            <List>
-                <Placeholder
-                    description="Мы уже работаем над этой проблемой. Попробуйте позже или свяжитесь с поддержкой."
-                    header="Что-то пошло не так"
-                >
-                    <img
-                        alt="Telegram sticker"
-                        src="https://xelene.me/telegram.gif"
-                    />
-                </Placeholder>
-            </List>
+            <Placeholder
+                header="Title"
+                description="NoonFog test"
+            >
+                <img
+                    alt="Telegram sticker"
+                    src="https://xelene.me/telegram.gif"
+                    style={{ display: 'block', width: '144px', height: '144px' }}
+                />
+            </Placeholder>
         );
     }
 
