@@ -30,7 +30,7 @@ const GuideButton = () => {
                     fontSize: '18px',
                     padding: '12px 24px',
                     width: '90%',
-                    //maxWidth: '600px',
+                    maxWidth: '800px',
                 }}
             >
                 Добавить в библиотеку
