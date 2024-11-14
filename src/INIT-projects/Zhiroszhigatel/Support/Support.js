@@ -54,14 +54,14 @@ const Support = () => {
                 style={roundedCellStyle}
                 header="Вопросы по похудению"
             >
-                {questionsData.map((question, index) => (
-                    <INITAccordion
-                        key={index}
-                        summary={question.summary}
-                        content={question.content}
-                        links={question.links}
-                    />
-                ))}
+                {/*{questionsData.map((question, index) => (*/}
+                {/*    <INITAccordion*/}
+                {/*        key={index}*/}
+                {/*        summary={question.summary}*/}
+                {/*        content={question.content}*/}
+                {/*        links={question.links}*/}
+                {/*    />*/}
+                {/*))}*/}
             </Section>
         </AppRoot>
     );
