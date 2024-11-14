@@ -47,7 +47,7 @@ const INITAccordionList = () => {
                     key={index}
                     summary={item.summary}
                     content={item.content}
-                    links={item.links}
+                    // links={item.links}
                 />
             ))}
         </div>
