@@ -40,7 +40,7 @@ const Support = () => {
                 style={roundedCellStyle}
                 header="Вопросы по похудению"
             >
-                <INITAccordionList items={questionsData} type="nutriotion"/>
+                <INITAccordionList items={questionsData} type="nutrition"/>
             </Section>
         </AppRoot>
     );
