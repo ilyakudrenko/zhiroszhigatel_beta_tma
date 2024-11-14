@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Placeholder, Spinner } from '@telegram-apps/telegram-ui';
+import GuideButton from "./GuideButton";
 
 /**
  * INITGuideTemplate Component
@@ -78,6 +79,7 @@ const INITGuideTemplate = ({ guideKey, totalPages }) => {
                     style={{ width: '100%', display: 'block' }}
                 />
             ))}
+            <GuideButton />
         </div>
     );
 };
