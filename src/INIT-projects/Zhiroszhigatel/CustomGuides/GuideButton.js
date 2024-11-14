@@ -13,6 +13,7 @@ const GuideButton = () => {
             position: 'fixed',
             bottom: 0,
             left: 0,
+            right: 0,
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -30,7 +31,7 @@ const GuideButton = () => {
                     fontSize: '18px',
                     padding: '12px 24px',
                     width: '90%',
-                    maxWidth: '800px',
+                    maxWidth: '600px',
                 }}
             >
                 Добавить в библиотеку
