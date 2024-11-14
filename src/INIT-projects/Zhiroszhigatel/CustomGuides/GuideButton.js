@@ -16,7 +16,7 @@ const GuideButton = () => {
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            paddingBottom: '8px',
+            paddingBottom: '15px',
             zIndex: 1000, // Ensure it’s on top of other elements
         }}>
             <Button
