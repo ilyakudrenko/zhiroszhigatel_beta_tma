@@ -56,4 +56,4 @@ const INITAccordionList = ({items = []}) => {
     )
 }
 
-export default INITAccordionList;
+export default INITAccordion;

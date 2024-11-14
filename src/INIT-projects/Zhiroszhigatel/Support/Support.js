@@ -9,7 +9,7 @@ import INITAccordionList from "./Accordion";
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
-    backgroundColor: 'var(--tgui--secondary_bg_color)',
+    // backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
 const data = typeof questionsData;
@@ -63,7 +63,22 @@ const Support = () => {
                 {/*        links={question.links}*/}
                 {/*    />*/}
                 {/*))}*/}
-                <INITAccordionList items={questionsData}/>
+
+                {/*<INITAccordionList items={questionsData}/>*/}
+
+                {questionsData.map((item, index) =>{
+                    if(item.type === "4"){
+                        return(
+                            <INITAccordion
+                            key={index}
+                            summary={item.summary}
+                            content={item.content}
+                            links={item.links}
+                        />)
+                    }
+                    return null;
+                })}
+
             </Section>
         </AppRoot>
     );
