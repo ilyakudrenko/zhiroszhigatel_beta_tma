@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { AccordionSummary } from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
 import { AccordionContent } from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
 import { Accordion, Blockquote } from "@telegram-apps/telegram-ui";
-import accordionData from './accordionData.json'; // Adjust the path as needed
+// import accordionData from './accordionData.json'; // Adjust the path as needed
+import accordionData from "./accordionData.json"
 
 const INITAccordion = (summary, content, links) => {
     const [expandedAccordion, setExpandedAccordion] = useState(null);
@@ -38,4 +39,19 @@ const INITAccordion = (summary, content, links) => {
     );
 };
 
-export default INITAccordion;
+const INITAccordionList = () => {
+    return(
+        <div>
+            {accordionData.map((item, index) => (
+                <INITAccordion
+                    key={index}
+                    summary={item.summary}
+                    content={item.content}
+                    links={item.links}
+                />
+            ))}
+        </div>
+    )
+}
+
+export default INITAccordionList;

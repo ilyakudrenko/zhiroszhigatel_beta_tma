@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITAccordion from "./Accordion";
 import questionsData from "./accordionData.json"
+import INITAccordionList from "./Accordion";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -62,6 +63,7 @@ const Support = () => {
                 {/*        links={question.links}*/}
                 {/*    />*/}
                 {/*))}*/}
+                <INITAccordionList/>
             </Section>
         </AppRoot>
     );
