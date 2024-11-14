@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { AppRoot, Button, Section, Blockquote, Accordion } from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Section} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
-import { AccordionSummary } from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
-import { AccordionContent } from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
-import INITAccordion from "../Profile/Accordion";
+import INITAccordion from "./Accordion";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -43,21 +41,7 @@ const Support = () => {
             >
                 <INITAccordion />
                 <INITAccordion />
-                {/*<Accordion*/}
-                {/*    expanded={expandedAccordion === 'course2'}*/}
-                {/*    onChange={() => handleAccordionChange('course2')}*/}
-                {/*>*/}
-                {/*    <AccordionSummary>*/}
-                {/*        Я смогу похудеть, если я никогда не тренировался?*/}
-                {/*    </AccordionSummary>*/}
-                {/*    <AccordionContent>*/}
-                {/*        <div style={{ padding: '10px 20px 20px' }}>*/}
-                {/*            <Blockquote>*/}
-                {/*                Сможешь, я даю подробные инструкции и видеоматериал для того, чтобы без определённых навыков выполнять все мои рекомендации для похудения*/}
-                {/*            </Blockquote>*/}
-                {/*        </div>*/}
-                {/*    </AccordionContent>*/}
-                {/*</Accordion>*/}
+
             </Section>
 
             <INITDivider color='transparent' thickness="10%" />
@@ -68,39 +52,7 @@ const Support = () => {
             >
                 <INITAccordion />
                 <INITAccordion />
-                {/*<Accordion*/}
-                {/*    expanded={expandedAccordion === 'weightLoss1'}*/}
-                {/*    onChange={() => handleAccordionChange('weightLoss1')}*/}
-                {/*>*/}
-                {/*    <AccordionSummary>*/}
-                {/*        У меня замедлился метаболизм, что делать?*/}
-                {/*    </AccordionSummary>*/}
-                {/*    <AccordionContent>*/}
-                {/*        <div style={{ padding: '10px 20px 20px' }}>*/}
-                {/*            <Blockquote>*/}
-                {/*                Есть только один эффективный способ раскрутить своей метаболизм, это больше двигаться...*/}
-                {/*            </Blockquote>*/}
-                {/*        </div>*/}
-                {/*    </AccordionContent>*/}
-                {/*</Accordion>*/}
 
-                {/*<Accordion*/}
-                {/*    expanded={expandedAccordion === 'weightLoss2'}*/}
-                {/*    onChange={() => handleAccordionChange('weightLoss2')}*/}
-                {/*>*/}
-                {/*    <AccordionSummary>*/}
-                {/*        У меня гипотиреоз, как худеть?*/}
-                {/*    </AccordionSummary>*/}
-                {/*    <AccordionContent>*/}
-                {/*        <div style={{ padding: '10px 20px 20px' }}>*/}
-                {/*            <Blockquote>*/}
-                {/*                Поставленный диагноз гипотиреоза на сегодняшний день, компенсируется приемом гормонами щитовидной железы...*/}
-                {/*                <br />*/}
-                {/*                <a href='https://www.youtube.com/watch?v=sUnjR0D3Iko'>https://www.youtube.com/watch?v=sUnjR0D3Iko</a>*/}
-                {/*            </Blockquote>*/}
-                {/*        </div>*/}
-                {/*    </AccordionContent>*/}
-                {/*</Accordion>*/}
             </Section>
         </AppRoot>
     );
