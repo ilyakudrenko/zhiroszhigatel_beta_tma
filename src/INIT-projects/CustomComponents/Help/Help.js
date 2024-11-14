@@ -24,7 +24,7 @@ const INITHelp = () => {
         >
             <div className="HIJtihMA8FHczS02iWF5">
                 <Placeholder
-                    description="Вам ну жнаупомошь с новым ботом?"
+                    description="Вам нужна помощь с новым ботом?"
                     header="Help"
                 >
                     <img
