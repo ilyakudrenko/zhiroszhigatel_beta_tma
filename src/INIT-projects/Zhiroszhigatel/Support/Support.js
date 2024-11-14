@@ -11,6 +11,8 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
+const data = typeof questionsData;
+
 const Support = () => {
     const navigate = useNavigate();
 
@@ -40,8 +42,9 @@ const Support = () => {
                 style={roundedCellStyle}
                 header="Вопросы по курсу"
             >
-                <INITAccordion />
-                <INITAccordion />
+                {data}
+                {/*<INITAccordion />*/}
+                {/*<INITAccordion />*/}
 
             </Section>
 
