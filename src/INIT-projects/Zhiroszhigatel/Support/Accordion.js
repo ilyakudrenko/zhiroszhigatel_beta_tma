@@ -3,7 +3,21 @@ import {AccordionSummary} from "@telegram-apps/telegram-ui/dist/components/Block
 import {AccordionContent} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
 import {Accordion, Blockquote} from "@telegram-apps/telegram-ui";
 
+// Helper function to render links and emojis in the content
+const formatContent = (content) => {
+    // Split content by new lines to maintain formatting
+    const lines = content.split('\n').map((line, index) => {
+        // Identify URLs and wrap them in anchor tags
+        const linkifiedLine = line.replace(
+            /(https?:\/\/[^\s]+)/g,
+            (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #82caff; text-decoration: underline; text-decoration-color: #82caff;">${url}</a>`
+        );
+        // Return line as HTML to support links
+        return <div key={index} dangerouslySetInnerHTML={{ __html: linkifiedLine }} />;
+    });
 
+    return lines;
+};
 
 // INITAccordion Component
 /**
@@ -40,23 +54,7 @@ const INITAccordion = ({summary, content, links}) => {
             <AccordionContent>
                 <div style={{padding: '10px 20px 20px'}}>
                     <Blockquote>
-                        {content}
-                        {links && links.length > 0 && (
-                            <div style={{ marginTop: '10px' }}>
-                                {links.map((link, index) => (
-                                    <span key={index}>
-                                        <br />
-                                        <a
-                                            href={link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            {link}
-                                        </a>
-                                    </span>
-                                ))}
-                            </div>
-                        )}
+                        {formatContent(content)}
                     </Blockquote>
                 </div>
             </AccordionContent>
