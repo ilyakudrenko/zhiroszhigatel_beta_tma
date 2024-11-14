@@ -26,7 +26,7 @@ const GuideButton = () => {
                 style={{
                     backgroundColor: isGreen ? '#53E651' : '',
                     // padding: '12px 24px', // Adds more padding to make the button bigger
-                    //marginRight: '8%',
+                    marginRight: '8%',
                 }}
             >
                 Добавить в библиотеку
