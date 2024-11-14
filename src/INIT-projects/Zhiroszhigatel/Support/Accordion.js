@@ -19,7 +19,7 @@ const INITAccordion = ({summary, content, links}) => {
             expanded={expandedAccordion === 'course1'}
             onChange={() => handleAccordionChange('course1')}
         >
-            <AccordionSummary>
+            <AccordionSummary multiline>
                 {summary}
             </AccordionSummary>
             <AccordionContent>
