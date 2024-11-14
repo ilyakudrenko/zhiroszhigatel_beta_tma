@@ -1,14 +1,5 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {
-    List,
-    Section,
-    Cell,
-    Caption,
-    Banner,
-    Button,
-    AppRoot,
-
-} from '@telegram-apps/telegram-ui';
+import {AppRoot, Banner, Button, Caption, Cell, List, Section,} from '@telegram-apps/telegram-ui';
 import React from "react";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
@@ -40,15 +31,15 @@ const HomePage = () => {
 
                 >
                     <Cell
-                        after={<Icon24ChevronRight />}
-                        before={<INITProfileIcon />}
+                        after={<Icon24ChevronRight/>}
+                        before={<INITProfileIcon/>}
                         onClick={() => navigate("/profile")}
                     >
                         Профиль
                     </Cell>
                     <Cell
-                        after={<Icon24ChevronRight />}
-                        before={<INITMessageBadgeIcon color="white" />}
+                        after={<Icon24ChevronRight/>}
+                        before={<INITMessageBadgeIcon color="white"/>}
                         onClick={() => navigate("/support")}
                     >
                         Задать вопрос
@@ -57,9 +48,11 @@ const HomePage = () => {
             </List>
 
             {/*Some banner for sales*/}
-            <INITDivider color = 'transparent' thickness="10%" />
+            <INITDivider color='transparent' thickness="10%"/>
             <Banner
-                background={<img alt="Nasa streams" src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864" style={{width: '150%'}}/>}
+                background={<img alt="Nasa streams"
+                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 style={{width: '150%'}}/>}
                 callout="Urgent notification"
                 description="Start exploring TON in a new, better way"
                 header="Introducing TON Space"
@@ -76,57 +69,57 @@ const HomePage = () => {
 
             {/*Free Guides*/}
 
-            <INITDivider color = 'transparent' thickness="10%" />
+            <INITDivider color='transparent' thickness="10%"/>
             <List
             >
                 <Caption
                     caps
                     level="1"
                     weight="3"
-                    style={{ margin: '5%'}}
+                    style={{margin: '5%'}}
                 >
                     Гайды
                 </Caption>
                 <HorizontalScroll
                 >
-                    <INITCardsList items={guidesData} />
+                    <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
             </List>
 
             {/*Courses*/}
 
-            <INITDivider color = 'transparent' thickness="10%" />
+            <INITDivider color='transparent' thickness="10%"/>
             <List
             >
                 <Caption
                     caps
                     level="1"
                     weight="3"
-                    style={{ margin: '5%'}}
+                    style={{margin: '5%'}}
                 >
                     Курсы
                 </Caption>
                 <HorizontalScroll
                 >
-                    <INITCardsList items={guidesData} />
+                    <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
             </List>
 
             {/*Meal plan*/}
-            <INITDivider color = 'transparent' thickness="10%" />
+            <INITDivider color='transparent' thickness="10%"/>
             <List
             >
                 <Caption
                     caps
                     level="1"
                     weight="3"
-                    style={{ margin: '5%'}}
+                    style={{margin: '5%'}}
                 >
                     Питание
                 </Caption>
                 <HorizontalScroll
                 >
-                    <INITCardsList items={guidesData} />
+                    <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
             </List>
         </AppRoot>
