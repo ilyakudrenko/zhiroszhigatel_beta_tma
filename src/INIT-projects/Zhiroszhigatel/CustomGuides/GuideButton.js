@@ -28,7 +28,7 @@ const GuideButton = () => {
                     backgroundColor: isGreen ? '#53E651' : '',
                     padding: '12px 24px',
                     width: '100%',
-                    maxWidth: '600px',
+                    maxWidth: '400px',
                 }}
             >
                 Добавить в библиотеку
