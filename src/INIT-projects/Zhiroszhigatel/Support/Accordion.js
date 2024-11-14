@@ -41,12 +41,22 @@ const INITAccordion = ({summary, content, links}) => {
                 <div style={{padding: '10px 20px 20px'}}>
                     <Blockquote>
                         {content}
-                        {/*<br />*/}
-                        {/*{links[0] && (*/}
-                        {/*    <a href={links[0]} target="_blank" rel="noopener noreferrer">*/}
-                        {/*        {links[0]}*/}
-                        {/*    </a>*/}
-                        {/*)}*/}
+                        {links && links.length > 0 && (
+                            <div style={{ marginTop: '10px' }}>
+                                {links.map((link, index) => (
+                                    <span key={index}>
+                                        <br />
+                                        <a
+                                            href={link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {link}
+                                        </a>
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </Blockquote>
                 </div>
             </AccordionContent>
