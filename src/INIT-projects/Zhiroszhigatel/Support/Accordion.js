@@ -5,7 +5,7 @@ import { Accordion, Blockquote } from "@telegram-apps/telegram-ui";
 // import accordionData from './accordionData.json'; // Adjust the path as needed
 // import accordionData from "./accordionData.json"
 
-const INITAccordion = (summary, content, links) => {
+const INITAccordion = ({summary, content, links}) => {
     const [expandedAccordion, setExpandedAccordion] = useState(null);
 
     const handleAccordionChange = (accordionKey) => {
