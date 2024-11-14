@@ -22,7 +22,7 @@ const GuideButton = () => {
             <Button
                 mode="filled"
                 size="l"
-                stretched
+                //stretched
                 onClick={handleButtonClick}
                 style={{
                     backgroundColor: isGreen ? '#53E651' : '',
