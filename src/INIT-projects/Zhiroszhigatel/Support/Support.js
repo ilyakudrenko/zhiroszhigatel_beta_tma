@@ -63,7 +63,7 @@ const Support = () => {
                 {/*        links={question.links}*/}
                 {/*    />*/}
                 {/*))}*/}
-                <INITAccordionList/>
+                <INITAccordionList items={questionsData}/>
             </Section>
         </AppRoot>
     );
