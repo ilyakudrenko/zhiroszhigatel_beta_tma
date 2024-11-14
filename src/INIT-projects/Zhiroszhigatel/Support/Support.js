@@ -7,7 +7,7 @@ import questionsData from "./accordionData.json"
 
 const roundedCellStyle = {
     borderRadius: '16px',
-    // overflow: 'hidden', // Ensures rounded corners display properly
+    overflow: 'hidden', // Ensures rounded corners display properly
     // backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
@@ -40,7 +40,7 @@ const Support = () => {
                 style={roundedCellStyle}
                 header="Вопросы по похудению"
             >
-                <INITAccordionList items={questionsData} type="4"/>
+                <INITAccordionList items={questionsData} type="nutriotion"/>
             </Section>
         </AppRoot>
     );
