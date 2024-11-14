@@ -16,17 +16,16 @@ const GuideButton = () => {
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            padding: '20px',
+            paddingBottom: '8px',
             zIndex: 1000, // Ensure it’s on top of other elements
         }}>
             <Button
                 mode="filled"
                 size="l"
+                stretched
                 onClick={handleButtonClick}
                 style={{
                     backgroundColor: isGreen ? '#53E651' : '',
-                    // padding: '12px 24px', // Adds more padding to make the button bigger
-                    marginRight: '9%',
                 }}
             >
                 Добавить в библиотеку
