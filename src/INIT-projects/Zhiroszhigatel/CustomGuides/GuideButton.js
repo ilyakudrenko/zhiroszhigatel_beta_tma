@@ -12,8 +12,6 @@ const GuideButton = () => {
         <div style={{
             position: 'fixed',
             bottom: 0,
-            left: 0,
-            right: 0,
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
@@ -27,8 +25,8 @@ const GuideButton = () => {
                 style={{
                     backgroundColor: isGreen ? '#53E651' : '',
                     padding: '12px 24px',
-                    width: '100%',
-                    maxWidth: '400px',
+                    // width: '100%',
+                    // maxWidth: '400px',
                 }}
             >
                 Добавить в библиотеку
