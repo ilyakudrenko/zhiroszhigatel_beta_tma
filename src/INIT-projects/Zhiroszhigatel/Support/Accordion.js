@@ -42,14 +42,16 @@ const INITAccordion = (summary, content, links) => {
 const INITAccordionList = () => {
     return(
         <div>
-            {accordionData.map((item, index) => (
-                <INITAccordion
-                    key={index}
-                    summary={item.summary}
-                    content={item.content}
-                    // links={item.links}
-                />
-            ))}
+
+            {accordionData}
+            {/*{accordionData.map((item, index) => (*/}
+            {/*    <INITAccordion*/}
+            {/*        key={index}*/}
+            {/*        summary={item.summary}*/}
+            {/*        content={item.content}*/}
+            {/*        // links={item.links}*/}
+            {/*    />*/}
+            {/*))}*/}
         </div>
     )
 }
