@@ -16,7 +16,6 @@ import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
-// import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import {useNavigate} from "react-router-dom";
 

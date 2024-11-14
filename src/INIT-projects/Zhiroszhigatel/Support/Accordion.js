@@ -25,12 +25,12 @@ const INITAccordion = (summary = "", content = "", links = []) => {
                 <div style={{ padding: '10px 20px 20px' }}>
                     <Blockquote>
                         {content}
-                        <br />
-                        {links[0] && (
-                            <a href={links[0]} target="_blank" rel="noopener noreferrer">
-                                {links[0]}
-                            </a>
-                        )}
+                        {/*<br />*/}
+                        {/*{links[0] && (*/}
+                        {/*    <a href={links[0]} target="_blank" rel="noopener noreferrer">*/}
+                        {/*        {links[0]}*/}
+                        {/*    </a>*/}
+                        {/*)}*/}
                     </Blockquote>
                 </div>
             </AccordionContent>
