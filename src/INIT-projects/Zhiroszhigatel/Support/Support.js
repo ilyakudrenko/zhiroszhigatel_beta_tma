@@ -3,6 +3,7 @@ import { AppRoot, Button, Section} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITAccordion from "./Accordion";
+import questionsData from "./accordionData.json"
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -50,9 +51,14 @@ const Support = () => {
                 style={roundedCellStyle}
                 header="Вопросы по похудению"
             >
-                <INITAccordion />
-                <INITAccordion />
-
+                {questionsData.map((question, index) => (
+                    <INITAccordion
+                        key={index}
+                        summary={question.summary}
+                        content={question.content}
+                        links={question.links}
+                    />
+                ))}
             </Section>
         </AppRoot>
     );

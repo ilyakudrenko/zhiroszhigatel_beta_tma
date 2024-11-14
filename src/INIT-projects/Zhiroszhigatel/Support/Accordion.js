@@ -4,14 +4,14 @@ import { AccordionContent } from "@telegram-apps/telegram-ui/dist/components/Blo
 import { Accordion, Blockquote } from "@telegram-apps/telegram-ui";
 import accordionData from './accordionData.json'; // Adjust the path as needed
 
-const INITAccordion = () => {
+const INITAccordion = (summary = "", content = "", links = []) => {
     const [expandedAccordion, setExpandedAccordion] = useState(null);
 
     const handleAccordionChange = (accordionKey) => {
         setExpandedAccordion((prev) => (prev === accordionKey ? null : accordionKey));
     };
 
-    const courseData = accordionData["course1"]; // Access data for course1
+    // const courseData = accordionData["course1"]; // Access data for course1
 
     return (
         <Accordion
@@ -19,16 +19,16 @@ const INITAccordion = () => {
             onChange={() => handleAccordionChange('course1')}
         >
             <AccordionSummary>
-                {courseData.summary}
+                {summary}
             </AccordionSummary>
             <AccordionContent>
                 <div style={{ padding: '10px 20px 20px' }}>
                     <Blockquote>
-                        {courseData.content}
+                        {content}
                         <br />
-                        {courseData.link && (
-                            <a href={courseData.link} target="_blank" rel="noopener noreferrer">
-                                {courseData.link}
+                        {links[0] && (
+                            <a href={links[0]} target="_blank" rel="noopener noreferrer">
+                                {links[0]}
                             </a>
                         )}
                     </Blockquote>
