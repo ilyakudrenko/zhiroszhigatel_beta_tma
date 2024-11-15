@@ -4,9 +4,7 @@ import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import {Card, Modal,} from "@telegram-apps/telegram-ui";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
-import {
-    ModalHeader
-} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
+import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 
@@ -56,6 +54,7 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
         <INITGuideTemplate
             guideKey={guideKey}
             totalPages={numPage}
+            title={title}
         />
 
     </Modal>
