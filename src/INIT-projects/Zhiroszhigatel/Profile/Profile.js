@@ -18,7 +18,7 @@ const Profile = () => {
 
             <video
                 width="100%"
-                controls=true
+                controls={true}
                 poster="https://via.placeholder.com/640x360.png" // Отображается до начала воспроизведения
                 style={{borderRadius: '10px'}} // Пример кастомизации стилей
             >
