@@ -23,7 +23,7 @@ const Profile = () => {
                 style={{borderRadius: '10px'}} // Пример кастомизации стилей
             >
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/>
-                Ваш браузер не поддерживает видео.
+                Ваш браузер не поддерживает видео. yf
             </video>
 
             {/*<div>*/}
