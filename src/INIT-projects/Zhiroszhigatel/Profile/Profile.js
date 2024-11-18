@@ -15,30 +15,41 @@ const Profile = () => {
 
     return (
         <AppRoot>
-            <div>
-                <Button
-                    mode="plain"
-                    size="s"
-                    onClick={() => navigate("/")}
-                >
-                    Назад
-                </Button>
-            </div>
 
-            <INITDivider color='transparent' thickness="10%"/>
-
-            <Section
-                style={roundedCellStyle}
-                header="Login"
+            <video
+                width="100%"
+                controls=true
+                poster="https://via.placeholder.com/640x360.png" // Отображается до начала воспроизведения
+                style={{borderRadius: '10px'}} // Пример кастомизации стилей
             >
-                <Input header="Name" placeholder="Введите имя"/>
-                <Input header="Email" placeholder="Введите email"/>
-                <Input header="Password" placeholder="Введите пароль"/>
-                {/*<Input status="error" header="Input" placeholder="I am error input, don't make my mistakes..." />*/}
-                {/*<Input status="focused" header="Input" placeholder="I am focused input, are u focused on me?" />*/}
-                {/*<Input disabled header="Input" placeholder="I am disabled input" />*/}
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/>
+                Ваш браузер не поддерживает видео.
+            </video>
 
-            </Section>
+            {/*<div>*/}
+            {/*    <Button*/}
+            {/*        mode="plain"*/}
+            {/*        size="s"*/}
+            {/*        onClick={() => navigate("/")}*/}
+            {/*    >*/}
+            {/*        Назад*/}
+            {/*    </Button>*/}
+            {/*</div>*/}
+
+            {/*<INITDivider color='transparent' thickness="10%"/>*/}
+
+            {/*<Section*/}
+            {/*    style={roundedCellStyle}*/}
+            {/*    header="Login"*/}
+            {/*>*/}
+            {/*    <Input header="Name" placeholder="Введите имя"/>*/}
+            {/*    <Input header="Email" placeholder="Введите email"/>*/}
+            {/*    <Input header="Password" placeholder="Введите пароль"/>*/}
+            {/*    /!*<Input status="error" header="Input" placeholder="I am error input, don't make my mistakes..." />*!/*/}
+            {/*    /!*<Input status="focused" header="Input" placeholder="I am focused input, are u focused on me?" />*!/*/}
+            {/*    /!*<Input disabled header="Input" placeholder="I am disabled input" />*!/*/}
+
+            {/*</Section>*/}
         </AppRoot>
     );
 };
