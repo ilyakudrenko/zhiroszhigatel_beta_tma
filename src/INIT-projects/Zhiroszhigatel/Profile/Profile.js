@@ -16,25 +16,31 @@ const Profile = () => {
     return (
         <AppRoot>
 
-            <video
-                width="100%"
-                controls={true}
-                poster="https://via.placeholder.com/640x360.png" // Отображается до начала воспроизведения
-                style={{borderRadius: '10px'}} // Пример кастомизации стилей
-            >
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/>
-                Ваш браузер не поддерживает видео. yf
-            </video>
+            <div>
+                <Button
+                    mode="plain"
+                    size="s"
+                    onClick={() => navigate("/")}
+                >
+                    Назад
+                </Button>
+            </div>
 
-            {/*<div>*/}
-            {/*    <Button*/}
-            {/*        mode="plain"*/}
-            {/*        size="s"*/}
-            {/*        onClick={() => navigate("/")}*/}
-            {/*    >*/}
-            {/*        Назад*/}
-            {/*    </Button>*/}
-            {/*</div>*/}
+            <iframe width="996" height="560" src="https://www.youtube.com/embed/POb02mjj2zE"
+                    title="Юность в сапогах (Gachi Version) | Гачимучи ремикс" frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+            {/*<video*/}
+            {/*    width="100%"*/}
+            {/*    controls={true}*/}
+            {/*    poster="https://via.placeholder.com/640x360.png" // Отображается до начала воспроизведения*/}
+            {/*    style={{borderRadius: '10px'}} // Пример кастомизации стилей*/}
+            {/*>*/}
+            {/*    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"/>*/}
+            {/*    Ваш браузер не поддерживает видео. yf*/}
+            {/*</video>*/}
+
 
             {/*<INITDivider color='transparent' thickness="10%"/>*/}
 
