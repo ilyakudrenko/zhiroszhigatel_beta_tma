@@ -18,6 +18,7 @@ import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import {useNavigate} from "react-router-dom";
 import INITHelp from "../CustomComponents/Help/Help";
+import INITBanner from "../CustomComponents/Banner/Banner";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -60,23 +61,8 @@ const HomePage = () => {
 
             {/*Some banner for sales*/}
             <INITDivider color='transparent' thickness="10%"/>
-            <Banner
-                background={<img alt="Nasa streams"
-                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                 style={{width: '150%'}}/>}
-                callout="Urgent notification"
-                description="Start exploring TON in a new, better way"
-                header="Introducing TON Space"
-                // onCloseIcon={function noRefCheck(){}}
-                type="section"
-                style={roundedCellStyle}
-            >
-                <React.Fragment key=".0">
-                    <Button size="s" onClick={handleClick}>
-                        Try it out
-                    </Button>
-                </React.Fragment>
-            </Banner>
+
+            <INITBanner />
 
             {/*Free Guides*/}
 

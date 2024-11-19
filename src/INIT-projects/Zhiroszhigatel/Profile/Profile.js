@@ -26,10 +26,22 @@ const Profile = () => {
                 </Button>
             </div>
 
-            <iframe width="996" height="560" src="https://www.youtube.com/embed/POb02mjj2zE"
-                    title="Юность в сапогах (Gachi Version) | Гачимучи ремикс" frameBorder="0"
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px"}}>
+                <iframe
+                    width="996"
+                    height="560"
+                    src="https://www.youtube.com/embed/POb02mjj2zE"
+                    title="Юность в сапогах (Gachi Version) | Гачимучи ремикс"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    style={{
+                        borderRadius: "10px", // Optional: Add rounded corners
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)", // Optional: Add shadow for better aesthetics
+                    }}
+                ></iframe>
+            </div>
 
             {/*<video*/}
             {/*    width="100%"*/}
