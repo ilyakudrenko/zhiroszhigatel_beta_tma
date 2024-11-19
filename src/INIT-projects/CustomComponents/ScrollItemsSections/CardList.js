@@ -7,12 +7,12 @@ import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
 import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
+import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
 
 
 /**
  * INITCardItem Component
  *
- * илья лох подсказка
  *
  * This component represents a single card item that opens a modal when clicked.
  * Each card displays an image, title, description, and a chip label. Upon clicking,
@@ -51,11 +51,13 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
             </Card>
         }
     >
-        <INITGuideTemplate
-            guideKey={guideKey}
-            totalPages={numPage}
-            title={title}
-        />
+        {/*<INITGuideTemplate*/}
+        {/*    guideKey={guideKey}*/}
+        {/*    totalPages={numPage}*/}
+        {/*    title={title}*/}
+        {/*/>*/}
+
+        <INITMealPlanPromo />
 
     </Modal>
 );
