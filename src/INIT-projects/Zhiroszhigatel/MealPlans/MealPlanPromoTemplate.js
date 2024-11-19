@@ -20,7 +20,7 @@ const INITMealPlanPromo = () => {
                 src="https://i.pinimg.com/736x/97/de/da/97dedaee23a0a310206ca50c9f565281.jpg" // Замените на URL изображения
                 style={{
                     width: '100%',
-                    height: '30vh',
+                    height: '40vh',
                     objectFit: 'cover',
                 }}
             />
