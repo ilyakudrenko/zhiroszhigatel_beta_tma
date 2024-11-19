@@ -9,21 +9,33 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
+const parallaxStyle = {
+    backgroundImage: 'url("https://i.pinimg.com/736x/97/de/da/97dedaee23a0a310206ca50c9f565281.jpg")',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '40vh',
+};
+
+
 const INITMealPlanPromo = () => {
     return (
         <div
-            style = {{
+            style={{
                 borderRadius: '10px 10px 0px 0px'
             }}
         >
-            <Image
-                src="https://i.pinimg.com/736x/97/de/da/97dedaee23a0a310206ca50c9f565281.jpg" // Замените на URL изображения
-                style={{
-                    width: '100%',
-                    height: '40vh',
-                    objectFit: 'cover',
-                }}
-            />
+            <div style={parallaxStyle}></div>
+            {/*<Image*/}
+            {/*    src="https://i.pinimg.com/736x/97/de/da/97dedaee23a0a310206ca50c9f565281.jpg" // Замените на URL изображения*/}
+            {/*    style={{*/}
+            {/*        width: '100%',*/}
+            {/*        height: '40vh',*/}
+            {/*        objectFit: 'cover',*/}
+            {/*        borderRadius: '0px'*/}
+            {/*    }}*/}
+            {/*/>*/}
 
             <List
                 style={{marginLeft: '5%', marginRight: '5%'}}
