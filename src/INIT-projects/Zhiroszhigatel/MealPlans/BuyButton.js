@@ -2,15 +2,21 @@ import React, {useState} from 'react';
 import {Button, Snackbar} from "@telegram-apps/telegram-ui";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 
-const INITBuyButton = () => {
+const INITBuyButton = ({ itemKey, itemTitle }) => {
     const Price = 50;
 
     const [isGreen, setIsGreen] = useState(false);
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
 
     const handleButtonClick = () => {
-        setIsGreen(!isGreen); // Toggle the color state
+        setIsGreen(true); // Toggle the color state
         setSnackbarVisible(true);
+
+        const purchasedItems = JSON.parse(localStorage.getItem("purchasedItems")) || [];
+        if (!purchasedItems.includes(itemKey)) {
+            purchasedItems.push({ key: itemKey, title: itemTitle });
+            localStorage.setItem("purchasedItems", JSON.stringify(purchasedItems));
+        }
     };
 
     const handleCloseSnackbar = () => {
@@ -43,7 +49,7 @@ const INITBuyButton = () => {
             {isSnackbarVisible && (
                 <Snackbar
                     before={<INITProfileIcon/>}
-                    children="Test"
+                    children={itemTitle}
                     description="Добавлен в библиотеку(вы можите найти его в профиле)"
                     duration={4000}
                     onClose={handleCloseSnackbar}
