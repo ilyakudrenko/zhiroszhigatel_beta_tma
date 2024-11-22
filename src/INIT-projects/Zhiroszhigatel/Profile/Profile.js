@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppRoot, Button, Section, Cell } from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Section, Cell, Image } from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 
@@ -11,12 +11,24 @@ const roundedCellStyle = {
 
 const Profile = () => {
     const navigate = useNavigate();
-    const [purchasedItems, setPurchasedItems] = useState([]);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        // Load purchased items from localStorage
-        const items = JSON.parse(localStorage.getItem("purchasedItems")) || [];
-        setPurchasedItems(items);
+        // Fetch user data from Telegram Web App
+        if (window.Telegram?.WebApp?.initDataUnsafe?.user) {
+            const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+
+            // Format user data
+            const formattedUser = {
+                id: telegramUser.id,
+                username: telegramUser.username,
+                firstName: telegramUser.first_name,
+                lastName: telegramUser.last_name,
+                avatar: telegramUser.photo_url, // User's profile picture URL
+            };
+
+            setUserData(formattedUser);
+        }
     }, []);
 
     return (
@@ -35,18 +47,27 @@ const Profile = () => {
 
             <Section
                 style={roundedCellStyle}
-                header="Ваши приобретенные элементы"
+                header="Профиль пользователя"
             >
-                {purchasedItems.length === 0 ? (
-                    <Cell multiline subhead="Нет приобретенных элементов">
-                        Вы еще ничего не приобрели.
-                    </Cell>
-                ) : (
-                    purchasedItems.map((item, index) => (
-                        <Cell key={index} multiline subhead={item.title}>
-                            {item.title} добавлен в библиотеку
+                {userData ? (
+                    <>
+                        <Cell
+                            before={<Image src={userData.avatar} style={{ borderRadius: '50%', width: '50px', height: '50px' }} />}
+                            subhead="Имя пользователя"
+                        >
+                            {userData.firstName} {userData.lastName}
                         </Cell>
-                    ))
+                        <Cell multiline subhead="Username">
+                            @{userData.username}
+                        </Cell>
+                        <Cell multiline subhead="ID">
+                            {userData.id}
+                        </Cell>
+                    </>
+                ) : (
+                    <Cell multiline subhead="Загрузка...">
+                        Загрузка информации о пользователе...
+                    </Cell>
                 )}
             </Section>
         </AppRoot>
