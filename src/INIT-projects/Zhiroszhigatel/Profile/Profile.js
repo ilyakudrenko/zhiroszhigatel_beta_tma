@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {AppRoot, Button, Section, Cell, Image, Spinner} from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Section, Cell, Image } from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 
@@ -14,41 +14,37 @@ const Profile = () => {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        // Fetch user data from Telegram Web App
-        if (window.Telegram?.WebApp?.initDataUnsafe?.user) {
-            const telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+        if (window.Telegram && window.Telegram.WebApp) {
+            const telegramUser = window.Telegram.WebApp.initDataUnsafe?.user;
 
-            // Format user data
-            const formattedUser = {
-                id: telegramUser.id,
-                username: telegramUser.username,
-                firstName: telegramUser.first_name,
-                lastName: telegramUser.last_name,
-                avatar: telegramUser.photo_url, // User's profile picture URL
-            };
-
-            setUserData(formattedUser);
+            if (telegramUser) {
+                const formattedUser = {
+                    id: telegramUser.id,
+                    username: telegramUser.username,
+                    firstName: telegramUser.first_name,
+                    lastName: telegramUser.last_name,
+                    avatar: telegramUser.photo_url,
+                };
+                setUserData(formattedUser);
+            } else {
+                console.log("Telegram WebApp user data is missing.");
+            }
+        } else {
+            console.error("Telegram WebApp is not available.");
         }
     }, []);
 
     return (
         <AppRoot>
             <div>
-                <Button
-                    mode="plain"
-                    size="s"
-                    onClick={() => navigate("/")}
-                >
+                <Button mode="plain" size="s" onClick={() => navigate("/")}>
                     Назад
                 </Button>
             </div>
 
             <INITDivider color="transparent" thickness="10%" />
 
-            <Section
-                style={roundedCellStyle}
-                header="Профиль пользователя"
-            >
+            <Section style={roundedCellStyle} header="Профиль пользователя">
                 {userData ? (
                     <>
                         <Cell
@@ -65,17 +61,9 @@ const Profile = () => {
                         </Cell>
                     </>
                 ) : (
-                    <Cell multiline subhead="Загрузка...">
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                width: '100%',
-                            }}
-                        >
-                            <Spinner size="l"/>
-                            <p>Загрузка информации о пользователе...</p>
+                    <Cell multiline>
+                        <div style={{textAlign: 'center', marginTop: '20px'}}>
+                            <p>Не удалось получить данные пользователя.</p>
                         </div>
                     </Cell>
                 )}
