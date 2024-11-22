@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppRoot, Button, Section, Cell, Image } from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Section, Cell, Image, Spinner} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 
@@ -66,7 +66,17 @@ const Profile = () => {
                     </>
                 ) : (
                     <Cell multiline subhead="Загрузка...">
-                        Загрузка информации о пользователе...
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                width: '100%',
+                            }}
+                        >
+                            <Spinner size="l"/>
+                            <p>Загрузка информации о пользователе...</p>
+                        </div>
                     </Cell>
                 )}
             </Section>
