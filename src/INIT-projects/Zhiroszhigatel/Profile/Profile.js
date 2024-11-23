@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-// import {AppRoot, Button, Input, Section, Text} from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Input, Section, Text} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
-// import INITDivider from "../../CustomComponents/Dividers/Divider";
+import INITDivider from "../../CustomComponents/Dividers/Divider";
 // import tg from "https://telegram.org/js/telegram-web-app.js?56";
 
 
