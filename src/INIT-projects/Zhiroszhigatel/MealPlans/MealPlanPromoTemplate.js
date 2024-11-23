@@ -90,7 +90,9 @@ const INITMealPlanPromo = () => {
                     </Cell>
                 </Section>
 
-                <INITBuyButton/>
+                <INITBuyButton itemKey="mealPlanPro" itemTitle="Питание PROЖЖгись" />
+
+
             </List>
         </div>
     )

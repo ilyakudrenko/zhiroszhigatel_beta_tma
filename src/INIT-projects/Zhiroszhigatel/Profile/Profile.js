@@ -12,6 +12,14 @@ const Profile = () => {
     // const tg = window.Telegram.WebApp;
     const {tg, user, onBackButton} = useTelegram();
 
+    const [purchasedItems, setPurchasedItems] = useState([]);
+
+    useEffect(() => {
+        // Load purchased items from localStorage
+        const items = JSON.parse(localStorage.getItem("purchasedItems")) || [];
+        setPurchasedItems(items);
+    }, []);
+
     INITBackButton();
 
     return (
@@ -35,11 +43,21 @@ const Profile = () => {
                 </Cell>
             </Section>
 
-            {/*<div>*/}
-            {/*    <Text>*/}
-            {/*        {user?.first_name}*/}
-            {/*    </Text>*/}
-            {/*</div>*/}
+            <INITDivider color="transparent" thickness="10%" />
+
+            <Section>
+                {purchasedItems.length === 0 ? (
+                    <Cell multiline subhead="Нет приобретенных элементов">
+                        Вы еще ничего не приобрели.
+                    </Cell>
+                ) : (
+                    purchasedItems.map((item, index) => (
+                        <Cell key={index} multiline subhead={item.title}>
+                            {item.title} добавлен в библиотеку
+                        </Cell>
+                    ))
+                )}
+            </Section>
         </AppRoot>
     );
 };
