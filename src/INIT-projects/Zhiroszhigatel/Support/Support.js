@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITAccordionList from "./Accordion";
 import questionsData from "./accordionData.json"
+import INITBackButton from "../../../Hooks/BackButton";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -13,6 +14,8 @@ const roundedCellStyle = {
 
 const Support = () => {
     const navigate = useNavigate();
+    INITBackButton();
+
     return (
         <AppRoot>
             <div>
