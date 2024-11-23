@@ -35,19 +35,19 @@ const formatContent = (content) => {
  * - `handleAccordionChange`: Toggles the accordion's expansion based on its key.
  */
 const INITAccordion = ({summary, content, links}) => {
-    const [expandedAccordion, setExpandedAccordion] = useState(null);
-
-    const handleAccordionChange = (accordionKey) => {
-        setExpandedAccordion((prev) => (prev === accordionKey ? null : accordionKey));
-    };
+    // const [expandedAccordion, setExpandedAccordion] = useState(null);
+    //
+    // const handleAccordionChange = (accordionKey) => {
+    //     setExpandedAccordion((prev) => (prev === accordionKey ? null : accordionKey));
+    // };
 
     // const courseData = accordionData["course1"]; // Access data for course1
 
     return (
         <Accordion
-            expanded={expandedAccordion === 'course1'}
-            onChange={() => handleAccordionChange('course1')}
-        >
+            expanded
+            onChange={function noRefCheck(){}}
+         >
             <AccordionSummary multiline>
                 {summary}
             </AccordionSummary>
