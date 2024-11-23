@@ -35,11 +35,12 @@ const HomePage = () => {
 
     return (
         <AppRoot>
-            <INITHelp />
-
             <List
                 style={{backgroundColor: 'var(--tgui--secondary_bg_color)'}}
             >
+            <INITHelp />
+
+            <List>
                 <Section
                 >
                     <Cell
@@ -118,6 +119,7 @@ const HomePage = () => {
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
+            </List>
             </List>
         </AppRoot>
     );
