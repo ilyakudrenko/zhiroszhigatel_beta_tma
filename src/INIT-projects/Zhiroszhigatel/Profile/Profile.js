@@ -9,6 +9,7 @@ import INITDivider from "../../CustomComponents/Dividers/Divider";
 const Profile = () => {
     const navigate = useNavigate();
     const tg = window.Telegram.WebApp;
+
     return (
 
         <AppRoot>
