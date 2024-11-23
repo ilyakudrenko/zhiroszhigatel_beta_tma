@@ -26,6 +26,10 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
+const handleClickHaptic = (effect = 'light') =>{
+    window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
+}
+
 const handleClick = () => {
     alert("Button clicked!");
 };
@@ -43,7 +47,9 @@ const HomePage = () => {
                     <Cell
                         after={<Icon24ChevronRight/>}
                         before={<INITProfileIcon/>}
-                        onClick={() => navigate("/profile")}
+                        onClick={() => {
+                            handleClickHaptic('light');
+                            navigate("/profile")}}
                     >
                         Профиль
                     </Cell>
