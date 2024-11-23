@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {Accordion, AppRoot, Blockquote, Cell, Section} from "@telegram-apps/telegram-ui";
-import {
-    AccordionSummary
-} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
-import {
-    AccordionContent
-} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
+import {AccordionSummary} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
+import {AccordionContent} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
+import { useNavigate } from 'react-router-dom';
+import INITBackButton from "../../Hooks/BackButton";
 
 const HomePage_StablVersion = () => {
+    const navigate = useNavigate();
+    INITBackButton();
+
     const [isExpanded, setIsExpanded] = useState(false);
 
     const toggleAccordion = () => {
@@ -24,6 +25,7 @@ const HomePage_StablVersion = () => {
                 </Cell>
             </Section>
 
+            <Section>
             <Accordion
                 expanded={isExpanded}
                 onChange={toggleAccordion}
@@ -39,6 +41,7 @@ const HomePage_StablVersion = () => {
                     </div>
                 </AccordionContent>
             </Accordion>
+            </Section>
         </AppRoot>
     );
 };
