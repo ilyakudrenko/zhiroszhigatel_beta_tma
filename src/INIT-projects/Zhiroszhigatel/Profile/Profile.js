@@ -22,7 +22,7 @@ const Profile = () => {
                     Назад
                 </Button>
             </div>
-            <span>{tg.initDataUnsafe}</span>
+            <span>{tg.initDataUnsafe.user.id}</span>
         </AppRoot>
     );
 };
