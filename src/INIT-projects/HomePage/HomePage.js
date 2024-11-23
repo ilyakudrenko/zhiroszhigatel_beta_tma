@@ -37,7 +37,9 @@ const HomePage = () => {
         <AppRoot>
             <INITHelp />
 
-            <List>
+            <List
+                style={{backgroundColor: 'var(--tgui--secondary_bg_color)'}}
+            >
                 <Section
                 >
                     <Cell
