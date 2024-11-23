@@ -3,18 +3,16 @@ import {AppRoot, Button, Input, Section, Text} from "@telegram-apps/telegram-ui"
 import {useNavigate} from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import {useTelegram} from "../../../Hooks/UseTelegram";
-// import tg from "https://telegram.org/js/telegram-web-app.js?56";
+import INITBackButton from "../../../Hooks/BackButton";
 
 
 
 const Profile = () => {
     const navigate = useNavigate();
     // const tg = window.Telegram.WebApp;
-    const {tg, user, onBackButton} = useTelegram()
+    const {tg, user, onBackButton} = useTelegram();
 
-    useEffect(() => {
-        tg.ready();
-    }, [])
+    INITBackButton();
 
     return (
 
@@ -28,7 +26,7 @@ const Profile = () => {
                 {/*>*/}
                 {/*    Назад*/}
                 {/*</Button>*/}
-                <Button onClick={onBackButton}>Назад</Button>
+                {/*<Button onClick={onBackButton}>Назад</Button>*/}
             </div>
             <div>
                 <Text>

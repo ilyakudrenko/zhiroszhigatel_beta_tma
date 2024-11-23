@@ -14,7 +14,7 @@ const App = () => {
     return (
         isHomePage ? (
                 <Routes>
-                    <Route path="/" element={<HomePage/>} />
+                    <Route path="/" element={<HomePage />} />
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
