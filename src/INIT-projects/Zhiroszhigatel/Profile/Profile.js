@@ -20,7 +20,12 @@ const Profile = () => {
             <Section>
                 <Cell
                     //after={<Badge type="number">99</Badge>}
-                    before={<Avatar size={48} />}
+                    before={
+                        <Avatar
+                            size={96}
+                            src={user?.photo_url}
+                        />
+                    }
                     //description="Description"
                     subhead={user?.id}
                     subtitle={user?.username}
