@@ -10,28 +10,24 @@ const Profile = () => {
     const navigate = useNavigate();
     const tg = window.Telegram.WebApp;
     return (
-        <div>
-            <span>
-                {tg.initDataUnsafe?.user?.first_name}
-            </span>
-        </div>
-        // <AppRoot>
-        //
-        //     <div>
-        //         <Button
-        //             mode="plain"
-        //             size="s"
-        //             onClick={() => navigate("/")}
-        //         >
-        //             Назад
-        //         </Button>
-        //     </div>
-        //     {/*<div>*/}
-        //     {/*    <Text>*/}
-        //     {/*        {window.Telegram.WebApp.initDataUnsafe?.user?.username}*/}
-        //     {/*    </Text>*/}
-        //     {/*</div>*/}
-        // </AppRoot>
+
+        <AppRoot>
+
+            <div>
+                <Button
+                    mode="plain"
+                    size="s"
+                    onClick={() => navigate("/")}
+                >
+                    Назад
+                </Button>
+            </div>
+            <div>
+                <Text>
+                    {tg.initDataUnsafe?.user?.first_name}
+                </Text>
+            </div>
+        </AppRoot>
     );
 };
 
