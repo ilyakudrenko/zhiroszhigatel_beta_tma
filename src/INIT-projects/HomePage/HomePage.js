@@ -39,8 +39,6 @@ const HomePage = () => {
 
             <List>
                 <Section
-                    style={}
-
                 >
                     <Cell
                         after={<Icon24ChevronRight/>}
