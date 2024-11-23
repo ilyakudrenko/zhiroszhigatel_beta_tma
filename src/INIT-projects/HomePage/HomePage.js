@@ -39,7 +39,7 @@ const HomePage = () => {
 
             <List>
                 <Section
-                    style={roundedCellStyle}
+                    style={}
 
                 >
                     <Cell
