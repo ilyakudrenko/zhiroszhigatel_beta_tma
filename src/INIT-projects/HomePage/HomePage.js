@@ -38,10 +38,12 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     return (
-        <AppRoot>
+        <AppRoot
+            style={{
+                backgroundColor: 'var(--tgui--secondary_bg_color)'
+            }}
+        >
             {/*<INITHelp />*/}
-
-            <List>
                 <Section
                 >
                     <Cell
@@ -61,7 +63,6 @@ const HomePage = () => {
                         Задать вопрос
                     </Cell>
                 </Section>
-            </List>
 
             {/*Some banner for sales*/}
             <INITDivider color='transparent' thickness="10%"/>
@@ -71,8 +72,6 @@ const HomePage = () => {
             {/*Free Guides*/}
 
             <INITDivider color='transparent' thickness="10%"/>
-            <List
-            >
                 <Caption
                     caps
                     level="1"
@@ -85,13 +84,10 @@ const HomePage = () => {
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
-            </List>
 
             {/*Courses*/}
 
             <INITDivider color='transparent' thickness="10%"/>
-            <List
-            >
                 <Caption
                     caps
                     level="1"
@@ -104,12 +100,9 @@ const HomePage = () => {
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
-            </List>
 
             {/*Meal plan*/}
             <INITDivider color='transparent' thickness="10%"/>
-            <List
-            >
                 <Caption
                     caps
                     level="1"
@@ -122,7 +115,6 @@ const HomePage = () => {
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
-            </List>
         </AppRoot>
     );
 };
