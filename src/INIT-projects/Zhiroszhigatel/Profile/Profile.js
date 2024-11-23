@@ -22,7 +22,7 @@ const Profile = () => {
                     //after={<Badge type="number">99</Badge>}
                     before={
                         <Avatar
-                            size={96}
+                            size={48}
                             src={user?.photo_url}
                         />
                     }
