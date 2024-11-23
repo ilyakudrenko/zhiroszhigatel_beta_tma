@@ -17,17 +17,6 @@ const Profile = () => {
     return (
 
         <AppRoot>
-
-            <div>
-                {/*<Button*/}
-                {/*    mode="plain"*/}
-                {/*    size="s"*/}
-                {/*    onClick={() => navigate("/")}*/}
-                {/*>*/}
-                {/*    Назад*/}
-                {/*</Button>*/}
-                {/*<Button onClick={onBackButton}>Назад</Button>*/}
-            </div>
             <div>
                 <Text>
                     {user?.first_name}

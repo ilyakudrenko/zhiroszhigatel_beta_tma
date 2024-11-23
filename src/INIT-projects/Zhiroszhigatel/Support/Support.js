@@ -18,17 +18,6 @@ const Support = () => {
 
     return (
         <AppRoot>
-            <div>
-                <Button
-                    mode="plain"
-                    size="s"
-                    onClick={() => navigate("/")}
-                >
-                    Назад
-                </Button>
-            </div>
-
-            <INITDivider color='transparent' thickness="10%"/>
 
             <Section
                 style={roundedCellStyle}
