@@ -26,7 +26,6 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
-
 const handleClick = () => {
     alert("Button clicked!");
 };
@@ -44,8 +43,7 @@ const HomePage = () => {
                     <Cell
                         after={<Icon24ChevronRight/>}
                         before={<INITProfileIcon/>}
-                        onClick={() => {
-                            navigate("/profile")}}
+                        onClick={() => navigate("/profile")}
                     >
                         Профиль
                     </Cell>
