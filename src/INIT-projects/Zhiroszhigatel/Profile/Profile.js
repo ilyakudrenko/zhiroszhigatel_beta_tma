@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Button, Input, Section, Text} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Cell, Section} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import {useTelegram} from "../../../Hooks/UseTelegram";
@@ -17,11 +17,24 @@ const Profile = () => {
     return (
 
         <AppRoot>
-            <div>
-                <Text>
-                    {user?.first_name}
-                </Text>
-            </div>
+            <Section>
+                <Cell
+                    //after={<Badge type="number">99</Badge>}
+                    before={<Avatar size={48} />}
+                    //description="Description"
+                    subhead={user?.id}
+                    subtitle={user?.username}
+                    //titleBadge={<Badge type="dot" />}
+                >
+                    {user?.first_name} {user?.last_name}
+                </Cell>
+            </Section>
+
+            {/*<div>*/}
+            {/*    <Text>*/}
+            {/*        {user?.first_name}*/}
+            {/*    </Text>*/}
+            {/*</div>*/}
         </AppRoot>
     );
 };
