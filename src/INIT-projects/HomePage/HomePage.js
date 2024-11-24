@@ -16,6 +16,7 @@ import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
+import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITHelp from "../CustomComponents/Help/Help";
 import INITBanner from "../CustomComponents/Banner/Banner";
@@ -98,7 +99,7 @@ const HomePage = () => {
                 </Caption>
                 <HorizontalScroll
                 >
-                    <INITCardsList items={guidesData}/>
+                    <INITCardsList items={mealsData}/>
                 </HorizontalScroll>
 
             {/*Meal plan*/}
