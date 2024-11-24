@@ -86,23 +86,8 @@ const HomePage = () => {
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
 
-            {/*Courses*/}
+            {/*Mealplans*/}
 
-            <INITDivider color='transparent' thickness="10%"/>
-                <Caption
-                    caps
-                    level="1"
-                    weight="3"
-                    style={{margin: '5%'}}
-                >
-                    Курсы
-                </Caption>
-                <HorizontalScroll
-                >
-                    <INITCardsList items={mealsData}/>
-                </HorizontalScroll>
-
-            {/*Meal plan*/}
             <INITDivider color='transparent' thickness="10%"/>
                 <Caption
                     caps
@@ -111,6 +96,21 @@ const HomePage = () => {
                     style={{margin: '5%'}}
                 >
                     Питание
+                </Caption>
+                <HorizontalScroll
+                >
+                    <INITCardsList items={mealsData}/>
+                </HorizontalScroll>
+
+            {/*Courses*/}
+            <INITDivider color='transparent' thickness="10%"/>
+                <Caption
+                    caps
+                    level="1"
+                    weight="3"
+                    style={{margin: '5%'}}
+                >
+                    Курсы
                 </Caption>
                 <HorizontalScroll
                 >

@@ -83,7 +83,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
                         width: 254
                     }}
                 />
-                <CardCell readOnly></CardCell>
+                <CardCell readOnly>{title}</CardCell>
             </Card>
         }
     >
