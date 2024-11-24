@@ -8,7 +8,7 @@ import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/M
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
-
+import INITHelp from "../Help/Help";
 
 /**
  * INITCardItem Component
@@ -51,13 +51,49 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
             </Card>
         }
     >
-        {/*<INITGuideTemplate*/}
-        {/*    guideKey={guideKey}*/}
-        {/*    totalPages={numPage}*/}
-        {/*    title={title}*/}
-        {/*/>*/}
+        <INITGuideTemplate
+            guideKey={guideKey}
+            totalPages={numPage}
+            title={title}
+        />
 
-        <INITMealPlanPromo />
+        {/*<INITMealPlanPromo />*/}
+
+    </Modal>
+);
+
+
+const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, price}) => (
+    <Modal
+        header={<ModalHeader after={<ModalClose><Icon28Close
+            style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
+        style={{
+            backgroundColor: 'var(--tgui--secondary_bg_color)',
+        }}
+        trigger={
+            <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+                <CardChip readOnly>{cardChip}</CardChip>
+                <img
+                    alt={title}
+                    src={imageSrc}
+                    style={{
+                        display: 'block',
+                        height: 308,
+                        objectFit: 'cover',
+                        width: 254
+                    }}
+                />
+                <CardCell readOnly></CardCell>
+            </Card>
+        }
+    >
+
+        <INITMealPlanPromo
+            imageSrc={imageSrc}
+            title={title}
+            description={description}
+            price={price}
+        />
 
     </Modal>
 );
@@ -90,17 +126,31 @@ const INITCardsList = ({items = []}) => {
                     background: 'transparent',
                 }}
             >
-                {items.map((item, i) => (
-                    <INITCardItem
-                        key={i}
-                        imageSrc={item.imageSrc}
-                        title={item.title}
-                        description={item.description}
-                        cardChip={item.cardChip}
-                        guideKey={item.guideKey}
-                        numPage={item.numPage}
-                    />
-                ))}
+                {items.map((item, i) => {
+                    if(item.cardChip === "Guide"){
+                        return(
+                            <INITCardItem
+                                key={i}
+                                imageSrc={item.imageSrc}
+                                title={item.title}
+                                description={item.description}
+                                cardChip={item.cardChip}
+                                guideKey={item.guideKey}
+                                numPage={item.numPage}
+                            />
+                        )
+                    }
+                    return(
+                        <INITCardItemMeal
+                            key = {i}
+                            imageSrc={item.imageSrc}
+                            title={item.title}
+                            description={item.description}
+                            cardChip={item.cardChip}
+                            mealPlanKey={item.mealPlanKey}
+                            price={item.price}
+                        />
+                    )})}
             </div>
         </div>
     );

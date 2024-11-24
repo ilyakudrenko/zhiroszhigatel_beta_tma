@@ -11,7 +11,7 @@ import GuideButton from "./GuideButton";
  *
  * @param {string} guideKey - Unique identifier for the guide, used to locate the specific image directory.
  * @param {number} totalPages - Total number of pages (images) in the guide to display.
- * @param {title} title - Title of selected guide.
+ * @param {string} title - Title of selected guide.
  *
  * @returns {JSX.Element} A list of images that represent each page of the guide, or an error message if none are found.
  */
