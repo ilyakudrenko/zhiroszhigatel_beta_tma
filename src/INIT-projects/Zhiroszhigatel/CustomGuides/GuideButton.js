@@ -7,7 +7,7 @@ const GuideButton = ({ title }) => {
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
 
     const handleButtonClick = () => {
-        setIsGreen(!isGreen); // Toggle the color state
+        setIsGreen(true); // Toggle the color state
         setSnackbarVisible(true);
     };
 
