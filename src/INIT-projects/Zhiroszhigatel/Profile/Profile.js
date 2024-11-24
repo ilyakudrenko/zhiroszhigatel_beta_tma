@@ -45,19 +45,7 @@ const Profile = () => {
 
             <INITDivider color="transparent" thickness="10%" />
 
-            <Section>
-                {purchasedItems.length === 0 ? (
-                    <Cell multiline subhead="Нет приобретенных элементов">
-                        Вы еще ничего не приобрели.
-                    </Cell>
-                ) : (
-                    purchasedItems.map((item, index) => (
-                        <Cell key={index} multiline subhead={item.title}>
-                            {item.title} добавлен в библиотеку
-                        </Cell>
-                    ))
-                )}
-            </Section>
+
         </AppRoot>
     );
 };

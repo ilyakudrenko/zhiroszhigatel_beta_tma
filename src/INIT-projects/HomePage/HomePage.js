@@ -59,7 +59,9 @@ const HomePage = () => {
                     <Cell
                         after={<Icon24ChevronRight/>}
                         before={<INITMessageBadgeIcon color="white"/>}
-                        onClick={() => navigate("/support")}
+                        onClick={() => {
+                            handleClickHaptic('light');
+                            navigate("/support")}}
                     >
                         Задать вопрос
                     </Cell>
@@ -82,6 +84,9 @@ const HomePage = () => {
                     Гайды
                 </Caption>
                 <HorizontalScroll
+                    onClick={() =>
+                        handleClickHaptic('light')
+                    }
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>
@@ -98,6 +103,9 @@ const HomePage = () => {
                     Питание
                 </Caption>
                 <HorizontalScroll
+                    onClick={() =>
+                        handleClickHaptic('light')
+                    }
                 >
                     <INITCardsList items={mealsData}/>
                 </HorizontalScroll>
@@ -113,6 +121,9 @@ const HomePage = () => {
                     Курсы
                 </Caption>
                 <HorizontalScroll
+                    onClick={() =>
+                        handleClickHaptic('light')
+                        }
                 >
                     <INITCardsList items={guidesData}/>
                 </HorizontalScroll>

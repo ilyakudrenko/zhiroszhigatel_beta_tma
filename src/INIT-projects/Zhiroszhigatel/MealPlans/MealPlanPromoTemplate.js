@@ -82,7 +82,7 @@ const INITMealPlanPromo = ({imageSrc, title, description, price}) => {
                     {/*    $50*/}
                     {/*</Cell>*/}
                 </Section>
-                <INITBuyButton itemKey="mealPlanPro" itemTitle="Питание PROЖЖгись" />
+                <INITBuyButton title={title} price={price} />
         </List>
     );
 };

@@ -2,23 +2,19 @@ import React, {useState} from 'react';
 import {Button, Snackbar} from "@telegram-apps/telegram-ui";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 
-const INITBuyButton = ({ itemKey, itemTitle }) => {
-    const Price = 50;
+const handleClickHaptic = (effect = 'light') =>{
+    window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
+}
+
+const INITBuyButton = ({title, price}) => {
 
     const [isGreen, setIsGreen] = useState(false);
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
 
     const handleButtonClick = () => {
+        handleClickHaptic('light')
         setIsGreen(true); // Toggle the color state
         setSnackbarVisible(true);
-
-        // Save the purchased item in localStorage
-        const purchasedItems = JSON.parse(localStorage.getItem("purchasedItems")) || [];
-        if (!purchasedItems.includes(itemKey)) {
-            purchasedItems.push({ key: itemKey, title: itemTitle });
-            localStorage.setItem("purchasedItems", JSON.stringify(purchasedItems));
-        }
-
     };
 
     const handleCloseSnackbar = () => {
@@ -46,13 +42,13 @@ const INITBuyButton = ({ itemKey, itemTitle }) => {
                     backgroundColor: isGreen ? '#53E651' : '',
                 }}
             >
-                Купить: ${Price}
+                Купить: ${price}
             </Button>
 
             {isSnackbarVisible && (
                 <Snackbar
                     before={<INITProfileIcon/>}
-                    children="Test"
+                    children={title}
                     description="Добавлен в библиотеку(вы можите найти его в профиле)"
                     duration={4000}
                     onClose={handleCloseSnackbar}
