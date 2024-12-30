@@ -40,7 +40,7 @@ const Profile = () => {
     const fetchUserData = async () => {
         try {
             const response = await axios.post('http://localhost:3300/login', {
-                username: 'test_user', // Подставьте значение username
+                username: 'test_user_001', // Подставьте значение username
             });
             console.log('User data:', response.data);
         } catch (error) {
