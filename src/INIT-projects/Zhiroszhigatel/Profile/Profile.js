@@ -20,7 +20,7 @@ const Profile = () => {
         // Fetch user data from the server when the component mounts
         const fetchUserData = async () => {
             try {
-                const response = await axios.post("http://localhost:3306/login", {
+                const response = await axios.post("http://localhost:3300/login", {
                     username: user?.username, // Send the username from the Telegram hook
                 });
                 setUserData(response.data); // Store the user data in state
