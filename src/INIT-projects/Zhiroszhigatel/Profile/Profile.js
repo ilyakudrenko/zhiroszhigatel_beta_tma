@@ -12,13 +12,13 @@ const Profile = () => {
     // const tg = window.Telegram.WebApp;
     const {tg, user, onBackButton} = useTelegram();
 
-    const [purchasedItems, setPurchasedItems] = useState([]);
-
-    useEffect(() => {
-        // Load purchased items from localStorage
-        const items = JSON.parse(localStorage.getItem("purchasedItems")) || [];
-        setPurchasedItems(items);
-    }, []);
+    // const [purchasedItems, setPurchasedItems] = useState([]);
+    //
+    // useEffect(() => {
+    //     // Load purchased items from localStorage
+    //     const items = JSON.parse(localStorage.getItem("purchasedItems")) || [];
+    //     setPurchasedItems(items);
+    // }, []);
 
     INITBackButton();
 
