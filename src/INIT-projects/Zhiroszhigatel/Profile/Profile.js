@@ -97,7 +97,8 @@ const Profile = () => {
 
         axios.post("http://localhost:3300/login", { username })
             .then((response) => {
-                setUserData(response.data);
+                setUserData(response.data); // Сохраняем данные пользователя
+                console.log("User data fetched:", response.data);
             })
             .catch((err) => {
                 console.error("Failed to fetch user data:", err);
@@ -109,19 +110,19 @@ const Profile = () => {
     }, []);
 
     if (loading) return <div>Loading...</div>;
-    if (error) return <div>{error}</div>;
+    if (error) return <div style={{ color: "red" }}>{error}</div>;
 
     return (
         <div>
-            <h1>Profile Page</h1>
-            <div>
-                <strong>Username: </strong>
-                {userData.username}
-            </div>
-            <div>
-                <strong>ID: </strong>
-                {userData.id}
-            </div>
+            <h1>Welcome to your Profile!</h1>
+            {userData && (
+                <>
+                    <p><strong>Username:</strong> {userData.username}</p>
+                    <p><strong>ID:</strong> {userData.id}</p>
+                    {/*<p><strong>Registration Date:</strong> {new Date(userData.registration_date).toLocaleString()}</p>*/}
+                    {/*<p><strong>Last Login:</strong> {new Date(userData.last_login).toLocaleString()}</p>*/}
+                </>
+            )}
         </div>
     );
 };
