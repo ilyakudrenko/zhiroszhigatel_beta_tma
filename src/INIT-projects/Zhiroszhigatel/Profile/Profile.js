@@ -1,20 +1,60 @@
 import React, { useEffect, useState } from "react";
-import { AppRoot, Avatar, Cell, Section } from "@telegram-apps/telegram-ui";
-import { useNavigate } from "react-router-dom";
-import INITDivider from "../../CustomComponents/Dividers/Divider";
-import { useTelegram } from "../../../Hooks/UseTelegram";
-import INITBackButton from "../../../Hooks/BackButton";
-
 import axios from "axios";
+import { AppRoot } from "@telegram-apps/telegram-ui";
 
 const Profile = () => {
-    const {user} = useTelegram();
+    const [userData, setUserData] = useState(null); // Данные пользователя
+    const [loading, setLoading] = useState(true);  // Флаг загрузки
+    const [error, setError] = useState(null);      // Флаг ошибки
+
+    useEffect(() => {
+        // Получение username из Telegram
+        const username = window.Telegram.WebApp?.initDataUnsafe?.user?.username;
+
+        if (!username) {
+            setError("Username not provided by Telegram.");
+            setLoading(false);
+            return;
+        }
+
+        // Запрос на сервер для проверки/создания пользователя
+        const fetchUser = async () => {
+            try {
+                const response = await axios.post("http://localhost:3000/login", { username });
+                setUserData(response.data); // Сохраняем данные пользователя
+            } catch (err) {
+                console.error("Error fetching user data:", err);
+                setError("Failed to fetch user data.");
+            } finally {
+                setLoading(false); // Завершаем загрузку
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+    // Отображение в зависимости от состояния
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
+
     return (
         <AppRoot>
             <h1>Profile Page</h1>
             <div>
-                <strong>Username:</strong>
-                {user?.username || 'username not provided'}
+                <strong>Username: </strong>
+                {userData.username}
+            </div>
+            <div>
+                <strong>ID: </strong>
+                {userData.id}
+            </div>
+            <div>
+                <strong>Registration Date: </strong>
+                {new Date(userData.registration_date).toLocaleString()}
+            </div>
+            <div>
+                <strong>Last Login: </strong>
+                {new Date(userData.last_login).toLocaleString()}
             </div>
         </AppRoot>
     );
