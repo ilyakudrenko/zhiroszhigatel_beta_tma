@@ -20,7 +20,7 @@ const Profile = () => {
         // Запрос на сервер для проверки/создания пользователя
         const fetchUser = async () => {
             try {
-                const response = await axios.post("http://localhost:3000/login", { username });
+                const response = await axios.post("http://localhost:3300/login", { username });
                 setUserData(response.data); // Сохраняем данные пользователя
             } catch (err) {
                 console.error("Error fetching user data:", err);
