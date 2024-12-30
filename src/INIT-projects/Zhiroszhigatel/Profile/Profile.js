@@ -44,6 +44,7 @@ const Profile = () => {
         // Load purchased items from localStorage
         const items = JSON.parse(localStorage.getItem("purchasedItems")) || [];
         setPurchasedItems(items);
+        //test
     }, []);
 
     INITBackButton();
