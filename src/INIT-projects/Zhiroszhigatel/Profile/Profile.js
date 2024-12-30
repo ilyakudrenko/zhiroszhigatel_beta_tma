@@ -77,19 +77,50 @@
 
 
 
-//TEST 1 <<<<<<< - - -- -- - - ------ -- - -- -- - -->>>>>>
-
-import React from "react";
+//TEST 2 <<<<<<< - - -- -- - - ------ -- - -- -- - -->>>>>>
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Profile = () => {
-    const username = window.Telegram.WebApp?.initDataUnsafe?.user?.username;
+    const [userData, setUserData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const username = window.Telegram.WebApp?.initDataUnsafe?.user?.username;
+
+        if (!username) {
+            setError("Username not provided by Telegram.");
+            setLoading(false);
+            return;
+        }
+
+        axios.post("http://localhost:3300/login", { username })
+            .then((response) => {
+                setUserData(response.data);
+            })
+            .catch((err) => {
+                console.error("Failed to fetch user data:", err);
+                setError("Failed to fetch user data.");
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
 
     return (
         <div>
             <h1>Profile Page</h1>
             <div>
                 <strong>Username: </strong>
-                {username || "Username not provided"}
+                {userData.username}
+            </div>
+            <div>
+                <strong>ID: </strong>
+                {userData.id}
             </div>
         </div>
     );
