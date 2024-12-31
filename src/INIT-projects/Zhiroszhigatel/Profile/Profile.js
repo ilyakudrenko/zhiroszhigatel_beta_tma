@@ -95,7 +95,7 @@ const Profile = () => {
             return;
         }
 
-        axios.post("http://localhost:3300/login", { username })
+        axios.post("https://init-railway-backend-production.up.railway.app/users/login", { username })
             .then((response) => {
                 setUserData(response.data); // Сохраняем данные пользователя
                 console.log("User data fetched:", response.data);
