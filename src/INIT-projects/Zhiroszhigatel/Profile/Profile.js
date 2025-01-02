@@ -87,7 +87,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    INITBackButton();
+    INITBackButton();//back button
 
     useEffect(() => {
         const username = window.Telegram.WebApp?.initDataUnsafe?.user?.username;
