@@ -81,6 +81,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import INITBackButton from "../../../Hooks/BackButton";
+import {Spinner} from "@telegram-apps/telegram-ui";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -98,7 +99,7 @@ const Profile = () => {
             return;
         }
 
-        axios.post("https://init-railway-backend-production.up.railway.app/users/login", { username })
+        axios.post("https://init-railway-backend-production.up.railway.app/users/login", {username})
             .then((response) => {
                 setUserData(response.data); // Сохраняем данные пользователя
                 console.log("User data fetched:", response.data);
@@ -113,7 +114,8 @@ const Profile = () => {
     }, []);
 
     if (loading) return <div>Loading...</div>;
-    if (error) return <div style={{ color: "red" }}>{error}</div>;
+    <div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div>;
+    if (error) return <div style={{color: "red"}}>{error}</div>;
 
     return (
         <div>
