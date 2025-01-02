@@ -115,7 +115,33 @@ const Profile = () => {
             });
     }, []);
 
-    if (loading) return <AppRoot><div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div></AppRoot>;
+    if (loading)
+        return (
+            <AppRoot>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '100vh' // Full viewport height to center vertically
+                    }}
+                >
+                    <div
+                        style={{
+                            border: '1px dashed #9747FF',
+                            borderRadius: '5px',
+                            padding: '20px',
+                            width: '400px',
+                            textAlign: 'center' // Optional: centers text within the box
+                        }}
+                    >
+                        <Spinner size="l" />
+                        {' '}
+                        <br />
+                    </div>
+                </div>
+            </AppRoot>
+        );
     if (error) return <div style={{color: "red"}}>{error}</div>;
 
     return (
