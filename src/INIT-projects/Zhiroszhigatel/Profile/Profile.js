@@ -80,11 +80,14 @@
 //TEST 2 <<<<<<< - - -- -- - - ------ -- - -- -- - -->>>>>>
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import INITBackButton from "../../../Hooks/BackButton";
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    INITBackButton();
 
     useEffect(() => {
         const username = window.Telegram.WebApp?.initDataUnsafe?.user?.username;
