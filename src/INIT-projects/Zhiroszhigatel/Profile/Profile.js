@@ -113,8 +113,7 @@ const Profile = () => {
             });
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    <div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div>;
+    if (loading) return <div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div>;
     if (error) return <div style={{color: "red"}}>{error}</div>;
 
     return (
