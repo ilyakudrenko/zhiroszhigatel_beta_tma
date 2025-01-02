@@ -82,8 +82,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import INITBackButton from "../../../Hooks/BackButton";
 import {Spinner} from "@telegram-apps/telegram-ui";
+import { AppRoot } from "@telegram-apps/telegram-ui";
 
 const Profile = () => {
+
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -113,10 +115,11 @@ const Profile = () => {
             });
     }, []);
 
-    if (loading) return <div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div>;
+    if (loading) return <AppRoot><div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div></AppRoot>;
     if (error) return <div style={{color: "red"}}>{error}</div>;
 
     return (
+        <AppRoot>
         <div>
             <h1>Welcome to your Profile!</h1>
             {userData && (
@@ -128,6 +131,7 @@ const Profile = () => {
                 </>
             )}
         </div>
+        </AppRoot>
     );
 };
 
