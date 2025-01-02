@@ -123,15 +123,11 @@ const Profile = () => {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        height: '100vh' // Full viewport height to center vertically
+                        height: '50vh' // Full viewport height to center vertically
                     }}
                 >
                     <div
                         style={{
-                            border: '1px dashed #9747FF',
-                            borderRadius: '5px',
-                            padding: '20px',
-                            width: '400px',
                             textAlign: 'center' // Optional: centers text within the box
                         }}
                     >
