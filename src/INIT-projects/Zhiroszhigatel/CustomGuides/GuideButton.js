@@ -35,6 +35,7 @@ const GuideButton = ({ guide_id, title }) => {
             // If the guide is already added, show a message and exit
             setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
             setSnackbarVisible(true);
+            setIsAdded(true);
             return;
         }
 
