@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Button, Snackbar } from "@telegram-apps/telegram-ui";
-import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
 const GuideButton = ({ guide_id, title }) => {
-    const [isAdded, setIsAdded] = useState(false); // Track if the guide is already added
+    const [isAdded, setIsAdded] = useState(false);
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [snackbarDescription, setSnackbarDescription] = useState("");
 
     useEffect(() => {
         const checkGuideStatus = async () => {
             try {
-                // Get the user session data
                 const userSession = getSession();
                 const userId = userSession.id_db;
 
-                // Check if the guide is already in the user's library
+                // Новый эндпоинт для проверки гайда
                 const response = await axios.get(
-                    `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
+                    `https://init-railway-backend-production.up.railway.app/user_guides/check/${userId}/${guide_id}`
                 );
 
-                setIsAdded(response.data.exists); // Update the state based on the response
+                setIsAdded(response.data.exists); // Обновляем состояние
             } catch (error) {
-                console.error("Failed to check guide status:", error);
+                console.error("Ошибка проверки гайда:", error);
             }
         };
 
@@ -32,25 +30,21 @@ const GuideButton = ({ guide_id, title }) => {
 
     const handleButtonClick = async () => {
         if (isAdded) {
-            // If the guide is already added, show a message and exit
             setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
             setSnackbarVisible(true);
             return;
         }
 
         try {
-            // Get the user session data
             const userSession = getSession();
             const userId = userSession.id_db;
 
-            // Send a POST request to add the guide to the user's library
             await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
                 user_id: userId,
-                guide_id: guide_id,
+                guide_id,
             });
 
-            // Update UI state
-            setIsAdded(true); // Mark the guide as added
+            setIsAdded(true);
             setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
             setSnackbarVisible(true);
         } catch (error) {
@@ -77,7 +71,7 @@ const GuideButton = ({ guide_id, title }) => {
                 display: "flex",
                 justifyContent: "center",
                 paddingBottom: "20px",
-                zIndex: 1000, // Ensure it’s on top of other elements
+                zIndex: 1000,
             }}
         >
             <Button
@@ -85,7 +79,7 @@ const GuideButton = ({ guide_id, title }) => {
                 size="l"
                 onClick={handleButtonClick}
                 style={{
-                    backgroundColor: isAdded ? "#FF6347" : '', // Red if added, green otherwise
+                    backgroundColor: isAdded ? "#FF6347" : "", // Красный, если добавлен
                 }}
             >
                 {isAdded ? "Уже добавлен" : "Добавить в библиотеку"}
@@ -93,14 +87,10 @@ const GuideButton = ({ guide_id, title }) => {
 
             {isSnackbarVisible && (
                 <Snackbar
-                    before={<INITProfileIcon />}
                     children={title}
                     description={snackbarDescription}
                     duration={4000}
                     onClose={handleCloseSnackbar}
-                    style={{
-                        zIndex: 1000, // Ensure it’s on top of other elements
-                    }}
                 />
             )}
         </div>
