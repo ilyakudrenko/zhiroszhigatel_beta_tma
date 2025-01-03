@@ -13,7 +13,7 @@ const fetchUserLibrary = async () => {
         const userId = userSession.id_db; // Get the user's database ID
 
         // Send a request to the backend to fetch the user's library
-        const response = await axios.get(`https://init-railway-backend-production.up.railway.app/user-guides/${userId}`);
+        const response = await axios.get(`https://init-railway-backend-production.up.railway.app/user_guides/${userId}`);
 
         // Format the response into the desired guidesData format
         const guidesData = response.data.map((guide) => ({
