@@ -85,7 +85,7 @@ const GuideButton = ({ guide_id, title }) => {
                 size="l"
                 onClick={handleButtonClick}
                 style={{
-                    backgroundColor: isAdded ? "#FF6347" : "#53E651", // Red if added, green otherwise
+                    backgroundColor: isAdded ? "#FF6347" : '', // Red if added, green otherwise
                 }}
             >
                 {isAdded ? "Уже добавлен" : "Добавить в библиотеку"}
