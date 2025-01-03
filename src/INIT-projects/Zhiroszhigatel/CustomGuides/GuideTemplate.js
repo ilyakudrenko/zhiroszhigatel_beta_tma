@@ -12,10 +12,11 @@ import GuideButton from "./GuideButton";
  * @param {string} guideKey - Unique identifier for the guide, used to locate the specific image directory.
  * @param {number} totalPages - Total number of pages (images) in the guide to display.
  * @param {string} title - Title of selected guide.
+ * @param {number} guideId - Unique identifier for the guide, used to locate the specific guide from database.
  *
  * @returns {JSX.Element} A list of images that represent each page of the guide, or an error message if none are found.
  */
-const INITGuideTemplate = ({ guideKey, totalPages, title}) => {
+const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
     const [guideImages, setGuideImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -80,7 +81,7 @@ const INITGuideTemplate = ({ guideKey, totalPages, title}) => {
                     style={{ width: '100%', display: 'block' }}
                 />
             ))}
-            <GuideButton  title={title} />
+            <GuideButton guide_id={guideId}  title={title} />
         </div>
     );
 };

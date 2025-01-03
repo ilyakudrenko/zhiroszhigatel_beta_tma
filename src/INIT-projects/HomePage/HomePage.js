@@ -17,6 +17,7 @@ import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 import {startSession} from "../CustomComponents/UserSession/session";
+import fetchFreeGuides from "../CustomComponents/UserSession/fetchFreeGuides";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -36,12 +37,16 @@ const HomePage = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [freeGuides, setFreeGuides] = useState(null);
 
     useEffect(() => {
         const initialize = async () => {
             try {
                 await startSession(); // Start the session
+                const guides = await fetchFreeGuides();
+                setFreeGuides(guides);
                 setLoading(false);   // End loading after session starts
+
             } catch (err) {
                 setError("Failed to initialize session.");
             }
@@ -126,7 +131,7 @@ const HomePage = () => {
                         handleClickHaptic('light')
                     }
                 >
-                    <INITCardsList items={guidesData}/>
+                    <INITCardsList items={freeGuides}/>
                 </HorizontalScroll>
 
             {/*Mealplans*/}

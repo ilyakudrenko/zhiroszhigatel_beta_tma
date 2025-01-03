@@ -24,10 +24,11 @@ import INITHelp from "../Help/Help";
  * @param {string} cardChip - A label displayed at the top of the card.
  * @param {string} guideKey - A unique key to identify the guide.
  * @param {number} numPage - The total number of pages for the guide in the modal.
+ * @param {number} guide_id_db - The id of particular guide located in the database.
  *
  * @returns {JSX.Element} A card component that opens a modal with guide details when clicked.
  */
-const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage}) => (
+const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage, guide_id_db}) => (
     <Modal
         header={<ModalHeader after={<ModalClose><Icon28Close
             style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
@@ -55,6 +56,7 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
             guideKey={guideKey}
             totalPages={numPage}
             title={title}
+            guideId={guide_id_db}
         />
 
         {/*<INITMealPlanPromo />*/}
@@ -137,6 +139,7 @@ const INITCardsList = ({items = []}) => {
                                 cardChip={item.cardChip}
                                 guideKey={item.guideKey}
                                 numPage={item.numPage}
+                                guide_id_db={item.guide_id_db}
                             />
                         )
                     }
