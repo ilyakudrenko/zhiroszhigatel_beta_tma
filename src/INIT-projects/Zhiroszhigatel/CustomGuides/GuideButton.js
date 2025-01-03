@@ -27,39 +27,36 @@ const GuideButton = ({ guide_id, title }) => {
             }
         };
 
-        checkGuideStatus(); // Check status on component mount and re-check when `guide_id` changes
+        checkGuideStatus(); // Check status on component mount
     }, [guide_id]);
 
     const handleButtonClick = async () => {
-        if (isAdded) {
-            // If the guide is already added, show a message and exit
-            setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
-            setSnackbarVisible(true);
-            return;
-        }
+        const userSession = getSession();
+        const userId = userSession.id_db;
 
         try {
-            // Get the user session data
-            const userSession = getSession();
-            const userId = userSession.id_db;
+            if (isAdded) {
+                // If the guide is already added, send a DELETE request
+                await axios.delete(
+                    `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
+                );
 
-            // Send a POST request to add the guide to the user's library
-            await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
-                user_id: userId,
-                guide_id: guide_id,
-            });
+                setIsAdded(false); // Mark the guide as removed
+                setSnackbarDescription("Гайд удален из вашей библиотеки.");
+            } else {
+                // If the guide is not added, send a POST request
+                await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
+                    user_id: userId,
+                    guide_id: guide_id,
+                });
 
-            // Update UI state
-            setIsAdded(true); // Mark the guide as added
-            setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
+                setIsAdded(true); // Mark the guide as added
+                setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
+            }
             setSnackbarVisible(true);
         } catch (error) {
-            console.error("Failed to add guide to library:", error);
-            if (error.response && error.response.status === 409) {
-                setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
-            } else {
-                setSnackbarDescription("Ошибка добавления в библиотеку. Попробуйте ещё раз.");
-            }
+            console.error("Error managing guide in library:", error);
+            setSnackbarDescription("Ошибка. Попробуйте ещё раз.");
             setSnackbarVisible(true);
         }
     };
@@ -89,7 +86,7 @@ const GuideButton = ({ guide_id, title }) => {
                     backgroundColor: isAdded ? "#FF6347" : '', // Red if added, green otherwise
                 }}
             >
-                {isAdded ? "Уже добавлен" : "Добавить в библиотеку"}
+                {isAdded ? "Удалить из библиотеки" : "Добавить в библиотеку"}
             </Button>
 
             {isSnackbarVisible && (
