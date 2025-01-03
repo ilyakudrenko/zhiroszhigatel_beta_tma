@@ -32,7 +32,7 @@ const GuideButton = ({ guide_id, title }) => {
 
     const handleButtonClick = async () => {
         if (isAdded) {
-            // Show snackbar if the guide is already added
+            // If the guide is already added, show a message and exit
             setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
             setSnackbarVisible(true);
             return;
@@ -54,8 +54,11 @@ const GuideButton = ({ guide_id, title }) => {
             setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
             setSnackbarVisible(true);
         } catch (error) {
-            console.error("Failed to add guide to library:", error);
-            setSnackbarDescription("Ошибка добавления в библиотеку. Попробуйте ещё раз.");
+            if (error.response && error.response.status === 409) {
+                setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
+            } else {
+                setSnackbarDescription("Ошибка добавления в библиотеку. Попробуйте ещё раз.");
+            }
             setSnackbarVisible(true);
         }
     };
@@ -82,7 +85,7 @@ const GuideButton = ({ guide_id, title }) => {
                 size="l"
                 onClick={handleButtonClick}
                 style={{
-                    backgroundColor: isAdded ? "#FF6347" : '', // Red if added, green otherwise
+                    backgroundColor: isAdded ? "#FF6347" : "#53E651", // Red if added, green otherwise
                 }}
             >
                 {isAdded ? "Уже добавлен" : "Добавить в библиотеку"}
