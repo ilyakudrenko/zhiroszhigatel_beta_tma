@@ -1,14 +1,11 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {
     AppRoot,
-    Banner,
-    Button,
     Caption,
     Cell,
-    List,
-    Section,
+    Section, Spinner,
 } from '@telegram-apps/telegram-ui';
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
@@ -18,8 +15,8 @@ import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
 import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
-import INITHelp from "../CustomComponents/Help/Help";
 import INITBanner from "../CustomComponents/Banner/Banner";
+import {startSession} from "../CustomComponents/UserSession/session";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -37,6 +34,30 @@ const handleClick = () => {
 
 const HomePage = () => {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const initialize = async () => {
+            try {
+                await startSession(); // Start the session
+                setLoading(false);   // End loading after session starts
+            } catch (err) {
+                setError("Failed to initialize session.");
+            }
+        };
+
+        initialize();
+    }, []);
+
+    if (loading) {
+        return <AppRoot><div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div></AppRoot>;
+    }
+
+    if (error) {
+        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+    }
+
 
     return (
         <AppRoot
