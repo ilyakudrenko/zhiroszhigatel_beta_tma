@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from "react";
-import {AppRoot, Avatar, Cell, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
+import fetchUserLibrary from "../../CustomComponents/UserSession/fetchUserLibrary";
+import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
+import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
+
+const handleClickHaptic = (effect = 'light') =>{
+    window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
+}
 
 const Profile = () => {
     const [userSession, setUserSession] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [userLibrary, setUserLibrary] = useState([]); // State for user's guides
+
 
     INITBackButton(); // Back button for the profile
 
     useEffect(() => {
-        try {
-            // Retrieve session data
-            const session = getSession();
-            setUserSession(session);
-            setLoading(false);
-        } catch (err) {
-            console.error("Failed to retrieve user session:", err);
-            setError("Failed to initialize session.");
-            setLoading(false);
-        }
+        const fetchData = async () => {
+            try {
+                // Retrieve session data
+                const session = getSession();
+                setUserSession(session);
+                const library = await fetchUserLibrary();
+                setUserLibrary(library);
+
+                setLoading(false);
+            } catch (err) {
+                console.error("Failed to retrieve user session:", err);
+                setError("Failed to initialize session.");
+                setLoading(false);
+            }
+        };
+        fetchData();
     }, []);
 
     if (loading) {
@@ -87,6 +102,29 @@ const Profile = () => {
                     {userSession.first_name_tg} {userSession.last_name_tg}
                 </Cell>
             </Section>
+            <INITDivider color='transparent' thickness="10%"/>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Ваша библиотека
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                {userLibrary.length > 0 ? (
+                    <INITCardsList items={userLibrary} />
+                ) : (
+                    <div>
+                        <p>В вашей библиотеке пока нету гайдов/курсов.</p>
+                        <p>Вы можете добавить их из главного меню.</p>
+                    </div>
+                )}
+            </HorizontalScroll>
 
             <INITDivider color="transparent" thickness="10%"/>
         </AppRoot>
