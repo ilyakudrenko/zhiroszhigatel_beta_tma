@@ -54,7 +54,7 @@ const Profile = () => {
     return (
         <AppRoot>
             <div>
-                <h1>Welcome to your Profile!</h1>
+                <h1>Welcome to your Profile!</h1> // updated profile frontend goes here
                 {userSession && (
                     <>
                         <p><strong>ID (DB):</strong> {userSession.id_db}</p>
