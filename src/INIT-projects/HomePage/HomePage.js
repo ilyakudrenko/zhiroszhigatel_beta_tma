@@ -50,9 +50,26 @@ const HomePage = () => {
         initialize();
     }, []);
 
-    if (loading) {
-        return <AppRoot><div style={{border: '1px dashed #9747FF', borderRadius: '5px', padding: '20px', width: '400px'}}><Spinner size="l"/>{' '}<br/></div></AppRoot>;
-    }
+    if (loading)
+        return (
+            <AppRoot>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh", // Full viewport height to center vertically
+                    }}
+                >
+                    <div style={{ textAlign: "center" }}>
+                        <Spinner size="l" />
+                        {" "}
+                        <br />
+                    </div>
+                </div>
+            </AppRoot>
+        );
+
 
     if (error) {
         return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
