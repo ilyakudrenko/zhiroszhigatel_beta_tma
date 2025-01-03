@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {AppRoot, Avatar, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Blockquote, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
@@ -122,8 +122,10 @@ const Profile = () => {
                     <INITCardsList items={userLibrary} />
                 ) : (
                     <div>
-                        <p>В вашей библиотеке пока нету гайдов/курсов.</p>
-                        <p>Вы можете добавить их из главного меню.</p>
+                        <Blockquote type="text">
+                            <p>В вашей библиотеке пока нету гайдов/курсов.</p>
+                            <p>Вы можете добавить их из главного меню.</p>
+                        </Blockquote>
                     </div>
                 )}
             </HorizontalScroll>
