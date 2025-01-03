@@ -16,7 +16,7 @@ const GuideButton = ({ guide_id, title }) => {
             const userId = userSession.id_db; // Get the user ID from the session
 
             // Send a POST request to the backend
-            await axios.post('https://init-railway-backend-production.up.railway.app/user-guides', {
+            await axios.post('https://init-railway-backend-production.up.railway.app/user_guides', {
                 user_id: userId,
                 guide_key: guide_id, // Use the provided guideKey
             });
