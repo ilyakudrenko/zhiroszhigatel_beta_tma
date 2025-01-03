@@ -81,7 +81,8 @@ const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
                     style={{ width: '100%', display: 'block' }}
                 />
             ))}
-            <GuideButton guide_id={guideId}  title={title} />
+
+            {guideId && <GuideButton guide_id={guideId} title={title} />}
         </div>
     );
 };
