@@ -18,7 +18,7 @@ const GuideButton = ({ guide_id, title }) => {
 
                 // Check if the guide is already in the user's library
                 const response = await axios.get(
-                    `https://init-railway-backend-production.up.railway.app/user_guides/check/${userId}/${guide_id}`
+                    `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
                 );
 
                 setIsAdded(response.data.exists); // Update the state based on the response
