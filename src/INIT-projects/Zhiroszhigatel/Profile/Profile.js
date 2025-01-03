@@ -61,7 +61,7 @@ const Profile = () => {
                         <p><strong>Username (DB):</strong> {userSession.username_db}</p>
                         <p><strong>Registration Date (DB):</strong> {userSession.registration_date_db}</p>
                         <p><strong>Last Login (DB):</strong> {userSession.last_login_db}</p>
-                        <p><strong>Photo URL (TG):</strong> <a href={userSession.photo_url_tg} target="_blank" rel="noopener noreferrer">View Photo</a></p>
+                        <p><strong>Photo URL (TG):</strong> {userSession.photo_url_tg} </p>
                         <p><strong>First Name (TG):</strong> {userSession.first_name_tg}</p>
                         <p><strong>Last Name (TG):</strong> {userSession.last_name_tg}</p>
                         <p><strong>Is Bot (TG):</strong> {userSession.is_bot_tg ? "Yes" : "No"}</p>
