@@ -91,6 +91,9 @@ const GuideButton = ({ guide_id, title }) => {
                     description={snackbarDescription}
                     duration={4000}
                     onClose={handleCloseSnackbar}
+                    style={{
+                        zIndex: 1000
+                    }}
                 />
             )}
         </div>
