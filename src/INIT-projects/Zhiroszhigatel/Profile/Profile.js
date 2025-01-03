@@ -105,7 +105,6 @@ const Profile = () => {
                 </Cell>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
-
             <Caption
                 caps
                 level="1"
