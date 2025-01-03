@@ -21,6 +21,7 @@ const GuideButton = ({ guide_id, title }) => {
                     `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
                 );
 
+                //cnnc
                 setIsAdded(response.data.exists); // Update the state based on the response
             } catch (error) {
                 console.error("Failed to check guide status:", error);
