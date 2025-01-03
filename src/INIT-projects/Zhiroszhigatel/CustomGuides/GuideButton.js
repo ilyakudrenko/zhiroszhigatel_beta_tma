@@ -31,17 +31,17 @@ const GuideButton = ({ guide_id, title }) => {
     }, [guide_id]);
 
     const handleButtonClick = async () => {
+        if (isAdded) {
+            // Show snackbar if the guide is already added
+            setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
+            setSnackbarVisible(true);
+            return;
+        }
+
         try {
             // Get the user session data
             const userSession = getSession();
             const userId = userSession.id_db;
-
-            // If the guide is already added, show a message and exit
-            if (isAdded) {
-                setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
-                setSnackbarVisible(true);
-                return;
-            }
 
             // Send a POST request to add the guide to the user's library
             await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
@@ -54,11 +54,8 @@ const GuideButton = ({ guide_id, title }) => {
             setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
             setSnackbarVisible(true);
         } catch (error) {
-            if (error.response && error.response.status === 409) {
-                setSnackbarDescription("Этот гайд уже добавлен в вашу библиотеку.");
-            } else {
-                setSnackbarDescription("Ошибка добавления в библиотеку. Попробуйте ещё раз.");
-            }
+            console.error("Failed to add guide to library:", error);
+            setSnackbarDescription("Ошибка добавления в библиотеку. Попробуйте ещё раз.");
             setSnackbarVisible(true);
         }
     };
