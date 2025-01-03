@@ -14,7 +14,7 @@ export const startSession = async () => {
 
     try {
         // Send a login request to the backend
-        const response = await axios.post("https://your-backend-url.com/users/login", {
+        const response = await axios.post("https://init-railway-backend-production.up.railway.app/users/login", {
             username: telegramUser.username,
         });
 
