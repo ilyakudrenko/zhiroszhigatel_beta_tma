@@ -80,7 +80,7 @@ const Profile = () => {
                         />
                     }
                     //description="Description"
-                    subhead={userSession.id_db}
+                    //subhead={userSession.id_db}
                     subtitle={userSession.username_db}
                     //titleBadge={<Badge type="dot" />}
                 >
