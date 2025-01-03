@@ -41,24 +41,25 @@ const Profile = () => {
 
     }, []);
 
-    if (loading) {
+    if (loading)
         return (
             <AppRoot>
                 <div
                     style={{
-                        border: "1px dashed #9747FF",
-                        borderRadius: "5px",
-                        padding: "20px",
-                        width: "400px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh", // Full viewport height to center vertically
                     }}
                 >
-                    <Spinner size="l" />
-                    {" "}
-                    <br />
+                    <div style={{ textAlign: "center" }}>
+                        <Spinner size="l" />
+                        {" "}
+                        <br />
+                    </div>
                 </div>
             </AppRoot>
         );
-    }
 
     if (error) {
         return (
