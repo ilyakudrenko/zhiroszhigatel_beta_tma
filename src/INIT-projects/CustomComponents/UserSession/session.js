@@ -29,7 +29,6 @@ export const startSession = async () => {
             last_name_tg: telegramUser.last_name || "", // From Telegram
             is_bot_tg: telegramUser.is_bot, // From Telegram
             time_started_db: new Date().toISOString(), // Session start time
-            // is_session_active: true,
         };
 
         console.log("User session initialized:", session.user);
