@@ -22,22 +22,23 @@ const Profile = () => {
     INITBackButton(); // Back button for the profile
 
     useEffect(() => {
-        const fetchData = async () => {
+
             try {
                 // Retrieve session data
                 const session = getSession();
                 setUserSession(session);
-                const library = await fetchUserLibrary();
-                setUserLibrary(library);
-
+                const fetchData = async () => {
+                    const library = await fetchUserLibrary();
+                    setUserLibrary(library);
+                };
+                fetchData();
                 setLoading(false);
             } catch (err) {
                 console.error("Failed to retrieve user session:", err);
                 setError("Failed to initialize session.");
                 setLoading(false);
             }
-        };
-        fetchData();
+
     }, []);
 
     if (loading) {
