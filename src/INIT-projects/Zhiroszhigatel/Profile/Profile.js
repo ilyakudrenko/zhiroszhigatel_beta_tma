@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {AppRoot, Avatar, Blockquote, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Blockquote, Button, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
@@ -7,12 +7,14 @@ import INITDivider from "../../CustomComponents/Dividers/Divider";
 import fetchUserLibrary from "../../CustomComponents/UserSession/fetchUserLibrary";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
+import {useNavigate} from "react-router-dom";
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 }
 
 const Profile = () => {
+    const navigate = useNavigate();
     const [userSession, setUserSession] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -125,6 +127,13 @@ const Profile = () => {
                         <Blockquote type="text">
                             <p>В вашей библиотеке пока нету гайдов/курсов.</p>
                             <p>Вы можете добавить их из главного меню.</p>
+                            <Button
+                                mode="filled"
+                                size="s"
+                                onClick={() => navigate("/")}
+                            >
+                                в главное меню
+                            </Button>
                         </Blockquote>
                     </div>
                 )}
