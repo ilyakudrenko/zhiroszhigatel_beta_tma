@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {AppRoot, Avatar, Blockquote, Button, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Blockquote, Button, ButtonCell, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
@@ -8,6 +8,8 @@ import fetchUserLibrary from "../../CustomComponents/UserSession/fetchUserLibrar
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 import {useNavigate} from "react-router-dom";
+import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
+import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -105,6 +107,18 @@ const Profile = () => {
                 >
                     {userSession.first_name_tg} {userSession.last_name_tg}
                 </Cell>
+            </Section>
+            <INITDivider color='transparent' thickness="10%"/>
+            <Section>
+                <Cell
+                    before={<Icon32ProfileColoredSquare />}
+                    subtitle="Manage ads and payment settings"
+                >
+                    My Ads
+                </Cell>
+                <ButtonCell before={<Icon28AddCircle />}>
+                    Create Ad
+                </ButtonCell>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
             <Caption
