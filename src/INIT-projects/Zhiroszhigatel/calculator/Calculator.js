@@ -47,10 +47,10 @@ const Calculator = () => {
                 <Button
                     mode="filled"
                     size="m"
+                    stretched
                     style={{
                         display: 'block', // Makes the button behave like a block-level element
                         margin: '0 auto', // Centers the block element horizontally.
-
                     }}
                 >
                     Рассчитать
