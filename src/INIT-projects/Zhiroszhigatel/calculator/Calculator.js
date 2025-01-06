@@ -14,6 +14,7 @@ import INITBackButton from "../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import { Icon24Close } from "@telegram-apps/telegram-ui/dist/icons/24/close";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
+import '@telegram-apps/telegram-ui/dist/styles.css';
 
 const Calculator = () => {
     INITBackButton();
