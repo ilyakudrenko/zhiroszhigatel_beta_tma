@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import '@telegram-apps/telegram-ui/dist/styles.css';
 import {AppRoot, Cell, IconContainer, Input, List, Section,} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
-import '@telegram-apps/telegram-ui/dist/styles.css';
 import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 
 const Calculator = () => {
