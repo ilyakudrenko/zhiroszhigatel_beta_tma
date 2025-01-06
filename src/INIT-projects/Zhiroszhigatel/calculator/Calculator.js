@@ -1,6 +1,17 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import React, { useState } from 'react';
-import {AppRoot, Cell, IconContainer, Input, List, Section, Tappable,} from "@telegram-apps/telegram-ui";
+import {
+    AppRoot,
+    Button,
+    Cell,
+    IconContainer,
+    Input,
+    List,
+    Radio,
+    Section,
+    Select,
+    Tappable,
+} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import {Icon24Close} from "@telegram-apps/telegram-ui/dist/icons/24/close";
@@ -16,6 +27,55 @@ const Calculator = () => {
 
     return (
         <AppRoot>
+            <Section
+                footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+                header="Калькулятор калорий"
+            >
+                <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                <Cell
+                    Component="label"
+                    before={<Radio name="radio" value="1"/>}
+                    description="Pass Component='label' to Cell to make it clickable."
+                    multiline
+                >
+                    First radio
+                </Cell>
+                <Cell
+                    Component="label"
+                    before={<Radio name="radio" value="2"/>}
+                    description="Pass Component='label' to Cell to make it clickable."
+                    multiline
+                >
+                    Second radio
+                </Cell>
+                <Select header="Select" placeholder="I am usual input, just leave me alone">
+                    <option>Hello</option>
+                    <option>Okay</option>
+                </Select>
+                <Button
+                    mode="filled"
+                    size="m"
+                    stretched
+                >
+                    Рассчитать
+                </Button>
+            </Section>
+            <Section
+                footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+                header="Main Settings"
+            >
+                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                    Chat Settings
+                </Cell>
+                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                    Data and Storage
+                </Cell>
+                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                    Devices
+                </Cell>
+            </Section>
             <Section
                 header="Калькулятор"
             >
@@ -69,5 +129,5 @@ const Calculator = () => {
         </AppRoot>
     );
 };
-//test
+
 export default Calculator;
