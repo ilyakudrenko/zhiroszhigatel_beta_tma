@@ -32,26 +32,27 @@ const Calculator = () => {
                 footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
             >
-                <List
-                    style={{
-                        width: 400,
-                        maxWidth: '100%',
-                        margin: 'auto',
-                        background: 'var(--tgui--secondary_bg_color)',
-                    }}
-                >
+                <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                </Cell>
+                <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                </Cell>
+                <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                </Cell>
+                <Cell>
                     <Select header="Select" placeholder="I am usual input, just leave me alone">
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
+                </Cell>
+                <Cell>
                     <Select header="Select" placeholder="I am usual input, just leave me alone">
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
-                </List>
+                </Cell>
 
                 <Button
                     mode="filled"
