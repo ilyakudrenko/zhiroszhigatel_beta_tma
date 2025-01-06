@@ -6,6 +6,7 @@ import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCours
 import Support from "./INIT-projects/Zhiroszhigatel/Support/Support";
 import Profile from "./INIT-projects/Zhiroszhigatel/Profile/Profile";
 import HomePage_StablVersion from "./INIT-projects/HomePage/HomePage_StablVersion";
+import Calculator from "./INIT-projects/Zhiroszhigatel/calculator/Calculator";
 
 const App = () => {
     const location = useLocation();
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/calculator" element={<Calculator />} />
                 </Routes>
 
         ) : (
@@ -26,6 +28,7 @@ const App = () => {
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/calculator" element={<Calculator />} />
                 </Routes>
         )
     );
