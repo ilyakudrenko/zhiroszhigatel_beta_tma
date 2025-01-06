@@ -30,48 +30,49 @@ const Calculator = () => {
             <Section
                 footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
+                style={{ width: '100%' }}
             >
-                <Cell>
+                <Section>
                     <Input
                         header="Input"
                         placeholder="I am usual input, just leave me alone"
-                        style={{ width: '100%' }}
+                        //style={{ width: '100%' }}
                     />
-                </Cell>
-                <Cell>
+                </Section>
+                <Section>
                     <Input
                         header="Input"
                         placeholder="I am usual input, just leave me alone"
-                        style={{ width: '100%' }}
+                        //style={{ width: '100%' }}
                     />
-                </Cell>
-                <Cell>
+                </Section>
+                <Section>
                     <Input
                         header="Input"
                         placeholder="I am usual input, just leave me alone"
-                        style={{ width: '100%' }}
+                        //style={{ width: '100%' }}
                     />
-                </Cell>
-                <Cell>
+                </Section>
+                <Section>
                     <Select
                         header="Select"
                         placeholder="I am usual input, just leave me alone"
-                        style={{ width: '100%' }}
+                        //style={{ width: '100%' }}
                     >
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
-                </Cell>
-                <Cell>
+                </Section>
+                <Section>
                     <Select
                         header="Select"
                         placeholder="I am usual input, just leave me alone"
-                        style={{ width: '100%' }}
+                        //style={{ width: '100%' }}
                     >
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
-                </Cell>
+                </Section>
 
                 <Button
                     mode="filled"
