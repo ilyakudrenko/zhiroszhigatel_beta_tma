@@ -22,7 +22,7 @@ const Calculator = () => {
                 style={{
                     background: 'var(--tgui--secondary_bg_color)',
                     padding: '40px',
-                    width: 500
+                    width: '100%'
                 }}
             >
                 <Section
