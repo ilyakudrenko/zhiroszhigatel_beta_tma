@@ -31,29 +31,19 @@ const Calculator = () => {
                 footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
             >
-                <Input header="Input" placeholder="I am usual input, just leave me alone" />
-                <Input header="Input" placeholder="I am usual input, just leave me alone" />
-                <Input header="Input" placeholder="I am usual input, just leave me alone" />
-                <Cell
-                    Component="label"
-                    before={<Radio name="radio" value="1"/>}
-                    description="Pass Component='label' to Cell to make it clickable."
-                    multiline
-                >
-                    First radio
+                <Cell>
+                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Select header="Select" placeholder="I am usual input, just leave me alone">
+                        <option>Hello</option>
+                        <option>Okay</option>
+                    </Select>
+                    <Select header="Select" placeholder="I am usual input, just leave me alone">
+                        <option>Hello</option>
+                        <option>Okay</option>
+                    </Select>
                 </Cell>
-                <Cell
-                    Component="label"
-                    before={<Radio name="radio" value="2"/>}
-                    description="Pass Component='label' to Cell to make it clickable."
-                    multiline
-                >
-                    Second radio
-                </Cell>
-                <Select header="Select" placeholder="I am usual input, just leave me alone">
-                    <option>Hello</option>
-                    <option>Okay</option>
-                </Select>
                 <Button
                     mode="filled"
                     size="m"
