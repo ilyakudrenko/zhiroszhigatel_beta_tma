@@ -1,46 +1,71 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import React, { useState } from 'react';
-import {AppRoot, Cell, IconContainer, Input, List, Section,} from "@telegram-apps/telegram-ui";
+import {AppRoot, Cell, IconContainer, Input, List, Section, Tappable,} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
+import {Icon24Close} from "@telegram-apps/telegram-ui/dist/icons/24/close";
 
 const Calculator = () => {
     INITBackButton();
+
+    const [value, setValue] = useState(''); // State for the input field
+
+    const clearInput = () => {
+        setValue(''); // Function to clear the input value
+    };
+
     return (
         <AppRoot>
-            <List
-                style={{
-                    background: 'var(--tgui--secondary_bg_color)',
-                }}
+            <Section
+                header="Калькулятор"
             >
-                <Section
-                    footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                    header=""
-                >
-                    <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                        Chat Settings
-                    </Cell>
-                    <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                        Data and Storage
-                    </Cell>
-                    <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                        Devices
-                    </Cell>
-                </Section>
-                <Section
-                    footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                    header=""
+                <List
+                    style={{
+                        width: 400,
+                        maxWidth: '100%',
+                        margin: 'auto',
+                        background: 'var(--tgui--secondary_bg_color)',
+                    }}
                 >
                     <Input
-                        header="First name"
-                        placeholder="21 y.o. designer from San Francisco"
+                        header="Input"
+                        placeholder="I am usual input, just leave me alone"
                     />
                     <Input
-                        header="Last name"
-                        placeholder="21 y.o. designer from San Francisco"
+                        status="error"
+                        header="Input"
+                        placeholder="I am error input, don't make my mistakes..."
                     />
-                </Section>
-            </List>
+                    <Input
+                        status="focused"
+                        header="Input"
+                        placeholder="I am focused input, are u focused on me?"
+                    />
+                    <Input
+                        disabled
+                        header="Input"
+                        placeholder="I am disabled input"
+                    />
+                    <Input
+                        status="focused"
+                        header="Input"
+                        placeholder="Write and clean me"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        after={
+                            <Tappable
+                                Component="div"
+                                style={{
+                                    display: 'flex',
+                                }}
+                                onClick={clearInput}
+                            >
+                                <Icon24Close />
+                            </Tappable>
+                        }
+                    />
+                </List>
+            </Section>
         </AppRoot>
     );
 };
