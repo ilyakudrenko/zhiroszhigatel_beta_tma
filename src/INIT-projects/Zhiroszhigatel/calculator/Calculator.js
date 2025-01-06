@@ -30,49 +30,43 @@ const Calculator = () => {
             <Section
                 footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
-                style={{ width: '100%' }}
+                style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    margin: '0 auto',
+                }}
             >
-                <Section>
-                    <Input
-                        header="Input"
-                        placeholder="I am usual input, just leave me alone"
-                        //style={{ width: '100%' }}
-                    />
-                </Section>
-                <Section>
-                    <Input
-                        header="Input"
-                        placeholder="I am usual input, just leave me alone"
-                        //style={{ width: '100%' }}
-                    />
-                </Section>
-                <Section>
-                    <Input
-                        header="Input"
-                        placeholder="I am usual input, just leave me alone"
-                        //style={{ width: '100%' }}
-                    />
-                </Section>
-                <Section>
-                    <Select
-                        header="Select"
-                        placeholder="I am usual input, just leave me alone"
-                        //style={{ width: '100%' }}
-                    >
-                        <option>Hello</option>
-                        <option>Okay</option>
-                    </Select>
-                </Section>
-                <Section>
-                    <Select
-                        header="Select"
-                        placeholder="I am usual input, just leave me alone"
-                        //style={{ width: '100%' }}
-                    >
-                        <option>Hello</option>
-                        <option>Okay</option>
-                    </Select>
-                </Section>
+                <Input
+                    header="Input"
+                    placeholder="I am usual input, just leave me alone"
+                    style={{ marginBottom: '12px' }}
+                />
+                <Input
+                    header="Input"
+                    placeholder="I am usual input, just leave me alone"
+                    style={{ marginBottom: '12px' }}
+                />
+                <Input
+                    header="Input"
+                    placeholder="I am usual input, just leave me alone"
+                    style={{ marginBottom: '12px' }}
+                />
+                <Select
+                    header="Select"
+                    placeholder="I am usual input, just leave me alone"
+                    style={{ marginBottom: '12px' }}
+                >
+                    <option>Hello</option>
+                    <option>Okay</option>
+                </Select>
+                <Select
+                    header="Select"
+                    placeholder="I am usual input, just leave me alone"
+                    style={{ marginBottom: '12px' }}
+                >
+                    <option>Hello</option>
+                    <option>Okay</option>
+                </Select>
 
                 <Button
                     mode="filled"
