@@ -15,6 +15,7 @@ import {
 import INITBackButton from "../../../Hooks/BackButton";
 import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import {Icon24Close} from "@telegram-apps/telegram-ui/dist/icons/24/close";
+import INITDivider from "../../CustomComponents/Dividers/Divider";
 
 const Calculator = () => {
     INITBackButton();
@@ -33,17 +34,28 @@ const Calculator = () => {
             >
                 <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                </Cell>
+                <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                </Cell>
+                <Cell>
                     <Input header="Input" placeholder="I am usual input, just leave me alone" />
-                    <Select header="Select" placeholder="I am usual input, just leave me alone">
-                        <option>Hello</option>
-                        <option>Okay</option>
-                    </Select>
+                </Cell>
+                <Cell>
                     <Select header="Select" placeholder="I am usual input, just leave me alone">
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
                 </Cell>
+                <Cell>
+                    <Select header="Select" placeholder="I am usual input, just leave me alone">
+                        <option>Hello</option>
+                        <option>Okay</option>
+                    </Select>
+                </Cell>
+
+                <INITDivider color='transparent' thickness="10%"/>
+
                 <Button
                     mode="filled"
                     size="m"
