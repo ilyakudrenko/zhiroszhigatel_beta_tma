@@ -7,7 +7,6 @@ import {
     IconContainer,
     Input,
     List,
-    Radio,
     Section,
     Select,
     Tappable,
@@ -33,22 +32,42 @@ const Calculator = () => {
                 header="Калькулятор калорий"
             >
                 <Cell>
-                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Input
+                        header="Input"
+                        placeholder="I am usual input, just leave me alone"
+                        style={{ width: '100%' }}
+                    />
                 </Cell>
                 <Cell>
-                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Input
+                        header="Input"
+                        placeholder="I am usual input, just leave me alone"
+                        style={{ width: '100%' }}
+                    />
                 </Cell>
                 <Cell>
-                    <Input header="Input" placeholder="I am usual input, just leave me alone" />
+                    <Input
+                        header="Input"
+                        placeholder="I am usual input, just leave me alone"
+                        style={{ width: '100%' }}
+                    />
                 </Cell>
                 <Cell>
-                    <Select header="Select" placeholder="I am usual input, just leave me alone">
+                    <Select
+                        header="Select"
+                        placeholder="I am usual input, just leave me alone"
+                        style={{ width: '100%' }}
+                    >
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
                 </Cell>
                 <Cell>
-                    <Select header="Select" placeholder="I am usual input, just leave me alone">
+                    <Select
+                        header="Select"
+                        placeholder="I am usual input, just leave me alone"
+                        style={{ width: '100%' }}
+                    >
                         <option>Hello</option>
                         <option>Okay</option>
                     </Select>
