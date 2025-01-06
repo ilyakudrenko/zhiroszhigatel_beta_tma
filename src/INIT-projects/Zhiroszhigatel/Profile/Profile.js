@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {AppRoot, Avatar, Blockquote, Button, ButtonCell, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
+import {
+    AppRoot,
+    Avatar,
+    Blockquote,
+    Button,
+    ButtonCell,
+    Caption,
+    Cell, Input,
+    List,
+    Section, Tappable
+} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
@@ -10,6 +20,7 @@ import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 import {useNavigate} from "react-router-dom";
 import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
+import {Icon24Close} from "@telegram-apps/telegram-ui/dist/icons/24/close";
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -75,6 +86,63 @@ const Profile = () => {
 
     return (
         <AppRoot>
+            <Section header="Калькулятор калорий">
+                <List
+                    style={{
+                        width: 400,
+                        maxWidth: '100%',
+                        margin: 'auto',
+                        background: 'var(--tgui--secondary_bg_color)'
+                    }}
+                >
+                    <Input
+                        header="Обычный ввод"
+                        placeholder="Введите значение"
+                    />
+                    <Input
+                        status="error"
+                        header="Ошибка"
+                        placeholder="Ошибка в значении"
+                    />
+                    <Input
+                        status="focused"
+                        header="Фокус"
+                        placeholder="Сфокусированное поле ввода"
+                    />
+                    <Input
+                        disabled
+                        header="Отключено"
+                        placeholder="Поле отключено"
+                    />
+                    <Input
+                        status="focused"
+                        header="Очистить меня"
+                        placeholder="Напишите и очистите"
+                        value={value}
+                        onChange={(e) => setValue(e.target.value)}
+                        after={
+                            <Tappable
+                                Component="div"
+                                style={{ display: 'flex' }}
+                                onClick={clearInput}
+                            >
+                                <Icon24Close />
+                            </Tappable>
+                        }
+                    />
+                </List>
+                <Button
+                    mode="filled"
+                    size="m"
+                    stretched
+                    style={{
+                        display: 'block', // Makes the button behave like a block-level element
+                        margin: '20px auto', // Centers the block element horizontally.
+                    }}
+                >
+                    Рассчитать
+                </Button>
+            </Section>
             {/*<div>*/}
             {/*    <h1>Welcome to your Profile!</h1> // updated profile frontend goes here*/}
             {/*    {userSession && (*/}
