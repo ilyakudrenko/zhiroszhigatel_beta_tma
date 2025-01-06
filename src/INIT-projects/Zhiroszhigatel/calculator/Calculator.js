@@ -32,41 +32,55 @@ const Calculator = () => {
                 header="Калькулятор калорий"
                 style={{
                     width: '100%',
-                    maxWidth: '400px',
-                    margin: '0 auto',
                 }}
             >
-                <Input
-                    header="Input"
-                    placeholder="I am usual input, just leave me alone"
-                    style={{ marginBottom: '12px' }}
-                />
-                <Input
-                    header="Input"
-                    placeholder="I am usual input, just leave me alone"
-                    style={{ marginBottom: '12px' }}
-                />
-                <Input
-                    header="Input"
-                    placeholder="I am usual input, just leave me alone"
-                    style={{ marginBottom: '12px' }}
-                />
-                <Select
-                    header="Select"
-                    placeholder="I am usual input, just leave me alone"
-                    style={{ marginBottom: '12px' }}
+                <Section
+                    header="Возраст"
+                    style={{
+                        padding: '12px',
+                    }}
                 >
-                    <option>Hello</option>
-                    <option>Okay</option>
-                </Select>
-                <Select
-                    header="Select"
-                    placeholder="I am usual input, just leave me alone"
-                    style={{ marginBottom: '12px' }}
+                    <Input placeholder="I am usual input, just leave me alone"/>
+                </Section>
+
+                <Section
+                    header="Возраст"
+                    style={{
+                        padding: '12px',
+                    }}
                 >
-                    <option>Hello</option>
-                    <option>Okay</option>
-                </Select>
+                    <Input placeholder="I am usual input, just leave me alone"/>
+                </Section>
+                <Section
+                    header="Возраст"
+                    style={{
+                        padding: '12px',
+                    }}
+                >
+                    <Input placeholder="I am usual input, just leave me alone"/>
+                </Section>
+                <Section
+                    header="Возраст"
+                    style={{
+                        padding: '12px',
+                    }}
+                >
+                    <Select placeholder="I am usual input, just leave me alone">
+                        <option>Hello</option>
+                        <option>Okay</option>
+                    </Select>
+                </Section>
+                <Section
+                    header="Возраст"
+                    style={{
+                        padding: '12px',
+                    }}
+                >
+                    <Select placeholder="I am usual input, just leave me alone">
+                        <option>Hello</option>
+                        <option>Okay</option>
+                    </Select>
+                </Section>
 
                 <Button
                     mode="filled"
