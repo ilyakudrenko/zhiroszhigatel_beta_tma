@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     AppRoot,
     Button,
@@ -22,6 +22,15 @@ const Calculator = () => {
     const [value, setValue] = useState('');
     const clearInput = () => setValue('');
 
+    // Telegram theme integration
+    useEffect(() => {
+        const telegramTheme = window.Telegram.WebApp.themeParams || {};
+        document.documentElement.style.setProperty('--tgui--primary_bg_color', telegramTheme.bg_color || '#ffffff');
+        document.documentElement.style.setProperty('--tgui--secondary_bg_color', telegramTheme.secondary_bg_color || '#f0f0f0');
+        document.documentElement.style.setProperty('--tgui--text_color', telegramTheme.text_color || '#000000');
+        document.documentElement.style.setProperty('--tgui--hint_color', telegramTheme.hint_color || '#8a8a8a');
+    }, []);
+
     return (
         <AppRoot>
             <Section header="Калькулятор калорий">
@@ -30,27 +39,33 @@ const Calculator = () => {
                         width: 400,
                         maxWidth: '100%',
                         margin: 'auto',
-                        background: 'var(--tgui--secondary_bg_color)'
+                        background: 'var(--tgui--secondary_bg_color)', // Matches Telegram theme
+                        padding: '10px',
+                        borderRadius: '8px',
                     }}
                 >
                     <Input
                         header="Обычный ввод"
                         placeholder="Введите значение"
+                        style={{ marginBottom: '15px' }}
                     />
                     <Input
                         status="error"
                         header="Ошибка"
                         placeholder="Ошибка в значении"
+                        style={{ marginBottom: '15px' }}
                     />
                     <Input
                         status="focused"
                         header="Фокус"
                         placeholder="Сфокусированное поле ввода"
+                        style={{ marginBottom: '15px' }}
                     />
                     <Input
                         disabled
                         header="Отключено"
                         placeholder="Поле отключено"
+                        style={{ marginBottom: '15px' }}
                     />
                     <Input
                         status="focused"
@@ -74,8 +89,10 @@ const Calculator = () => {
                     size="m"
                     stretched
                     style={{
-                        display: 'block', // Makes the button behave like a block-level element
-                        margin: '20px auto', // Centers the block element horizontally.
+                        display: 'block',
+                        margin: '20px auto',
+                        backgroundColor: 'var(--tgui--primary_bg_color)',
+                        color: 'var(--tgui--text_color)',
                     }}
                 >
                     Рассчитать
