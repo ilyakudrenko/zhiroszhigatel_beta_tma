@@ -6,29 +6,20 @@ import {
     Cell,
     IconContainer,
     Input,
-    List,
     Section,
     Select,
-    Tappable,
 } from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
-import {Icon24Close} from "@telegram-apps/telegram-ui/dist/icons/24/close";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 
 const Calculator = () => {
     INITBackButton();
 
-    const [value, setValue] = useState(''); // State for the input field
-
-    const clearInput = () => {
-        setValue(''); // Function to clear the input value
-    };
-
     return (
         <AppRoot>
             <Section
-                footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+                //footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
                 style={{
                     width: '100%',
@@ -40,45 +31,49 @@ const Calculator = () => {
                         padding: '12px',
                     }}
                 >
-                    <Input placeholder="I am usual input, just leave me alone"/>
+                    <Input placeholder="Укажите свой возраст"/>
                 </Section>
 
                 <Section
-                    header="Возраст"
+                    header="Рост"
                     style={{
                         padding: '12px',
                     }}
                 >
-                    <Input placeholder="I am usual input, just leave me alone"/>
+                    <Input placeholder="Укажите свой рост в см"/>
                 </Section>
                 <Section
-                    header="Возраст"
+                    header="Вес"
                     style={{
                         padding: '12px',
                     }}
                 >
-                    <Input placeholder="I am usual input, just leave me alone"/>
+                    <Input placeholder="Укажите свой вес в кг"/>
                 </Section>
                 <Section
-                    header="Возраст"
+                    header="Пол"
                     style={{
                         padding: '12px',
                     }}
                 >
-                    <Select placeholder="I am usual input, just leave me alone">
-                        <option>Hello</option>
-                        <option>Okay</option>
+                    <Select>
+                        <option>Мужчина</option>
+                        <option>Женщина</option>
                     </Select>
                 </Section>
                 <Section
-                    header="Возраст"
+                    header="Уровень"
                     style={{
                         padding: '12px',
                     }}
                 >
-                    <Select placeholder="I am usual input, just leave me alone">
+                    <Select>
                         <option>Hello</option>
                         <option>Okay</option>
+                        <option>Hello</option>
+                        <option>Okay</option>
+                        <option>Okay</option>
+
                     </Select>
                 </Section>
 
@@ -92,68 +87,18 @@ const Calculator = () => {
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
             <Section
-                footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                header="Main Settings"
+                //footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
+                header="Ввш калораж"
             >
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Chat Settings
+                    Белки: xxx
                 </Cell>
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Data and Storage
+                    Жиры: xxx
                 </Cell>
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Devices
+                    Углеводы: xxx
                 </Cell>
-            </Section>
-            <Section
-                header="Калькулятор"
-            >
-                <List
-                    style={{
-                        width: 400,
-                        maxWidth: '100%',
-                        margin: 'auto',
-                        background: 'var(--tgui--secondary_bg_color)',
-                    }}
-                >
-                    <Input
-                        header="Input"
-                        placeholder="I am usual input, just leave me alone"
-                    />
-                    <Input
-                        status="error"
-                        header="Input"
-                        placeholder="I am error input, don't make my mistakes..."
-                    />
-                    <Input
-                        status="focused"
-                        header="Input"
-                        placeholder="I am focused input, are u focused on me?"
-                    />
-                    <Input
-                        disabled
-                        header="Input"
-                        placeholder="I am disabled input"
-                    />
-                    <Input
-                        status="focused"
-                        header="Input"
-                        placeholder="Write and clean me"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
-                        after={
-                            <Tappable
-                                Component="div"
-                                style={{
-                                    display: 'flex',
-                                }}
-                                onClick={clearInput}
-                            >
-                                <Icon24Close />
-                            </Tappable>
-                        }
-                    />
-                </List>
             </Section>
         </AppRoot>
     );
