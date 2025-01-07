@@ -10,70 +10,113 @@ import {
     Select,
 } from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
-import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
+import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 
 const Calculator = () => {
     INITBackButton();
 
+    const [age, setAge] = useState('');
+    const [height, setHeight] = useState('');
+    const [weight, setWeight] = useState('');
+    const [gender, setGender] = useState('Мужчина');
+    const [activityLevel, setActivityLevel] = useState('Минимальная активность');
+
+    const [totalCalories, setTotalCalories] = useState(0);
+    const [proteins, setProteins] = useState(0);
+    const [fats, setFats] = useState(0);
+    const [carbs, setCarbs] = useState(0);
+
+    const calculateMacros = () => {
+        const numericAge = parseFloat(age) || 0;
+        const numericHeight = parseFloat(height) || 0;
+        const numericWeight = parseFloat(weight) || 0;
+
+        if (numericAge <= 0 || numericHeight <= 0 || numericWeight <= 0) {
+            alert("Введите корректные значения возраста, роста и веса.");
+            return;
+        }
+
+        const baseCalories =
+            gender === 'Мужчина'
+                ? 10 * numericWeight + 6.25 * numericHeight - 5 * numericAge + 5
+                : 10 * numericWeight + 6.25 * numericHeight - 5 * numericAge - 161;
+
+        const activityMultiplier = {
+            "Минимальная активность": 1.2,
+            "Низкая активность": 1.375,
+            "Умеренная активность": 1.55,
+            "Высокая активность": 1.725,
+            "Экстремальная активность": 1.9,
+        }[activityLevel] || 1.2;
+
+        const total = baseCalories * activityMultiplier;
+
+        const proteinGrams = Math.round((total * 0.3) / 4); // 30% of calories from protein
+        const fatGrams = Math.round((total * 0.25) / 9); // 25% of calories from fat
+        const carbGrams = Math.round((total * 0.45) / 4); // 45% of calories from carbs
+
+        setTotalCalories(Math.round(total));
+        setProteins(proteinGrams);
+        setFats(fatGrams);
+        setCarbs(carbGrams);
+    };
+
     return (
         <AppRoot>
             <Section
-                //footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
                 header="Калькулятор калорий"
                 style={{
                     width: '100%',
                 }}
             >
-                <Section
-                    header="Возраст"
-                    style={{
-                        padding: '12px',
-                    }}
-                >
-                    <Input placeholder="Укажите свой возраст"/>
+                <Section header="Возраст" style={{ padding: '12px' }}>
+                    <Input
+                        placeholder="Укажите свой возраст"
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
+                        type="number"
+                    />
                 </Section>
 
-                <Section
-                    header="Рост"
-                    style={{
-                        padding: '12px',
-                    }}
-                >
-                    <Input placeholder="Укажите свой рост в см"/>
+                <Section header="Рост" style={{ padding: '12px' }}>
+                    <Input
+                        placeholder="Укажите свой рост в см"
+                        value={height}
+                        onChange={(e) => setHeight(e.target.value)}
+                        type="number"
+                    />
                 </Section>
-                <Section
-                    header="Вес"
-                    style={{
-                        padding: '12px',
-                    }}
-                >
-                    <Input placeholder="Укажите свой вес в кг"/>
+
+                <Section header="Вес" style={{ padding: '12px' }}>
+                    <Input
+                        placeholder="Укажите свой вес в кг"
+                        value={weight}
+                        onChange={(e) => setWeight(e.target.value)}
+                        type="number"
+                    />
                 </Section>
-                <Section
-                    header="Пол"
-                    style={{
-                        padding: '12px',
-                    }}
-                >
-                    <Select>
+
+                <Section header="Пол" style={{ padding: '12px' }}>
+                    <Select
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                    >
                         <option>Мужчина</option>
                         <option>Женщина</option>
                     </Select>
                 </Section>
-                <Section
-                    header="Уровень"
-                    style={{
-                        padding: '12px',
-                    }}
-                >
-                    <Select>
-                        <option>Hello</option>
-                        <option>Okay</option>
-                        <option>Hello</option>
-                        <option>Okay</option>
-                        <option>Okay</option>
 
+                <Section header="Уровень активности" style={{ padding: '12px' }}>
+                    <Select
+                        value={activityLevel}
+                        onChange={(e) => setActivityLevel(e.target.value)}
+                    >
+                        <option>Минимальная активность</option>
+                        <option>Низкая активность</option>
+                        <option>Умеренная активность</option>
+                        <option>Высокая активность</option>
+                        <option>Экстремальная активность</option>
                     </Select>
                 </Section>
 
@@ -81,23 +124,24 @@ const Calculator = () => {
                     mode="filled"
                     size="m"
                     stretched
+                    onClick={calculateMacros}
                 >
                     Рассчитать
                 </Button>
             </Section>
-            <INITDivider color='transparent' thickness="10%"/>
-            <Section
-                //footer="The official Telegram app is available for Android, iPhone, iPad, Windows, macOS and Linux."
-                header="Ввш калораж"
-            >
+            <INITDivider color="transparent" thickness="10%" />
+            <Section header="Ваш калораж">
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Белки: xxx
+                    Общие калории: {totalCalories} ккал
                 </Cell>
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Жиры: xxx
+                    Белки: {proteins} г ({proteins * 4} ккал)
                 </Cell>
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
-                    Углеводы: xxx
+                    Жиры: {fats} г ({fats * 9} ккал)
+                </Cell>
+                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                    Углеводы: {carbs} г ({carbs * 4} ккал)
                 </Cell>
             </Section>
         </AppRoot>
