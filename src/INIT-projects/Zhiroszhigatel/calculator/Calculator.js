@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import {
     AppRoot,
     Button,
-    Cell,
+    Cell, Checkbox,
     IconContainer,
     Input,
     Section,
@@ -21,6 +21,7 @@ const Calculator = () => {
     const [weight, setWeight] = useState('');
     const [gender, setGender] = useState('Мужчина');
     const [activityLevel, setActivityLevel] = useState('Минимальная активность');
+    const [weightLoss, setWeightLoss] = useState(false);
 
     const [totalCalories, setTotalCalories] = useState(0);
     const [proteins, setProteins] = useState(0);
@@ -50,7 +51,11 @@ const Calculator = () => {
             "Экстремальная активность": 1.9,
         }[activityLevel] || 1.2;
 
-        const total = baseCalories * activityMultiplier;
+        let total = baseCalories * activityMultiplier;
+
+        if (weightLoss){
+            total =total - 500;
+        }
 
         const proteinGrams = Math.round((total * 0.3) / 4); // 30% of calories from protein
         const fatGrams = Math.round((total * 0.25) / 9); // 25% of calories from fat
@@ -119,12 +124,27 @@ const Calculator = () => {
                         <option>Экстремальная активность</option>
                     </Select>
                 </Section>
+                <Cell
+                    Component="label"
+                    before={<Checkbox
+                        name="weightLoss"
+                        checked={weightLoss}
+                        onChange={(e) => setWeightLoss(e.target.checked)}
+                    />}
+                    description="(-500ккал)"
+                    multiline
+                >
+                    Похудеть
+                </Cell>
 
                 <Button
                     mode="filled"
                     size="m"
                     stretched
                     onClick={calculateMacros}
+                    style={{
+                        paddingTop: '10px',
+                    }}
                 >
                     Рассчитать
                 </Button>
