@@ -70,7 +70,7 @@ const Calculator = () => {
                     width: '100%',
                 }}
             >
-                <Section header="Возраст" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '7px' }}>
+                <Section header="Возраст" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
                     <Input
                         placeholder="Укажите свой возраст"
                         value={age}
@@ -79,7 +79,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Рост" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '7px' }}>
+                <Section header="Рост" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
                     <Input
                         placeholder="Укажите свой рост в см"
                         value={height}
@@ -88,7 +88,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Вес" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '7px' }}>
+                <Section header="Вес" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
                     <Input
                         placeholder="Укажите свой вес в кг"
                         value={weight}
@@ -97,7 +97,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Пол" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '7px' }}>
+                <Section header="Пол" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
                     <Select
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
@@ -107,7 +107,7 @@ const Calculator = () => {
                     </Select>
                 </Section>
 
-                <Section header="Уровень активности" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '7px' }}>
+                <Section header="Уровень активности" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
                     <Select
                         value={activityLevel}
                         onChange={(e) => setActivityLevel(e.target.value)}
