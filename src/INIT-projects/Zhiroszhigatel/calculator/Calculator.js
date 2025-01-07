@@ -70,7 +70,7 @@ const Calculator = () => {
                     width: '100%',
                 }}
             >
-                <Section header="Возраст">
+                <Section header="Возраст" style={{ padding: '7px' }}>
                     <Input
                         placeholder="Укажите свой возраст"
                         value={age}
@@ -79,7 +79,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Рост">
+                <Section header="Рост" style={{ padding: '7px' }}>
                     <Input
                         placeholder="Укажите свой рост в см"
                         value={height}
@@ -88,7 +88,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Вес">
+                <Section header="Вес" style={{ padding: '7px' }}>
                     <Input
                         placeholder="Укажите свой вес в кг"
                         value={weight}
@@ -97,7 +97,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Пол">
+                <Section header="Пол" style={{ padding: '7px' }}>
                     <Select
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
@@ -107,7 +107,7 @@ const Calculator = () => {
                     </Select>
                 </Section>
 
-                <Section header="Уровень активности">
+                <Section header="Уровень активности" style={{ padding: '7px' }}>
                     <Select
                         value={activityLevel}
                         onChange={(e) => setActivityLevel(e.target.value)}
