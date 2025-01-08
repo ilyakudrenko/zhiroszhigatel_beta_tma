@@ -9,9 +9,12 @@ const TestPage = () => {
 
     const testConnection = async () => {
         try {
-            const response = await axios.get("https://init-railway-backend-production.up.railway.app/users/test");
-            setConnectionStatus(response.data.message); // Отображает сообщение успешного подключения
-            setError(null);
+            console.log("Sending request to backend...");
+            const response = await axios.get(
+                "https://init-railway-backend-production.up.railway.app/connection_test/test",
+                { withCredentials: true } // Ensures proper CORS handling
+            );
+            console.log("Response received:", response);
         } catch (err) {
             setError(err.message); // Отображает ошибку, если подключение не удалось
             setConnectionStatus(null);
