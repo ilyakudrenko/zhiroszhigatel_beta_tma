@@ -6,9 +6,11 @@ const TestConnection = () => {
     const [error, setError] = useState(null);
     const testConnection = async () => {
         try{
-            axios.get('https://init-railway-backend-v2-production.up.railway.app/test-db', {
+            const response = await axios.get('https://init-railway-backend-v2-production.up.railway.app/test-db',
+                {
                 withCredentials: true
-            })
+                }
+            );
                 setStatus(response.data.message);
                 setError(null);
                 // .then(response => console.log(response.data))
