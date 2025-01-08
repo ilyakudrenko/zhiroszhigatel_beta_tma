@@ -8,6 +8,7 @@ import Profile from "./INIT-projects/Zhiroszhigatel/Profile/Profile";
 import HomePage_StablVersion from "./INIT-projects/HomePage/HomePage_StablVersion";
 import Calculator from "./INIT-projects/Zhiroszhigatel/calculator/Calculator";
 import TestPage from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
+import TestConnection from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
 
 const App = () => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const App = () => {
     return (
         isHomePage ? (
                 <Routes>
-                    <Route path="/" element={<TestPage />} />
+                    <Route path="/" element={<TestConnection />} />
                     {/*<Route path="/" element={<Calculator />} />*/}
                     {/*<Route path="/" element={<HomePage />} />*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
@@ -27,7 +28,7 @@ const App = () => {
 
         ) : (
                 <Routes>
-                    <Route path="/" element={<TestPage />} />
+                    <Route path="/" element={<TestConnection />} />
                     {/*<Route path="/" element={<Calculator />} />*/}
                     {/*<Route path="/" element={<HomePage />}/>*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
