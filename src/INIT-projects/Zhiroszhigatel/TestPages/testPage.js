@@ -5,17 +5,12 @@ const TestConnection = () => {
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
     const testConnection = async () => {
-        try {
-            const response = await axios.get(
-                "https://init-railway-backend-v2-production.up.railway.app/test-db",
-                {
-                    withCredentials: true, // Только если используются куки
-                }
-            );
-            console.log(response.data);
-        } catch (err) {
-            console.error("Error:", err.message);
-        }
+            axios.get('https://init-railway-backend-v2-production.up.railway.app/test-db', {
+                withCredentials: true
+            })
+                .then(response => console.log(response.data))
+                .catch(error => console.error("Fetch error:", error));
+
     };
 
     return (
