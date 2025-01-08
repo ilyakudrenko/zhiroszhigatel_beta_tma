@@ -5,31 +5,31 @@ const TestConnection = () => {
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
+    import axios from "axios";
+
     const testConnection = async () => {
         try {
             const response = await axios.get(
-                "https://init-railway-backend-v2-production.up.railway.app/test-db", // Замените на ваш URL
+                "https://init-railway-backend-v2-production.up.railway.app/test-db",
                 {
-                    withCredentials: true, // Добавьте, если отправляются куки (уберите, если нет)
+                    withCredentials: true, // Только если используются куки
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 }
             );
-            setStatus(response.data.message); // Показывает сообщение "Database is connected!"
-            setError(null); // Сбрасывает ошибки
+            console.log(response.data);
         } catch (err) {
-            console.error(err);
-            setError(err.message); // Показывает ошибку, если запрос провалился
-            setStatus(null); // Сбрасывает успешный статус
+            console.error("Error:", err.message);
         }
     };
 
     return (
         <div style={{ padding: "20px", textAlign: "center" }}>
-            <h1>Database Connection Test</h1>
+            <h1>Database Connection Test V2</h1>
             <button onClick={testConnection} style={{ padding: "10px 20px", cursor: "pointer" }}>
                 Test Connection
             </button>
-            {status && <p style={{ color: "green" }}>Status: {status}</p>}
-            {error && <p style={{ color: "red" }}>Error: {error}</p>}
         </div>
     );
 };
