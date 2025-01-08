@@ -10,9 +10,6 @@ const TestConnection = () => {
                 "https://init-railway-backend-v2-production.up.railway.app/test-db",
                 {
                     withCredentials: true, // Только если используются куки
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
                 }
             );
             console.log(response.data);
