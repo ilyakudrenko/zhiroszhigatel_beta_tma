@@ -10,7 +10,7 @@ const TestPage = () => {
     const testConnection = async () => {
         try {
             const response = await axios.get(
-                "https://init-railway-backend-production.up.railway.app/users/test",
+                `${process.env.REACT_APP_BACKEND_URL}/users/test`,
                 {
                     headers: {
                         'Content-Type': 'application/json',
