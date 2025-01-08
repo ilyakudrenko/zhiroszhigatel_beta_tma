@@ -12,9 +12,13 @@ import {
 import INITBackButton from "../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
+import {useNavigate} from "react-router-dom";
+
 
 const Calculator = () => {
     INITBackButton();
+    const navigate = useNavigate();
+
 
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
@@ -69,6 +73,19 @@ const Calculator = () => {
 
     return (
         <AppRoot>
+            <Section header="Инструкция">
+                <div style={{ textAlign: "center" }}>
+                    <iframe
+                        width="90%"
+                        height="315"
+                        src="https://www.youtube.com/embed/ai3kswDDvbQ"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            </Section>
             <Section
                 header="Калькулятор калорий"
                 style={{
@@ -164,6 +181,17 @@ const Calculator = () => {
                     Углеводы: {carbs} г ({carbs * 4} ккал)
                 </Cell>
             </Section>
+            <Button
+                mode="filled"
+                size="m"
+                stretched
+                onClick={() => navigate("/")}
+                style={{
+                    paddingTop: '10px',
+                }}
+            >
+                Дальше
+            </Button>
         </AppRoot>
     );
 };
