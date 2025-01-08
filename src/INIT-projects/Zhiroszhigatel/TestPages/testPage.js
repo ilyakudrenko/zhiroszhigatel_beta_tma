@@ -9,7 +9,10 @@ const TestPage = () => {
 
     const testConnection = async () => {
         try {
-            const response = await axios.get("https://init-railway-backend-production.up.railway.app/users/test");
+            const response = await axios.get(
+                "https://init-railway-backend-production.up.railway.app/users/test",
+                { withCredentials: true } // Include credentials
+            );
             setConnectionStatus(response.data.message); // Отображает сообщение успешного подключения
             setError(null);
         } catch (err) {
