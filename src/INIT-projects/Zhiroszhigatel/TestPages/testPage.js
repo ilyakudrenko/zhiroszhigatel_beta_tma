@@ -10,18 +10,17 @@ const TestPage = () => {
     const testConnection = async () => {
         try {
             const response = await axios.get(
-                "https://init-railway-backend-production.up.railway.app/users/test",
+                'https://init-railway-backend-production.up.railway.app/api/test', // Replace with your backend URL
                 {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    withCredentials: true, // Include credentials for cross-origin requests
                 }
             );
             setConnectionStatus(response.data.message); // Display success message
             setError(null);
         } catch (err) {
-            setError(err.message); // Display error if the connection fails
+            setError(err.response?.data?.error || 'Connection failed'); // Display error if the connection fails
             setConnectionStatus(null);
         }
     };
