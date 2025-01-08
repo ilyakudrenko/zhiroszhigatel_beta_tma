@@ -9,9 +9,9 @@ import {
     Section,
     Select,
 } from "@telegram-apps/telegram-ui";
-import INITBackButton from "../../../Hooks/BackButton";
+import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
-import INITDivider from "../../CustomComponents/Dividers/Divider";
+import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import {useNavigate} from "react-router-dom";
 
 
