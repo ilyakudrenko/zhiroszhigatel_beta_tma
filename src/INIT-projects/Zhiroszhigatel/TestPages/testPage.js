@@ -11,12 +11,17 @@ const TestPage = () => {
         try {
             const response = await axios.get(
                 "https://init-railway-backend-production.up.railway.app/users/test",
-                { withCredentials: true } // Include credentials
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    withCredentials: true, // Include credentials for cross-origin requests
+                }
             );
-            setConnectionStatus(response.data.message); // Отображает сообщение успешного подключения
+            setConnectionStatus(response.data.message); // Display success message
             setError(null);
         } catch (err) {
-            setError(err.message); // Отображает ошибку, если подключение не удалось
+            setError(err.message); // Display error if the connection fails
             setConnectionStatus(null);
         }
     };
