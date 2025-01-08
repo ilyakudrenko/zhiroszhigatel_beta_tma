@@ -4,9 +4,6 @@ import axios from "axios";
 const TestConnection = () => {
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
-
-    import axios from "axios";
-
     const testConnection = async () => {
         try {
             const response = await axios.get(
