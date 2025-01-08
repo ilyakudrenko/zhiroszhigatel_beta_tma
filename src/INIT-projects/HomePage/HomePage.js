@@ -18,6 +18,7 @@ import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 import {startSession} from "../CustomComponents/UserSession/session";
 import fetchFreeGuides from "../CustomComponents/UserSession/fetchFreeGuides";
+import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -107,6 +108,15 @@ const HomePage = () => {
                             navigate("/support")}}
                     >
                         Задать вопрос
+                    </Cell>
+                    <Cell
+
+                    after={<Icon24ChevronRight/>}
+                    before={<TestConnection />}
+                    onClick={() => {
+                        navigate('/testik')
+                    }}
+                    >
                     </Cell>
                 </Section>
 
