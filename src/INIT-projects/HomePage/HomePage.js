@@ -117,6 +117,7 @@ const HomePage = () => {
                         navigate('/testik')
                     }}
                     >
+                        Testik
                     </Cell>
                 </Section>
 
