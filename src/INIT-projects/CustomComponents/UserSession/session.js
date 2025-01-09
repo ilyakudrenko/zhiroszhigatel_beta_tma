@@ -14,10 +14,15 @@ export const startSession = async () => {
 
     try {
         // Отправляем запрос на вход в систему
-        const response = await axios.post("https://init-railway-backend-v2-production.up.railway.app/users/login", {
+        const response = await axios.post("https://init-railway-backend-v2-production.up.railway.app/users/login",
+            {
             telegram_id: telegramUser.id, // Telegram ID
             first_name: telegramUser.first_name, // Имя из Telegram
-        });
+            },
+            {
+                withCredentials: true,
+            }
+        );
 
         // Заполняем сессию
         session.user = {
