@@ -8,24 +8,25 @@ const session = {
 export const startSession = async () => {
     const telegramUser = window.Telegram.WebApp?.initDataUnsafe?.user;
 
-    if (!telegramUser || !telegramUser.username) {
-        throw new Error("Unable to retrieve username from Telegram.");
+    if (!telegramUser || !telegramUser.id || !telegramUser.first_name) {
+        throw new Error("Unable to retrieve Telegram ID or first name.");
     }
 
     try {
-        // Send a login request to the backend
-        const response = await axios.post("https://init-railway-backend-production.up.railway.app/users/login", {
-            username: telegramUser.username,
+        // Отправляем запрос на вход в систему
+        const response = await axios.post("https://init-railway-backend-v2-production.up.railway.app/users/login", {
+            telegram_id: telegramUser.id, // Telegram ID
+            first_name: telegramUser.first_name, // Имя из Telegram
         });
 
-        // Populate session variables
+        // Заполняем сессию
         session.user = {
-            id_db: response.data.id, // From the database
-            username_db: response.data.username, // From the database
-            registration_date_db: response.data.registration_date, // From the database
-            last_login_db: response.data.last_login, // From the database
+            id_db: response.data.id, // ID из базы данных
+            telegram_id_db: response.data.telegram_id, // Telegram ID из базы данных
+            first_name_db: response.data.first_name, // Имя из базы данных
+            registration_date_db: response.data.registration_date, // Дата регистрации
+            last_login_db: response.data.last_login, // Последний вход
             photo_url_tg: telegramUser.photo_url, // From Telegram
-            first_name_tg: telegramUser.first_name || "", // From Telegram
             last_name_tg: telegramUser.last_name || "", // From Telegram
             is_bot_tg: telegramUser.is_bot, // From Telegram
             time_started_db: new Date().toISOString(), // Session start time
@@ -36,6 +37,7 @@ export const startSession = async () => {
         console.error("Failed to initialize user session:", error);
         throw error;
     }
+
 };
 
 // Function to get the session
