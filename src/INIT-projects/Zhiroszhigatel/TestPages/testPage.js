@@ -25,7 +25,8 @@ const TestConnection = () => {
 
     return (
         <div style={{padding: "20px", textAlign: "center"}}>
-            <h1>Database Connection Test V2</h1>
+            <h1>Database Connection Test V2 </h1>
+            <h1>DO NOT CLICK WILL RECREATE TABLES IN DATABASE </h1>
             <button
                 onClick={testConnection}
                 style={{padding: "10px 20px", cursor: "pointer"}}
