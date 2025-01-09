@@ -70,10 +70,10 @@ export const initializeUserSession = async (telegramUser) => {
 //
 // };
 //
-// // Function to get the session
+// Function to get the session
 // export const getSession = () => {
-//     if (!session.user) {
+//     if (!initializeUserSession().user) {
 //         throw new Error("Session has not been initialized.");
 //     }
-//     return session.user;
+//     return initializeUserSession().user;
 // };
