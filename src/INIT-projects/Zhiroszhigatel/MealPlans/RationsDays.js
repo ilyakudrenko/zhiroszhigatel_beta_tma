@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../Hooks/BackButton";
-import {AppRoot, Caption, Cell, Image, List, Section, Title} from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Caption, Cell, Image, List, Section, Title } from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBuyButton from "./BuyButton";
 
+// Импортируйте JSON данные
+import rationsData from "./Rations.json";
 
-const RationsDays = ({imageSrc, title, description, price}) => {
+const RationsDays = () => {
     INITBackButton();
+
+    // Состояние для текущего рациона
+    const [currentRationIndex, setCurrentRationIndex] = useState(0);
+
+    // Обработка кнопок
+    const handleNext = () => {
+        if (currentRationIndex < rationsData.length - 1) {
+            setCurrentRationIndex(currentRationIndex + 1);
+        }
+    };
+
+    const handleBack = () => {
+        if (currentRationIndex > 0) {
+            setCurrentRationIndex(currentRationIndex - 1);
+        }
+    };
+
+    const currentRation = rationsData[currentRationIndex];
 
     return (
         <AppRoot>
             <List>
+                {/* Отображение текущего рациона */}
                 <Image
-                    src= {imageSrc}
+                    src={currentRation.dietPlan.meals[0]?.photo || "#"} // Используем первое фото из рациона или placeholder
                     style={{
                         width: '100%',
                         height: '40vh',
@@ -23,70 +44,114 @@ const RationsDays = ({imageSrc, title, description, price}) => {
                 />
 
                 {/* Заголовок */}
-                <Title level="1" weight="bold" style={{margin: '16px 16px 8px'}}>
-                    {title}
+                <Title level="1" weight="bold" style={{ margin: '16px 16px 8px' }}>
+                    {`Рацион #${currentRation.dietPlan.id}`}
                 </Title>
 
-                <INITDivider color='transparent' thickness="10%"/>
+                <INITDivider color="transparent" thickness="10%" />
 
+                {/* Цель */}
                 <Caption
                     caps
                     level="1"
                     weight="3"
-                    style={{margin: '5%'}}
+                    style={{ margin: '5%' }}
                 >
-                    ЧТО ВХОДИТ
+                    {currentRation.dietPlan.goal}
                 </Caption>
+
+                {/* Информация о рационе */}
                 <Section>
-                    {description.map((item,index) => (
+                    <Cell multiline subhead="Калорийность">
+                        {`${currentRation.dietPlan.calories} ккал`}
+                    </Cell>
+                    <Cell multiline subhead="Макросы">
+                        {`Белки: ${currentRation.dietPlan.macros.proteins} г | Жиры: ${currentRation.dietPlan.macros.fats} г | Углеводы: ${currentRation.dietPlan.macros.carbohydrates}`}
+                    </Cell>
+                </Section>
+
+                <INITDivider color="transparent" thickness="10%" />
+
+                {/* Отображение всех приёмов пищи */}
+                <Section header="Приёмы пищи">
+                    {currentRation.dietPlan.meals.map((meal, mealIndex) => (
                         <Cell
+                            key={mealIndex}
                             multiline
-                            subhead={item.descriptionTitle}
+                            subhead={`${meal.name} (${meal.calories} ккал)`}
                         >
-                            {item.descriptionFull}
+                            <div>
+                                <b>Ингредиенты:</b> {meal.ingredients || "Не указано"}
+                            </div>
+                            {meal.preparation && (
+                                <div>
+                                    <b>Способ приготовления:</b> {meal.preparation}
+                                </div>
+                            )}
+                            {meal.photo && (
+                                <Image
+                                    src={meal.photo}
+                                    style={{
+                                        width: '100%',
+                                        height: '20vh',
+                                        objectFit: 'cover',
+                                        marginTop: '10px',
+                                        borderRadius: '8px'
+                                    }}
+                                />
+                            )}
                         </Cell>
                     ))}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Описание"*/}
-                    {/*>*/}
-                    {/*    Рекомендованное питание для снижения количества жира в теле и увеличения мышечной массы.*/}
-                    {/*</Cell>*/}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Как опеределить калорийность рациона"*/}
-                    {/*>*/}
-                    {/*    В курсе ты найдешь: Видеоуроки, Встроенный калькулятор калорийности, Автоматическое составление*/}
-                    {/*    мил-планов на основе ваших расчетов.*/}
-                    {/*</Cell>*/}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Кулинарный урок вкусняшек"*/}
-                    {/*>*/}
-                    {/*    Видео рецепты моих вкусняш, на которых я похудел на 30 кг.*/}
-                    {/*</Cell>*/}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Знания о питании"*/}
-                    {/*    after={<Badge type={"number"}>бонус</Badge>}*/}
-                    {/*>*/}
-                    {/*    Список рекомендованнй литература про питание.*/}
-                    {/*</Cell>*/}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Рационы"*/}
-                    {/*>*/}
-                    {/*    Курс включает разнообразные рационы на каждый день недели.*/}
-                    {/*    Они уже настроены по калорийности и порциям специально под тебя.*/}
-                    {/*</Cell>*/}
-                    {/*<Cell*/}
-                    {/*    multiline*/}
-                    {/*    subhead="Цена"*/}
-                    {/*>*/}
-                    {/*    $50*/}
-                    {/*</Cell>*/}
                 </Section>
-                <INITBuyButton title={title} price={price} />
+
+                <INITDivider color="transparent" thickness="10%" />
+
+                {/* Кнопки управления */}
+                <div
+                    style={{
+                        position: 'fixed',
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        paddingBottom: '20px',
+                        zIndex: 1000,
+                    }}
+                >
+                    <Button
+                        mode="filled"
+                        size="m"
+                        disabled={currentRationIndex === 0} // Блокируем, если это первый рацион
+                        onClick={handleBack}
+                        style={{
+                            marginRight: '10px',
+                        }}
+                    >
+                        Back
+                    </Button>
+                    <Button
+                        mode="filled"
+                        size="m"
+                        style={{
+                            marginLeft: '10px',
+                            marginRight: '10px',
+                        }}
+                    >
+                        Save
+                    </Button>
+                    <Button
+                        mode="filled"
+                        size="m"
+                        disabled={currentRationIndex === rationsData.length - 1} // Блокируем, если это последний рацион
+                        onClick={handleNext}
+                        style={{
+                            marginLeft: '10px',
+                        }}
+                    >
+                        Next
+                    </Button>
+                </div>
             </List>
         </AppRoot>
     );
