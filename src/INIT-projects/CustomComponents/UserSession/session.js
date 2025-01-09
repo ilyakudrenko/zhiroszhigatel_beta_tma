@@ -39,6 +39,7 @@ export const startSession = async () => {
         };
 
         console.log("User session initialized:", session.user);
+        console.log("hop hey")
     } catch (error) {
         console.error("Failed to initialize user session:", error);
         throw error;
