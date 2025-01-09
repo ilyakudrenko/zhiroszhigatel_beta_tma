@@ -1,0 +1,138 @@
+[
+  {
+    "dietPlan": {
+      "id": 1,
+      "goal": "Снижение жирового компонента, рекомпозиция тела",
+      "calories": 1300,
+      "macros": {
+        "proteins": 80,
+        "fats": 60,
+        "carbohydrates": "110 (+-20)"
+      },
+      "meals": [
+        {
+          "name": "Завтрак",
+          "ingredients": "Рис (или любая другая крупа) –\n50 гр. (в сухом виде); Клубника\n(любые виды ягод свежих или\nзамороженных) – 50 гр.; Кофе\nили чай без сахара или сахзам\nЯйцо – 1 шт.",
+          "preparation": "Отварить рис (или любую\nдругую крупу). В готовую\nкашу добавить\nклубнику, по желанию\nдобавить подсластитель. К\nкаше добавляем 1 отварное\nяйц0. Данное количество\nингредиентов рассчитано на\n1 раз (или на 1 человека).\nЕсли хотите приготовить\nзавтрак сразу на 2 дня,\nпросто увеличьте\nингредиенты вдвое",
+          "photo": "link_to_image",
+          "calories": 258,
+          "proteins": 10,
+          "fats": 8,
+          "carbohydrates": 44
+        },
+        {
+          "name": "Перекус",
+          "ingredients": "Мандарины – 2 шт. Готово к употреблению.",
+          "photo": "link_to_image",
+          "calories": 36,
+          "proteins": 0,
+          "fats": 0,
+          "carbohydrates": 8
+        },
+        {
+          "name": "Обед",
+          "ingredients": "",
+          "preparation": "",
+          "photo": "link_to_image",
+          "calories": 341,
+          "proteins": 39,
+          "fats": 3,
+          "carbohydrates": 40
+        },
+        {
+          "name": "Перекус",
+          "ingredients": "Грецкие или миндаль или фундук – 40 гр. Готово к употреблению.",
+          "photo": "link_to_image",
+          "calories": 281,
+          "proteins": 6,
+          "fats": 27,
+          "carbohydrates": 4
+        },
+        {
+          "name": "Ужин",
+          "ingredients": "",
+          "preparation": "",
+          "photo": "link_to_image",
+          "calories": 350,
+          "proteins": 44,
+          "fats": 8,
+          "carbohydrates": 20
+        }
+      ],
+      "total": {
+        "calories": 1266,
+        "proteins": 99,
+        "fats": 46,
+        "carbohydrates": 116
+      }
+    }
+  },
+  {
+    "dietPlan": {
+      "id": 2,
+      "goal": "Снижение жирового компонента, рекомпозиция тела",
+      "calories": 1300,
+      "macros": {
+        "proteins": 80,
+        "fats": 60,
+        "carbohydrates": "110 (+-20)"
+      },
+      "meals": [
+        {
+          "name": "Завтрак",
+          "ingredients": "Рис (или любая другая крупа) –\n50 гр. (в сухом виде); Клубника\n(любые виды ягод свежих или\nзамороженных) – 50 гр.; Кофе\nили чай без сахара или сахзам\nЯйцо – 1 шт.",
+          "preparation": "Отварить рис (или любую\nдругую крупу). В готовую\nкашу добавить\nклубнику, по желанию\nдобавить подсластитель. К\nкаше добавляем 1 отварное\nяйц0. Данное количество\nингредиентов рассчитано на\n1 раз (или на 1 человека).\nЕсли хотите приготовить\nзавтрак сразу на 2 дня,\nпросто увеличьте\nингредиенты вдвое",
+          "photo": "link_to_image",
+          "calories": 258,
+          "proteins": 10,
+          "fats": 8,
+          "carbohydrates": 44
+        },
+        {
+          "name": "Перекус",
+          "ingredients": "Мандарины – 2 шт. Готово к употреблению.",
+          "photo": "link_to_image",
+          "calories": 36,
+          "proteins": 0,
+          "fats": 0,
+          "carbohydrates": 8
+        },
+        {
+          "name": "Обед",
+          "ingredients": "",
+          "preparation": "",
+          "photo": "link_to_image",
+          "calories": 341,
+          "proteins": 39,
+          "fats": 3,
+          "carbohydrates": 40
+        },
+        {
+          "name": "Перекус",
+          "ingredients": "Грецкие или миндаль или фундук – 40 гр. Готово к употреблению.",
+          "photo": "link_to_image",
+          "calories": 281,
+          "proteins": 6,
+          "fats": 27,
+          "carbohydrates": 4
+        },
+        {
+          "name": "Ужин",
+          "ingredients": "",
+          "preparation": "",
+          "photo": "link_to_image",
+          "calories": 350,
+          "proteins": 44,
+          "fats": 8,
+          "carbohydrates": 20
+        }
+      ],
+      "total": {
+        "calories": 1266,
+        "proteins": 99,
+        "fats": 46,
+        "carbohydrates": 116
+      }
+    }
+  }
+]
