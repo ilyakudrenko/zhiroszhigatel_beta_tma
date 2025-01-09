@@ -6,7 +6,7 @@ import ItemCoursePromo from "./INIT-projects/Zhiroszhigatel/ItemCourse/ItemCours
 import Support from "./INIT-projects/Zhiroszhigatel/Support/Support";
 import Profile from "./INIT-projects/Zhiroszhigatel/Profile/Profile";
 import HomePage_StablVersion from "./INIT-projects/HomePage/HomePage_StablVersion";
-import Calculator from "./INIT-projects/Zhiroszhigatel/calculator/Calculator";
+import Calculator from "./INIT-projects/Zhiroszhigatel/MealPlans/calculator/Calculator";
 import TestPage from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
 import TestConnection from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
 
