@@ -9,6 +9,7 @@ import HomePage_StablVersion from "./INIT-projects/HomePage/HomePage_StablVersio
 import Calculator from "./INIT-projects/Zhiroszhigatel/MealPlans/calculator/Calculator";
 import TestPage from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
 import TestConnection from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
+import RationsDays from "./INIT-projects/Zhiroszhigatel/MealPlans/RationsDays";
 
 const App = () => {
     const location = useLocation();
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/rations" element={<RationsDays />} />
                 </Routes>
 
         ) : (
@@ -35,6 +37,7 @@ const App = () => {
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/rations" element={<RationsDays />} />
                 </Routes>
         )
     );

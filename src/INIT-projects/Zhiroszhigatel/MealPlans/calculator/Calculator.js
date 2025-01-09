@@ -182,10 +182,11 @@ const Calculator = () => {
                 </Cell>
             </Section>
             <Button
+                disabled={totalCalories === 0 || proteins === 0 || fats === 0 || carbs === 0}
                 mode="filled"
                 size="m"
                 stretched
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/rations")}
                 style={{
                     paddingTop: '10px',
                 }}
