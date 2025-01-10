@@ -18,7 +18,7 @@ const App = () => {
     return (
         isHomePage ? (
                 <Routes>
-                    <Route path="/" element={<TestConnection />} />
+                    <Route path="/" element={<TestPage />} />
                     {/*<Route path="/" element={<Calculator />} />*/}
                     {/*<Route path="/" element={<HomePage />} />*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
@@ -30,7 +30,7 @@ const App = () => {
 
         ) : (
                 <Routes>
-                    <Route path="/" element={<TestConnection />} />
+                    <Route path="/" element={<TestPage />} />
                     {/*<Route path="/" element={<Calculator />} />*/}
                     {/*<Route path="/" element={<HomePage />}/>*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
