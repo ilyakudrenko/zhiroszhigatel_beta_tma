@@ -8,6 +8,10 @@ const session = {
 export const startSession = async () => {
     const telegramUser = window.Telegram.WebApp?.initDataUnsafe?.user;
 
+    // Логируем данные Telegram-пользователя для отладки
+    console.log("Telegram User Data:", telegramUser);
+
+
     if (!telegramUser || !telegramUser.id || !telegramUser.first_name) {
         throw new Error("Unable to retrieve Telegram ID or first name.");
     }
@@ -22,6 +26,9 @@ export const startSession = async () => {
             },
             {
                 withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json' // Заголовок Content-Type
+                }
             }
         );
 
