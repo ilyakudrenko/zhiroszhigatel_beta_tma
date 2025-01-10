@@ -38,11 +38,10 @@ export const startSession = async () => {
             time_started: new Date().toISOString(), // Session start time
         };
 
-        console.log("Response data:", response.data);
         console.log("User session initialized:", session.user);
         console.log("hop hey")
     } catch (error) {
-        console.error("Failed to initialize user session:", error.response?.data || error.message);
+        console.error("Failed to initialize user session:", error);
         throw error;
     }
 };
