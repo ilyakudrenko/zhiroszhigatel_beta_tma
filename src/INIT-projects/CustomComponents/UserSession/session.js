@@ -1,63 +1,61 @@
 import axios from "axios";
 
+// Объект для хранения сессии
 const session = {
-    user: null, // This will hold the user session data
+    user: null, // Здесь будут храниться данные сессии пользователя
 };
 
-// Function to start the session
-export const startSession = async () => {
-    console.log("Telegram WebApp initDataUnsafe:", window.Telegram.WebApp?.initDataUnsafe);
-
+// Функция для инициализации сессии пользователя
+export const initializeUserSession = async () => {
     const telegramUser = window.Telegram.WebApp?.initDataUnsafe?.user;
 
-    // Логируем данные Telegram-пользователя для отладки
-    console.log("Telegram User Data:", telegramUser);
-
     if (!telegramUser || !telegramUser.id || !telegramUser.first_name) {
-        throw new Error("Unable to retrieve Telegram ID or first name.");
+        throw new Error("Unable to retrieve necessary Telegram user data.");
     }
 
     try {
-        // Отправляем запрос на вход в систему
+        // Отправляем запрос на логин в базу данных
         const response = await axios.post(
             "https://init-railway-backend-v2-production.up.railway.app/users/login",
             {
                 telegram_id: telegramUser.id, // Telegram ID
-                first_name: telegramUser.first_name, // Имя из Telegram
+                first_name: telegramUser.first_name, // Имя пользователя
             },
             {
-                withCredentials: true,
-                headers: {
-                    'Content-Type': 'application/json' // Заголовок Content-Type
-                }
+                withCredentials: true, // Для отправки cookies
             }
         );
 
-        // Заполняем сессию
+        // Сохраняем данные пользователя в сессию
         session.user = {
             id: response.data.id, // ID из базы данных
             telegram_id: response.data.telegram_id, // Telegram ID из базы данных
-            first_name: response.data.first_name, // Имя из базы данных
-            date_registered: response.data.date_registered, // Дата регистрации
-            date_last_login: response.data.date_last_login, // Последний вход
-            photo_url: telegramUser.photo_url || "", // From Telegram
-            last_name: telegramUser.last_name || "", // From Telegram
-            is_bot: telegramUser.is_bot || false, // From Telegram
-            time_started: new Date().toISOString(), // Session start time
+            first_name: response.data.first_name, // Имя пользователя из базы данных
+            date_registered: response.data.date_registered, // Дата регистрации из базы данных
+            date_last_login: response.data.date_last_login, // Дата последнего входа из базы данных
+            photo_url: telegramUser.photo_url || null, // Фото из Telegram (если доступно)
+            last_name: telegramUser.last_name || null, // Фамилия из Telegram (если доступно)
+            time_started: new Date().toISOString(), // Время начала сессии
         };
 
         console.log("User session initialized:", session.user);
-        console.log("hop hey")
+        return session.user;
     } catch (error) {
         console.error("Failed to initialize user session:", error);
         throw error;
     }
 };
 
-// Function to get the session
+// Функция для получения данных текущей сессии
 export const getSession = () => {
     if (!session.user) {
         throw new Error("Session has not been initialized.");
     }
     return session.user;
+};
+
+// Функция для очистки сессии
+export const clearSession = () => {
+    session.user = null;
+    console.log("User session cleared.");
 };

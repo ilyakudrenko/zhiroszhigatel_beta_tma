@@ -1,76 +1,45 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import {getSession, initializeUserSession} from "../../CustomComponents/UserSession/session";
 
 const TestPage = () => {
-    const [response, setResponse] = useState(null);
-    const [response_get, setResponse_get] = useState(null);
+    const [userInfo, setUserInfo] = useState(null);
+    const [error, setError] = useState(null);
 
-    const handleTelegramLogin = async () => {
-        const telegramUser = window.Telegram.WebApp?.initDataUnsafe?.user;
+    useEffect(() => {
+        const startSession = async () => {
+            try {
+                // Инициализация сессии пользователя
+                await initializeUserSession();
+                // Получение данных из сессии
+                const userSession = getSession();
+                setUserInfo(userSession); // Устанавливаем данные пользователя
+            } catch (err) {
+                console.error("Failed to initialize session:", err);
+                setError(err.message); // Устанавливаем сообщение об ошибке
+            }
+        };
 
-        if (!telegramUser || !telegramUser.id || !telegramUser.first_name) {
-            console.error("Error: Unable to retrieve Telegram user data.");
-            setResponse({ error: "Unable to retrieve Telegram user data." });
-            return;
-        }
+        startSession();
+    }, []);
 
-        try {
-            const res = await axios.post(
-                "https://init-railway-backend-v2-production.up.railway.app/users/login",
-                {
-                    telegram_id: telegramUser.id, // Telegram ID
-                    first_name: telegramUser.first_name, // Имя пользователя
-                },
-                {
-                    withCredentials: true,
-                }
-            );
-            setResponse(res.data);
-        } catch (error) {
-            console.error("Error:", error.response?.data || error.message);
-            setResponse({ error: error.response?.data || error.message });
-        }
-    };
-
-
-    const handleGetRequest = async () => {
-        try{
-            const res = await axios.get(
-                'https://init-railway-backend-v2-production.up.railway.app/test/test-db',
-                {withCredentials: true}
-            );
-            setResponse_get(res.data);
-        }catch(error){
-            console.error("Error:", error.response?.data || error.message);
-            setResponse({ error: error.response?.data || error.message });
-        }
-    }
     return (
-        <div>
-            <div style={{padding: "20px", textAlign: "center"}}>
-                <h1>Telegram User Login</h1>
-                <button onClick={handleTelegramLogin} style={{marginTop: "20px"}}>
-                    Login with Telegram
-                </button>
-                {response && (
-                    <div style={{marginTop: "20px"}}>
-                        <h3>Response:</h3>
-                        <pre>{JSON.stringify(response, null, 2)}</pre>
-                    </div>
-                )}
-            </div>
-            <div style={{padding: "20px", textAlign: "center"}}>
-                <h1>Test</h1>
-                <button onClick={handleGetRequest} style={{marginTop: "20px"}}>
-                    Test
-                </button>
-                {response_get && (
-                    <div style={{marginTop: "20px"}}>
-                        <h3>Response:</h3>
-                        <pre>{JSON.stringify(response_get, null, 2)}</pre>
-                    </div>
-                )}
-            </div>
+        <div style={{ padding: "20px", textAlign: "center" }}>
+            <h1>User Information</h1>
+            {error && <p style={{ color: "red" }}>Error: {error}</p>}
+            {userInfo ? (
+                <div style={{ textAlign: "left", margin: "0 auto", maxWidth: "400px" }}>
+                    <p><strong>ID:</strong> {userInfo.id}</p>
+                    <p><strong>Telegram ID:</strong> {userInfo.telegram_id}</p>
+                    <p><strong>First Name:</strong> {userInfo.first_name}</p>
+                    <p><strong>Date Registered:</strong> {userInfo.date_registered}</p>
+                    <p><strong>Last Login:</strong> {userInfo.date_last_login}</p>
+                    <p><strong>Photo URL:</strong> {userInfo.photo_url || "N/A"}</p>
+                    <p><strong>Last Name:</strong> {userInfo.last_name || "N/A"}</p>
+                    <p><strong>Session Start Time:</strong> {userInfo.time_started}</p>
+                </div>
+            ) : (
+                !error && <p>Loading user information...</p>
+            )}
         </div>
     );
 };
