@@ -3,6 +3,7 @@ import axios from "axios";
 
 const TestPage = () => {
     const [response, setResponse] = useState(null);
+    const [response_get, setResponse_get] = useState(null);
 
     const handleTelegramLogin = async () => {
         const telegramUser = window.Telegram.WebApp?.initDataUnsafe?.user;
@@ -31,18 +32,45 @@ const TestPage = () => {
         }
     };
 
+
+    const handleGetRequest = async () => {
+        try{
+            const res = await axios.get(
+                'https://init-railway-backend-v2-production.up.railway.app/test/test-db',
+                {withCredentials: true}
+            );
+            setResponse_get(res.data);
+        }catch(error){
+            console.error("Error:", error.response?.data || error.message);
+            setResponse({ error: error.response?.data || error.message });
+        }
+    }
     return (
-        <div style={{ padding: "20px", textAlign: "center" }}>
-            <h1>Telegram User Login</h1>
-            <button onClick={handleTelegramLogin} style={{ marginTop: "20px" }}>
-                Login with Telegram
-            </button>
-            {response && (
-                <div style={{ marginTop: "20px" }}>
-                    <h3>Response:</h3>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
-                </div>
-            )}
+        <div>
+            <div style={{padding: "20px", textAlign: "center"}}>
+                <h1>Telegram User Login</h1>
+                <button onClick={handleTelegramLogin} style={{marginTop: "20px"}}>
+                    Login with Telegram
+                </button>
+                {response && (
+                    <div style={{marginTop: "20px"}}>
+                        <h3>Response:</h3>
+                        <pre>{JSON.stringify(response, null, 2)}</pre>
+                    </div>
+                )}
+            </div>
+            <div style={{padding: "20px", textAlign: "center"}}>
+                <h1>Test</h1>
+                <button onClick={handleGetRequest} style={{marginTop: "20px"}}>
+                    Test
+                </button>
+                {response_get && (
+                    <div style={{marginTop: "20px"}}>
+                        <h3>Response:</h3>
+                        <pre>{JSON.stringify(response_get, null, 2)}</pre>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
