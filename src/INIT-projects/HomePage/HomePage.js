@@ -16,7 +16,7 @@ import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
-import {startSession} from "../CustomComponents/UserSession/session";
+// import {startSession} from "../CustomComponents/UserSession/session";
 import fetchFreeGuides from "../CustomComponents/UserSession/fetchFreeGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 
@@ -43,7 +43,7 @@ const HomePage = () => {
     useEffect(() => {
         const initialize = async () => {
             try {
-                await startSession(); // Start the session
+                // await startSession(); // Start the session
                 const guides = await fetchFreeGuides();
                 setFreeGuides(guides);
                 setLoading(false);   // End loading after session starts
