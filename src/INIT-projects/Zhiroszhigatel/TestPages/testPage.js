@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {getSession, initializeUserSession} from "../../CustomComponents/UserSession/session";
+import {AppRoot} from "@telegram-apps/telegram-ui";
 
 const TestPage = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -23,6 +24,7 @@ const TestPage = () => {
     }, []);
 
     return (
+        <AppRoot>
         <div style={{ padding: "20px", textAlign: "center" }}>
             <h1>User Information</h1>
             {error && <p style={{ color: "red" }}>Error: {error}</p>}
@@ -41,6 +43,7 @@ const TestPage = () => {
                 !error && <p>Loading user information...</p>
             )}
         </div>
+        </AppRoot>
     );
 };
 
