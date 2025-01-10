@@ -9,7 +9,7 @@ const BACKEND_PUBLIC_URL = process.env.BACKEND_PUBLIC_URL;
 const fetchAllGuides = async () => {
     try {
         // Fetch free guides from the backend
-        const response = await axios.get('${BACKEND_PUBLIC_URL}/guides/all');
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/all`);
 
         // Format the guides into the desired structure
         const formattedGuides = response.data.map((guide) => ({
