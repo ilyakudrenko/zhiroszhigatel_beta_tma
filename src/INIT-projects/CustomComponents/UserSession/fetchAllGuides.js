@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const BACKEND_PUBLIC_URL = process.env.BACKEND_PUBLIC_URL;
-
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+console.log(BACKEND_PUBLIC_URL);
 /**
  * Fetch all free guides from the backend and format them into the desired JSON structure.
  * @returns {Promise<Array>} A promise that resolves to the formatted guides array.
