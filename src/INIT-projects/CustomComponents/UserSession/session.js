@@ -35,6 +35,7 @@ export const initializeUserSession = async () => {
             date_last_login: response.data.date_last_login, // Дата последнего входа из базы данных
             photo_url: telegramUser.photo_url || null, // Фото из Telegram (если доступно)
             last_name: telegramUser.last_name || null, // Фамилия из Telegram (если доступно)
+            username: telegramUser.username || null,
             time_started: new Date().toISOString(), // Время начала сессии
         };
 

@@ -98,15 +98,15 @@ const Profile = () => {
                     before={
                         <Avatar
                             size={48}
-                            src={userSession.photo_url_tg}
+                            src={userSession.photo_url}
                         />
                     }
                     //description="Description"
                     //subhead={userSession.id_db}
-                    subtitle={userSession.username_db}
+                    subtitle={userSession.username}
                     //titleBadge={<Badge type="dot" />}
                 >
-                    {userSession.first_name_tg} {userSession.last_name_tg}
+                    {userSession.first} {userSession.last_name}
                 </Cell>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>

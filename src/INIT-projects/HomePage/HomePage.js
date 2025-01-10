@@ -17,8 +17,9 @@ import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
-import fetchFreeGuides from "../CustomComponents/UserSession/fetchFreeGuides";
+import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
+import {initializeUserSession} from "../CustomComponents/UserSession/session";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -44,7 +45,8 @@ const HomePage = () => {
         const initialize = async () => {
             try {
                 // await startSession(); // Start the session
-                const guides = await fetchFreeGuides();
+                await initializeUserSession();
+                const guides = await fetchAllGuides();
                 setFreeGuides(guides);
                 setLoading(false);   // End loading after session starts
 
