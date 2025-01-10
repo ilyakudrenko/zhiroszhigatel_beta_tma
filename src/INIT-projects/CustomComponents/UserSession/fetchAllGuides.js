@@ -11,8 +11,9 @@ const fetchAllGuides = async () => {
         // Fetch free guides from the backend
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/all`);
 
+        const guides = response.data.guides;
         // Format the guides into the desired structure
-        const formattedGuides = response.data.map((guide) => ({
+        const formattedGuides = guides.data.map((guide) => ({
             guide_id_db: guide.id, // Add guide_id_db
             imageSrc: guide.image_src, // Assuming description is JSON
             title: guide.frontend_title,
