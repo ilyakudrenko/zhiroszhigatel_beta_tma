@@ -32,25 +32,25 @@ const GuideButton = ({ guide_id, title }) => {
 
     const handleButtonClick = async () => {
         const userSession = getSession();
-        const userId = userSession.id_db;
+        const userId = userSession.id; // Получаем ID пользователя из сессии
 
         try {
             if (isAdded) {
-                // If the guide is already added, send a DELETE request
+                // Если гайд уже добавлен, отправляем DELETE запрос
                 await axios.delete(
                     `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
                 );
 
-                setIsAdded(false); // Mark the guide as removed
+                setIsAdded(false); // Убираем метку "Добавлено"
                 setSnackbarDescription("Гайд удален из вашей библиотеки.");
             } else {
-                // If the guide is not added, send a POST request
-                await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
-                    user_id: userId,
-                    guide_id: guide_id,
-                });
+                // Отправляем POST запрос для добавления гайда
+                await axios.post(
+                    'https://init-railway-backend-production.up.railway.app/guides/add-to-library',
+                    { user_id: userId, guide_id }
+                );
 
-                setIsAdded(true); // Mark the guide as added
+                setIsAdded(true); // Помечаем как добавленный
                 setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
             }
             setSnackbarVisible(true);
