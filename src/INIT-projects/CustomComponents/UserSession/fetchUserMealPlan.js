@@ -16,6 +16,7 @@ const fetchUserMealPlan = async () => {
             mealPlan_description: mealPlan.description,
         }));
 
+        return mealPlansData;
     } catch (error){
         console.error("Failed to fetch user meal plan", error);
         throw error;
