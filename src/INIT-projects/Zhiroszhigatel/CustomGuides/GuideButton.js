@@ -5,6 +5,20 @@ import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
 const GuideButton = () => {
+    const handleButtonClick = () => {
+        try {
+            // Получаем сессию пользователя
+            const userSession = getSession();
+            const userId = userSession.id; // ID пользователя из базы данных
+
+            // Выводим ID пользователя через alert
+            alert(`User ID: ${userId}`);
+        } catch (error) {
+            console.error("Error retrieving user session:", error);
+            alert("Ошибка: Сессия пользователя не инициализирована.");
+        }
+    };
+
     return (
         <div
             style={{
@@ -21,6 +35,7 @@ const GuideButton = () => {
             <Button
                 mode="filled"
                 size="l"
+                onClick={handleButtonClick}
             >
                 Добавить в библиотеку
             </Button>
