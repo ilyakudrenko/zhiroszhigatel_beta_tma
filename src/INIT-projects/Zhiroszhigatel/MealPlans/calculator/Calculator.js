@@ -86,6 +86,28 @@ const Calculator = () => {
         }
     };
 
+    const saveMealPlan = async () => {
+        try {
+            const userId = 1; // Здесь необходимо подставить ID текущего пользователя
+            const mealPlanId = mealPlan?.id; // ID выбранного плана питания
+
+            if (!userId || !mealPlanId) {
+                alert('Пользователь или план питания не определен.');
+                return;
+            }
+
+            await axios.post(
+                'https://init-railway-backend-v2-production.up.railway.app/mealplans/save-mealplan',
+                { userId, mealPlanId }
+            );
+
+            navigate('/rations'); // Переход к следующей странице
+        } catch (error) {
+            console.error('Error saving meal plan:', error);
+            alert('Ошибка сохранения данных. Попробуйте снова.');
+        }
+    };
+
     return (
         <AppRoot>
             <Section header="Инструкция">
@@ -95,7 +117,7 @@ const Calculator = () => {
                         height="215"
                         src="https://www.youtube.com/embed/ai3kswDDvbQ"
                         title="YouTube video player"
-                        frameBorder="0"
+                        //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
@@ -205,7 +227,7 @@ const Calculator = () => {
                 mode="filled"
                 size="m"
                 stretched
-                onClick={() => navigate("/rations")}
+                onClick={saveMealPlan}
                 style={{
                     paddingTop: '10px',
                 }}
