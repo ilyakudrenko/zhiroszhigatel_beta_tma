@@ -18,6 +18,9 @@ const GuideButton = ({ guide_id, title }) => {
                 {
                     user_id: userId,
                     guide_id: guide_id,
+                },
+                {
+                    withCredentials: true, // Для отправки cookies
                 }
             );
 
