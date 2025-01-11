@@ -10,10 +10,11 @@ const GuideButton = ({ guide_id, title }) => {
             // Получение ID пользователя из сессии
             const userSession = getSession();
             const userId = userSession.id;
+            alert(`User ID: ${userId}, Guide ID: ${guide_id}`);
 
             // Отправка POST-запроса для добавления записи в базу данных
             const response = await axios.post(
-                "https://init-railway-backend-production.up.railway.app/guides/add-to-library",
+                "https://init-railway-backend-production.up.railway.app/user-library/add",
                 {
                     user_id: userId,
                     guide_id: guide_id,
