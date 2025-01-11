@@ -109,21 +109,16 @@ const Calculator = () => {
                 { userId, mealPlanId }
             );
 
-            const message = response.data.message;
-
-            // Обрабатываем ответ от сервера
-            if (message === 'План питания обновлен.') {
-                alert('Ваш план питания обновлен.');
-            } else if (message === 'План питания успешно сохранен.') {
-                alert('Ваш новый план питания сохранен.');
-            } else if (message === 'План питания уже актуален.') {
-                alert('Ваш текущий план питания уже актуален.');
-            }
-
             navigate('/rations'); // Переход к следующей странице
         } catch (error) {
-            console.error('Ошибка сохранения плана питания:', error);
-            alert('Ошибка сохранения данных. Попробуйте снова.');
+            if (error.response && error.response.status === 409) {
+                // Пользователь уже имеет план
+                alert('У вас уже есть план питания. Нельзя добавить больше одного.');
+            } else {
+                // Другая ошибка
+                console.error('Ошибка сохранения плана питания:', error);
+                alert('Ошибка сохранения данных. Попробуйте снова.');
+            }
         }
     };
 
@@ -256,5 +251,5 @@ const Calculator = () => {
         </AppRoot>
     );
 };
-//fixing inputs
+
 export default Calculator;
