@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
-console.log(BACKEND_PUBLIC_URL);
+// console.log(BACKEND_PUBLIC_URL);
 /**
  * Fetch all free guides from the backend and format them into the desired JSON structure.
  * @returns {Promise<Array>} A promise that resolves to the formatted guides array.
@@ -28,5 +28,11 @@ const fetchAllGuides = async () => {
         throw error;
     }
 };
+
+// const fetchUserLibrary = async () => {
+//     try{
+//         const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/library`);
+//     }
+// }
 
 export default fetchAllGuides;
