@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Snackbar } from "@telegram-apps/telegram-ui";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
+import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -100,6 +101,7 @@ const GuideButton = ({ guide_id, title }) => {
 
             {isSnackbarVisible && (
                 <Snackbar
+                    before={<INITProfileIcon />}
                     children={title}
                     description={snackbarMessage}
                     duration={4000}
