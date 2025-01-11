@@ -100,7 +100,7 @@ const Calculator = () => {
             }
 
             await axios.post(
-                'https://init-railway-backend-v2-production.up.railway.app/mealplans/save-mealplan',
+                'https://init-railway-backend-v2-production.up.railway.app/mealplanuser_mealplans/save-mealplan',
                 { userId, mealPlanId }
             );
 
