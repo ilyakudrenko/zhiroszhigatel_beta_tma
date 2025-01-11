@@ -17,10 +17,15 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
 import {getSession} from "../../../CustomComponents/UserSession/session";
 
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+
+
 
 const Calculator = () => {
     INITBackButton();
     const navigate = useNavigate();
+
+    const userSession = getSession();
 
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
@@ -77,7 +82,7 @@ const Calculator = () => {
 
         try {
             const response = await axios.get(
-                `https://init-railway-backend-v2-production.up.railway.app/mealplans/get-mealplan`,
+                `${BACKEND_PUBLIC_URL}/mealplans/get-mealplan`,
                 { params: { calories: Math.round(total) } }
             );
             setMealPlan(response.data);
@@ -90,7 +95,7 @@ const Calculator = () => {
 
     const saveMealPlan = async () => {
         try {
-            const userSession = getSession();
+
             const userId = userSession.id; // Здесь необходимо подставить ID текущего пользователя
             const mealPlanId = mealPlan?.id;
 
@@ -100,7 +105,7 @@ const Calculator = () => {
             }
 
             await axios.post(
-                'https://init-railway-backend-v2-production.up.railway.app/mealplanuser_mealplans/save-mealplan',
+                `${BACKEND_PUBLIC_URL}/user_mealplans/save-mealplan`,
                 { userId, mealPlanId }
             );
 
