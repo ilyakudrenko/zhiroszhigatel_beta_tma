@@ -63,7 +63,6 @@ const GuideButton = ({ guide_id, title }) => {
             }
 
             setSnackbarVisible(true);
-            console.log(`Guide Title passed to the Guide Button: ${title}`)
         } catch (error) {
             console.error("Error managing guide:", error);
             setSnackbarMessage("Ошибка при управлении гайдом.");
