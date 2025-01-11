@@ -38,30 +38,34 @@ const GuideButton = ({ guide_id, title }) => {
             const userId = userSession.id;
 
             if (isAdded) {
-                setSnackbarMessage("Гайд уже добавлен в библиотеку!");
-                setSnackbarVisible(true);
-                return;
+                // Remove the guide if it's already added
+                await axios.delete(`${BACKEND_PUBLIC_URL}/user_guides/delete`, {
+                    data: { user_id: userId, guide_id: guide_id },
+                });
+
+                setIsAdded(false);
+                setSnackbarMessage("Гайд удален из библиотеки!");
+            } else {
+                // Add the guide to the library
+                await axios.post(
+                    `${BACKEND_PUBLIC_URL}/user_guides/add`,
+                    {
+                        user_id: userId,
+                        guide_id: guide_id,
+                    },
+                    {
+                        withCredentials: true,
+                    }
+                );
+
+                setIsAdded(true);
+                setSnackbarMessage("Гайд успешно добавлен в библиотеку!");
             }
 
-            // Add the guide to the library
-            await axios.post(
-                `${BACKEND_PUBLIC_URL}/user_guides/add`,
-                {
-                    user_id: userId,
-                    guide_id: guide_id,
-                },
-                {
-                    withCredentials: true,
-                }
-            );
-
-            // Update the state
-            setIsAdded(true);
-            setSnackbarMessage("Гайд успешно добавлен в библиотеку!");
             setSnackbarVisible(true);
         } catch (error) {
-            console.error("Error adding guide to library:", error);
-            setSnackbarMessage("Ошибка при добавлении гайда.");
+            console.error("Error managing guide:", error);
+            setSnackbarMessage("Ошибка при управлении гайдом.");
             setSnackbarVisible(true);
         }
     };
@@ -91,7 +95,7 @@ const GuideButton = ({ guide_id, title }) => {
                     backgroundColor: isAdded ? "#FF6347" : "", // Red if added
                 }}
             >
-                {isAdded ? "Гайд добавлен" : "Добавить в библиотеку"}
+                {isAdded ? "Удалить из библиотеки" : "Добавить в библиотеку"}
             </Button>
 
             {isSnackbarVisible && (
