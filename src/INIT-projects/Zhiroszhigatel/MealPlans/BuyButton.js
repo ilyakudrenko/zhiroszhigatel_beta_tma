@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import {Button, Snackbar} from "@telegram-apps/telegram-ui";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
+import {useNavigate} from "react-router-dom";
+
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 }
 
 const INITBuyButton = ({title, price}) => {
+    const navigate = useNavigate();
+
 
     const [isGreen, setIsGreen] = useState(false);
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
@@ -15,6 +19,7 @@ const INITBuyButton = ({title, price}) => {
         handleClickHaptic('light')
         setIsGreen(true); // Toggle the color state
         setSnackbarVisible(true);
+        navigate("/calculator"); // Navigate to rations
     };
 
     const handleCloseSnackbar = () => {
