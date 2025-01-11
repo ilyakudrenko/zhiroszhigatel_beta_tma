@@ -11,6 +11,7 @@ const MealPlanTasting = () => {
         const loadMealPlans = async () => {
             try {
                 const data = await fetchUserMealPlan();
+                console.log(data);
                 setMealPlans(data);
             } catch (err) {
                 setError("Failed to fetch meal plans. Please try again.");
