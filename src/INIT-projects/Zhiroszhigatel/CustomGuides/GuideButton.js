@@ -1,39 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Snackbar } from "@telegram-apps/telegram-ui";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
 const GuideButton = ({ guide_id, title }) => {
+    const [isAdded, setIsAdded] = useState(false); // Track if the guide is already added
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [snackbarDescription, setSnackbarDescription] = useState("");
 
-    const handleButtonClick = async () => {
-        try {
-            // Получаем данные пользователя из сессии
-            const userSession = getSession();
-            const userId = userSession.id;
+    useEffect(() => {
+        const checkGuideStatus = async () => {
+            try {
+                // Get the user session data
+                const userSession = getSession();
+                const userId = userSession.id_db;
 
-            if (!userId || !guide_id) {
-                setSnackbarDescription("Ошибка: отсутствуют данные пользователя или гайда.");
-                setSnackbarVisible(true);
-                return;
+                // Check if the guide is already in the user's library
+                const response = await axios.get(
+                    `https://init-railway-backend-production.up.railway.app/user_guides/check/${userId}/${guide_id}`
+                );
+
+                setIsAdded(response.data.exists); // Update the state based on the response
+            } catch (error) {
+                console.error("Failed to check guide status:", error);
             }
+        };
 
-            // Отправляем POST-запрос для добавления гайда в библиотеку
-            await axios.post(
-                "https://init-railway-backend-production.up.railway.app/guides/add-to-library",
-                {
+        checkGuideStatus(); // Check status on component mount
+    }, [guide_id]);
+
+    const handleButtonClick = async () => {
+        const userSession = getSession();
+        const userId = userSession.id_db;
+
+        try {
+            if (isAdded) {
+                // If the guide is already added, send a DELETE request
+                await axios.delete(
+                    `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
+                );
+
+                setIsAdded(false); // Mark the guide as removed
+                setSnackbarDescription("Гайд удален из вашей библиотеки.");
+            } else {
+                // If the guide is not added, send a POST request
+                await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
                     user_id: userId,
                     guide_id: guide_id,
-                }
-            );
+                });
 
-            setSnackbarDescription("Гайд успешно добавлен в вашу библиотеку.");
+                setIsAdded(true); // Mark the guide as added
+                setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
+            }
             setSnackbarVisible(true);
         } catch (error) {
-            console.error("Ошибка при добавлении гайда:", error);
-            setSnackbarDescription("Произошла ошибка. Попробуйте еще раз.");
+            console.error("Error managing guide in library:", error);
+            setSnackbarDescription("Ошибка. Попробуйте ещё раз.");
             setSnackbarVisible(true);
         }
     };
@@ -52,15 +75,18 @@ const GuideButton = ({ guide_id, title }) => {
                 display: "flex",
                 justifyContent: "center",
                 paddingBottom: "20px",
-                zIndex: 1000, // Убедитесь, что кнопка видна
+                zIndex: 1000, // Ensure it’s on top of other elements
             }}
         >
             <Button
                 mode="filled"
                 size="l"
                 onClick={handleButtonClick}
+                style={{
+                    backgroundColor: isAdded ? "#FF6347" : '', // Red if added, green otherwise
+                }}
             >
-                Добавить в библиотеку
+                {isAdded ? "Удалить из библиотеки" : "Добавить в библиотеку"}
             </Button>
 
             {isSnackbarVisible && (
@@ -71,7 +97,7 @@ const GuideButton = ({ guide_id, title }) => {
                     duration={4000}
                     onClose={handleCloseSnackbar}
                     style={{
-                        zIndex: 1500, // Убедитесь, что Snackbar виден
+                        zIndex: 1000, // Ensure it’s on top of other elements
                     }}
                 />
             )}
