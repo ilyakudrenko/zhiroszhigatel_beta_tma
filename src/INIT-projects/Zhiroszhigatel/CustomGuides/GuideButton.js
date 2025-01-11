@@ -7,15 +7,12 @@ import axios from "axios";
 const GuideButton = () => {
     const handleButtonClick = () => {
         try {
-            // Получаем сессию пользователя
             const userSession = getSession();
-            const userId = userSession.id; // ID пользователя из базы данных
-
-            // Выводим ID пользователя через alert
+            const userId = userSession.id; // Получаем обычный id пользователя
             alert(`User ID: ${userId}`);
         } catch (error) {
-            console.error("Error retrieving user session:", error);
-            alert("Ошибка: Сессия пользователя не инициализирована.");
+            console.error("Ошибка при получении ID пользователя:", error);
+            alert("Ошибка: Не удалось получить ID пользователя.");
         }
     };
 
