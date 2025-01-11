@@ -3,6 +3,7 @@ import { getSession } from "./session"; // Adjust the path to your session.js fi
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
+//
 /**
  * Fetches the user's library of guides and formats it into a JSON array.
  * @returns {Promise<Array>} A promise that resolves to the formatted guidesData array.
