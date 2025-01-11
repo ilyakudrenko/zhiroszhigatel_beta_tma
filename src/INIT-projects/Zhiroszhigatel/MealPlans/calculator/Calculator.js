@@ -251,5 +251,5 @@ const Calculator = () => {
         </AppRoot>
     );
 };
-
+//fixing inputs
 export default Calculator;
