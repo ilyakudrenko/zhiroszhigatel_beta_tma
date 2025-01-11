@@ -5,14 +5,25 @@ import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
 const GuideButton = ({ guide_id, title }) => {
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         try {
+            // Получение ID пользователя из сессии
             const userSession = getSession();
-            const userId = userSession.id; // Получаем обычный id пользователя
-            alert(`User ID: ${userId}, Guide ID: ${guide_id}`);
+            const userId = userSession.id;
+
+            // Отправка POST-запроса для добавления записи в базу данных
+            const response = await axios.post(
+                "https://init-railway-backend-production.up.railway.app/guides/add-to-library",
+                {
+                    user_id: userId,
+                    guide_id: guide_id,
+                }
+            );
+
+            alert(response.data.message); // Уведомление об успешной записи
         } catch (error) {
-            console.error("Ошибка при получении ID пользователя:", error);
-            alert("Ошибка: Не удалось получить ID пользователя.");
+            console.error("Error adding guide to library:", error);
+            alert("Ошибка при добавлении гайда в библиотеку.");
         }
     };
 
