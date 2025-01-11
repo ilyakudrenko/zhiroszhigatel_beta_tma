@@ -20,10 +20,22 @@ const MealPlanTasting = () => {
     }, []);
 
     return (
-        <div style={{ padding: "20px", textAlign: "center" }}>
+        <div style={{padding: "20px", textAlign: "center"}}>
             <h1>User Meal Plans</h1>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {mealPlans}
+            {error && <p style={{color: "red"}}>{error}</p>}
+            {!error && (
+                <pre style={{
+                    textAlign: "left",
+                    maxWidth: "600px",
+                    margin: "20px auto",
+                    background: "#f4f4f4",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    border: "1px solid #ccc"
+                }}>
+                    {JSON.stringify(mealPlans, null, 2)}
+                </pre>
+            )}
         </div>
     );
 };
