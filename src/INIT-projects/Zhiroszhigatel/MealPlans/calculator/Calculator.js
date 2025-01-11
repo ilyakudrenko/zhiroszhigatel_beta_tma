@@ -111,8 +111,14 @@ const Calculator = () => {
 
             navigate('/rations'); // Переход к следующей странице
         } catch (error) {
-            console.error('Error saving meal plan:', error);
-            alert('Ошибка сохранения данных. Попробуйте снова.');
+            if (error.response && error.response.status === 409) {
+                // Пользователь уже имеет план
+                alert('У вас уже есть план питания. Нельзя добавить больше одного.');
+            } else {
+                // Другая ошибка
+                console.error('Ошибка сохранения плана питания:', error);
+                alert('Ошибка сохранения данных. Попробуйте снова.');
+            }
         }
     };
 
