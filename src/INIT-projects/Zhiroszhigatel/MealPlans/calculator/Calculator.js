@@ -15,6 +15,8 @@ import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
+import {getSession} from "../../../CustomComponents/UserSession/session";
+
 
 const Calculator = () => {
     INITBackButton();
@@ -88,8 +90,9 @@ const Calculator = () => {
 
     const saveMealPlan = async () => {
         try {
-            const userId = 1; // Здесь необходимо подставить ID текущего пользователя
-            const mealPlanId = mealPlan?.id; // ID выбранного плана питания
+            const userSession = getSession();
+            const userId = userSession.id; // Здесь необходимо подставить ID текущего пользователя
+            const mealPlanId = mealPlan?.id;
 
             if (!userId || !mealPlanId) {
                 alert('Пользователь или план питания не определен.');
