@@ -71,7 +71,7 @@ const GuideButton = ({ guide_id, title }) => {
                     duration={4000}
                     onClose={handleCloseSnackbar}
                     style={{
-                        zIndex: 1000, // Убедитесь, что Snackbar виден
+                        zIndex: 1500, // Убедитесь, что Snackbar виден
                     }}
                 />
             )}
