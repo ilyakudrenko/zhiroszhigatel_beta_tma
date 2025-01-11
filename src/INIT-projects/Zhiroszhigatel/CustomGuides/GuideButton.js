@@ -17,7 +17,7 @@ const GuideButton = ({ guide_id, title }) => {
 
             // Отправка POST-запроса для добавления записи в базу данных
             const response = await axios.post(
-                `${BACKEND_PUBLIC_URL}/user-guides/add`,
+                `${BACKEND_PUBLIC_URL}/user_guides/add`,
                 {
                     user_id: userId,
                     guide_id: guide_id,
