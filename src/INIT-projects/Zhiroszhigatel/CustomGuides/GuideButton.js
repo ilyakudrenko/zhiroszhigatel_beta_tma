@@ -4,6 +4,9 @@ import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+
+
 const GuideButton = ({ guide_id, title }) => {
     const handleButtonClick = async () => {
         try {
@@ -14,7 +17,7 @@ const GuideButton = ({ guide_id, title }) => {
 
             // Отправка POST-запроса для добавления записи в базу данных
             const response = await axios.post(
-                "https://init-railway-backend-production.up.railway.app/user-library/add",
+                `${BACKEND_PUBLIC_URL}/user-guides/add`,
                 {
                     user_id: userId,
                     guide_id: guide_id,
