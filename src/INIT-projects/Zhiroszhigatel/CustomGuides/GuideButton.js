@@ -10,7 +10,7 @@ const GuideButton = ({ guide_id, title }) => {
             // Получение ID пользователя из сессии
             const userSession = getSession();
             const userId = userSession.id;
-            alert(`User ID: ${userId}, Guide ID: ${guide_id}`);
+            //alert(`User ID: ${userId}, Guide ID: ${guide_id}`);
 
             // Отправка POST-запроса для добавления записи в базу данных
             const response = await axios.post(
