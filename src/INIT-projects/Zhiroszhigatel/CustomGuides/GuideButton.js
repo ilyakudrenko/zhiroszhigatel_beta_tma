@@ -34,28 +34,26 @@ const GuideButton = ({ guide_id, title }) => {
         const userSession = getSession();
         const userId = userSession.id;
 
+        console.log("Sending data:", { user_id: userId, guide_id }); // Для проверки отправляемых данных
+
         try {
             if (isAdded) {
-                // If the guide is already added, send a DELETE request
                 await axios.delete(
                     `https://init-railway-backend-v2-production.up.railway.app/guides/remove/${userId}/${guide_id}`
                 );
-
-                setIsAdded(false); // Mark the guide as removed
+                setIsAdded(false);
                 setSnackbarDescription("Гайд удален из вашей библиотеки.");
             } else {
-                // If the guide is not added, send a POST request
                 await axios.post("https://init-railway-backend-v2-production.up.railway.app/guides/add", {
                     user_id: userId,
                     guide_id: guide_id,
                 });
-
-                setIsAdded(true); // Mark the guide as added
+                setIsAdded(true);
                 setSnackbarDescription("Добавлен в библиотеку (вы можете найти его в профиле)");
             }
             setSnackbarVisible(true);
         } catch (error) {
-            console.error("Error managing guide in library:", error);
+            console.error("Error managing guide in library:", error.response?.data || error.message);
             setSnackbarDescription("Ошибка. Попробуйте ещё раз.");
             setSnackbarVisible(true);
         }
