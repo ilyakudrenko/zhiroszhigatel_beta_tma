@@ -92,7 +92,7 @@ const Calculator = () => {
                 <div style={{ textAlign: "center" }}>
                     <iframe
                         width="90%"
-                        height="315"
+                        height="215"
                         src="https://www.youtube.com/embed/ai3kswDDvbQ"
                         title="YouTube video player"
                         frameBorder="0"
