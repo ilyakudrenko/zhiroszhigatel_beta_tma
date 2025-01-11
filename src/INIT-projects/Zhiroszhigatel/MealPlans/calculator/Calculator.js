@@ -15,10 +15,17 @@ import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
+import {getSession} from "../../../CustomComponents/UserSession/session";
+
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+
+
 
 const Calculator = () => {
     INITBackButton();
     const navigate = useNavigate();
+
+    const userSession = getSession();
 
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
@@ -75,7 +82,7 @@ const Calculator = () => {
 
         try {
             const response = await axios.get(
-                `https://init-railway-backend-v2-production.up.railway.app/mealplans/get-mealplan`,
+                `${BACKEND_PUBLIC_URL}/mealplans/get-mealplan`,
                 { params: { calories: Math.round(total) } }
             );
             setMealPlan(response.data);
@@ -83,6 +90,29 @@ const Calculator = () => {
         } catch (error) {
             console.error('Error fetching meal plan:', error);
             setMealPlanError('Failed to fetch a meal plan. Try again later.');
+        }
+    };
+
+    const saveMealPlan = async () => {
+        try {
+
+            const userId = userSession.id; // Здесь необходимо подставить ID текущего пользователя
+            const mealPlanId = mealPlan?.id;
+
+            if (!userId || !mealPlanId) {
+                alert('Пользователь или план питания не определен.');
+                return;
+            }
+
+            await axios.post(
+                `${BACKEND_PUBLIC_URL}/user_mealplans/save-mealplan`,
+                { userId, mealPlanId }
+            );
+
+            navigate('/rations'); // Переход к следующей странице
+        } catch (error) {
+            console.error('Error saving meal plan:', error);
+            alert('Ошибка сохранения данных. Попробуйте снова.');
         }
     };
 
@@ -95,7 +125,7 @@ const Calculator = () => {
                         height="215"
                         src="https://www.youtube.com/embed/ai3kswDDvbQ"
                         title="YouTube video player"
-                        frameBorder="0"
+                        //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
@@ -205,7 +235,7 @@ const Calculator = () => {
                 mode="filled"
                 size="m"
                 stretched
-                onClick={() => navigate("/rations")}
+                onClick={saveMealPlan}
                 style={{
                     paddingTop: '10px',
                 }}

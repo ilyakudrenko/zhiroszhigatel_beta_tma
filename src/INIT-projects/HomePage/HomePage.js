@@ -111,16 +111,6 @@ const HomePage = () => {
                     >
                         Задать вопрос
                     </Cell>
-                    <Cell
-
-                    after={<Icon24ChevronRight/>}
-                    before={<TestConnection />}
-                    onClick={() => {
-                        navigate('/testik')
-                    }}
-                    >
-                        Testik
-                    </Cell>
                 </Section>
 
             {/*Some banner for sales*/}
