@@ -4,12 +4,12 @@ import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 
-const GuideButton = () => {
+const GuideButton = ({ guide_id, title }) => {
     const handleButtonClick = () => {
         try {
             const userSession = getSession();
             const userId = userSession.id; // Получаем обычный id пользователя
-            alert(`User ID: ${userId}`);
+            alert(`User ID: ${userId}, Guide ID: ${guide_id}`);
         } catch (error) {
             console.error("Ошибка при получении ID пользователя:", error);
             alert("Ошибка: Не удалось получить ID пользователя.");
