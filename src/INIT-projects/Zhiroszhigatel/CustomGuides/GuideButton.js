@@ -14,11 +14,11 @@ const GuideButton = ({ guide_id, title }) => {
             try {
                 // Get the user session data
                 const userSession = getSession();
-                const userId = userSession.id_db;
+                const userId = userSession.id;
 
                 // Check if the guide is already in the user's library
                 const response = await axios.get(
-                    `https://init-railway-backend-production.up.railway.app/user_guides/check/${userId}/${guide_id}`
+                    `https://init-railway-backend-v2-production.up.railway.app/guides/check/${userId}/${guide_id}`
                 );
 
                 setIsAdded(response.data.exists); // Update the state based on the response
@@ -32,20 +32,20 @@ const GuideButton = ({ guide_id, title }) => {
 
     const handleButtonClick = async () => {
         const userSession = getSession();
-        const userId = userSession.id_db;
+        const userId = userSession.id;
 
         try {
             if (isAdded) {
                 // If the guide is already added, send a DELETE request
                 await axios.delete(
-                    `https://init-railway-backend-production.up.railway.app/user_guides/${userId}/${guide_id}`
+                    `https://init-railway-backend-v2-production.up.railway.app/guides/remove/${userId}/${guide_id}`
                 );
 
                 setIsAdded(false); // Mark the guide as removed
                 setSnackbarDescription("Гайд удален из вашей библиотеки.");
             } else {
                 // If the guide is not added, send a POST request
-                await axios.post("https://init-railway-backend-production.up.railway.app/user_guides", {
+                await axios.post("https://init-railway-backend-v2-production.up.railway.app/guides/add", {
                     user_id: userId,
                     guide_id: guide_id,
                 });
