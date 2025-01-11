@@ -148,7 +148,7 @@ const Calculator = () => {
                         placeholder="Укажите свой возраст"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
-                        type="number"
+                        //type="number"
                     />
                 </Section>
 
@@ -157,7 +157,7 @@ const Calculator = () => {
                         placeholder="Укажите свой рост в см"
                         value={height}
                         onChange={(e) => setHeight(e.target.value)}
-                        type="number"
+                        //type="number"
                     />
                 </Section>
 
@@ -166,7 +166,7 @@ const Calculator = () => {
                         placeholder="Укажите свой вес в кг"
                         value={weight}
                         onChange={(e) => setWeight(e.target.value)}
-                        type="number"
+                        //type="number"
                     />
                 </Section>
 
