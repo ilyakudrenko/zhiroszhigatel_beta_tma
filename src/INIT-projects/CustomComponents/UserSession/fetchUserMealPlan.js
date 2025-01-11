@@ -23,5 +23,6 @@ const fetchUserMealPlan = async () => {
     }
 }
 
+
 export default fetchUserMealPlan;
 
