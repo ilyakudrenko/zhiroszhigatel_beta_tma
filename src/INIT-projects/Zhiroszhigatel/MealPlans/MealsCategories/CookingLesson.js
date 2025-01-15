@@ -13,15 +13,10 @@ const CookingLesson = () => {
 
             {/*5 Рецептов*/}
             <Section header="5 Рецептов">
-                <div style={{ textAlign: "center" }}>
-                    <iframe
-                        width="90%"
-                        height="215"
-                        src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
-                        title="5 Рецептов"
-                        //frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                <div style={{textAlign: "center"}}>
+                    <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                            width="640" height="360" frameBorder="0" allowFullScreen="1"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
                 </div>
             </Section>
@@ -29,8 +24,8 @@ const CookingLesson = () => {
 
             {/*Готовый_2*/}
             <Section header="Готовый_2">
-                <div style={{ textAlign: "center" }}>
-                    <iframe
+                <div style={{textAlign: "center"}}>
+                <iframe
                         width="90%"
                         height="215"
                         src="https://vkvideo.ru/video9490543_456239822?list=ln-TnzEGjZuizWyCzLo6f&ref_domain=course.zhzhgis.ru"
