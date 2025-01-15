@@ -17,8 +17,8 @@ const CookingLesson = () => {
                     <iframe
                         width="90%"
                         height="215"
-                        src="https://vkvideo.ru/video9490543_456239820?list=ln-8XTuZxfRfLjjIvL4Bl&ref_domain=course.zhzhgis.ru"
-                        title="YouTube video player"
+                        src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                        title="5 Рецептов"
                         //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -34,7 +34,7 @@ const CookingLesson = () => {
                         width="90%"
                         height="215"
                         src="https://vkvideo.ru/video9490543_456239822?list=ln-TnzEGjZuizWyCzLo6f&ref_domain=course.zhzhgis.ru"
-                        title="YouTube video player"
+                        //title="YouTube video player"
                         //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -49,8 +49,8 @@ const CookingLesson = () => {
                     <iframe
                         width="90%"
                         height="215"
-                        src="https://youtu.be/_wUqQAZOjuk"
-                        title="YouTube video player"
+                        src="https://www.youtube.com/embed/_wUqQAZOjuk"
+                        title="Кулинарные утехи на диете"
                         //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -66,7 +66,7 @@ const CookingLesson = () => {
                         width="90%"
                         height="215"
                         src="https://vkvideo.ru/video9490543_456239827?list=ln-wR21pZzbqFv80Xa6Ul&ref_domain=course.zhzhgis.ru"
-                        title="YouTube video player"
+                        //title="YouTube video player"
                         //frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
