@@ -9,14 +9,13 @@ import {
     IconContainer,
     Input,
     Section,
-    Select, Snackbar,
+    Select,
 } from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
 import {getSession} from "../../../CustomComponents/UserSession/session";
-import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -42,8 +41,6 @@ const Calculator = () => {
 
     const [mealPlan, setMealPlan] = useState(null);
     const [mealPlanError, setMealPlanError] = useState(null);
-
-    const [snackbarVisible, setSnackbarVisible] = useState(false);
 
     const calculateMacros = async () => {
         const numericAge = parseFloat(age) || 0;
@@ -96,10 +93,6 @@ const Calculator = () => {
         }
     };
 
-    const handleCloseSnackbar = () => {
-        setSnackbarVisible(false);
-    };
-
     const saveMealPlan = async () => {
         try {
 
@@ -116,10 +109,7 @@ const Calculator = () => {
                 { userId, mealPlanId }
             );
 
-            setSnackbarVisible(true);
-            setTimeout(async () => {
-                navigate('/rations'); // Переход к следующей странице
-            }, 3000)
+            navigate('/rations'); // Переход к следующей странице
         } catch (error) {
             if (error.response && error.response.status === 409) {
                 // Пользователь уже имеет план
@@ -258,19 +248,6 @@ const Calculator = () => {
             >
                 Дальше
             </Button>
-
-            {setSnackbarVisible && (
-                <Snackbar
-                    before={<INITProfileIcon/>}
-                    children={mealPlan.title}
-                    description="Добавлен в библиотеку(вы можите найти его в профиле)"
-                    duration={4000}
-                    style={{
-                        zIndex: 1000, // Ensure it’s on top of other elements
-                    }}
-                    onClose={handleCloseSnackbar}
-                />
-            )}
         </AppRoot>
     );
 };
