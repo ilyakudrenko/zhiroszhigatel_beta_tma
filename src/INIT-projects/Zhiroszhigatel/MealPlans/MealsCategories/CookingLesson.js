@@ -15,7 +15,7 @@ const CookingLesson = () => {
             <Section header="5 Рецептов">
                 <div style={{textAlign: "center"}}>
                     <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
-                            width="640" height="360" frameBorder="0" allowFullScreen="1"
+                            width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
                 </div>
@@ -25,14 +25,9 @@ const CookingLesson = () => {
             {/*Готовый_2*/}
             <Section header="Готовый_2">
                 <div style={{textAlign: "center"}}>
-                <iframe
-                        width="90%"
-                        height="215"
-                        src="https://vkvideo.ru/video9490543_456239822?list=ln-TnzEGjZuizWyCzLo6f&ref_domain=course.zhzhgis.ru"
-                        //title="YouTube video player"
-                        //frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                    <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239822&hash=ecc17305affbf253"
+                            width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
                 </div>
             </Section>
@@ -40,14 +35,12 @@ const CookingLesson = () => {
 
             {/*Кулинарные утехи на диете*/}
             <Section header="Кулинарные утехи на диете">
-                <div style={{ textAlign: "center" }}>
+                <div style={{textAlign: "center" }}>
                     <iframe
                         width="90%"
                         height="215"
                         src="https://www.youtube.com/embed/_wUqQAZOjuk"
-                        title="Кулинарные утехи на диете"
-                        //frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
                 </div>
@@ -56,15 +49,10 @@ const CookingLesson = () => {
 
             {/*Урок с кухни, готовим вкусняхи*/}
             <Section header="Урок с кухни, готовим вкусняхи">
-                <div style={{ textAlign: "center" }}>
-                    <iframe
-                        width="90%"
-                        height="215"
-                        src="https://vkvideo.ru/video9490543_456239827?list=ln-wR21pZzbqFv80Xa6Ul&ref_domain=course.zhzhgis.ru"
-                        //title="YouTube video player"
-                        //frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
+                <div style={{textAlign: "center"}}>
+                    <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239827&hash=26d79dcb8b19ca66"
+                            width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
                 </div>
             </Section>
