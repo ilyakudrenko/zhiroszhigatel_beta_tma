@@ -9,13 +9,14 @@ import {
     IconContainer,
     Input,
     Section,
-    Select,
+    Select, Snackbar,
 } from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
 import {getSession} from "../../../CustomComponents/UserSession/session";
+import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -24,6 +25,8 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 const Calculator = () => {
     INITBackButton();
     const navigate = useNavigate();
+    const [isSnackbarVisible, setSnackbarVisible] = useState(false);
+
 
     const userSession = getSession();
 
@@ -109,6 +112,7 @@ const Calculator = () => {
                 { userId, mealPlanId }
             );
 
+            setSnackbarVisible(true);
             navigate('/rations'); // Переход к следующей странице
         } catch (error) {
             if (error.response && error.response.status === 409) {
@@ -120,6 +124,10 @@ const Calculator = () => {
                 alert('Ошибка сохранения данных. Попробуйте снова.');
             }
         }
+    };
+
+    const handleCloseSnackbar = () => {
+        setSnackbarVisible(false);
     };
 
     return (
@@ -248,6 +256,21 @@ const Calculator = () => {
             >
                 Дальше
             </Button>
+
+            {isSnackbarVisible && (
+                <Snackbar
+                    before={<INITProfileIcon/>}
+                    children="XXX"
+                    description="Добавлен в библиотеку(вы можите найти его в профиле)"
+                    duration={3000}
+                    onClose={handleCloseSnackbar}
+                    style={{
+                        zIndex: 1000, // Ensure it’s on top of other elements
+                    }}
+                >
+                </Snackbar>
+            )}
+
         </AppRoot>
     );
 };
