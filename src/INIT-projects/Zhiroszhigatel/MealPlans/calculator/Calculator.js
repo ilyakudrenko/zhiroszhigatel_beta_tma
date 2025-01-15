@@ -115,7 +115,7 @@ const Calculator = () => {
             setSnackbarVisible(true);
             setTimeout(async () => {
                 navigate('/rations'); // Переход к следующей странице
-            },3000)
+            },2000)
         } catch (error) {
             if (error.response && error.response.status === 409) {
                 // Пользователь уже имеет план
@@ -262,7 +262,7 @@ const Calculator = () => {
             {isSnackbarVisible && (
                 <Snackbar
                     before={<INITProfileIcon/>}
-                    children="XXX"
+                    children={mealPlan.title}
                     description="Добавлен в библиотеку(вы можите найти его в профиле)"
                     duration={2000}
                     onClose={handleCloseSnackbar}
