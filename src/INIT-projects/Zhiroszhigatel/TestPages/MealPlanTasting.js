@@ -46,9 +46,31 @@ const MealPlanTasting = () => {
     return (
 
         <AppRoot>
+
+            <div style={{padding: "20px", textAlign: "center"}}>
+                <h1>User Meal Plans</h1>
+                {error && <p style={{color: "red"}}>{error}</p>}
+                {!error && (
+                    <p>
+                        {JSON.stringify(mealPlans, null, 2)}
+                    </p>
+                )}
+            </div>
+            <div style={{padding: "20px", textAlign: "center"}}>
+                <h1>User Meal Plans By Days</h1>
+                {error && <p style={{color: "red"}}>{error}</p>}
+                {!error && (
+                    <p>
+                        {JSON.stringify(mealPlanDays, null, 2)}
+                    </p>
+                )}
+            </div>
+
+            <INITDivider color='transparent' thickness="10%"/>
+
             {mealPlanDays.map((day, index) => (
                 <Section key={index} header={`Day ${day.mealPlanDays_day_number}`}>
-                    <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
+                    <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
                         {mealPlans[0]?.mealPlan_title || "Meal Plan"} - Day {day.mealPlanDays_day_number}
                     </Title>
                     <Caption
@@ -75,7 +97,7 @@ const MealPlanTasting = () => {
                         <b>Carbs:</b> {day.mealPlanDays_total_carbs} g
                     </Cell>
                     <INITDivider color='light' thickness="1px"/>
-                    <Caption level="1" weight="3" style={{ marginBottom: "10px" }}>
+                    <Caption level="1" weight="3" style={{marginBottom: "10px"}}>
                         Plan Details
                     </Caption>
                     <Cell multiline>
