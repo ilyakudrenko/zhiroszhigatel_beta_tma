@@ -82,18 +82,18 @@ const MealPlanTasting = () => {
                     {mealPlans[0]?.mealPlan_description || "No additional details available."}
                 </Caption>
                 {mealPlanDays.map((day, index) => (
-                    <Section key={index} header={`Day ${day.mealPlanDays_day_number}`}>
+                    <Section key={index} header={`День ${day.mealPlanDays_day_number}`}>
                         <Cell>
-                            <b>Calories:</b> {day.mealPlanDays_total_kcal} kcal
+                            <b>Общие калории:</b> {day.mealPlanDays_total_kcal}
                         </Cell>
                         <Cell>
-                            <b>Proteins:</b> {day.mealPlanDays_total_protein} g
+                            <b>Белки:</b> {day.mealPlanDays_total_protein}
                         </Cell>
                         <Cell>
-                            <b>Fats:</b> {day.mealPlanDays_total_fat} g
+                            <b>Жиры:</b> {day.mealPlanDays_total_fat}
                         </Cell>
                         <Cell>
-                            <b>Carbs:</b> {day.mealPlanDays_total_carbs} g
+                            <b>Углеводы:</b> {day.mealPlanDays_total_carbs}
                         </Cell>
                     </Section>
                 ))}
