@@ -46,28 +46,6 @@ const MealPlanTasting = () => {
     return (
 
         <AppRoot>
-
-            <div style={{padding: "20px", textAlign: "center"}}>
-                <h1>User Meal Plans</h1>
-                {error && <p style={{color: "red"}}>{error}</p>}
-                {!error && (
-                    <p>
-                        {JSON.stringify(mealPlans, null, 2)}
-                    </p>
-                )}
-            </div>
-            <div style={{padding: "20px", textAlign: "center"}}>
-                <h1>User Meal Plans By Days</h1>
-                {error && <p style={{color: "red"}}>{error}</p>}
-                {!error && (
-                    <p>
-                        {JSON.stringify(mealPlanDays, null, 2)}
-                    </p>
-                )}
-            </div>
-
-            <INITDivider color='transparent' thickness="10%"/>
-
             <List>
                 <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
                     {mealPlans[0]?.mealPlan_title || "Meal Plan"}
@@ -84,16 +62,16 @@ const MealPlanTasting = () => {
                 {mealPlanDays.map((day, index) => (
                     <Section key={index} header={`День ${day.mealPlanDays_day_number}`}>
                         <Cell>
-                            <b>Общие калории:</b> {day.mealPlanDays_total_kcal}
+                            <b>Общие калории:</b> {day.mealPlanDays_total_kcal} ккал
                         </Cell>
                         <Cell>
-                            <b>Белки:</b> {day.mealPlanDays_total_protein}
+                            <b>Белки:</b> {day.mealPlanDays_total_protein} гр
                         </Cell>
                         <Cell>
-                            <b>Жиры:</b> {day.mealPlanDays_total_fat}
+                            <b>Жиры:</b> {day.mealPlanDays_total_fat} гр
                         </Cell>
                         <Cell>
-                            <b>Углеводы:</b> {day.mealPlanDays_total_carbs}
+                            <b>Углеводы:</b> {day.mealPlanDays_total_carbs} гр
                         </Cell>
                     </Section>
                 ))}
