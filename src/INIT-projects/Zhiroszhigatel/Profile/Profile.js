@@ -117,7 +117,7 @@ const Profile = () => {
                 >
                     My Ads
                 </Cell>
-                <ButtonCell before={<Icon28AddCircle />} onClick={() => navigate("/calculator")}>
+                <ButtonCell before={<Icon28AddCircle />} onClick={() => navigate("/rations")}>
                     Create Ad
                 </ButtonCell>
             </Section>
