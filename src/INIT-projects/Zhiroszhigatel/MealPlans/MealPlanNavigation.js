@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Badge, Banner, Button, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Banner, Button, Section} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
-import INITBanner from "../../CustomComponents/Banner/Banner";
+import {useNavigate} from "react-router-dom";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -21,6 +21,7 @@ const MealPlanNavigation = () => {
     const [mealPlans, setMealPlans] = useState([]);
     const [mealPlanDays, setMealPlanDays] = useState([]);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     INITBackButton();
 
@@ -61,14 +62,14 @@ const MealPlanNavigation = () => {
                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                 style={{width: '150%'}}/>}
                //callout="Urgent notification"
-               description="Видео рецепты моих вкусняш, на которых я похудел на 30 кг"
-               header="Кулинарный урок вкусняшек"
+               description= {mealPlans[0]?.mealPlan_title || "Meal Plan"}
+               header="Ваш Рацион"
                // onCloseIcon={function noRefCheck(){}}
                type="section"
                style={roundedCellStyle}
            >
                <React.Fragment key=".0">
-                   <Button size="s" onClick={handleClick}>
+                   <Button size="s" onClick={() => navigate("/rations")}>
                        Перейти
                    </Button>
                </React.Fragment>
