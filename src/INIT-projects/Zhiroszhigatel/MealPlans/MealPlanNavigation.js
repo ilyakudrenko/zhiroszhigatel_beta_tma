@@ -89,7 +89,7 @@ const MealPlanNavigation = () => {
                style={roundedCellStyle}
            >
                <React.Fragment key=".0">
-                   <Button size="s" onClick={handleClick}>
+                   <Button size="s" onClick={() => navigate("/cookingLesson")}>
                        Перейти
                    </Button>
                </React.Fragment>

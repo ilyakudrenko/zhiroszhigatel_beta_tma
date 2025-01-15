@@ -12,6 +12,7 @@ import TestConnection from "./INIT-projects/Zhiroszhigatel/TestPages/testPage";
 import RationsDays from "./INIT-projects/Zhiroszhigatel/MealPlans/RationsDays";
 import MealPlanTasting from "./INIT-projects/Zhiroszhigatel/TestPages/MealPlanTasting";
 import MealPlanNavigation from "./INIT-projects/Zhiroszhigatel/MealPlans/MealPlanNavigation";
+import CookingLesson from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingLesson";
 
 const App = () => {
     const location = useLocation();
@@ -32,6 +33,7 @@ const App = () => {
                     //Meal Plans.
                     <Route path="/rations" element={<MealPlanTasting />} />
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
+                    <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
                 </Routes>
 
@@ -48,6 +50,7 @@ const App = () => {
                     //Meal Plans.
                     <Route path="/rations" element={<MealPlanTasting />} />
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
+                    <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
                 </Routes>
         )
