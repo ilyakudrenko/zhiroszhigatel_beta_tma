@@ -68,22 +68,11 @@ const MealPlanTasting = () => {
 
             <INITDivider color='transparent' thickness="10%"/>
 
+            <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
+                {mealPlans[0]?.mealPlan_title || "Meal Plan"}
+            </Title>
             {mealPlanDays.map((day, index) => (
                 <Section key={index} header={`Day ${day.mealPlanDays_day_number}`}>
-                    <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
-                        {mealPlans[0]?.mealPlan_title || "Meal Plan"} - Day {day.mealPlanDays_day_number}
-                    </Title>
-                    <Caption
-                        level="1"
-                        weight="3"
-                        style={{
-                            marginBottom: "10px",
-                            textTransform: "uppercase",
-                            color: "gray",
-                        }}
-                    >
-                        Macros Overview
-                    </Caption>
                     <Cell>
                         <b>Calories:</b> {day.mealPlanDays_total_kcal} kcal
                     </Cell>
