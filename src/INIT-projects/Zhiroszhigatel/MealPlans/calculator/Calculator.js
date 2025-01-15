@@ -96,6 +96,10 @@ const Calculator = () => {
         }
     };
 
+    const handleCloseSnackbar = () => {
+        setSnackbarVisible(false);
+    };
+
     const saveMealPlan = async () => {
         try {
 
@@ -114,7 +118,6 @@ const Calculator = () => {
 
             setSnackbarVisible(true);
             setTimeout(async () => {
-                setSnackbarVisible(false);
                 navigate('/rations'); // Переход к следующей странице
             }, 3000)
         } catch (error) {
@@ -265,7 +268,7 @@ const Calculator = () => {
                     style={{
                         zIndex: 1000, // Ensure it’s on top of other elements
                     }}
-                    onClose={}
+                    onClose={handleCloseSnackbar}
                 />
             )}
         </AppRoot>
