@@ -16,7 +16,7 @@ const INITBonus = () => {
                         1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book1.jpeg"
+                            src="https://imo10.labirint.ru/books/579579/cover.jpg/242-0"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -39,7 +39,7 @@ const INITBonus = () => {
                         2. Еда для радости. Записки диетолога. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book2.jpeg"
+                            src="https://imo10.labirint.ru/books/774990/cover.jpg/484-0"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -62,7 +62,7 @@ const INITBonus = () => {
                         3. Очаровательный кишечник. Как самый могущественный орган управляет нами. Джулия Эндерс
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book3.jpeg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm7q1NtCpvBWBI6qkWROgZb0thVgpwePu2uQ&s"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -85,7 +85,7 @@ const INITBonus = () => {
                         4. Голодный мозг. Как перехитрить инстинкты, которые заставляют нас переедать
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book4.jpeg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOa32liVabUjjESWmzhOtMcg3ccIZ_t06HZA&s"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -108,7 +108,7 @@ const INITBonus = () => {
                         5. Почему мы толстеем. Мифы и факты о том, что мешает нам быть стройными Гэри Таубс
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book5.jpeg"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc43oqbbTWExw4wu-lxIxFq7ccLxFsDRnFFA&s"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
