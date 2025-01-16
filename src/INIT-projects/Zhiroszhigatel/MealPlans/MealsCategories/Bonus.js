@@ -16,7 +16,7 @@ const INITBonus = () => {
                         1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="../Books_img/book1.jpeg"
+                            src="https://imo10.labirint.ru/books/579579/cover.jpg/242-0"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
