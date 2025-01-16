@@ -18,6 +18,9 @@ const CookingLesson = () => {
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
+                    <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                            width="640" height="360" frameBorder="0" allowFullScreen="1"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
