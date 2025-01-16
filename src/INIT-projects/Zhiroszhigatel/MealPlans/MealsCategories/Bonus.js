@@ -32,19 +32,14 @@ const INITBonus = () => {
                     {/*    </a>*/}
                     {/*</Cell>*/}
                     <Cell>
-                        <Button
-                            mode="filled"
-                            size="m"
-                            stretched
-                            onClick={() => {
-                                const link = document.createElement('a'); // Create a new anchor element
-                                link.href = "https://fs02.getcourse.ru/fileservice/file/download/a/562611/sc/156/h/d66edc46b3387fca4093854c71732af6.zip"; // File URL
-                                link.download = "file.zip"; // Set the download attribute with the desired file name
-                                link.click(); // Programmatically trigger a click event
-                            }}
+                        <a
+                            href="https://fs02.getcourse.ru/fileservice/file/download/a/562611/sc/156/h/d66edc46b3387fca4093854c71732af6.zip"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: "none", color: "inherit" }}
                         >
-                            📥 Скачать
-                        </Button>
+                            📥 Скачать ZIP файл
+                        </a>
                     </Cell>
                 </Section>
                 <INITDivider color='transparent' thickness="10%"/>
