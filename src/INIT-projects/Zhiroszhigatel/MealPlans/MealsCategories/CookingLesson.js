@@ -18,6 +18,7 @@ const CookingLesson = () => {
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
+                </div>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
 
@@ -34,7 +35,7 @@ const CookingLesson = () => {
 
             {/*Кулинарные утехи на диете*/}
             <Section header="Кулинарные утехи на диете">
-                <div style={{textAlign: "center"}}>
+                <div style={{textAlign: "center" }}>
                     <iframe
                         width="90%"
                         height="215"
