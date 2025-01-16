@@ -18,10 +18,6 @@ const CookingLesson = () => {
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     ></iframe>
-                    <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
-                            width="640" height="360" frameBorder="0" allowFullScreen="1"
-                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                </div>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
 
@@ -38,11 +34,17 @@ const CookingLesson = () => {
 
             {/*Кулинарные утехи на диете*/}
             <Section header="Кулинарные утехи на диете">
-                <div style={{textAlign: "center" }}>
+                <div style={{textAlign: "center"}}>
                     <iframe
                         width="90%"
                         height="215"
                         src="https://www.youtube.com/embed/_wUqQAZOjuk"
+                        style={{
+                            border: "none", // Removes the border
+                            display: "block", // Ensures no inline space
+                            margin: 0, // Removes default margin
+                            padding: 0, // Removes default padding
+                        }}
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
