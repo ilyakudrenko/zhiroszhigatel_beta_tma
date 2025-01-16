@@ -11,6 +11,7 @@ import {
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
+import INITBonus from "./MealsCategories/Bonus";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -126,41 +127,37 @@ const MealPlanNavigation = () => {
                    </Banner>
                }
            >
-               <div style={{textAlign: "center"}}>
-                   <iframe
-                       width="95%"
-                       height="215"
-                       src="https://www.youtube.com/embed/_wUqQAZOjuk"
-                       style={{
-                           border: "none", // Removes the border
-                           borderRadius: 16,
-                           padding: 5,
-                       }}
-                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                       allowFullScreen
-                   ></iframe>
-               </div>
+               <INITBonus />
            </Modal>
            <INITDivider color='transparent' thickness="10%"/>
 
            {/*Мои приборы для простого и вкусного похудения*/}
-           <Banner
-               background={<img alt="Nasa streams"
-                                src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                style={{width: '150%'}}/>}
-               //callout="Urgent notification"
-               //description=""
-               header="Мои приборы для простого и вкусного похудения"
-               // onCloseIcon={function noRefCheck(){}}
-               type="section"
-               style={roundedCellStyle}
+           <Modal
+               header={<ModalHeader
+                   after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Only
+                   iOS header</ModalHeader>}
+               trigger={
+                   <Banner
+                       background={<img alt="Nasa streams"
+                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                        style={{width: '150%'}}/>}
+                       //callout="Urgent notification"
+                       //description=""
+                       header="Мои приборы для простого и вкусного похудения"
+                       // onCloseIcon={function noRefCheck(){}}
+                       type="section"
+                       style={roundedCellStyle}
+                   >
+                       <React.Fragment key=".0">
+                           <Button size="s" onClick={handleClick}>
+                               Перейти
+                           </Button>
+                       </React.Fragment>
+                   </Banner>
+               }
            >
-               <React.Fragment key=".0">
-                   <Button size="s" onClick={handleClick}>
-                       Перейти
-                   </Button>
-               </React.Fragment>
-           </Banner>
+           </Modal>
+
            <INITDivider color='transparent' thickness="10%"/>
 
            {/*Сборник рецептов перекусов*/}
