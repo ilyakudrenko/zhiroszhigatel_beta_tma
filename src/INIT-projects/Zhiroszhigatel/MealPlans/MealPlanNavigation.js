@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Badge, Banner, Button, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Banner, Button, Modal, Section} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
 import {useNavigate} from "react-router-dom";
+import {
+    ModalHeader
+} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
+import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
+import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -97,6 +102,27 @@ const MealPlanNavigation = () => {
            <INITDivider color='transparent' thickness="10%"/>
 
            {/*БОНУС Знания о питании*/}
+           <Modal
+               header={<ModalHeader
+                   after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Only
+                   iOS header</ModalHeader>}
+               trigger={<Button size="m">Open modal</Button>}
+           >
+               <div style={{textAlign: "center"}}>
+                   <iframe
+                       width="95%"
+                       height="215"
+                       src="https://www.youtube.com/embed/_wUqQAZOjuk"
+                       style={{
+                           border: "none", // Removes the border
+                           borderRadius: 16,
+                           padding: 5,
+                       }}
+                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                       allowFullScreen
+                   ></iframe>
+               </div>
+           </Modal>
            <Banner
                background={<img alt="Nasa streams"
                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
