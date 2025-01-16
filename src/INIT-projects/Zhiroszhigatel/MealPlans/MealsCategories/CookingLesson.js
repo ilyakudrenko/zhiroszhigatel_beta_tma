@@ -1,113 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Accordion, AppRoot, Blockquote, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../../Hooks/BackButton";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
-import {
-    AccordionSummary
-} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
-import {
-    AccordionContent
-} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
-import INITAccordionList from "../../Support/Accordion";
-import questionsData from "../../Support/accordionData.json";
 
 
 const CookingLesson = () => {
     INITBackButton();
 
-    // State to track the currently expanded accordion
-    const [expandedId, setExpandedId] = useState(null);
-
-    const handleToggleAccordion = (id) => {
-        setExpandedId(expandedId === id ? null : id); // Toggle current or close all
-    };
-
     return (
         <AppRoot>
-
-            <Section
-                header="Видео уроки по рецептам ⏯️"
-            >
-                <Accordion
-                    expanded={expandedId === 1}
-                    onChange={() => handleToggleAccordion(1)}
-                >
-                    <AccordionSummary multiline>
-                        5 Рецептов
-                    </AccordionSummary>
-                    <AccordionContent>
-                        <div style={{ textAlign: "center" }}>
-                            <iframe
-                                src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
-                                width="90%"
-                                height="215"
-                                frameBorder="0"
-                                allowFullScreen="1"
-                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                                style={{
-                                    border: "none",
-                                    borderRadius: 16,
-                                    padding: 5,
-                                }}
-                            ></iframe>
-                        </div>
-                    </AccordionContent>
-                </Accordion>
-
-                <Accordion
-                    expanded={expandedId === 2}
-                    onChange={() => handleToggleAccordion(2)}
-                >
-                    <AccordionSummary multiline>
-                        Готовый_2
-                    </AccordionSummary>
-                    <AccordionContent>
-                        <div style={{ textAlign: "center" }}>
-                            <iframe
-                                src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239822&hash=ecc17305affbf253"
-                                width="90%"
-                                height="215"
-                                frameBorder="0"
-                                allowFullScreen="1"
-                                allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                                style={{
-                                    border: "none",
-                                    borderRadius: 16,
-                                    padding: 5,
-                                }}
-                            ></iframe>
-                        </div>
-                    </AccordionContent>
-                </Accordion>
-
-                <Accordion
-                    expanded={expandedId === 3}
-                    onChange={() => handleToggleAccordion(3)}
-                >
-                    <AccordionSummary multiline>
-                        Кулинарные утехи на диете
-                    </AccordionSummary>
-                    <AccordionContent>
-                        <div style={{ textAlign: "center" }}>
-                            <iframe
-                                src="https://www.youtube.com/embed/_wUqQAZOjuk"
-                                width="90%"
-                                height="215"
-                                style={{
-                                    border: "none",
-                                    borderRadius: 16,
-                                    padding: 5,
-                                }}
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    </AccordionContent>
-                </Accordion>
-            </Section>
-
-            <INITDivider color='transparent' thickness="15%"/>
 
             {/*5 Рецептов*/}
             <Section header="5 Рецептов">
@@ -174,7 +76,6 @@ const CookingLesson = () => {
                     ></iframe>
                 </div>
             </Section>
-
             <INITDivider color='transparent' thickness="15%"/>
 
             <List>
@@ -187,11 +88,13 @@ const CookingLesson = () => {
                         multiline
                         subhead="ЧебуПицца"
                     >
-                        - фарш куриный 170гр
-                        -Лук ¼, зелень для фарша
-                        - яйцо куриное – 1шт
-                        - Помидор – ½ шт
-                        - Сыр легкий – 60гр
+                        <pre style={{whiteSpace: "pre-wrap", margin: 0}}>
+                            - фарш куриный 170гр
+                            - Лук ¼, зелень для фарша
+                            - яйцо куриное – 1шт
+                            - Помидор – ½ шт
+                            - Сыр легкий – 60гр
+                        </pre>
                     </Cell>
                     <Cell
                         multiline
