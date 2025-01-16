@@ -13,8 +13,9 @@ const INITBonus = () => {
             <Section multiline>
                 1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                 <img
-                    src={}
+                    src="https://www.covertocoverchildrensbooks.com/book/9781416971702"
                     style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
@@ -22,8 +23,9 @@ const INITBonus = () => {
             <Section multiline>
                 2. Еда для радости. Записки диетолога. Елена Мотова
                 <img
-                    src={}
+                    src="https://www.covertocoverchildrensbooks.com/book/9781416971702"
                     style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
@@ -31,8 +33,9 @@ const INITBonus = () => {
             <Section multiline>
                 3. Очаровательный кишечник. Как самый могущественный орган управляет нами. Джулия Эндерс
                 <img
-                    src={}
+                    src="https://www.covertocoverchildrensbooks.com/book/9781416971702"
                     style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
@@ -40,17 +43,19 @@ const INITBonus = () => {
             <Section multiline>
                 4. Голодный мозг. Как перехитрить инстинкты, которые заставляют нас переедать
                 <img
-                    src={}
+                    src="https://www.covertocoverchildrensbooks.com/book/9781416971702"
                     style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
 
             <Section multiline>
-                5. Почему мы толстеем. Мифы и факты о том, что мешает нам быть стройными Гэри  Таубс
+                5. Почему мы толстеем. Мифы и факты о том, что мешает нам быть стройными Гэри Таубс
                 <img
-                    src={}
+                    src="https://www.covertocoverchildrensbooks.com/book/9781416971702"
                     style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
