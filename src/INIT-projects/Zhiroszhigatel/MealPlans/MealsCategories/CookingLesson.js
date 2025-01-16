@@ -35,7 +35,7 @@ const CookingLesson = () => {
 
             {/*Кулинарные утехи на диете*/}
             <Section header="Кулинарные утехи на диете">
-                <div style={{textAlign: "center" }}>
+                <div style={{textAlign: "center", margin: 0, padding: 0, borderRadius: 16}}>
                     <iframe
                         width="90%"
                         height="215"
