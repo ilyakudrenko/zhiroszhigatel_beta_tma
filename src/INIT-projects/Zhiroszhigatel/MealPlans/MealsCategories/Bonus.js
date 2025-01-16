@@ -20,31 +20,16 @@ const INITBonus = () => {
                             alt="Book Cover"
                         />
                     </Cell>
-                    {/*<Cell>*/}
-                    {/*    <a*/}
-                    {/*        href="https://fs02.getcourse.ru/fileservice/file/download/a/562611/sc/156/h/d66edc46b3387fca4093854c71732af6.zip"*/}
-                    {/*        target="_blank"*/}
-                    {/*        rel="noopener noreferrer"*/}
-                    {/*        style={{textDecoration: 'none', color: 'inherit'}}*/}
-                    {/*    >*/}
-                    {/*        📥Ссылка на скачивание*/}
-                    {/*    </a>*/}
-                    {/*</Cell>*/}
-                    <a
-                        href="https://fs02.getcourse.ru/fileservice/file/download/a/562611/sc/156/h/d66edc46b3387fca4093854c71732af6.zip"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{textDecoration: 'none', color: 'inherit'}}
-                    >
-                        <Button
-                            mode="filled"
-                            size="m"
-                            stretched
+                    <Cell>
+                        <a
+                            href="https://fs02.getcourse.ru/fileservice/file/download/a/562611/sc/156/h/d66edc46b3387fca4093854c71732af6.zip"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{textDecoration: 'none', color: 'inherit'}}
                         >
-                            📥Скачать
-                        </Button>
-                    </a>
-
+                            📥Ссылка на скачивание
+                        </a>
+                    </Cell>
                 </Section>
                 <INITDivider color='transparent' thickness="10%"/>
 
