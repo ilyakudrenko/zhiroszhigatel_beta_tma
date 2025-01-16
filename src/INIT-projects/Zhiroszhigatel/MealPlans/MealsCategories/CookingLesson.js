@@ -347,7 +347,12 @@ const CookingLesson = () => {
                     <Cell multiline>
                         мой канал с рецептами (в доступе только у вас и участников курса)
                     </Cell>
-                    <Cell multiline>
+                    <a
+                        href="https://t.me/+_D2nZaYhExJkNTMy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{textDecoration: "none", color: "inherit"}}
+                    >
                         <Button
                             mode="filled"
                             size="m"
@@ -355,28 +360,7 @@ const CookingLesson = () => {
                         >
                             Перейти в телеграм канал
                         </Button>
-                        <a
-                            href="https://t.me/+_D2nZaYhExJkNTMy"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{textDecoration: "none", color: "inherit" }}
-                        >
-                            <Button
-                                mode="filled"
-                                size="m"
-                                stretched
-                            >
-                                Перейти в телеграм канал
-                            </Button>
-                        </a>
-                    </Cell>
-                    <Button
-                        mode="filled"
-                        size="m"
-                        stretched
-                    >
-                        Перейти в телеграм канал
-                    </Button>
+                    </a>
                 </Section>
             </List>
         </AppRoot>
