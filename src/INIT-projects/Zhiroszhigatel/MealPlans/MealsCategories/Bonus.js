@@ -16,7 +16,7 @@ const INITBonus = () => {
                         1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="https://imo10.labirint.ru/books/579579/cover.jpg/242-0"
+                            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.livelib.ru%2Fbook%2F1006831603-pochemu-my-tolsteem-printsipy-nabora-vesa-i-pohudeniya-o-kotoryh-vam-nikto-ne-rasskazal-geri-taubs&psig=AOvVaw1RjJ4JQkXejqaOYZFb9YVG&ust=1737109008261000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCAm72B-ooDFQAAAAAdAAAAABAE"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -39,7 +39,7 @@ const INITBonus = () => {
                         2. Еда для радости. Записки диетолога. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="https://imo10.labirint.ru/books/774990/cover.jpg/484-0"
+                            src="https://s1.livelib.ru/boocover/1006831603/o/ff6b/Geri_Taubs__Pochemu_my_tolsteem._Printsipy_nabora_vesa_i_pohudeniya_o_kotoryh_va.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
