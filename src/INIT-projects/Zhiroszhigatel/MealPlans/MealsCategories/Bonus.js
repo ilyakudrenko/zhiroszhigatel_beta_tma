@@ -3,7 +3,7 @@ import {AppRoot, Badge, Banner, Button, Cell, List, Modal, Section} from "@teleg
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../../Hooks/BackButton";
-
+import book1 from "../Books_img/book1.jpeg"
 
 const INITBonus = () => {
     INITBackButton();
@@ -16,7 +16,7 @@ const INITBonus = () => {
                         1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="https://imo10.labirint.ru/books/579579/cover.jpg/242-0"
+                            src="../Books_img/book1.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -39,7 +39,7 @@ const INITBonus = () => {
                         2. Еда для радости. Записки диетолога. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src="https://imo10.labirint.ru/books/774990/cover.jpg/484-0"
+                            src={book1}
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
