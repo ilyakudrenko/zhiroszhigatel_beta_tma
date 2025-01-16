@@ -106,7 +106,25 @@ const MealPlanNavigation = () => {
                header={<ModalHeader
                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Only
                    iOS header</ModalHeader>}
-               trigger={<Button size="m">Open modal</Button>}
+               trigger={
+                   <Banner
+                       background={<img alt="Nasa streams"
+                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                        style={{width: '150%'}}/>}
+                       callout={<Badge type={"number"}>бонус</Badge>}
+                       description="Рекомендованная литература про питание"
+                       header="Знания о питании"
+                       // onCloseIcon={function noRefCheck(){}}
+                       type="section"
+                       style={roundedCellStyle}
+                   >
+                       <React.Fragment key=".0">
+                           <Button size="s" onClick={handleClick}>
+                               Перейти
+                           </Button>
+                       </React.Fragment>
+                   </Banner>
+               }
            >
                <div style={{textAlign: "center"}}>
                    <iframe
@@ -123,23 +141,6 @@ const MealPlanNavigation = () => {
                    ></iframe>
                </div>
            </Modal>
-           <Banner
-               background={<img alt="Nasa streams"
-                                src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                style={{width: '150%'}}/>}
-               callout={<Badge type={"number"}>бонус</Badge>}
-               description="Рекомендованная литература про питание"
-               header="Знания о питании"
-               // onCloseIcon={function noRefCheck(){}}
-               type="section"
-               style={roundedCellStyle}
-           >
-               <React.Fragment key=".0">
-                   <Button size="s" onClick={handleClick}>
-                       Перейти
-                   </Button>
-               </React.Fragment>
-           </Banner>
            <INITDivider color='transparent' thickness="10%"/>
 
            {/*Мои приборы для простого и вкусного похудения*/}
