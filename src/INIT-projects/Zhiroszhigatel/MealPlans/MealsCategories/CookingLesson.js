@@ -17,6 +17,11 @@ const CookingLesson = () => {
                     <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                            style={{
+                                border: "none", // Removes the border
+                                borderRadius: 16,
+                                padding: 5,
+                            }}
                     ></iframe>
                 </div>
             </Section>
@@ -28,6 +33,11 @@ const CookingLesson = () => {
                     <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239822&hash=ecc17305affbf253"
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                            style={{
+                                border: "none", // Removes the border
+                                borderRadius: 16,
+                                padding: 5,
+                            }}
                     ></iframe>
                 </div>
             </Section>
@@ -58,6 +68,11 @@ const CookingLesson = () => {
                     <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239827&hash=26d79dcb8b19ca66"
                             width="90%" height="215" frameBorder="0" allowFullScreen="1"
                             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                            style={{
+                                border: "none", // Removes the border
+                                borderRadius: 16,
+                                padding: 5,
+                            }}
                     ></iframe>
                 </div>
             </Section>

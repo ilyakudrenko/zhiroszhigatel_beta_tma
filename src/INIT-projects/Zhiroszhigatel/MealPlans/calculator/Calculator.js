@@ -140,8 +140,11 @@ const Calculator = () => {
                         width="90%"
                         height="215"
                         src="https://www.youtube.com/embed/ai3kswDDvbQ"
-                        title="YouTube video player"
-                        //frameBorder="0"
+                        style={{
+                            border: "none", // Removes the border
+                            borderRadius: 16,
+                            padding: 5,
+                        }}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
