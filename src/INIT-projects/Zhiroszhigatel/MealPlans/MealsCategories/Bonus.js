@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Badge, Banner, Button, Cell, List, Modal, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Cell, List, Section} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
-import INITBackButton from "../../../../Hooks/BackButton";
 import book1 from "../Books_img/book1.jpeg"
 import book2 from "../Books_img/book2.jpeg"
 import book3 from "../Books_img/book3.jpeg"
@@ -12,8 +11,6 @@ import book5 from "../Books_img/book5.jpeg"
 
 
 const INITBonus = () => {
-    INITBackButton();
-
     return (
         <AppRoot>
             <List>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Button, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../../Hooks/BackButton";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
@@ -348,6 +348,13 @@ const CookingLesson = () => {
                         мой канал с рецептами (в доступе только у вас и участников курса)
                     </Cell>
                     <Cell multiline>
+                        <Button
+                            mode="filled"
+                            size="m"
+                            stretched
+                        >
+                            Перейти в телеграм канал
+                        </Button>
                         <a
                             href="https://t.me/+_D2nZaYhExJkNTMy"
                             target="_blank"
@@ -363,6 +370,13 @@ const CookingLesson = () => {
                             </Button>
                         </a>
                     </Cell>
+                    <Button
+                        mode="filled"
+                        size="m"
+                        stretched
+                    >
+                        Перейти в телеграм канал
+                    </Button>
                 </Section>
             </List>
         </AppRoot>
