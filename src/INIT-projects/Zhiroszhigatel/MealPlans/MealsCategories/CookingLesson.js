@@ -42,9 +42,6 @@ const CookingLesson = () => {
                         src="https://www.youtube.com/embed/_wUqQAZOjuk"
                         style={{
                             border: "none", // Removes the border
-                            display: "block", // Ensures no inline space
-                            margin: 0, // Removes default margin
-                            padding: 0, // Removes default padding
                         }}
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
