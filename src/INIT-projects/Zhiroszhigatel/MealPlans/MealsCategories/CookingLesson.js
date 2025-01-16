@@ -35,13 +35,15 @@ const CookingLesson = () => {
 
             {/*Кулинарные утехи на диете*/}
             <Section header="Кулинарные утехи на диете">
-                <div style={{textAlign: "center", margin: 0, padding: 0, borderRadius: 16}}>
+                <div style={{textAlign: "center"}}>
                     <iframe
                         width="90%"
                         height="215"
                         src="https://www.youtube.com/embed/_wUqQAZOjuk"
                         style={{
                             border: "none", // Removes the border
+                            borderRadius: 16,
+                            padding: 5,
                         }}
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
