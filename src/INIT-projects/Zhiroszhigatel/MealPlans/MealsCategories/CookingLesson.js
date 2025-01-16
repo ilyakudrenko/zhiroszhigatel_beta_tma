@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../../Hooks/BackButton";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
@@ -342,8 +342,29 @@ const CookingLesson = () => {
                         </div>
                     </Cell>
                 </Section>
+                <INITDivider color='transparent' thickness="10%"/>
+                <Section>
+                    <Cell multiline>
+                        мой канал с рецептами (в доступе только у вас и участников курса)
+                    </Cell>
+                    <Cell multiline>
+                        <a
+                            href="https://t.me/+_D2nZaYhExJkNTMy"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{textDecoration: "none", color: "inherit" }}
+                        >
+                            <Button
+                                mode="filled"
+                                size="m"
+                                stretched
+                            >
+                                Перейти в телеграм канал
+                            </Button>
+                        </a>
+                    </Cell>
+                </Section>
             </List>
-
         </AppRoot>
     );
 };
