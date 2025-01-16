@@ -3,13 +3,6 @@ import {AppRoot, Badge, Banner, Button, Cell, List, Modal, Section} from "@teleg
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../../Hooks/BackButton";
-import book1 from "src/INIT-projects/Zhiroszhigatel/MealPlans/BooksIMG/book1.jpeg"
-import book2 from "src/INIT-projects/Zhiroszhigatel/MealPlans/BooksIMG/book2.jpeg"
-import book3 from "src/INIT-projects/Zhiroszhigatel/MealPlans/BooksIMG/book3.jpeg"
-import book4 from "src/INIT-projects/Zhiroszhigatel/MealPlans/BooksIMG/book4.jpeg"
-import book5 from "src/INIT-projects/Zhiroszhigatel/MealPlans/BooksIMG/book5.jpeg"
-
-
 
 
 const INITBonus = () => {
@@ -23,7 +16,7 @@ const INITBonus = () => {
                         1. Мой лучший друг – желудок. Еда для умных людей. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src={book1}
+                            src="../Books_img/book1.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -46,7 +39,7 @@ const INITBonus = () => {
                         2. Еда для радости. Записки диетолога. Елена Мотова
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src={book2}
+                            src="../Books_img/book2.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -69,7 +62,7 @@ const INITBonus = () => {
                         3. Очаровательный кишечник. Как самый могущественный орган управляет нами. Джулия Эндерс
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src={book3}
+                            src="../Books_img/book3.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -92,7 +85,7 @@ const INITBonus = () => {
                         4. Голодный мозг. Как перехитрить инстинкты, которые заставляют нас переедать
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src={book4}
+                            src="../Books_img/book4.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
@@ -115,7 +108,7 @@ const INITBonus = () => {
                         5. Почему мы толстеем. Мифы и факты о том, что мешает нам быть стройными Гэри Таубс
                         <INITDivider color='transparent' thickness="10%"/>
                         <img
-                            src={book5}
+                            src="../Books_img/book5.jpeg"
                             style={{width: '100%', display: 'block'}}
                             alt="Book Cover"
                         />
