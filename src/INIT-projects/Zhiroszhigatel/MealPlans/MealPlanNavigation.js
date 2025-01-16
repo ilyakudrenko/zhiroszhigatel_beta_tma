@@ -120,7 +120,7 @@ const MealPlanNavigation = () => {
                        style={roundedCellStyle}
                    >
                        <React.Fragment key=".0">
-                           <Button size="s" onClick={handleClick}>
+                           <Button size="s">
                                Перейти
                            </Button>
                        </React.Fragment>
@@ -149,7 +149,7 @@ const MealPlanNavigation = () => {
                        style={roundedCellStyle}
                    >
                        <React.Fragment key=".0">
-                           <Button size="s" onClick={handleClick}>
+                           <Button size="s">
                                Перейти
                            </Button>
                        </React.Fragment>
@@ -173,7 +173,7 @@ const MealPlanNavigation = () => {
                style={roundedCellStyle}
            >
                <React.Fragment key=".0">
-                   <Button size="s" onClick={handleClick}>
+                   <Button size="s">
                        Перейти
                    </Button>
                </React.Fragment>
