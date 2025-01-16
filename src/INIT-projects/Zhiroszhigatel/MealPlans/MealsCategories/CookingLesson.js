@@ -1,15 +1,120 @@
 import React, {useEffect, useState} from 'react';
-import {AppRoot, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
+import {Accordion, AppRoot, Blockquote, Caption, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../../Hooks/BackButton";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
+import {
+    AccordionSummary
+} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
+import {
+    AccordionContent
+} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
+import INITAccordionList from "../../Support/Accordion";
+import questionsData from "../../Support/accordionData.json";
 
 
 const CookingLesson = () => {
     INITBackButton();
 
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleAccordion = () => {
+        setIsExpanded((prev) => !prev); // Toggle between open and closed
+    };
+
     return (
         <AppRoot>
+
+            <Section
+                header="Видео уроки по рецептам ⏯️"
+            >
+                <Accordion
+                    expanded={isExpanded}
+                    onChange={toggleAccordion}
+                >
+                    <AccordionSummary multiline>
+                        5 Рецептов
+                    </AccordionSummary>
+                    <AccordionContent>
+                        <div style={{textAlign: "center"}}>
+                            <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                                    width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                    style={{
+                                        border: "none", // Removes the border
+                                        borderRadius: 16,
+                                        padding: 5,
+                                    }}
+                            ></iframe>
+                        </div>
+                    </AccordionContent>
+                </Accordion>
+                <Accordion
+                    expanded={isExpanded}
+                    onChange={toggleAccordion}
+                >
+                    <AccordionSummary multiline>
+                        5 Рецептов
+                    </AccordionSummary>
+                    <AccordionContent>
+                        <div style={{textAlign: "center"}}>
+                            <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                                    width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                    style={{
+                                        border: "none", // Removes the border
+                                        borderRadius: 16,
+                                        padding: 5,
+                                    }}
+                            ></iframe>
+                        </div>
+                    </AccordionContent>
+                </Accordion>
+                <Accordion
+                    expanded={isExpanded}
+                    onChange={toggleAccordion}
+                >
+                    <AccordionSummary multiline>
+                        5 Рецептов
+                    </AccordionSummary>
+                    <AccordionContent>
+                        <div style={{textAlign: "center"}}>
+                            <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                                    width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                    style={{
+                                        border: "none", // Removes the border
+                                        borderRadius: 16,
+                                        padding: 5,
+                                    }}
+                            ></iframe>
+                        </div>
+                    </AccordionContent>
+                </Accordion>
+                <Accordion
+                    expanded={isExpanded}
+                    onChange={toggleAccordion}
+                >
+                    <AccordionSummary multiline>
+                        5 Рецептов
+                    </AccordionSummary>
+                    <AccordionContent>
+                        <div style={{textAlign: "center"}}>
+                            <iframe src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
+                                    width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                                    style={{
+                                        border: "none", // Removes the border
+                                        borderRadius: 16,
+                                        padding: 5,
+                                    }}
+                            ></iframe>
+                        </div>
+                    </AccordionContent>
+                </Accordion>
+            </Section>
+
+            <INITDivider color='transparent' thickness="15%"/>
 
             {/*5 Рецептов*/}
             <Section header="5 Рецептов">
@@ -76,6 +181,7 @@ const CookingLesson = () => {
                     ></iframe>
                 </div>
             </Section>
+
             <INITDivider color='transparent' thickness="15%"/>
 
             <List>
