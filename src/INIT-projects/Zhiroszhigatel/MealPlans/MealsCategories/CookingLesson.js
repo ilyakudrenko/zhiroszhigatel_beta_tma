@@ -19,7 +19,7 @@ const CookingLesson = () => {
                         <div style={{textAlign: "center"}}>
                             <iframe
                                 src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239820&hash=432b6138a9f4c282"
-                                width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                width="95%" height="215" frameBorder="0" allowFullScreen="1"
                                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                                 style={{
                                     border: "none", // Removes the border
@@ -36,7 +36,7 @@ const CookingLesson = () => {
                         <div style={{textAlign: "center"}}>
                             <iframe
                                 src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239822&hash=ecc17305affbf253"
-                                width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                width="95%" height="215" frameBorder="0" allowFullScreen="1"
                                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                                 style={{
                                     border: "none", // Removes the border
@@ -52,7 +52,7 @@ const CookingLesson = () => {
                     >
                         <div style={{textAlign: "center"}}>
                             <iframe
-                                width="90%"
+                                width="95%"
                                 height="215"
                                 src="https://www.youtube.com/embed/_wUqQAZOjuk"
                                 style={{
@@ -72,7 +72,7 @@ const CookingLesson = () => {
                         <div style={{textAlign: "center"}}>
                             <iframe
                                 src="https://vkvideo.ru/video_ext.php?oid=9490543&id=456239827&hash=26d79dcb8b19ca66"
-                                width="90%" height="215" frameBorder="0" allowFullScreen="1"
+                                width="95%" height="215" frameBorder="0" allowFullScreen="1"
                                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                                 style={{
                                     border: "none", // Removes the border
@@ -210,51 +210,136 @@ const CookingLesson = () => {
                 <Section>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Диетический тортик"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/UfiFueuUvT0"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Протеиновое желе"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/p09RbrYGkHE"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Протеиновые панкейки"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/F-2bf0N1TSs"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Протеиновые кексы"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/fGLCpAljkSk"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Пирожки вишневые"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/NX9lmVxlLHs"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="ПП Пицца"
                     >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/rebIXu9UMd4"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                     <Cell
                         multiline
-                        subhead=""
+                        subhead="Пироги с льняной муки"
                     >
-
-                    </Cell>
-                    <Cell
-                        multiline
-                        subhead=""
-                    >
-
+                        <div style={{textAlign: "center"}}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/tqghmUtN3ec"
+                                style={{
+                                    border: "none", // Removes the border
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
                     </Cell>
                 </Section>
             </List>
