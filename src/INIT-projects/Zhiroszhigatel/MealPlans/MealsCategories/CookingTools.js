@@ -1,18 +1,23 @@
 import React, {useEffect, useState} from 'react';
 import {AppRoot, Button, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import INITBackButton from "../../../../Hooks/BackButton";
-import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import toolsPdf from "../Pdf/tools.pdf";
 
 
 
 const INITCookingTools = () => {
     return (
-       <AppRoot>
-           {/*<iframe id="pdf" src={toolsPdf} width="100%" height="600"></iframe>*/}
-           <embed src={toolsPdf} height="400" width="100%" />
-       </AppRoot>
+        <AppRoot>
+            <div style={{
+                width: '100%',
+                height: '600px',
+                overflow: 'auto',
+                border: '1px solid #ccc',
+                borderRadius: '8px'
+            }}>
+                <embed src={toolsPdf} height="100%" width="100%" type="application/pdf"/>
+            </div>
+        </AppRoot>
     );
 };
 
