@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 // import {AppRoot, Button, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-// import toolsPdf from "../Pdf/tools/1.jpg";
+// import toolsPdf from "../Pdf/recipes/1.jpg";
 
 
-const INITCookingTools = () => {
-    const totalImages = 13; // Укажите количество изображений в папке
+const INITRecipes = () => {
+
+    const totalImages = 26; // Укажите количество изображений в папке
 
     const [toolImages, settoolImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -16,10 +17,10 @@ const INITCookingTools = () => {
 
             for (let i = 1; i <= totalImages; i++) {
                 try {
-                    const image = require(`../Pdf/tools/${i}.jpg`);
+                    const image = require(`../Pdf/recipes/${i}.jpg`);
                     images.push(image);
                 } catch (error) {
-                    console.error(`File not found: ../Pdf/tools/${i}.jpg`, error);
+                    console.error(`File not found: ../Pdf/recipes/${i}.jpg`, error);
                 }
             }
 
@@ -60,4 +61,4 @@ const INITCookingTools = () => {
     );
 };
 
-export default INITCookingTools;
+export default INITRecipes;
