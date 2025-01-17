@@ -134,8 +134,7 @@ const MealPlanNavigation = () => {
            {/*Мои приборы для простого и вкусного похудения*/}
            <Modal
                header={<ModalHeader
-                   after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Only
-                   iOS header</ModalHeader>}
+                   after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Мои приборы для простого и вкусного похудения</ModalHeader>}
                trigger={
                    <Banner
                        background={<img alt="Nasa streams"
