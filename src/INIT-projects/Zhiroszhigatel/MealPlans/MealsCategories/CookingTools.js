@@ -1,44 +1,34 @@
 import React, {useEffect, useState} from 'react';
 import {AppRoot, Button, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-// import toolsPdf from "../Pdf/tools";
+// import toolsPdf from "../Pdf/tools/1.jpg";
 
-/**
- * ImageGallery Component
- * Загружает изображения из указанной папки и отображает их последовательно.
- *
- * @param {string} folderPath - Путь к папке с изображениями.
- * @param {number} totalImages - Общее количество изображений.
- */
 
 const INITCookingTools = () => {
-
-    const folderPath = '../Pdf/tools'; // Укажите путь к вашей папке
     const totalImages = 13; // Укажите количество изображений в папке
 
-    const [images, setImages] = useState([]);
+    const [toolImages, settoolImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const loadImages = () => {
-            const loadedImages = [];
+        const loadImages = async () => {
+            const images = [];
 
             for (let i = 1; i <= totalImages; i++) {
                 try {
-                    // Динамическая загрузка изображений с помощью require
-                    const image = require(`${folderPath}/${i}.jpg`);
-                    loadedImages.push(image);
+                    const image = require(`../Pdf/tools/${i}.jpg`);
+                    images.push(image);
                 } catch (error) {
-                    console.error(`Не удалось загрузить изображение: ${folderPath}/${i}.jpg`, error);
+                    console.error(`File not found: ../Pdf/tools/${i}.jpg`, error);
                 }
             }
 
-            setImages(loadedImages);
+            settoolImages(images);
             setIsLoading(false);
         };
 
         loadImages();
-    }, [folderPath, totalImages]);
+    }, [totalImages]);
 
     if (isLoading) {
         return (
@@ -48,7 +38,7 @@ const INITCookingTools = () => {
         );
     }
 
-    if (images.length === 0) {
+    if (toolImages.length === 0) {
         return (
             <div style={{textAlign: 'center'}}>
                 <p>Изображения не найдены в указанной папке.</p>
@@ -58,7 +48,7 @@ const INITCookingTools = () => {
 
     return (
         <div>
-            {images.map((src, index) => (
+            {toolImages.map((src, index) => (
                 <img
                     key={index}
                     src={src.default || src}
