@@ -10,7 +10,8 @@ import toolsPdf from "../Pdf/tools.pdf";
 const INITCookingTools = () => {
     return (
        <AppRoot>
-           <iframe id="pdf" src={toolsPdf} width="100%" height="600"></iframe>
+           {/*<iframe id="pdf" src={toolsPdf} width="100%" height="600"></iframe>*/}
+           <embed src={toolsPdf} height="400" width="100%" />
        </AppRoot>
     );
 };
