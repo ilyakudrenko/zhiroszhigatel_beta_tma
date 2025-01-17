@@ -13,6 +13,7 @@ import RationsDays from "./INIT-projects/Zhiroszhigatel/MealPlans/RationsDays";
 import MealPlanTasting from "./INIT-projects/Zhiroszhigatel/TestPages/MealPlanTasting";
 import MealPlanNavigation from "./INIT-projects/Zhiroszhigatel/MealPlans/MealPlanNavigation";
 import CookingLesson from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingLesson";
+import INITCookingTools from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingTools";
 
 const App = () => {
     const location = useLocation();
@@ -35,6 +36,9 @@ const App = () => {
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
+
+                    {/*test*/}
+                    <Route path="/test" element={<INITCookingTools />} />
                 </Routes>
 
         ) : (
@@ -52,6 +56,9 @@ const App = () => {
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
+
+                    {/*test*/}
+                    <Route path="/test" element={<INITCookingTools />} />
                 </Routes>
         )
     );
