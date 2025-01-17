@@ -12,6 +12,7 @@ import {
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITBonus from "./MealsCategories/Bonus";
+import INITCookingTools from "./MealsCategories/CookingTools";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -155,6 +156,7 @@ const MealPlanNavigation = () => {
                    </Banner>
                }
            >
+               <INITCookingTools />
            </Modal>
 
            <INITDivider color='transparent' thickness="10%"/>
