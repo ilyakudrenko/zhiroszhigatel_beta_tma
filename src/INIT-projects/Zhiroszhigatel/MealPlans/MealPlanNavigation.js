@@ -13,6 +13,7 @@ import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Mo
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITBonus from "./MealsCategories/Bonus";
 import INITCookingTools from "./MealsCategories/CookingTools";
+import INITRecipes from "./MealsCategories/Recipes";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -161,23 +162,31 @@ const MealPlanNavigation = () => {
            <INITDivider color='transparent' thickness="10%"/>
 
            {/*Сборник рецептов перекусов*/}
-           <Banner
-               background={<img alt="Nasa streams"
-                                src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                style={{width: '150%'}}/>}
-               //callout="Urgent notification"
-               //description=""
-               header="Сборник рецептов перекусов"
-               // onCloseIcon={function noRefCheck(){}}
-               type="section"
-               style={roundedCellStyle}
+           <Modal
+               header={<ModalHeader
+                   after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Сборник рецептов перекусов</ModalHeader>}
+               trigger={
+                   <Banner
+                       background={<img alt="Nasa streams"
+                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                        style={{width: '150%'}}/>}
+                       //callout="Urgent notification"
+                       //description=""
+                       header="Сборник рецептов перекусов"
+                       // onCloseIcon={function noRefCheck(){}}
+                       type="section"
+                       style={roundedCellStyle}
+                   >
+                       <React.Fragment key=".0">
+                           <Button size="s">
+                               Перейти
+                           </Button>
+                       </React.Fragment>
+                   </Banner>
+               }
            >
-               <React.Fragment key=".0">
-                   <Button size="s">
-                       Перейти
-                   </Button>
-               </React.Fragment>
-           </Banner>
+               <INITRecipes />
+           </Modal>
            <INITDivider color='transparent' thickness="10%"/>
        </AppRoot>
     );
