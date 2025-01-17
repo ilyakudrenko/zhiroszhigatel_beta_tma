@@ -6,10 +6,11 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import toolsPdf from "../Pdf/tools.pdf";
 
 
+
 const INITCookingTools = () => {
     return (
        <AppRoot>
-           <iframe src={toolsPdf}></iframe>
+           <iframe id="pdf" src={toolsPdf} width="100%" height="600"></iframe>
        </AppRoot>
     );
 };
