@@ -165,8 +165,8 @@ const MealPlanTasting = () => {
             <h1>Meal Plans</h1>
             {error && <p style={{color: "red"}}>Error: {error}</p>}
             <ul>
-                {mealPlans.length > 0 ? (
-                    mealPlans.map((meal, index) => (
+                {mealPlanDaysMeals.length > 0 ? (
+                    mealPlanDaysMeals.map((meal, index) => (
                         <li key={index}>
                             <pre>{JSON.stringify(meal, null, 2)}</pre>
                         </li>
