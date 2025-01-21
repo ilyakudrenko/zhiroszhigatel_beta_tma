@@ -47,6 +47,9 @@ const MealPlanTasting = () => {
     };
 
     const currentDay = mealPlanDays[currentDayIndex];
+    const filteredMeals = mealPlanDaysMeals.filter(
+        (meal) => meal.meal_day_id === currentDay?.mealPlanDays_id
+    );
 
     if (error) {
         return (
@@ -61,48 +64,26 @@ const MealPlanTasting = () => {
     return (
         <AppRoot>
             <List>
-
-                <div style={{padding: "20px", textAlign: "center"}}>
-                    <h1>User Meal Plans</h1>
-                    {error && <p style={{color: "red"}}>{error}</p>}
-                    {!error && (
-                        <p>
-                            {JSON.stringify(mealPlans, null, 2)}
-                        </p>
-                    )}
-                </div>
-                <div style={{padding: "20px", textAlign: "center"}}>
-                    <h1>User Meal Plans By Days</h1>
-                    {error && <p style={{color: "red"}}>{error}</p>}
-                    {!error && (
-                        <p>
-                            {JSON.stringify(mealPlanDays, null, 2)}
-                        </p>
-                    )}
-                </div>
-
-                <INITDivider color="transparent" thickness="10%"/>
-
-                {/* Meal Plan Title */}
-                <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
+                {/* Заголовок плана питания */}
+                <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
                     {mealPlans[0]?.mealPlan_title || "Meal Plan"}
                 </Title>
 
-                {/* Meal Plan Description */}
+                {/* Описание плана питания */}
                 <Caption
                     caps
                     level="1"
                     weight="3"
-                    style={{margin: '5%'}}
+                    style={{ margin: "5%" }}
                     multiline
                 >
                     {mealPlans[0]?.mealPlan_description || "No additional details available."}
                 </Caption>
 
-                {/* Current Day Details */}
+                {/* Детали текущего дня */}
                 {currentDay && (
                     <Section>
-                        <Title level="3" weight="bold" style={{margin: "16px 0"}}>
+                        <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
                             День {currentDay.mealPlanDays_day_number}
                         </Title>
                         <Cell>
@@ -120,13 +101,13 @@ const MealPlanTasting = () => {
                     </Section>
                 )}
 
-                <INITDivider color="transparent" thickness="10%"/>
+                <INITDivider color="transparent" thickness="10%" />
 
+                {/* Данные о приемах пищи */}
                 <div>
-                    <h1>Meal Plans</h1>
-                    {error && <p style={{color: "red"}}>Error: {error}</p>}
-                    {mealPlanDaysMeals.length > 0 ? (
-                        mealPlanDaysMeals.map((meal, index) => (
+                    <h1>Данные дня</h1>
+                    {filteredMeals.length > 0 ? (
+                        filteredMeals.map((meal, index) => (
                             <Section key={index} header={`Тип: ${meal.type || "Не указано"}`}>
                                 <Cell multiline>
                                     <b>Состав:</b> {meal.composition || "Не указано"}
@@ -149,20 +130,20 @@ const MealPlanTasting = () => {
                             </Section>
                         ))
                     ) : (
-                        <p>Loading or no meal plans available...</p>
+                        <p>Приемы пищи не найдены для текущего дня.</p>
                     )}
                 </div>
 
-                {/* Pagination Buttons */}
+                {/* Кнопки навигации */}
                 <div
                     style={{
-                        position: 'fixed',
+                        position: "fixed",
                         bottom: 0,
                         left: 0,
-                        width: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        paddingBottom: '20px',
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        paddingBottom: "20px",
                         zIndex: 1000,
                     }}
                 >
@@ -172,7 +153,7 @@ const MealPlanTasting = () => {
                         disabled={currentDayIndex === 0}
                         onClick={handleBack}
                         style={{
-                            marginRight: '10px',
+                            marginRight: "10px",
                         }}
                     >
                         Back
@@ -183,7 +164,7 @@ const MealPlanTasting = () => {
                         disabled={currentDayIndex === mealPlanDays.length - 1}
                         onClick={handleNext}
                         style={{
-                            marginLeft: '10px',
+                            marginLeft: "10px",
                         }}
                     >
                         Next
@@ -191,40 +172,6 @@ const MealPlanTasting = () => {
                 </div>
             </List>
         </AppRoot>
-
-
-        // <AppRoot>
-        //     <div>
-        //         <h1>Meal Plans</h1>
-        //         {error && <p style={{color: "red"}}>Error: {error}</p>}
-        //         {mealPlanDaysMeals.length > 0 ? (
-        //             mealPlanDaysMeals.map((meal, index) => (
-        //                 <Section key={index} header={`Тип: ${meal.type || "Не указано"}`}>
-        //                     <Cell multiline>
-        //                         <b>Состав:</b> {meal.composition || "Не указано"}
-        //                     </Cell>
-        //                     <Cell multiline>
-        //                         <b>Приготовление:</b> {meal.preparation || "Не указано"}
-        //                     </Cell>
-        //                     <Cell>
-        //                         <b>Калории:</b> {meal.kcal || 0} ккал
-        //                     </Cell>
-        //                     <Cell>
-        //                         <b>Белки:</b> {meal.protein || 0} г
-        //                     </Cell>
-        //                     <Cell>
-        //                         <b>Жиры:</b> {meal.fat || 0} г
-        //                     </Cell>
-        //                     <Cell>
-        //                         <b>Углеводы:</b> {meal.carbs || 0} г
-        //                     </Cell>
-        //                 </Section>
-        //             ))
-        //         ) : (
-        //             <p>Loading or no meal plans available...</p>
-        //         )}
-        //     </div>
-        // </AppRoot>
     );
 };
 
