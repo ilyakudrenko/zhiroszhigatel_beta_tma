@@ -59,84 +59,185 @@ const MealPlanTasting = () => {
     }
 
     return (
+        // <AppRoot>
+        //     <List>
+        //
+        //         <div style={{padding: "20px", textAlign: "center"}}>
+        //             <h1>User Meal Plans</h1>
+        //             {error && <p style={{color: "red"}}>{error}</p>}
+        //             {!error && (
+        //                 <p>
+        //                     {JSON.stringify(mealPlans, null, 2)}
+        //                 </p>
+        //             )}
+        //         </div>
+        //         <div style={{padding: "20px", textAlign: "center"}}>
+        //             <h1>User Meal Plans By Days</h1>
+        //             {error && <p style={{color: "red"}}>{error}</p>}
+        //             {!error && (
+        //                 <p>
+        //                     {JSON.stringify(mealPlanDays, null, 2)}
+        //                 </p>
+        //             )}
+        //         </div>
+        //
+        //         <INITDivider color="transparent" thickness="10%"/>
+        //
+        //         {/* Meal Plan Title */}
+        //         <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
+        //             {mealPlans[0]?.mealPlan_title || "Meal Plan"}
+        //         </Title>
+        //
+        //         {/* Meal Plan Description */}
+        //         <Caption
+        //             caps
+        //             level="1"
+        //             weight="3"
+        //             style={{margin: '5%'}}
+        //             multiline
+        //         >
+        //             {mealPlans[0]?.mealPlan_description || "No additional details available."}
+        //         </Caption>
+        //
+        //         {/* Current Day Details */}
+        //         {currentDay && (
+        //             <Section>
+        //                 <Title level="3" weight="bold" style={{margin: "16px 0"}}>
+        //                     День {currentDay.mealPlanDays_day_number}
+        //                 </Title>
+        //                 <Cell>
+        //                     <b>Общие калории:</b> {currentDay.mealPlanDays_total_kcal} ккал
+        //                 </Cell>
+        //                 <Cell>
+        //                     <b>Белки:</b> {currentDay.mealPlanDays_total_protein} гр
+        //                 </Cell>
+        //                 <Cell>
+        //                     <b>Жиры:</b> {currentDay.mealPlanDays_total_fat} гр
+        //                 </Cell>
+        //                 <Cell>
+        //                     <b>Углеводы:</b> {currentDay.mealPlanDays_total_carbs} гр
+        //                 </Cell>
+        //             </Section>
+        //         )}
+        //
+        //         <INITDivider color="transparent" thickness="10%"/>
+        //
+        //         {/* Pagination Buttons */}
+        //         <div
+        //             style={{
+        //                 position: 'fixed',
+        //                 bottom: 0,
+        //                 left: 0,
+        //                 width: '100%',
+        //                 display: 'flex',
+        //                 justifyContent: 'center',
+        //                 paddingBottom: '20px',
+        //                 zIndex: 1000,
+        //             }}
+        //         >
+        //             <Button
+        //                 mode="filled"
+        //                 size="m"
+        //                 disabled={currentDayIndex === 0}
+        //                 onClick={handleBack}
+        //                 style={{
+        //                     marginRight: '10px',
+        //                 }}
+        //             >
+        //                 Back
+        //             </Button>
+        //             <Button
+        //                 mode="filled"
+        //                 size="m"
+        //                 disabled={currentDayIndex === mealPlanDays.length - 1}
+        //                 onClick={handleNext}
+        //                 style={{
+        //                     marginLeft: '10px',
+        //                 }}
+        //             >
+        //                 Next
+        //             </Button>
+        //         </div>
+        //     </List>
+        // </AppRoot>
         <AppRoot>
-            <Title level="2" weight="bold" style={{ marginBottom: "10px", textAlign: "center" }}>
-                {mealPlans[0]?.mealPlan_title || "Meal Plan"}
-            </Title>
-
-            <Caption caps level="1" weight="3" style={{ margin: "5%", textAlign: "center" }}>
-                {mealPlans[0]?.mealPlan_description || "No additional details available."}
-            </Caption>
-
-            {currentDay && (
-                <>
-                    <Section header={`День ${currentDay.mealPlanDays_day_number}`}>
-                        <Cell>
-                            <b>Общие калории:</b> {currentDay.mealPlanDays_total_kcal} ккал
-                        </Cell>
-                        <Cell>
-                            <b>Белки:</b> {currentDay.mealPlanDays_total_protein} гр
-                        </Cell>
-                        <Cell>
-                            <b>Жиры:</b> {currentDay.mealPlanDays_total_fat} гр
-                        </Cell>
-                        <Cell>
-                            <b>Углеводы:</b> {currentDay.mealPlanDays_total_carbs} гр
-                        </Cell>
-                    </Section>
-
-                    <INITDivider color="transparent" thickness="10%" />
-
-                    <Section header="Приёмы пищи">
-                        {mealPlanDaysMeals
-                            .filter(meal => meal.mealPlanDays_day_number === currentDay.mealPlanDays_day_number)
-                            .map((meal, index) => (
-                                <Cell key={index} multiline subhead={meal.type}>
-                                    <b>Состав:</b> {meal.composition || "Не указано"} <br />
-                                    <b>Приготовление:</b> {meal.preparation || "Не указано"} <br />
-                                    <b>Калории:</b> {meal.kcal || 0} ккал <br />
-                                    <b>Белки:</b> {meal.protein || 0} г <br />
-                                    <b>Жиры:</b> {meal.fat || 0} г <br />
-                                    <b>Углеводы:</b> {meal.carbs || 0} г
-                                </Cell>
-                            ))}
-                    </Section>
-                </>
-            )}
-
-            <div
-                style={{
-                    position: "fixed",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    paddingBottom: "20px",
-                    zIndex: 1000,
-                }}
-            >
-                <Button
-                    mode="filled"
-                    size="m"
-                    disabled={currentDayIndex === 0}
-                    onClick={handleBack}
-                    style={{ marginRight: "10px" }}
-                >
-                    Back
-                </Button>
-                <Button
-                    mode="filled"
-                    size="m"
-                    disabled={currentDayIndex === mealPlanDays.length - 1}
-                    onClick={handleNext}
-                    style={{ marginLeft: "10px" }}
-                >
-                    Next
-                </Button>
+            <div>
+                <h1>Meal Plans</h1>
+                {error && <p style={{color: "red"}}>Error: {error}</p>}
+                {mealPlanDaysMeals.length > 0 ? (
+                    mealPlanDaysMeals.map((meal, index) => (
+                        <Section key={index} header={`Тип: ${meal.type || "Не указано"}`}>
+                            <Cell multiline>
+                                <b>Состав:</b> {meal.composition || "Не указано"}
+                            </Cell>
+                            <Cell multiline>
+                                <b>Приготовление:</b> {meal.preparation || "Не указано"}
+                            </Cell>
+                            <Cell>
+                                <b>Калории:</b> {meal.kcal || 0} ккал
+                            </Cell>
+                            <Cell>
+                                <b>Белки:</b> {meal.protein || 0} г
+                            </Cell>
+                            <Cell>
+                                <b>Жиры:</b> {meal.fat || 0} г
+                            </Cell>
+                            <Cell>
+                                <b>Углеводы:</b> {meal.carbs || 0} г
+                            </Cell>
+                        </Section>
+                    ))
+                ) : (
+                    <p>Loading or no meal plans available...</p>
+                )}
             </div>
         </AppRoot>
     );
+
+
+    // const [meals, setMeals] = useState([]);
+    // const [error, setError] = useState(null);
+    //
+    // useEffect(() => {
+    //     const loadMeals = async () => {
+    //         try {
+    //             const data = await fetchAllMeals();
+    //             setMeals(data);
+    //         } catch (err) {
+    //             setError("Failed to load meals.");
+    //         }
+    //     };
+    //
+    //     loadMeals();
+    // }, []);
+    //
+    // if (error) {
+    //     return <p style={{ color: "red" }}>{error}</p>;
+    // }
+    //
+    // return (
+    //     <AppRoot>
+    //         <List>
+    //             <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
+    //                 Meals Table
+    //             </Title>
+    //             {meals.map((meal) => (
+    //                 <Section key={meal.id} header={`Meal Type: ${meal.type}`}>
+    //                     <Cell>
+    //                         <b>ID:</b> {meal.id}
+    //                     </Cell>
+    //                     <Cell>
+    //                         <b>Meal Plan Day ID:</b> {meal.meal_plan_day_id}
+    //                     </Cell>
+    //                     <Cell>
+    //                         <b>Composition:</b> {meal.composition}
+    //                     </Cell>
+    //                 </Section>
+    //             ))}
+    //         </List>
+    //     </AppRoot>
+    // );
+
 };
 
 export default MealPlanTasting;
