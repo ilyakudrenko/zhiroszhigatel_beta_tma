@@ -5,8 +5,8 @@ import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealP
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
-import fetchAllMeals from "../../CustomComponents/UserSession/fetchAllMeals";
 import fetchUserMealPlanDaysMeals from "../../CustomComponents/UserSession/fetchUserMealPlanDaysMeals";
+import imageTitle from "../MealPlans/Images/imageTitle.jpg"
 
 const MealPlanTasting = () => {
     const [mealPlans, setMealPlans] = useState([]);
@@ -14,7 +14,7 @@ const MealPlanTasting = () => {
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
     const [error, setError] = useState(null);
-//sdfsdfs
+
     INITBackButton();
 
     useEffect(() => {
@@ -64,6 +64,17 @@ const MealPlanTasting = () => {
     return (
         <AppRoot>
             <List>
+                {/*Картинка*/}
+                <Image
+                    src= {imageTitle}
+                    style={{
+                        width: '100%',
+                        height: '40vh',
+                        objectFit: 'cover',
+                        borderRadius: '0px'
+                    }}
+                />
+
                 {/* Заголовок плана питания */}
                 <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
                     {mealPlans[0]?.mealPlan_title || "Meal Plan"}
@@ -105,10 +116,9 @@ const MealPlanTasting = () => {
 
                 {/* Данные о приемах пищи */}
                 <div>
-                    <h1>Данные дня</h1>
                     {filteredMeals.length > 0 ? (
                         filteredMeals.map((meal, index) => (
-                            <Section key={index} header={`Тип: ${meal.type || "Не указано"}`}>
+                            <Section key={index} header={`${meal.type || "Не указано"}`}>
                                 <Cell multiline>
                                     <b>Состав:</b> {meal.composition || "Не указано"}
                                 </Cell>
