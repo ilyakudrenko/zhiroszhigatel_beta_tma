@@ -65,15 +65,15 @@ const MealPlanTasting = () => {
         <AppRoot>
             <List>
                 {/*Картинка*/}
-                <Image
-                    src= {imageTitle}
-                    style={{
-                        width: '100%',
-                        height: '40vh',
-                        objectFit: 'cover',
-                        borderRadius: '0px'
-                    }}
-                />
+                {/*<Image*/}
+                {/*    src= {imageTitle}*/}
+                {/*    style={{*/}
+                {/*        width: '100%',*/}
+                {/*        height: '40vh',*/}
+                {/*        objectFit: 'cover',*/}
+                {/*        borderRadius: '0px'*/}
+                {/*    }}*/}
+                {/*/>*/}
 
                 {/* Заголовок плана питания */}
                 <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
