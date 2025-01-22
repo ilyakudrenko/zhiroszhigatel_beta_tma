@@ -14,6 +14,7 @@ const MealPlanTasting = () => {
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
     const [error, setError] = useState(null);
+    const imageTitle = require("../MealPlans/Images/imageTitle.jpg");
 
     INITBackButton();
 
@@ -65,12 +66,12 @@ const MealPlanTasting = () => {
         <AppRoot>
             <List>
                 <Image
-                    src= "../MealPlans/Images/imageTitle.jpg"
+                    src= {imageTitle}
                     style={{
                         width: '100%',
                         height: '40vh',
                         objectFit: 'cover',
-                        borderRadius: '0px'
+                        borderRadius: '8px',
                     }}
                 />
 
