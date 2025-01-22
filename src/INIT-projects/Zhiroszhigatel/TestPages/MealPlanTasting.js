@@ -126,7 +126,7 @@ const MealPlanTasting = () => {
 
                 {/* Детали текущего дня */}
                 {currentDay && (
-                    <Section header="Общие КЖБУ">
+                    <Section header="Общие КБЖУ">
                         <Cell>
                             <b>Общие калории:</b> {currentDay.mealPlanDays_total_kcal} ккал
                         </Cell>
