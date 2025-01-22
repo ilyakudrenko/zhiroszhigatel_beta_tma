@@ -74,7 +74,6 @@ const Calculator = () => {
             total -= 500;
         }
         else{
-            alert('Вы не можите выбрать курс питания ниже 1300ккал!')
             setWeightLoss(false);
         }
 
