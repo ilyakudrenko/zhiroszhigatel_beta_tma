@@ -72,6 +72,7 @@ const MealPlanTasting = () => {
                         objectFit: 'cover',
                         borderRadius: '8px',
                     }}
+                    alt="Title Image"
                 />
 
                 {/* Заголовок плана питания */}
