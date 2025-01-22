@@ -177,9 +177,9 @@ const Profile = () => {
                         <Button
                             mode="filled"
                             size="s"
-                            onClick={() => navigate("/calculator")}
+                            onClick={() => navigate("/")}
                         >
-                            Рассчитать план питания
+                            в главное меню
                         </Button>
                     </Blockquote>
                 )}
