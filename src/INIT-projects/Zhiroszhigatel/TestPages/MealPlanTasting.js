@@ -6,7 +6,7 @@ import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserM
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserMealPlanDaysMeals from "../../CustomComponents/UserSession/fetchUserMealPlanDaysMeals";
-import imageTitle from "../MealPlans/Images/imageTitle.jpg"
+import imageTitle from "../MealPlans/Images/imageTitle.jpg";
 
 const MealPlanTasting = () => {
     const [mealPlans, setMealPlans] = useState([]);
@@ -71,7 +71,7 @@ const MealPlanTasting = () => {
                         width: '100%',
                         height: '40vh',
                         objectFit: 'cover',
-                        borderRadius: '0px'
+                        borderRadius: '8px'
                     }}
                 />
 
