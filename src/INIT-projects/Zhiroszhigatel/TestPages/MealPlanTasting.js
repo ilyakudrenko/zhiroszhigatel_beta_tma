@@ -93,7 +93,7 @@ const MealPlanTasting = () => {
 
                 {/* Детали текущего дня */}
                 {currentDay && (
-                    <Section>
+                    <Section header="Общие КЖБУ">
                         <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
                             День {currentDay.mealPlanDays_day_number}
                         </Title>
