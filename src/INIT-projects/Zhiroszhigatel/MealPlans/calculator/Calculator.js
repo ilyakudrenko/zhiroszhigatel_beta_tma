@@ -74,6 +74,12 @@ const Calculator = () => {
             total -= 500;
         }
 
+        if (total < 1300) {
+            alert('Вы не можите выбрать курс питания ниже 1300ккал!')
+            total = 1300;
+        }
+
+
         const proteinGrams = Math.round((total * 0.3) / 4);
         const fatGrams = Math.round((total * 0.25) / 9);
         const carbGrams = Math.round((total * 0.45) / 4);
