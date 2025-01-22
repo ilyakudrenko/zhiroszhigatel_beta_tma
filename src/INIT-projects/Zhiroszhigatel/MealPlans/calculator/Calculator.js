@@ -73,10 +73,14 @@ const Calculator = () => {
         if (weightLoss && total > 1800) {
             total -= 500;
         }
+        else{
+            alert('Вы не можите выбрать курс питания ниже 1300ккал!')
+            setWeightLoss(false);
+        }
 
         if (total < 1300) {
             alert('Вы не можите выбрать курс питания ниже 1300ккал!')
-            total = 1300;
+            total = 1350;
         }
 
 
