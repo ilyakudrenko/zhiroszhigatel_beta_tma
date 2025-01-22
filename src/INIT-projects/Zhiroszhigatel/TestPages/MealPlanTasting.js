@@ -91,12 +91,17 @@ const MealPlanTasting = () => {
                     {mealPlans[0]?.mealPlan_description || "No additional details available."}
                 </Caption>
 
+                <INITDivider color="transparent" thickness="10%" />
+
+                {currentDay && (
+                    <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
+                        День {currentDay.mealPlanDays_day_number}
+                    </Title>
+                )}
+
                 {/* Детали текущего дня */}
                 {currentDay && (
                     <Section header="Общие КЖБУ">
-                        <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
-                            День {currentDay.mealPlanDays_day_number}
-                        </Title>
                         <Cell>
                             <b>Общие калории:</b> {currentDay.mealPlanDays_total_kcal} ккал
                         </Cell>
