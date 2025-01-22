@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppRoot, Button, Caption, Cell, Image, List, Section, Title } from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Caption, Cell, List, Section, Title } from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
@@ -65,18 +65,13 @@ const MealPlanTasting = () => {
         <AppRoot>
             <List>
                 <img
-                    src= {img1}
-                    style={{
-                        width: '100%',
-                        height: '40vh',
-                        objectFit: 'cover',
-                        borderRadius: '8px',
-                    }}
-                    alt="Title Image"
+                    src={img1}
+                    style={{width: '100%', display: 'block'}}
+                    alt="Book Cover"
                 />
 
                 {/* Заголовок плана питания */}
-                <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
+                <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
                     {mealPlans[0]?.mealPlan_title || "Meal Plan"}
                 </Title>
 
@@ -85,7 +80,7 @@ const MealPlanTasting = () => {
                     caps
                     level="1"
                     weight="3"
-                    style={{ margin: "5%" }}
+                    style={{margin: "5%"}}
                     multiline
                 >
                     {mealPlans[0]?.mealPlan_description || "No additional details available."}
@@ -94,7 +89,7 @@ const MealPlanTasting = () => {
                 {/* Детали текущего дня */}
                 {currentDay && (
                     <Section>
-                        <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
+                        <Title level="3" weight="bold" style={{margin: "16px 0"}}>
                             День {currentDay.mealPlanDays_day_number}
                         </Title>
                         <Cell>
@@ -112,7 +107,7 @@ const MealPlanTasting = () => {
                     </Section>
                 )}
 
-                <INITDivider color="transparent" thickness="10%" />
+                <INITDivider color="transparent" thickness="10%"/>
 
                 {/* Данные о приемах пищи */}
                 <div>
