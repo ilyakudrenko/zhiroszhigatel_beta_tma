@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppRoot, Button, Caption, Cell, Image, List, Section, Title } from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Caption, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
@@ -14,12 +14,14 @@ const MealPlanTasting = () => {
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     INITBackButton();
 
     useEffect(() => {
         const loadMealPlans = async () => {
             try {
+                setLoading(true);
                 const data = await fetchUserMealPlan();
                 const data_days = await fetchUserMealPlanDays();
                 const data_meals = await fetchUserMealPlanDaysMeals();
@@ -28,6 +30,8 @@ const MealPlanTasting = () => {
                 setMealPlanDays(data_days);
             } catch (err) {
                 setError("Failed to fetch meal plans. Please try again.");
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -50,6 +54,27 @@ const MealPlanTasting = () => {
     const filteredMeals = mealPlanDaysMeals.filter(
         (meal) => meal.meal_day_id === currentDay?.mealPlanDays_id
     );
+
+    if (loading) {
+        return (
+            <AppRoot>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh", // Full viewport height to center vertically
+                    }}
+                >
+                    <div style={{ textAlign: "center" }}>
+                        <Spinner size="l" />
+                        {" "}
+                        <br />
+                    </div>
+                </div>
+            </AppRoot>
+        );
+    }
 
     if (error) {
         return (
