@@ -6,7 +6,7 @@ import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserM
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserMealPlanDaysMeals from "../../CustomComponents/UserSession/fetchUserMealPlanDaysMeals";
-// import imageTitle from "../MealPlans/Images/imageTitle.jpg"
+import imageTitle from "../MealPlans/Images/imageTitle.jpg"
 
 const MealPlanTasting = () => {
     const [mealPlans, setMealPlans] = useState([]);
@@ -14,7 +14,6 @@ const MealPlanTasting = () => {
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
     const [currentDayIndex, setCurrentDayIndex] = useState(0);
     const [error, setError] = useState(null);
-    const imageTitle = require("../MealPlans/Images/imageTitle.jpg");
 
     INITBackButton();
 
@@ -65,7 +64,7 @@ const MealPlanTasting = () => {
     return (
         <AppRoot>
             <List>
-                <Image
+                <img
                     src= {imageTitle}
                     style={{
                         width: '100%',
