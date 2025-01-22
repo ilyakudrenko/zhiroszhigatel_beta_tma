@@ -70,7 +70,7 @@ const Calculator = () => {
 
         let total = baseCalories * activityMultiplier;
 
-        if (weightLoss) {
+        if (weightLoss && total > 1800) {
             total -= 500;
         }
 
