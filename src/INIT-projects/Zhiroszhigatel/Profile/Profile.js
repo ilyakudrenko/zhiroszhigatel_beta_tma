@@ -11,6 +11,7 @@ import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 import {useNavigate} from "react-router-dom";
 import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
+import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -22,28 +23,32 @@ const Profile = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [userLibrary, setUserLibrary] = useState([]); // State for user's guides
+    const [mealPlan, setMealPlan] = useState(null); // State for user's meal plan
+
 
 
     INITBackButton(); // Back button for the profile
 
     useEffect(() => {
-
+        const fetchData = async () => {
             try {
-                // Retrieve session data
-                const session = getSession();
+                const session = getSession(); // Retrieve session data
                 setUserSession(session);
-                const fetchData = async () => {
-                    const library = await fetchUserLibrary();
-                    setUserLibrary(library);
-                };
-                fetchData();
-                setLoading(false);
+
+                const library = await fetchUserLibrary(); // Fetch user library
+                setUserLibrary(library);
+
+                const mealPlanData = await fetchUserMealPlan(); // Fetch user meal plan
+                setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
             } catch (err) {
-                console.error("Failed to retrieve user session:", err);
-                setError("Failed to initialize session.");
+                console.error("Failed to retrieve data:", err);
+                setError("Failed to initialize session or fetch data.");
+            } finally {
                 setLoading(false);
             }
+        };
 
+        fetchData();
     }, []);
 
     if (loading)
@@ -154,7 +159,33 @@ const Profile = () => {
                 )}
             </HorizontalScroll>
 
-            <INITDivider color="transparent" thickness="10%"/>
+            {/* Meal Plan Section */}
+            <INITDivider color="transparent" thickness="10%" />
+            <Section header="Ваш план питания">
+                {mealPlan ? (
+                    <>
+                        <Cell>
+                            <b>Название:</b> {mealPlan.title}
+                        </Cell>
+                        <Cell>
+                            <b>Описание:</b> {mealPlan.description}
+                        </Cell>
+                    </>
+                ) : (
+                    <Blockquote type="text">
+                        <p>У вас пока нет плана питания.</p>
+                        <Button
+                            mode="filled"
+                            size="s"
+                            onClick={() => navigate("/calculator")}
+                        >
+                            Рассчитать план питания
+                        </Button>
+                    </Blockquote>
+                )}
+            </Section>
+            <INITDivider color="transparent" thickness="10%" />
+
         </AppRoot>
     );
 };
