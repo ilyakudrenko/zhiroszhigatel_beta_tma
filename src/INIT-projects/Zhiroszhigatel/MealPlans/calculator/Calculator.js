@@ -251,7 +251,7 @@ const Calculator = () => {
                 <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
                     Углеводы: {carbs} г ({carbs * 4} ккал)
                 </Cell>
-                {mealPlanError && <Cell style={{ color: 'red' }}>{mealPlanError}</Cell>}
+                {/*{mealPlanError && <Cell style={{ color: 'red' }}>{mealPlanError}</Cell>}*/}
                 {mealPlan && <Cell>Рекомендуемый план: {mealPlan.title}</Cell>}
             </Section>
 
