@@ -7,7 +7,6 @@ import {
     Button,
     ButtonCell,
     Caption,
-    Card,
     Cell,
     Section
 } from "@telegram-apps/telegram-ui";
@@ -22,8 +21,7 @@ import {useNavigate} from "react-router-dom";
 import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
-import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
-import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
+import mealsData from "../MealPlans/MealPlans.json";
 
 
 const handleClickHaptic = (effect = 'light') =>{
@@ -179,29 +177,13 @@ const Profile = () => {
             <INITDivider color="transparent" thickness="10%" />
             <Section header="Ваш план питания">
                 {mealPlan ? (
-                    <Card type="ambient">
-                        <React.Fragment key=".0">
-                            <CardChip readOnly>
-                                Hot place
-                            </CardChip>
-                            <img
-                                alt="Dog"
-                                src="https://i.imgur.com/892vhef.jpeg"
-                                style={{
-                                    display: 'block',
-                                    height: 308,
-                                    objectFit: 'cover',
-                                    width: 254
-                                }}
-                            />
-                            <CardCell
-                                readOnly
-                                subtitle="United states"
-                            >
-                                New York
-                            </CardCell>
-                        </React.Fragment>
-                    </Card>
+                    <HorizontalScroll
+                        onClick={() =>
+                            handleClickHaptic('light')
+                        }
+                    >
+                        <INITCardsList items={mealsData}/>
+                    </HorizontalScroll>
                 ) : (
                     <Blockquote type="text">
                         <p>У вас пока нет плана питания.</p>
