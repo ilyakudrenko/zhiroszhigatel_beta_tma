@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from "react";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {AppRoot, Avatar, Blockquote, Button, ButtonCell, Caption, Cell, Section} from "@telegram-apps/telegram-ui";
+import {
+    AppRoot,
+    Avatar,
+    Blockquote,
+    Button,
+    ButtonCell,
+    Caption,
+    Card,
+    Cell,
+    Section
+} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
@@ -12,6 +22,9 @@ import {useNavigate} from "react-router-dom";
 import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
+import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
+import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
+
 
 const handleClickHaptic = (effect = 'light') =>{
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -135,6 +148,9 @@ const Profile = () => {
             >
                 Ваша библиотека
             </Caption>
+
+            <INITDivider color='transparent' thickness="10%"/>
+
             <HorizontalScroll
                 onClick={() =>
                     handleClickHaptic('light')
@@ -163,14 +179,29 @@ const Profile = () => {
             <INITDivider color="transparent" thickness="10%" />
             <Section header="Ваш план питания">
                 {mealPlan ? (
-                    <>
-                        <Cell>
-                            <b>Название:</b> {mealPlan.title}
-                        </Cell>
-                        <Cell>
-                            <b>Описание:</b> {mealPlan.description}
-                        </Cell>
-                    </>
+                    <Card type="ambient">
+                        <React.Fragment key=".0">
+                            <CardChip readOnly>
+                                Hot place
+                            </CardChip>
+                            <img
+                                alt="Dog"
+                                src="https://i.imgur.com/892vhef.jpeg"
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle="United states"
+                            >
+                                New York
+                            </CardCell>
+                        </React.Fragment>
+                    </Card>
                 ) : (
                     <Blockquote type="text">
                         <p>У вас пока нет плана питания.</p>
