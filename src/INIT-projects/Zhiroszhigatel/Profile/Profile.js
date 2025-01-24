@@ -178,17 +178,17 @@ const Profile = () => {
 
             <Section
                 header="Ваш план питания"
+                style={{
+                    backgroundColor: 'transparent !important', // Use important to override mobile defaults
+                    boxShadow: 'none !important',
+                    width:"100px",
+                }}
             >
                 {mealPlan ? (
                     <HorizontalScroll
                         onClick={() =>
                             handleClickHaptic('light')
                         }
-                        style={{
-                            backgroundColor: 'transparent !important', // Use important to override mobile defaults
-                            boxShadow: 'none !important',
-                            width:"100px",
-                        }}
                     >
                         <INITCardsList
                             items={mealsData}
