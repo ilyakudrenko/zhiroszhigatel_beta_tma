@@ -153,11 +153,7 @@ const HomePage = () => {
                         handleClickHaptic('light')
                     }
                 >
-                    <INITCardsList
-                        items={mealsData}
-                        userOwnedMealPlan={!!mealPlan} // Pass ownership status
-                        navigateToMealPlan={() => navigate('/MealPlanNavigation')} // Pass redirection function
-                    />
+                    <INITCardsList items={mealsData}/>
                 </HorizontalScroll>
 
             {/*Courses*/}
