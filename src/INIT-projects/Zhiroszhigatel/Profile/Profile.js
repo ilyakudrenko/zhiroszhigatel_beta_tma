@@ -179,9 +179,9 @@ const Profile = () => {
             <Section
                 header="Ваш план питания"
                 style={{
-                    backgroundColor: 'transparent !important', // Use important to override mobile defaults
-                    boxShadow: 'none !important',
-                    // width:"100px",
+                    backgroundColor: 'transparent', // Ensure background is transparent
+                    boxShadow: 'none', // Remove potential shadows
+                    WebkitTapHighlightColor: 'transparent', // Remove highlight on mobile tap
                 }}
             >
                 {mealPlan ? (
