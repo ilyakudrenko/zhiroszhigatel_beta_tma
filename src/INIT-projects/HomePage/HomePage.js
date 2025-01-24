@@ -40,6 +40,8 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [freeGuides, setFreeGuides] = useState(null);
+    const [mealPlan, setMealPlan] = useState(null); // Add this state
+
 
     useEffect(() => {
         const initialize = async () => {
@@ -48,6 +50,11 @@ const HomePage = () => {
                 await initializeUserSession();
                 const guides = await fetchAllGuides();
                 setFreeGuides(guides);
+                setLoading(false);   // End loading after session starts
+
+                // Fetch user's meal plan
+                const userMealPlan = await fetchUserMealPlan();
+                setMealPlan(userMealPlan?.[0]); // Assuming fetchUserMealPlan returns an array
                 setLoading(false);   // End loading after session starts
 
             } catch (err) {
@@ -153,7 +160,11 @@ const HomePage = () => {
                         handleClickHaptic('light')
                     }
                 >
-                    <INITCardsList items={mealsData}/>
+                    <INITCardsList
+                        items={mealsData}
+                        userOwnedMealPlan={!!mealPlan} // Pass ownership status
+                        navigateToMealPlan={() => navigate('/MealPlanNavigation')} // Pass redirection function
+                    />
                 </HorizontalScroll>
 
             {/*Courses*/}
