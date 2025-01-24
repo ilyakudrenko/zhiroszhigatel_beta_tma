@@ -186,6 +186,8 @@ const Profile = () => {
                         }
                         style={{
                             backgroundColor: 'transparent', // Debug: Set a visible background color
+                            padding: 0,
+                            margin: 0,
                         }}
                     >
                         <INITCardsList
