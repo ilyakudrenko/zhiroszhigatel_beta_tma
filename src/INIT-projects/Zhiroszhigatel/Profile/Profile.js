@@ -187,6 +187,7 @@ const Profile = () => {
                         style={{
                             backgroundColor: 'transparent !important', // Use important to override mobile defaults
                             boxShadow: 'none !important',
+                            width:"100px",
                         }}
                     >
                         <INITCardsList
