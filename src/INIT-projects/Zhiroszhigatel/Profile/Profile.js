@@ -185,11 +185,8 @@ const Profile = () => {
                             handleClickHaptic('light')
                         }
                         style={{
-                            backgroundColor: 'transparent', // Ensure background is transparent
-                            boxShadow: 'none', // Remove potential shadows
-                            WebkitTapHighlightColor: 'transparent', // Remove highlight on mobile tap
-                            padding:0,
-                            margin:0,
+                            backgroundColor: 'transparent !important', // Use important to override mobile defaults
+                            boxShadow: 'none !important',
                         }}
                     >
                         <INITCardsList
