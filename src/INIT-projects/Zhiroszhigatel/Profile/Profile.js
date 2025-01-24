@@ -182,9 +182,6 @@ const Profile = () => {
                         onClick={() =>
                             handleClickHaptic('light')
                         }
-                        style={{
-                            backgroundColor: 'transparent',
-                        }}
                     >
                         <INITCardsList
                             items={mealsData}
