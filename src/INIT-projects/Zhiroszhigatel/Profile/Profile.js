@@ -189,19 +189,17 @@ const Profile = () => {
                         />
                     </HorizontalScroll>
                 ) : (
-                    <div>
-                        <Blockquote type="text">
-                            <p>В вашей библиотеке пока нету плана питания.</p>
-                            <p>Вы можете добавить их из главного меню.</p>
-                            <Button
-                                mode="filled"
-                                size="s"
-                                onClick={() => navigate("/")}
-                            >
-                                в главное меню
-                            </Button>
-                        </Blockquote>
-                    </div>
+                    <Blockquote type="text">
+                        <p>В вашей библиотеке пока нету плана питания.</p>
+                        <p>Вы можете добавить их из главного меню.</p>
+                        <Button
+                            mode="filled"
+                            size="s"
+                            onClick={() => navigate("/")}
+                        >
+                            в главное меню
+                        </Button>
+                    </Blockquote>
                 )}
             </Section>
             <INITDivider color="transparent" thickness="10%"/>
