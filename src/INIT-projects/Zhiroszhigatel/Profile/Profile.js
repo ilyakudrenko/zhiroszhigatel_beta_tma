@@ -176,17 +176,15 @@ const Profile = () => {
             {/* Meal Plan Section */}
             <INITDivider color="transparent" thickness="10%" />
 
-            <Section
-                header="Ваш план питания"
-                style={{
-                    backgroundColor: 'transparent',
-                }}
-            >
+            <Section header="Ваш план питания">
                 {mealPlan ? (
                     <HorizontalScroll
                         onClick={() =>
                             handleClickHaptic('light')
                         }
+                        style={{
+                            backgroundColor: 'transparent',
+                        }}
                     >
                         <INITCardsList
                             items={mealsData}
