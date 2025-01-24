@@ -140,7 +140,10 @@ const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirec
                 width: 254,
             }}
         />
-        <CardCell readOnly>{title}</CardCell>
+        <CardCell
+            readOnly
+            subtitle={description}
+        >{title}</CardCell>
     </Card>
 );
 
