@@ -20,6 +20,7 @@ import INITBanner from "../CustomComponents/Banner/Banner";
 import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
+import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -50,7 +51,6 @@ const HomePage = () => {
                 await initializeUserSession();
                 const guides = await fetchAllGuides();
                 setFreeGuides(guides);
-                setLoading(false);   // End loading after session starts
 
                 // Fetch user's meal plan
                 const userMealPlan = await fetchUserMealPlan();
