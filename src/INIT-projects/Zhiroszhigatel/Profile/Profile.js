@@ -185,7 +185,7 @@ const Profile = () => {
                             handleClickHaptic('light')
                         }
                         style={{
-                            backgroundColor: 'red', // Debug: Set a visible background color
+                            backgroundColor: 'transparent', // Debug: Set a visible background color
                         }}
                     >
                         <INITCardsList
