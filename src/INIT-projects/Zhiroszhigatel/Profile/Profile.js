@@ -182,7 +182,7 @@ const Profile = () => {
                 weight="3"
                 style={{margin: '5%'}}
             >
-                Ваша библиотека
+                Ваш план питания
             </Caption>
 
             <INITDivider color="transparent" thickness="10%" />
