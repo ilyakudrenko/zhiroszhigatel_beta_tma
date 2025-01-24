@@ -188,6 +188,8 @@ const Profile = () => {
                             backgroundColor: 'transparent', // Ensure background is transparent
                             boxShadow: 'none', // Remove potential shadows
                             WebkitTapHighlightColor: 'transparent', // Remove highlight on mobile tap
+                            padding:0,
+                            margin:0,
                         }}
                     >
                         <INITCardsList

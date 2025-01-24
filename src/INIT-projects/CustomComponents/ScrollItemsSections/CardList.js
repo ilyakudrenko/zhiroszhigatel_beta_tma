@@ -69,7 +69,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     <div>
         {owned ? (
             <Card
-                style={{ flexShrink: 0, minWidth: '254px'}}
+                style={{ flexShrink: 0, minWidth: '254px', backgroundColor: 'var(--tgui--plain_foreground)'}}
                 type="ambient"
                 onClick={onRedirect} // Redirect if owned
             >
