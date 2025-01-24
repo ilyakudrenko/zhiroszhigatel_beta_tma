@@ -8,7 +8,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 const fetchAllTrainingPlans = async () => {
     try {
         // Fetch training plans from the backend
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings`);
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/training-plans`);
 
         // Format the training plans into the desired structure
         const formattedTrainingPlans = response.data.map((plan) => ({
