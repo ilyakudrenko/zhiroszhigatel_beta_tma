@@ -178,15 +178,15 @@ const Profile = () => {
 
             <Section
                 header="Ваш план питания"
-                style={{
-                    backgroundColor: 'red', // Debug: Set a visible background color
-                }}
             >
                 {mealPlan ? (
                     <HorizontalScroll
                         onClick={() =>
                             handleClickHaptic('light')
                         }
+                        style={{
+                            backgroundColor: 'red', // Debug: Set a visible background color
+                        }}
                     >
                         <INITCardsList
                             items={mealsData}
