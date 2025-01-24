@@ -175,7 +175,13 @@ const Profile = () => {
 
             {/* Meal Plan Section */}
             <INITDivider color="transparent" thickness="10%" />
-            <Section header="Ваш план питания">
+
+            <Section
+                header="Ваш план питания"
+                style={{
+                    backgroundColor: 'transparent',
+                }}
+            >
                 {mealPlan ? (
                     <HorizontalScroll
                         onClick={() =>
