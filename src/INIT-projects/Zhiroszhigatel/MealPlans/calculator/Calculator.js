@@ -123,7 +123,7 @@ const Calculator = () => {
 
             setSnackbarVisible(true);
             setTimeout(async () => {
-                navigate('/rations'); // Переход к следующей странице
+                navigate('/mealnavigation'); // Переход к следующей странице
             },2000)
         } catch (error) {
             if (error.response && error.response.status === 409) {
