@@ -176,23 +176,34 @@ const Profile = () => {
             {/* Meal Plan Section */}
             <INITDivider color="transparent" thickness="10%" />
 
-            <Section
-                header="Ваш план питания"
-            >
-                {mealPlan (
-                    <HorizontalScroll
-                        onClick={() =>
-                            handleClickHaptic('light')
-                        }
-                    >
-                        <INITCardsList
-                            items={mealsData}
-                            userOwnedMealPlan={!!mealPlan} // Pass ownership status
-                            navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
-                        />
-                    </HorizontalScroll>
-                )}
-            </Section>
+            {mealPlan ? (
+                <HorizontalScroll
+                    onClick={() =>
+                        handleClickHaptic('light')
+                    }
+                >
+                    <INITCardsList
+                        items={mealsData}
+                        userOwnedMealPlan={!!mealPlan} // Pass ownership status
+                        navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
+                    />
+                </HorizontalScroll>
+            ) : (
+                <div>
+                    <Blockquote type="text">
+                        <p>В вашей библиотеке пока нету плана питания.</p>
+                        <p>Вы можете добавить их из главного меню.</p>
+                        <Button
+                            mode="filled"
+                            size="s"
+                            onClick={() => navigate("/")}
+                        >
+                            в главное меню
+                        </Button>
+                    </Blockquote>
+                </div>
+            )}
+
             <INITDivider color="transparent" thickness="10%"/>
 
         </AppRoot>
