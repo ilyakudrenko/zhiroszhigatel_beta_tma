@@ -176,6 +176,18 @@ const Profile = () => {
             {/* Meal Plan Section */}
             <INITDivider color="transparent" thickness="10%" />
 
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Ваша библиотека
+            </Caption>
+
+            <INITDivider color="transparent" thickness="10%" />
+
+
             {mealPlan ? (
                 <HorizontalScroll
                     onClick={() =>
