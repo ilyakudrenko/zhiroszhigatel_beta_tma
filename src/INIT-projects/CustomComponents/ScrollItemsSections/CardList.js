@@ -65,15 +65,14 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
 );
 
 
-const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, price}) => (
-    <Modal
-        header={<ModalHeader after={<ModalClose><Icon28Close
-            style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
-        style={{
-            backgroundColor: 'var(--tgui--secondary_bg_color)',
-        }}
-        trigger={
-            <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, price, owned, onRedirect}) => (
+    <div>
+        {owned ? (
+            <Card
+                style={{ flexShrink: 0, minWidth: '254px' }}
+                type="ambient"
+                onClick={onRedirect} // Redirect if owned
+            >
                 <CardChip readOnly>{cardChip}</CardChip>
                 <img
                     alt={title}
@@ -82,22 +81,46 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
                         display: 'block',
                         height: 308,
                         objectFit: 'cover',
-                        width: 254
+                        width: 254,
                     }}
                 />
                 <CardCell readOnly>{title}</CardCell>
             </Card>
-        }
-    >
+        ) : (
+            <Modal
+                header={<ModalHeader after={<ModalClose><Icon28Close
+                    style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
+                style={{
+                    backgroundColor: 'var(--tgui--secondary_bg_color)',
+                }}
+                trigger={
+                    <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+                        <CardChip readOnly>{cardChip}</CardChip>
+                        <img
+                            alt={title}
+                            src={imageSrc}
+                            style={{
+                                display: 'block',
+                                height: 308,
+                                objectFit: 'cover',
+                                width: 254
+                            }}
+                        />
+                        <CardCell readOnly>{title}</CardCell>
+                    </Card>
+                }
+            >
 
-        <INITMealPlanPromo
-            imageSrc={imageSrc}
-            title={title}
-            description={description}
-            price={price}
-        />
+                <INITMealPlanPromo
+                    imageSrc={imageSrc}
+                    title={title}
+                    description={description}
+                    price={price}
+                />
 
-    </Modal>
+            </Modal>
+        )}
+    </div>
 );
 
 /**
@@ -116,7 +139,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = []}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan}) => {
     return (
         <div>
             <div
@@ -152,6 +175,8 @@ const INITCardsList = ({items = []}) => {
                             cardChip={item.cardChip}
                             mealPlanKey={item.mealPlanKey}
                             price={item.price}
+                            owned={userOwnedMealPlan} // Pass ownership state
+                            onRedirect={navigateToMealPlan} // Pass redirection logic
                         />
                     )})}
             </div>

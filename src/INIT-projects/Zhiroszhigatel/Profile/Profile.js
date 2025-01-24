@@ -182,7 +182,11 @@ const Profile = () => {
                             handleClickHaptic('light')
                         }
                     >
-                        <INITCardsList items={mealsData}/>
+                        <INITCardsList
+                            items={mealsData}
+                            userOwnedMealPlan={!!mealPlan} // Pass ownership status
+                            navigateToMealPlan={() => navigate('/MealPlanNavigation')} // Pass redirection function
+                        />
                     </HorizontalScroll>
                 ) : (
                     <Blockquote type="text">
