@@ -123,6 +123,27 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
+const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirect}) => (
+    <Card
+        style={{ flexShrink: 0, minWidth: '254px' }}
+        type="ambient"
+        onClick={onRedirect} // Redirect on click
+    >
+        <CardChip readOnly>{cardChip}</CardChip>
+        <img
+            alt={title}
+            src={imageSrc}
+            style={{
+                display: 'block',
+                height: 308,
+                objectFit: 'cover',
+                width: 254,
+            }}
+        />
+        <CardCell readOnly>{title}</CardCell>
+    </Card>
+);
+
 /**
  * INITCardsList Component
  *
@@ -139,7 +160,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navigateToTrainingPlan}) => {
     return (
         <div>
             <div
@@ -166,19 +187,37 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan}) => {
                             />
                         )
                     }
-                    return(
-                        <INITCardItemMeal
-                            key = {i}
-                            imageSrc={item.imageSrc}
-                            title={item.title}
-                            description={item.description}
-                            cardChip={item.cardChip}
-                            mealPlanKey={item.mealPlanKey}
-                            price={item.price}
-                            owned={userOwnedMealPlan} // Pass ownership state
-                            onRedirect={navigateToMealPlan} // Pass redirection logic
-                        />
-                    )})}
+                    if(item.cardChip === "Meal"){
+                        return(
+                            <INITCardItemMeal
+                                key = {i}
+                                imageSrc={item.imageSrc}
+                                title={item.title}
+                                description={item.description}
+                                cardChip={item.cardChip}
+                                mealPlanKey={item.mealPlanKey}
+                                price={item.price}
+                                owned={userOwnedMealPlan} // Pass ownership state
+                                onRedirect={navigateToMealPlan} // Pass redirection logic
+                            />
+                        )
+                    }
+                    if(item.cardChip === "Training"){
+                        return (
+                            <INITCardItemTraining
+                                key={i}
+                                imageSrc={item.imageSrc}
+                                title={item.title}
+                                description={item.description}
+                                cardChip={item.cardChip}
+                                onRedirect={navigateToTrainingPlan}
+                            />
+                        )
+                    }
+
+                    // Default fallback
+                    return null;
+                    })}
             </div>
         </div>
     );

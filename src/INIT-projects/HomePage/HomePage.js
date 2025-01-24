@@ -21,6 +21,7 @@ import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
+import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -41,7 +42,8 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [freeGuides, setFreeGuides] = useState(null);
-    const [mealPlan, setMealPlan] = useState(null); // Add this state
+    const [mealPlan, setMealPlan] = useState(null);
+    const [trainingPlans, setTrainingPlans] = useState([]);
 
 
     useEffect(() => {
@@ -54,7 +56,12 @@ const HomePage = () => {
 
                 // Fetch user's meal plan
                 const userMealPlan = await fetchUserMealPlan();
-                setMealPlan(userMealPlan?.[0]); // Assuming fetchUserMealPlan returns an array
+                setMealPlan(userMealPlan?.[0]);
+
+                // Fetch training plans
+                const plans = await fetchAllTrainingPlans();
+                setTrainingPlans(plans);
+
                 setLoading(false);   // End loading after session starts
 
             } catch (err) {
@@ -167,7 +174,7 @@ const HomePage = () => {
                     />
                 </HorizontalScroll>
 
-            {/*Courses*/}
+            {/*Training Plans*/}
             <INITDivider color='transparent' thickness="10%"/>
                 <Caption
                     caps
@@ -175,14 +182,17 @@ const HomePage = () => {
                     weight="3"
                     style={{margin: '5%'}}
                 >
-                    Курсы
+                    Тренировочные планы
                 </Caption>
                 <HorizontalScroll
                     onClick={() =>
                         handleClickHaptic('light')
                         }
                 >
-                    <INITCardsList items={guidesData}/>
+                    <INITCardsList
+                        items={trainingPlans} // Массив тренировочных планов
+                        navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
+                    />
                 </HorizontalScroll>
         </AppRoot>
     );
