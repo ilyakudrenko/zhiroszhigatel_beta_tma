@@ -9,6 +9,7 @@ import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Mo
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
 import INITHelp from "../Help/Help";
+import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 
 /**
  * INITCardItem Component
@@ -132,7 +133,7 @@ const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirec
         <CardChip readOnly>{cardChip}</CardChip>
         <img
             alt={title}
-            src={imageSrc}
+            src={trainingImg}
             style={{
                 display: 'block',
                 height: 308,

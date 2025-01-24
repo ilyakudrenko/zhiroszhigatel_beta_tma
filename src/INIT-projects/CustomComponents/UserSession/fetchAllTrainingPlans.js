@@ -1,5 +1,4 @@
 import axios from 'axios';
-import img from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 /**
@@ -14,7 +13,7 @@ const fetchAllTrainingPlans = async () => {
         // Format the training plans into the desired structure
         const formattedTrainingPlans = response.data.map((plan) => ({
             trainingPlanId: plan.id, // Add training plan ID
-            imageSrc: {img}, // Placeholder for image URL (replace with actual URL if available)
+            imageSrc: 'https://via.placeholder.com/254', // Placeholder for image URL (replace with actual URL if available)
             title: plan.name,
             description: plan.description,
             cardChip: 'Training', // Static value
