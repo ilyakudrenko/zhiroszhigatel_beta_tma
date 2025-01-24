@@ -163,7 +163,7 @@ const HomePage = () => {
                     <INITCardsList
                         items={mealsData}
                         userOwnedMealPlan={!!mealPlan} // Pass ownership status
-                        navigateToMealPlan={() => navigate('/MealPlanNavigation')} // Pass redirection function
+                        navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
                     />
                 </HorizontalScroll>
 
