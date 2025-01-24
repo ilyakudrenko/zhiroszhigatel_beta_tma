@@ -194,6 +194,9 @@ const HomePage = () => {
                         navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
                     />
                 </HorizontalScroll>
+
+            <INITDivider color='transparent' thickness="10%"/>
+
         </AppRoot>
     );
 };
