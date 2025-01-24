@@ -178,13 +178,8 @@ const Profile = () => {
 
             <Section
                 header="Ваш план питания"
-                style={{
-                    backgroundColor: 'transparent', // Ensure background is transparent
-                    boxShadow: 'none', // Remove potential shadows
-                    WebkitTapHighlightColor: 'transparent', // Remove highlight on mobile tap
-                }}
             >
-                {mealPlan ? (
+                {mealPlan (
                     <HorizontalScroll
                         onClick={() =>
                             handleClickHaptic('light')
@@ -196,20 +191,6 @@ const Profile = () => {
                             navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
                         />
                     </HorizontalScroll>
-                ) : (
-                    <div>
-                        <Blockquote type="text">
-                            <p>В вашей библиотеке пока нету плана питания.</p>
-                            <p>Вы можете добавить их из главного меню.</p>
-                            <Button
-                                mode="filled"
-                                size="s"
-                                onClick={() => navigate("/")}
-                            >
-                                в главное меню
-                            </Button>
-                        </Blockquote>
-                    </div>
                 )}
             </Section>
             <INITDivider color="transparent" thickness="10%"/>
