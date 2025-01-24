@@ -66,7 +66,11 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
 
 
 const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, price, owned, onRedirect}) => (
-    <div>
+    <div
+        style={{
+            backgroundColor: 'transparent',
+        }}
+    >
         {owned ? (
             <Card
                 style={{ flexShrink: 0, minWidth: '254px' }}
