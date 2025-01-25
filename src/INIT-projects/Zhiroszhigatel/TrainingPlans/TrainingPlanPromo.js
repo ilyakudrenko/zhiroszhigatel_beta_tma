@@ -1,7 +1,8 @@
 import React from 'react';
 import { Caption, Cell, Image, List, Section, Title } from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
-import imageSrc from "../TrainingPlans/CardImages/training1.jpg";
+import imageSrc from "../TrainingPlans/CardImages/training3.jpg";
+import INITTrainingBuyButton from "./TrainingCategories/TrainingBuyButton";
 
 const TrainingPlanPromo = ({ trainingPlan }) => {
 
@@ -52,6 +53,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                     {fullDescription}
                 </Cell>
             </Section>
+            <INITTrainingBuyButton title={trainingPlan.title} />
         </List>
     );
 };
