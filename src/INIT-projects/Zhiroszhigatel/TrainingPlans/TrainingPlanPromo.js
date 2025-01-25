@@ -53,7 +53,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                     {fullDescription}
                 </Cell>
             </Section>
-            <INITTrainingBuyButton title={trainingPlan.title} />
+            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId}/>
         </List>
     );
 };

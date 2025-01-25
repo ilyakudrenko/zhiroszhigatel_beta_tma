@@ -1,25 +1,51 @@
-import React, {useState} from 'react';
-import {Button} from "@telegram-apps/telegram-ui";
-import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+import { Button } from "@telegram-apps/telegram-ui";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { getSession } from "../../../CustomComponents/UserSession/session";
 
-const handleClickHaptic = (effect = 'light') =>{
+const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
-}
+};
 
-const INITTrainingBuyButton = ({title, price}) => {
-
+const INITTrainingBuyButton = ({ title, trainingId }) => {
     const navigate = useNavigate();
-
-
     const [isGreen, setIsGreen] = useState(false);
 
-    const handleButtonClick = () => {
-        handleClickHaptic('light')
-        setIsGreen(true); // Toggle the color state
-        navigate("/trainingnavigation");
+    const addUserTraining = async (userId, trainingId) => {
+        const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+
+        try {
+            const response = await axios.post(`${BACKEND_PUBLIC_URL}/trainings/add-training`, {
+                user_id: userId,
+                training_id: trainingId,
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Ошибка добавления тренировки:', error);
+            throw error;
+        }
     };
 
-    const Price = 60;
+    const handleButtonClick = async () => {
+        try {
+            handleClickHaptic('light');
+            const user = getSession(); // Получение текущей сессии пользователя
+            if (!user || !user.id) {
+                alert('Пользователь не авторизован!');
+                return;
+            }
+
+            // Добавление тренировки пользователю
+            await addUserTraining(user.id, trainingId);
+
+            setIsGreen(true); // Успешно добавлено
+            navigate("/trainingnavigation");
+        } catch (error) {
+            alert('Ошибка при добавлении тренировки. Попробуйте позже.');
+            console.error(error);
+        }
+    };
 
     return (
         <div style={{
@@ -35,13 +61,12 @@ const INITTrainingBuyButton = ({title, price}) => {
             <Button
                 mode="filled"
                 size="l"
-                //stretched
                 onClick={handleButtonClick}
                 style={{
                     backgroundColor: isGreen ? '#53E651' : '',
                 }}
             >
-                Купить: ${Price}
+                Купить: {title}
             </Button>
         </div>
     );
