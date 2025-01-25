@@ -4,10 +4,19 @@ import INITDivider from "../../CustomComponents/Dividers/Divider";
 import imageSrc from "../TrainingPlans/CardImages/training1.jpg";
 
 const TrainingPlanPromo = ({ trainingPlan }) => {
+
+    const fullDescriptions = {
+        "Базовый уровень": "Никита Игошев. Тренировочный план для новичков и тех кто много пропустил, без ограничений по здоровью",
+        "Продвинутый уровень": "Никита Игошев. Тренировочный план для людей с хорошей подготовкой и без ограничений по здоровью"
+    };
+
+    // Get the full description based on the training plan title
+    const fullDescription = fullDescriptions[trainingPlan.description] || "Описание не найдено";
+
     return (
         <List>
             <Image
-                src={trainingPlan.imageSrc || imageSrc} // Use provided image or a default one
+                src={imageSrc} // Use provided image or a default one
                 style={{
                     width: '100%',
                     height: '40vh',
@@ -23,24 +32,25 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
 
             <INITDivider color='transparent' thickness="10%" />
 
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{ margin: '5%' }}
-            >
-                ЧТО ВХОДИТ
-            </Caption>
+            {trainingPlan.description.split("\n").map((desc, index) => (
+                <Caption
+                    key={index}
+                    //caps
+                    level="1"
+                    weight="3"
+                    style={{ margin: '5%' }}
+                    multiline
+                >
+                    {desc}
+                </Caption>
+            ))}
+
             <Section>
-                {trainingPlan.description.split("\n").map((desc, index) => (
-                    <Cell
-                        key={index}
-                        multiline
-                        subhead={`Шаг ${index + 1}`}
-                    >
-                        {desc}
-                    </Cell>
-                ))}
+                <Cell
+                    multiline
+                >
+                    {fullDescription}
+                </Cell>
             </Section>
         </List>
     );

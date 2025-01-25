@@ -161,7 +161,7 @@ const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirec
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
                     alt={trainingPlan.title}
-                    src={trainingPlan.imageSrc || trainingImg}
+                    src={trainingImg}
                     style={{
                         display: 'block',
                         height: 308,
