@@ -16,7 +16,7 @@ const INITTrainingBuyButton = ({title, price}) => {
     const handleButtonClick = () => {
         handleClickHaptic('light')
         setIsGreen(true); // Toggle the color state
-        navigate("/calculator"); // Navigate to rations
+        navigate("/trainingnavigation");
     };
 
     const Price = 60;

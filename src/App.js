@@ -14,6 +14,7 @@ import MealPlanTasting from "./INIT-projects/Zhiroszhigatel/TestPages/MealPlanTa
 import MealPlanNavigation from "./INIT-projects/Zhiroszhigatel/MealPlans/MealPlanNavigation";
 import CookingLesson from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingLesson";
 import INITCookingTools from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingTools";
+import TrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingPlanNavigation";
 
 const App = () => {
     const location = useLocation();
@@ -36,9 +37,12 @@ const App = () => {
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
-
                     {/*test*/}
                     <Route path="/test" element={<INITCookingTools />} />
+
+                    {/*Training Plans.*/}
+                    <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
+
                 </Routes>
 
         ) : (
@@ -56,9 +60,11 @@ const App = () => {
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
-
                     {/*test*/}
                     <Route path="/test" element={<INITCookingTools />} />
+
+                    {/*Training Plans.*/}
+                    <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
                 </Routes>
         )
     );
