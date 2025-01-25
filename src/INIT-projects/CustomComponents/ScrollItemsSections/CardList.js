@@ -10,6 +10,7 @@ import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
 import INITHelp from "../Help/Help";
 import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
+import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
 
 /**
  * INITCardItem Component
@@ -124,30 +125,57 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirect}) => (
-    <Card
-        style={{ flexShrink: 0, minWidth: '254px' }}
-        type="ambient"
-        onClick={onRedirect} // Redirect on click
+const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirect, trainingPlan}) => (
+    // <Card
+    //     style={{ flexShrink: 0, minWidth: '254px' }}
+    //     type="ambient"
+    //     onClick={onRedirect} // Redirect on click
+    // >
+    //     <CardChip readOnly>{cardChip}</CardChip>
+    //     <img
+    //         alt={title}
+    //         src={trainingImg}
+    //         style={{
+    //             display: 'block',
+    //             height: 308,
+    //             objectFit: 'cover',
+    //             width: 254,
+    //         }}
+    //     />
+    //     <CardCell
+    //         readOnly
+    //         subtitle={description}
+    //     >
+    //         {title}
+    //     </CardCell>
+    // </Card>
+
+    <Modal
+        header={<ModalHeader after={<ModalClose><Icon28Close
+            style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+        style={{
+            backgroundColor: 'var(--tgui--secondary_bg_color)',
+        }}
+        trigger={
+            <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
+                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                <img
+                    alt={trainingPlan.title}
+                    src={trainingPlan.imageSrc || trainingImg}
+                    style={{
+                        display: 'block',
+                        height: 308,
+                        objectFit: 'cover',
+                        width: 254
+                    }}
+                />
+                <CardCell readOnly>{trainingPlan.title}</CardCell>
+            </Card>
+        }
     >
-        <CardChip readOnly>{cardChip}</CardChip>
-        <img
-            alt={title}
-            src={trainingImg}
-            style={{
-                display: 'block',
-                height: 308,
-                objectFit: 'cover',
-                width: 254,
-            }}
-        />
-        <CardCell
-            readOnly
-            subtitle={description}
-        >
-            {title}
-        </CardCell>
-    </Card>
+        <TrainingPlanPromo trainingPlan={trainingPlan} />
+    </Modal>
+
 );
 
 /**
@@ -212,11 +240,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navig
                         return (
                             <INITCardItemTraining
                                 key={i}
-                                imageSrc={item.imageSrc}
-                                title={item.title}
-                                description={item.description}
-                                cardChip={item.cardChip}
-                                onRedirect={navigateToTrainingPlan}
+                                trainingPlan={item}
                             />
                         )
                     }
