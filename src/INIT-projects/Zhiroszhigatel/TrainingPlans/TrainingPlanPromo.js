@@ -5,38 +5,27 @@ import imageSrc from "../TrainingPlans/CardImages/training3.jpg";
 import INITTrainingBuyButton from "./TrainingCategories/TrainingBuyButton";
 
 const TrainingPlanPromo = ({ trainingPlan }) => {
-
-    // const fullDescriptions = {
-    //     "Базовый уровень": "Никита Игошев. Тренировочный план для новичков и тех кто много пропустил, без ограничений по здоровью",
-    //     "Продвинутый уровень": "Никита Игошев. Тренировочный план для людей с хорошей подготовкой и без ограничений по здоровью"
-    // };
-
-    // Get the full description based on the training plan title
-    // const fullDescription = fullDescriptions[trainingPlan.description] || "Описание не найдено";
-
     return (
         <List>
             <Image
-                src={imageSrc} // Use provided image or a default one
+                src={imageSrc} // Используем изображение из данных
                 style={{
                     width: '100%',
                     height: '40vh',
                     objectFit: 'cover',
-                    borderRadius: '0px'
+                    borderRadius: '0px',
                 }}
             />
 
-            {/* Заголовок */}
             <Title level="1" weight="bold" style={{ margin: '16px 16px 8px' }}>
                 {trainingPlan.title}
             </Title>
 
-            <INITDivider color='transparent' thickness="10%" />
+            <INITDivider color="transparent" thickness="10%" />
 
             {trainingPlan.description.split("\n").map((desc, index) => (
                 <Caption
                     key={index}
-                    //caps
                     level="1"
                     weight="3"
                     style={{ margin: '5%' }}
@@ -47,13 +36,18 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
             ))}
 
             <Section>
-                <Cell
-                    multiline
-                >
-                    {trainingPlan.fullDescription}
-                </Cell>
+                {Array.isArray(trainingPlan.fullDescription) ? (
+                    trainingPlan.fullDescription.map((desc, index) => (
+                        <Cell key={index} multiline>
+                            <b>{desc.header}</b>: {desc.info}
+                        </Cell>
+                    ))
+                ) : (
+                    <Cell multiline>Описание не найдено</Cell>
+                )}
             </Section>
-            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId}/>
+
+            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId} />
         </List>
     );
 };
