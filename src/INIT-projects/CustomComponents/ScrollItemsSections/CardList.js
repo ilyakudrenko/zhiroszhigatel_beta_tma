@@ -125,28 +125,43 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan, userTrainingPlans, navigateToBasicTraining, navigateToAdvancedTraining }) => {
-    const userOwnsPlan = userTrainingPlans.some(plan => plan.id === trainingPlan.trainingPlanId);
+const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirect, trainingPlan}) => (
+    // <Card
+    //     style={{ flexShrink: 0, minWidth: '254px' }}
+    //     type="ambient"
+    //     onClick={onRedirect} // Redirect on click
+    // >
+    //     <CardChip readOnly>{cardChip}</CardChip>
+    //     <img
+    //         alt={title}
+    //         src={trainingImg}
+    //         style={{
+    //             display: 'block',
+    //             height: 308,
+    //             objectFit: 'cover',
+    //             width: 254,
+    //         }}
+    //     />
+    //     <CardCell
+    //         readOnly
+    //         subtitle={description}
+    //     >
+    //         {title}
+    //     </CardCell>
+    // </Card>
 
-    const handleRedirect = () => {
-        if (trainingPlan.description === "Базовый уровень") {
-            navigateToBasicTraining();
-        } else if (trainingPlan.description === "Продвинутый уровень") {
-            navigateToAdvancedTraining();
-        }
-    };
-
-    if (userOwnsPlan) {
-        return (
-            <Card
-                style={{ flexShrink: 0, minWidth: '254px' }}
-                type="ambient"
-                onClick={handleRedirect}
-            >
+    <Modal
+        header={<ModalHeader after={<ModalClose><Icon28Close
+            style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+        style={{
+            backgroundColor: 'var(--tgui--secondary_bg_color)',
+        }}
+        trigger={
+            <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
                     alt={trainingPlan.title}
-                    src={trainingPlan.imageSrc}
+                    src={trainingImg}
                     style={{
                         display: 'block',
                         height: 308,
@@ -154,39 +169,17 @@ const INITCardItemTraining = ({ trainingPlan, userTrainingPlans, navigateToBasic
                         width: 254
                     }}
                 />
-                <CardCell readOnly>{trainingPlan.title}</CardCell>
+                <CardCell
+                    readOnly
+                    subtitle={trainingPlan.description}
+                >{trainingPlan.title}</CardCell>
             </Card>
-        );
-    }
+        }
+    >
+        <TrainingPlanPromo trainingPlan={trainingPlan} />
+    </Modal>
 
-    return (
-        <Modal
-            header={<ModalHeader after={<ModalClose><Icon28Close
-                style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
-            style={{
-                backgroundColor: 'var(--tgui--secondary_bg_color)',
-            }}
-            trigger={
-                <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
-                    <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-                    <img
-                        alt={trainingPlan.title}
-                        src={trainingPlan.imageSrc}
-                        style={{
-                            display: 'block',
-                            height: 308,
-                            objectFit: 'cover',
-                            width: 254
-                        }}
-                    />
-                    <CardCell readOnly>{trainingPlan.title}</CardCell>
-                </Card>
-            }
-        >
-            <TrainingPlanPromo trainingPlan={trainingPlan} />
-        </Modal>
-    );
-};
+);
 
 /**
  * INITCardsList Component
@@ -204,7 +197,7 @@ const INITCardItemTraining = ({ trainingPlan, userTrainingPlans, navigateToBasic
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan,  userTrainingPlans, navigateToBasicTraining, navigateToAdvancedTraining}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navigateToTrainingPlan}) => {
     return (
         <div>
             <div
@@ -251,11 +244,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan,  user
                             <INITCardItemTraining
                                 key={i}
                                 trainingPlan={item}
-                                userTrainingPlans={userTrainingPlans}
-                                navigateToBasicTraining={navigateToBasicTraining}
-                                navigateToAdvancedTraining={navigateToAdvancedTraining}
                             />
-
                         )
                     }
 
