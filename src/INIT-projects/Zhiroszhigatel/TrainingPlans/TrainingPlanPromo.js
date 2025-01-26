@@ -46,7 +46,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                     <Cell multiline>Описание не найдено</Cell>
                 )}
             </Section>
-
+            {/*test*/}
             <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId} />
         </List>
     );
