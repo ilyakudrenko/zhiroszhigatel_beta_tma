@@ -19,7 +19,7 @@ import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
 import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
-import {getSession, initializeUserSession} from "../CustomComponents/UserSession/session";
+import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import {fetchUserTrainingPlans} from "../CustomComponents/UserSession/fetchUserTrainingPlans";
@@ -45,7 +45,6 @@ const HomePage = () => {
     const [freeGuides, setFreeGuides] = useState(null);
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
-    const [userTrainingPlans, setUserTrainingPlans] = useState([]);
 
 
     useEffect(() => {
@@ -64,11 +63,8 @@ const HomePage = () => {
                 const plans = await fetchAllTrainingPlans();
                 setTrainingPlans(plans);
 
-                // Получаем ID пользователя из сессии
-                const userSession = getSession();
-                const userId = userSession.id;
-
-                const userPlans = await fetchUserTrainingPlans(userId);
+                // Fetch user's training plans
+                const userPlans = await fetchUserTrainingPlans();
                 setUserTrainingPlans(userPlans);
 
                 setLoading(false);   // End loading after session starts
@@ -200,8 +196,9 @@ const HomePage = () => {
                 >
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
-                        // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
-                        userOwnedTrainingPlans={userTrainingPlans} // Планы пользователя
+                        userTrainingPlans={userTrainingPlans} // Планы пользователя
+                        navigateToBasicTraining={() => navigate('/trainingnavigation')} // Навигация на базовый уровень
+                        navigateToAdvancedTraining={() => navigate('/protrainingnavigation')} // Навигация на продвинутый уровень
                     />
                 </HorizontalScroll>
 

@@ -125,50 +125,41 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
-    const navigate = useNavigate();
+const INITCardItemTraining = ({ trainingPlan, userTrainingPlans, navigateToBasicTraining, navigateToAdvancedTraining }) => {
+    const userOwnsPlan = userTrainingPlans.some(plan => plan.id === trainingPlan.trainingPlanId);
 
-    // Проверяем, добавлен ли текущий тренировочный план
-    const isOwned = userOwnedTrainingPlans?.some(plan => plan.training_id === trainingPlan.trainingPlanId);
-
-    const handleCardClick = () => {
-        if (isOwned) {
-            // Если план уже добавлен, перенаправляем на соответствующую страницу
-            if (trainingPlan.description === "Базовый уровень") {
-                navigate('/trainingnavigation');
-            } else if (trainingPlan.description === "Продвинутый уровень") {
-                navigate('/protrainingnavigation');
-            }
+    const handleRedirect = () => {
+        if (trainingPlan.description === "Базовый уровень") {
+            navigateToBasicTraining();
+        } else if (trainingPlan.description === "Продвинутый уровень") {
+            navigateToAdvancedTraining();
         }
     };
 
-    return isOwned ? (
-        // Если план добавлен, делаем карту кликабельной для перенаправления
-        <Card
-            style={{ flexShrink: 0, minWidth: '254px' }}
-            type="ambient"
-            onClick={handleCardClick}
-        >
-            <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-            <img
-                alt={trainingPlan.title}
-                src={trainingImg} // Замените на реальный URL изображения
-                style={{
-                    display: 'block',
-                    height: 308,
-                    objectFit: 'cover',
-                    width: 254
-                }}
-            />
-            <CardCell
-                readOnly
-                subtitle={trainingPlan.description}
+    if (userOwnsPlan) {
+        return (
+            <Card
+                style={{ flexShrink: 0, minWidth: '254px' }}
+                type="ambient"
+                onClick={handleRedirect}
             >
-                {trainingPlan.title}
-            </CardCell>
-        </Card>
-    ) : (
-        // Если план не добавлен, отображаем модал
+                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                <img
+                    alt={trainingPlan.title}
+                    src={trainingPlan.imageSrc}
+                    style={{
+                        display: 'block',
+                        height: 308,
+                        objectFit: 'cover',
+                        width: 254
+                    }}
+                />
+                <CardCell readOnly>{trainingPlan.title}</CardCell>
+            </Card>
+        );
+    }
+
+    return (
         <Modal
             header={<ModalHeader after={<ModalClose><Icon28Close
                 style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
@@ -180,7 +171,7 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
                     <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                     <img
                         alt={trainingPlan.title}
-                        src={trainingImg} // Замените на реальный URL изображения
+                        src={trainingPlan.imageSrc}
                         style={{
                             display: 'block',
                             height: 308,
@@ -188,12 +179,7 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
                             width: 254
                         }}
                     />
-                    <CardCell
-                        readOnly
-                        subtitle={trainingPlan.description}
-                    >
-                        {trainingPlan.title}
-                    </CardCell>
+                    <CardCell readOnly>{trainingPlan.title}</CardCell>
                 </Card>
             }
         >
@@ -218,7 +204,7 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlans}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan,  userTrainingPlans, navigateToBasicTraining, navigateToAdvancedTraining}) => {
     return (
         <div>
             <div
@@ -265,8 +251,11 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                             <INITCardItemTraining
                                 key={i}
                                 trainingPlan={item}
-                                userOwnedTrainingPlans={userOwnedTrainingPlans}
+                                userTrainingPlans={userTrainingPlans}
+                                navigateToBasicTraining={navigateToBasicTraining}
+                                navigateToAdvancedTraining={navigateToAdvancedTraining}
                             />
+
                         )
                     }
 
