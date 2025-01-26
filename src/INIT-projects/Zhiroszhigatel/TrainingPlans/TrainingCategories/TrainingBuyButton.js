@@ -8,7 +8,7 @@ const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 };
 
-const INITTrainingBuyButton = ({ title, trainingId }) => {
+const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const navigate = useNavigate();
     const [isGreen, setIsGreen] = useState(false);
 
@@ -66,7 +66,7 @@ const INITTrainingBuyButton = ({ title, trainingId }) => {
                     backgroundColor: isGreen ? '#53E651' : '',
                 }}
             >
-                Купить: {title}
+                Купить: {price}
             </Button>
         </div>
     );
