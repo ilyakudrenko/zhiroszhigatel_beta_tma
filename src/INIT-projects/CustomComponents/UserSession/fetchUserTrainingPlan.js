@@ -8,7 +8,7 @@ const fetchUserTrainingPlan = async () => {
         const userSession = await getSession();
         const userID = userSession.id;
 
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_training_plans/${userID}`);
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_training/${userID}`);
 
         const trainingPlansData = response.data.map((trainingPlan) => ({
             trainingPlanId: trainingPlan.id, // Add training plan ID
