@@ -6,13 +6,13 @@ import INITTrainingBuyButton from "./TrainingCategories/TrainingBuyButton";
 
 const TrainingPlanPromo = ({ trainingPlan }) => {
 
-    const fullDescriptions = {
-        "Базовый уровень": "Никита Игошев. Тренировочный план для новичков и тех кто много пропустил, без ограничений по здоровью",
-        "Продвинутый уровень": "Никита Игошев. Тренировочный план для людей с хорошей подготовкой и без ограничений по здоровью"
-    };
+    // const fullDescriptions = {
+    //     "Базовый уровень": "Никита Игошев. Тренировочный план для новичков и тех кто много пропустил, без ограничений по здоровью",
+    //     "Продвинутый уровень": "Никита Игошев. Тренировочный план для людей с хорошей подготовкой и без ограничений по здоровью"
+    // };
 
     // Get the full description based on the training plan title
-    const fullDescription = fullDescriptions[trainingPlan.description] || "Описание не найдено";
+    // const fullDescription = fullDescriptions[trainingPlan.description] || "Описание не найдено";
 
     return (
         <List>
@@ -50,7 +50,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 <Cell
                     multiline
                 >
-                    {fullDescription}
+                    {trainingPlan.fullDescription}
                 </Cell>
             </Section>
             <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId}/>
