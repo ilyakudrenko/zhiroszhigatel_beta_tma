@@ -19,9 +19,10 @@ import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
 import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
-import {initializeUserSession} from "../CustomComponents/UserSession/session";
+import {getSession, initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
+import {fetchUserTrainingPlans} from "../CustomComponents/UserSession/fetchUserTrainingPlans";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -44,6 +45,7 @@ const HomePage = () => {
     const [freeGuides, setFreeGuides] = useState(null);
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]);
 
 
     useEffect(() => {
@@ -61,6 +63,13 @@ const HomePage = () => {
                 // Fetch training plans
                 const plans = await fetchAllTrainingPlans();
                 setTrainingPlans(plans);
+
+                // Получаем ID пользователя из сессии
+                const userSession = getSession();
+                const userId = userSession.id;
+
+                const userPlans = await fetchUserTrainingPlans(userId);
+                setUserTrainingPlans(userPlans);
 
                 setLoading(false);   // End loading after session starts
 
@@ -192,6 +201,7 @@ const HomePage = () => {
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
                         // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
+                        userOwnedTrainingPlans={userTrainingPlans} // Планы пользователя
                     />
                 </HorizontalScroll>
 

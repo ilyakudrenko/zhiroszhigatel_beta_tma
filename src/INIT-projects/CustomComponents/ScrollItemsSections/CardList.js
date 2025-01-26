@@ -125,61 +125,82 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirect, trainingPlan}) => (
-    // <Card
-    //     style={{ flexShrink: 0, minWidth: '254px' }}
-    //     type="ambient"
-    //     onClick={onRedirect} // Redirect on click
-    // >
-    //     <CardChip readOnly>{cardChip}</CardChip>
-    //     <img
-    //         alt={title}
-    //         src={trainingImg}
-    //         style={{
-    //             display: 'block',
-    //             height: 308,
-    //             objectFit: 'cover',
-    //             width: 254,
-    //         }}
-    //     />
-    //     <CardCell
-    //         readOnly
-    //         subtitle={description}
-    //     >
-    //         {title}
-    //     </CardCell>
-    // </Card>
+const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
+    const navigate = useNavigate();
 
-    <Modal
-        header={<ModalHeader after={<ModalClose><Icon28Close
-            style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
-        style={{
-            backgroundColor: 'var(--tgui--secondary_bg_color)',
-        }}
-        trigger={
-            <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
-                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-                <img
-                    alt={trainingPlan.title}
-                    src={trainingImg}
-                    style={{
-                        display: 'block',
-                        height: 308,
-                        objectFit: 'cover',
-                        width: 254
-                    }}
-                />
-                <CardCell
-                    readOnly
-                    subtitle={trainingPlan.description}
-                >{trainingPlan.title}</CardCell>
-            </Card>
+    // Проверяем, добавлен ли текущий тренировочный план
+    const isOwned = userOwnedTrainingPlans?.some(plan => plan.training_id === trainingPlan.trainingPlanId);
+
+    const handleCardClick = () => {
+        if (isOwned) {
+            // Если план уже добавлен, перенаправляем на соответствующую страницу
+            if (trainingPlan.description === "Базовый уровень") {
+                navigate('/trainingnavigation');
+            } else if (trainingPlan.description === "Продвинутый уровень") {
+                navigate('/protrainingnavigation');
+            }
         }
-    >
-        <TrainingPlanPromo trainingPlan={trainingPlan} />
-    </Modal>
+    };
 
-);
+    return isOwned ? (
+        // Если план добавлен, делаем карту кликабельной для перенаправления
+        <Card
+            style={{ flexShrink: 0, minWidth: '254px' }}
+            type="ambient"
+            onClick={handleCardClick}
+        >
+            <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+            <img
+                alt={trainingPlan.title}
+                src={trainingImg} // Замените на реальный URL изображения
+                style={{
+                    display: 'block',
+                    height: 308,
+                    objectFit: 'cover',
+                    width: 254
+                }}
+            />
+            <CardCell
+                readOnly
+                subtitle={trainingPlan.description}
+            >
+                {trainingPlan.title}
+            </CardCell>
+        </Card>
+    ) : (
+        // Если план не добавлен, отображаем модал
+        <Modal
+            header={<ModalHeader after={<ModalClose><Icon28Close
+                style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+            style={{
+                backgroundColor: 'var(--tgui--secondary_bg_color)',
+            }}
+            trigger={
+                <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
+                    <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                    <img
+                        alt={trainingPlan.title}
+                        src={trainingImg} // Замените на реальный URL изображения
+                        style={{
+                            display: 'block',
+                            height: 308,
+                            objectFit: 'cover',
+                            width: 254
+                        }}
+                    />
+                    <CardCell
+                        readOnly
+                        subtitle={trainingPlan.description}
+                    >
+                        {trainingPlan.title}
+                    </CardCell>
+                </Card>
+            }
+        >
+            <TrainingPlanPromo trainingPlan={trainingPlan} />
+        </Modal>
+    );
+};
 
 /**
  * INITCardsList Component
@@ -197,7 +218,7 @@ const INITCardItemTraining = ({imageSrc, title, description, cardChip, onRedirec
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navigateToTrainingPlan}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlans}) => {
     return (
         <div>
             <div
@@ -244,6 +265,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navig
                             <INITCardItemTraining
                                 key={i}
                                 trainingPlan={item}
+                                userOwnedTrainingPlans={userOwnedTrainingPlans}
                             />
                         )
                     }
