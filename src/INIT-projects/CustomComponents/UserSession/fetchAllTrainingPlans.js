@@ -13,10 +13,14 @@ const fetchAllTrainingPlans = async () => {
         // Format the training plans into the desired structure
         const formattedTrainingPlans = response.data.map((plan) => ({
             trainingPlanId: plan.id, // Add training plan ID
-            imageSrc: 'https://via.placeholder.com/254', // Placeholder for image URL (replace with actual URL if available)
+            imageSrc: plan.image_src, // Placeholder for image URL (replace with actual URL if available)
             title: plan.name,
             description: plan.description,
-            cardChip: 'Training', // Static value
+            price: plan.price,
+            cardChip: plan.card_chip, // Card chip information
+            fullDescription: JSON.parse(plan.full_description) // Parse the JSON structure from the database
+
+
         }));
 
         return formattedTrainingPlans;
