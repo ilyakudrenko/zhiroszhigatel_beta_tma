@@ -26,7 +26,25 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            
+
+            {/*Базовый план тренировок*/}
+            <Banner
+                background={<img alt="Nasa streams"
+                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 style={{width: '150%'}}/>}
+                callout={<Badge type={"number"}>бонус</Badge>}
+                description="test"
+                header="basic training plan"
+                // onCloseIcon={function noRefCheck(){}}
+                type="section"
+                style={roundedCellStyle}
+            >
+                <React.Fragment key=".0">
+                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                        Перейти
+                    </Button>
+                </React.Fragment>
+            </Banner>
 
             {/*БОНУС Знания о питании*/}
             <Modal

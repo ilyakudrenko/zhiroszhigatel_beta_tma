@@ -16,6 +16,7 @@ import CookingLesson from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategor
 import INITCookingTools from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingTools";
 import TrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingPlanNavigation";
 import ProTrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/ProTrainingPlanNavigation";
+import TrainingProgram from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/TrainingProgram";
 
 const App = () => {
     const location = useLocation();
@@ -44,6 +45,8 @@ const App = () => {
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
+                    <Route path="/basictrainingprogram" element={<TrainingProgram />} />
+
 
                 </Routes>
 
@@ -68,6 +71,7 @@ const App = () => {
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
+                    <Route path="/basictrainingprogram" element={<TrainingProgram />} />
 
                 </Routes>
         )
