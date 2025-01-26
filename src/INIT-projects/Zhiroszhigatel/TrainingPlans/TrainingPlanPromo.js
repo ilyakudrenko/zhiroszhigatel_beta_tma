@@ -21,8 +21,6 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 {trainingPlan.title}
             </Title>
 
-            <INITDivider color="transparent" thickness="10%" />
-
             {trainingPlan.description.split("\n").map((desc, index) => (
                 <Caption
                     key={index}
@@ -35,19 +33,34 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 </Caption>
             ))}
 
+            <INITDivider color="transparent" thickness="10%" />
+
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                ЧТО ВХОДИТ
+            </Caption>
+
             <Section>
                 {Array.isArray(trainingPlan.fullDescription) ? (
-                    trainingPlan.fullDescription.map((desc, index) => (
-                        <Cell key={index} multiline>
-                            <b>{desc.header}</b>: {desc.info}
+                    trainingPlan.fullDescription.map((item, index) => (
+                        <Cell
+                            key={index}
+                            multiline
+                            subhead={item.header}
+                        >
+                            {item.info}
                         </Cell>
                     ))
                 ) : (
                     <Cell multiline>Описание не найдено</Cell>
                 )}
             </Section>
-            {/*test*/}
-            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId} />
+
+            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId} price={trainingPlan.price} />
         </List>
     );
 };
