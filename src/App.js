@@ -17,6 +17,7 @@ import INITCookingTools from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCate
 import TrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingPlanNavigation";
 import ProTrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/ProTrainingPlanNavigation";
 import TrainingProgram from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/TrainingProgram";
+import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTest";
 
 const App = () => {
     const location = useLocation();
@@ -47,6 +48,9 @@ const App = () => {
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
 
+
+                    //Testing Page
+                    <Route path="/testingPage" element={<TrainingPlanTest />} />
 
                 </Routes>
 
