@@ -77,6 +77,8 @@ const App = () => {
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
 
+
+                    <Route path="/testingPage" element={<TrainingPlanTest />} />
                 </Routes>
         )
     );
