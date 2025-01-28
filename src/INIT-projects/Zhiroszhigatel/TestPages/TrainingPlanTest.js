@@ -4,20 +4,22 @@ import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fe
 import {AppRoot} from "@telegram-apps/telegram-ui";
 
 const TrainingPlanTest = () => {
-    const [data, setData] = useState([]);
+    const [trainingPlans, setTrainingPlans] = useState([]);
+    const [workouts, setWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchAllData = async () => {
+        const fetchData = async () => {
             try {
-                const trainingPlans = await fetchUserTrainingPlan();
-                const allData = await Promise.all(
-                    trainingPlans.map(async (plan) => {
-                        const workouts = await fetchUserTrainingPlanWorkouts(plan.trainingPlanId);
-                        return { ...plan, workouts };
-                    })
-                );
-                setData(allData);
+                // Fetch training plans
+                const plans = await fetchUserTrainingPlan();
+                setTrainingPlans(plans);
+
+                // Fetch workouts for all plans
+                // const allWorkouts = await Promise.all(
+                //     plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
+                // );
+                // setWorkouts(allWorkouts.flat());
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
@@ -25,7 +27,7 @@ const TrainingPlanTest = () => {
             }
         };
 
-        fetchAllData();
+        fetchData();
     }, []);
 
     if (loading) {
@@ -34,10 +36,13 @@ const TrainingPlanTest = () => {
 
     return (
         <div>
-            <h1>User Training Plans and Workouts</h1>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <h1>Training Plans</h1>
+            <pre>{JSON.stringify(trainingPlans, null, 2)}</pre>
+            {/*<h1>Workouts</h1>*/}
+            {/*<pre>{JSON.stringify(workouts, null, 2)}</pre>*/}
         </div>
     );
+
 };
 
 export default TrainingPlanTest;

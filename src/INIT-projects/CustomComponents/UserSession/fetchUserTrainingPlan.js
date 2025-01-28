@@ -6,9 +6,11 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 const fetchUserTrainingPlan = async () => {
     try{
         const userSession = await getSession();
-        const userID = userSession.id;
+        const userId = userSession.id;
 
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_training/${userID}`);
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_training`, {
+            params: { userId },
+        });
 
         const trainingPlansData = response.data.map((trainingPlan) => ({
             trainingPlanId: trainingPlan.id, // Add training plan ID
