@@ -19,9 +19,11 @@ const TrainingPlanTest = (trainingPlanId) => {
                 setTrainingPlans(plans);
 
                 // Fetch workouts for all plans
-                const allWorkouts = await Promise.all(
-                    plans.map((plan) => fetchUserTrainingPlanWorkouts(trainingPlanId))
-                );
+                // const allWorkouts = await Promise.all(
+                //     plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
+                // );
+
+                const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
             } catch (error) {
                 console.error("Error fetching data:", error);
