@@ -3,10 +3,12 @@ import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserT
 import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
 import {AppRoot} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
+import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
 
 const TrainingPlanTest = ( {trainingPlanId}) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
+    const [exercises, setExercises] = useState([]);
     const [loading, setLoading] = useState(true);
 
     INITBackButton();
@@ -25,6 +27,12 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
+
+                //Fetch exercises for all user workouts
+                const allExercises = await Promise.all(
+                    allWorkouts.map((allWorkouts) => fetchUserExercises(allWorkouts.id))
+                );
+                setExercises(allExercises);
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
@@ -45,6 +53,9 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
             <pre>{JSON.stringify(trainingPlans, null, 2)}</pre>
             <h1>Workouts</h1>
             <pre>{JSON.stringify(workouts, null, 2)}</pre>
+
+            <h1>Exercises</h1>
+            <pre>{JSON.stringify(exercises, null, 2)}</pre>
         </div>
     );//redeploy
 

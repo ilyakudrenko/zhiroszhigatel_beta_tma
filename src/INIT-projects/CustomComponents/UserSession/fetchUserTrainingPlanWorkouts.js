@@ -4,7 +4,7 @@ import {getSession} from "./session";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserTrainingPlanWorkouts = async ( trainingPlanId ) => {
-    console.log("Training Id Passed:", trainingPlanId);
+    // console.log("Training Id Passed:", trainingPlanId);
     try {
         const userSession = await getSession();
         const userId = userSession.id;
