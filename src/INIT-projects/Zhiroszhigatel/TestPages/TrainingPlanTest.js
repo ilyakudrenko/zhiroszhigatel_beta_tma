@@ -39,7 +39,9 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 //Fetch reps for all exercises
                 const allReps = await Promise.all(
-                    allExercises.map((allExercises) => fetchUserExercisesReps(allExercises.exerciseId))
+                    allExercises.map((allExercises) => {
+                        console.log(allExercises.exerciseId);
+                        fetchUserExercisesReps(allExercises.exerciseId)})
                 );
                 setReps(allReps);
 
