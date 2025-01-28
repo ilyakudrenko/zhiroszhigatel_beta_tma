@@ -12,6 +12,8 @@ import INITHelp from "../Help/Help";
 import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
 import fetchUserTrainingPlan from "../UserSession/fetchUserTrainingPlan";
+import { useNavigate } from "react-router-dom";
+
 
 /**
  * INITCardItem Component
@@ -126,7 +128,12 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan }) => {
+const INITCardItemTraining = ({trainingPlan}) => {
+
+    const [showModal, setShowModal] = React.useState(false);
+    const navigate = useNavigate();
+
+
     const handleCardClick = async () => {
         try {
             // Проверяем планы тренировок пользователя
@@ -138,10 +145,14 @@ const INITCardItemTraining = ({ trainingPlan }) => {
             );
 
             if (userHasPlan) {
-                // Если план уже добавлен, показываем alert
-                alert("У вас уже добавлен этот план тренировок");
+                // Если план уже добавлен, перенаправляем пользователя
+                if (trainingPlan.title.includes("Базовый уровень")) {
+                    navigate("/trainingnavigation");
+                } else if (trainingPlan.title.includes("Продвинутый уровень")) {
+                    navigate("/protrainingnavigation");
+                }
             } else {
-                // Если план не добавлен, открываем модал
+                // Если план не добавлен, открываем модальное окно
                 setShowModal(true);
             }
         } catch (error) {
@@ -150,55 +161,62 @@ const INITCardItemTraining = ({ trainingPlan }) => {
         }
     };
 
-    const [showModal, setShowModal] = React.useState(false);
-
     return (
-        <>
-            <Card
-                style={{ flexShrink: 0, minWidth: "254px" }}
-                type="ambient"
-                onClick={handleCardClick} // Добавляем обработчик клика
-            >
-                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-                <img
-                    alt={trainingPlan.title}
-                    src={trainingPlan.imageSrc}
-                    style={{
-                        display: "block",
-                        height: 308,
-                        objectFit: "cover",
-                        width: 254,
-                    }}
-                />
-                <CardCell readOnly>{trainingPlan.title}</CardCell>
-            </Card>
-
-            {showModal && (
+        <div>
+            {showModal ? (
                 <Modal
-                    header={
-                        <ModalHeader
-                            after={
-                                <ModalClose onClick={() => setShowModal(false)}>
-                                    <Icon28Close
-                                        style={{
-                                            color: "var(--tgui--plain_foreground)",
-                                        }}
-                                    />
-                                </ModalClose>
-                            }
-                        >
-                            {trainingPlan.title}
-                        </ModalHeader>
-                    }
+                    header={<ModalHeader after={<ModalClose><Icon28Close
+                        style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{trainingPlan.title}</ModalHeader>}
                     style={{
-                        backgroundColor: "var(--tgui--secondary_bg_color)",
+                        backgroundColor: 'var(--tgui--secondary_bg_color)',
                     }}
+                    trigger={
+                        <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+                            <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                            <img
+                                alt={trainingPlan.title}
+                                src={trainingPlan.imageSrc}
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle={trainingPlan.description}
+                            >{trainingPlan.title}</CardCell>
+                        </Card>
+                    }
                 >
-                    <TrainingPlanPromo trainingPlan={trainingPlan} />
+                    <TrainingPlanPromo trainingPlan={trainingPlan}/>
                 </Modal>
+            ) : (
+                <Card
+                    style={{ flexShrink: 0, minWidth: '254px' }}
+                    type="ambient"
+                    onClick={handleCardClick} // Привязываем обработчик клика
+                >
+                    <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                    <img
+                        alt={trainingPlan.title}
+                        src={trainingPlan.imageSrc}
+                        style={{
+                            display: 'block',
+                            height: 308,
+                            objectFit: 'cover',
+                            width: 254
+                        }}
+                    />
+                    <CardCell
+                        readOnly
+                        subtitle={trainingPlan.description}
+                    >{trainingPlan.title}</CardCell>
+                </Card>
             )}
-        </>
-    );
+        </div>
+    )
 };
 
 /**
