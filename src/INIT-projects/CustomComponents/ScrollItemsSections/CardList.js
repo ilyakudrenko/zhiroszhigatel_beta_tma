@@ -127,8 +127,6 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
 
 const INITCardItemTraining = ({trainingPlan}) => {
 
-    const [showModal, setShowModal] = React.useState(false); // Управляем модальным окном
-
     const handleCardClick = async () => {
         try {
             // Проверяем планы тренировок пользователя
@@ -143,7 +141,7 @@ const INITCardItemTraining = ({trainingPlan}) => {
                 // Если план уже добавлен, показываем alert
                 alert("У вас уже добавлен этот план тренировок");
             } else {
-                // Если план не добавлен, открываем модальное окно
+                // Если план не добавлен, открываем модал
                 setShowModal(true);
             }
         } catch (error) {
@@ -152,9 +150,15 @@ const INITCardItemTraining = ({trainingPlan}) => {
         }
     };
 
+    const [showModal, setShowModal] = React.useState(false);
+
     return (
         <>
-            <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient" onClick={handleCardClick}>
+            <Card
+                style={{ flexShrink: 0, minWidth: '254px' }}
+                type="ambient"
+                onClick={handleCardClick} // Привязываем обработчик клика
+            >
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
                     alt={trainingPlan.title}
