@@ -52,7 +52,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                         );
                     })
                 );
-                setReps(allReps);
+                setReps(allReps.flat());
 
 
             } catch (error) {
