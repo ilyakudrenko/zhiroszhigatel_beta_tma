@@ -31,17 +31,26 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                 const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
 
+
+
                 //Fetch exercises for all user workouts
                 const allExercises = await Promise.all(
                     allWorkouts.map((allWorkouts) => fetchUserExercises(allWorkouts.trainingPlanWorkout_id))
                 );
                 setExercises(allExercises.flat());
 
+
+
                 //Fetch reps for all exercises
                 const allReps = await Promise.all(
-                    allExercises.map((allExercises) => {
-                        console.log(allExercises);
-                        fetchUserExercisesReps(allExercises.exerciseId)})
+                    allExercises.map((exerciseGroup) => {
+                        return Promise.all(
+                            exerciseGroup.map((exercise) => {
+                                console.log(exercise);
+                                return fetchUserExercisesReps(exercise.exerciseId);
+                            })
+                        );
+                    })
                 );
                 setReps(allReps);
 
