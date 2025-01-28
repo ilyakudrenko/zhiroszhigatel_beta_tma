@@ -78,7 +78,7 @@ const App = () => {
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
 
 
-                    <Route path="/testingPage" element={<TrainingPlanTest />} />
+                    <Route path="/testingPage" element={<TrainingPlanTest trainingPlanId={'98f04ea9-d847-11ef-bfbf-a2aa7cf0e641'}/>} />
                 </Routes>
         )
     );

@@ -3,7 +3,7 @@ import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserT
 import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
 import {AppRoot} from "@telegram-apps/telegram-ui";
 
-const TrainingPlanTest = () => {
+const TrainingPlanTest = (trainingPlanId) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,7 +17,7 @@ const TrainingPlanTest = () => {
 
                 // Fetch workouts for all plans
                 const allWorkouts = await Promise.all(
-                    plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
+                    plans.map((plan) => fetchUserTrainingPlanWorkouts(trainingPlanId))
                 );
                 setWorkouts(allWorkouts.flat());
             } catch (error) {
