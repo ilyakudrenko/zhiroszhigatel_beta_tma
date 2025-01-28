@@ -154,30 +154,8 @@ const INITCardItemTraining = ({trainingPlan}) => {
     };
 
     return (
-        <>
-            <Card
-                style={{ flexShrink: 0, minWidth: '254px' }}
-                type="ambient"
-                onClick={handleCardClick} // Привязываем обработчик клика
-            >
-                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-                <img
-                    alt={trainingPlan.title}
-                    src={trainingPlan.imageSrc}
-                    style={{
-                        display: 'block',
-                        height: 308,
-                        objectFit: 'cover',
-                        width: 254
-                    }}
-                />
-                <CardCell
-                    readOnly
-                    subtitle={trainingPlan.description}
-                >{trainingPlan.title}</CardCell>
-            </Card>
-
-            {showModal && (
+        <div>
+            {showModal ? (
                 <Modal
                     header={<ModalHeader after={<ModalClose><Icon28Close
                         style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{trainingPlan.title}</ModalHeader>}
@@ -206,8 +184,30 @@ const INITCardItemTraining = ({trainingPlan}) => {
                 >
                     <TrainingPlanPromo trainingPlan={trainingPlan}/>
                 </Modal>
+            ) : (
+                <Card
+                    style={{ flexShrink: 0, minWidth: '254px' }}
+                    type="ambient"
+                    onClick={handleCardClick} // Привязываем обработчик клика
+                >
+                    <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                    <img
+                        alt={trainingPlan.title}
+                        src={trainingPlan.imageSrc}
+                        style={{
+                            display: 'block',
+                            height: 308,
+                            objectFit: 'cover',
+                            width: 254
+                        }}
+                    />
+                    <CardCell
+                        readOnly
+                        subtitle={trainingPlan.description}
+                    >{trainingPlan.title}</CardCell>
+                </Card>
             )}
-        </>
+        </div>
     )
 };
 
