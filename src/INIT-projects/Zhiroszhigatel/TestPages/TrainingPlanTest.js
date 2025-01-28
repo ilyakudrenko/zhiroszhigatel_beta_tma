@@ -10,7 +10,9 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [exercises, setExercises] = useState([]);
+    // const [exercisesTest, setExercisesTest] = useState([]);
     const [reps, setReps] = useState([]);
+    const [repsTest, setRepsTest] = useState([]);
 
     const [loading, setLoading] = useState(true);
 
@@ -39,6 +41,10 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                 );
                 setExercises(allExercises.flat());
 
+                const allRepsTest = await Promise.all(
+                    exercises.map((exercise) => fetchUserExercises(exercise.exerciseId))
+                );
+                setRepsTest(allRepsTest);
 
 
                 //Fetch reps for all exercises
@@ -81,6 +87,11 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
             <h1>Reps</h1>
             <pre>{JSON.stringify(reps, null, 2)}</pre>
+
+
+            <h1>Reps Test</h1>
+            <pre>{JSON.stringify(repsTest, null, 2)}</pre>
+
 
         </div>
     );//redeploy
