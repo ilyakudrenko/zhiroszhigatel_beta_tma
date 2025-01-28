@@ -125,16 +125,36 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({trainingPlan}) => (
+const INITCardItemTraining = ({trainingPlan}) => {
 
-    <Modal
-        header={<ModalHeader after={<ModalClose><Icon28Close
-            style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
-        style={{
-            backgroundColor: 'var(--tgui--secondary_bg_color)',
-        }}
-        trigger={
-            <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
+    const handleCardClick = async () => {
+        try {
+            // Проверяем планы тренировок пользователя
+            const userTrainingPlans = await fetchUserTrainingPlan();
+
+            // Проверяем, есть ли у пользователя текущий план тренировок
+            const userHasPlan = userTrainingPlans.some(
+                (plan) => plan.trainingPlanId === trainingPlan.trainingPlanId
+            );
+
+            if (userHasPlan) {
+                // Если план уже добавлен, показываем alert
+                alert("У вас уже добавлен этот план тренировок");
+            } else {
+                // Если план не добавлен, открываем модал
+                setShowModal(true);
+            }
+        } catch (error) {
+            console.error("Ошибка проверки тренировочного плана пользователя:", error);
+            alert("Произошла ошибка. Попробуйте позже.");
+        }
+    };
+
+    const [showModal, setShowModal] = React.useState(false);
+
+    return (
+        <>
+            <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
                     alt={trainingPlan.title}
@@ -151,12 +171,40 @@ const INITCardItemTraining = ({trainingPlan}) => (
                     subtitle={trainingPlan.description}
                 >{trainingPlan.title}</CardCell>
             </Card>
-        }
-    >
-        <TrainingPlanPromo trainingPlan={trainingPlan} />
-    </Modal>
 
-);
+            {showModal && (
+                <Modal
+                    header={<ModalHeader after={<ModalClose><Icon28Close
+                        style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+                    style={{
+                        backgroundColor: 'var(--tgui--secondary_bg_color)',
+                    }}
+                    trigger={
+                        <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+                            <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                            <img
+                                alt={trainingPlan.title}
+                                src={trainingPlan.imageSrc}
+                                style={{
+                                    display: 'block',
+                                    height: 308,
+                                    objectFit: 'cover',
+                                    width: 254
+                                }}
+                            />
+                            <CardCell
+                                readOnly
+                                subtitle={trainingPlan.description}
+                            >{trainingPlan.title}</CardCell>
+                        </Card>
+                    }
+                >
+                    <TrainingPlanPromo trainingPlan={trainingPlan}/>
+                </Modal>
+            )}
+        </>
+    )
+};
 
 /**
  * INITCardsList Component
