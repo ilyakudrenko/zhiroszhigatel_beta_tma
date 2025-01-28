@@ -30,7 +30,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 //Fetch exercises for all user workouts
                 const allExercises = await Promise.all(
-                    allWorkouts.map((allWorkouts) => fetchUserExercises(allWorkouts.id))
+                    allWorkouts.map((allWorkouts) => fetchUserExercises(allWorkouts.trainingPlanWorkout_id))
                 );
                 setExercises(allExercises);
             } catch (error) {
