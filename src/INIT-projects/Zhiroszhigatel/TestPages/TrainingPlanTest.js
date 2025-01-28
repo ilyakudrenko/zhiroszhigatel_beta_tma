@@ -16,10 +16,10 @@ const TrainingPlanTest = () => {
                 setTrainingPlans(plans);
 
                 // Fetch workouts for all plans
-                // const allWorkouts = await Promise.all(
-                //     plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
-                // );
-                // setWorkouts(allWorkouts.flat());
+                const allWorkouts = await Promise.all(
+                    plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
+                );
+                setWorkouts(allWorkouts.flat());
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
@@ -38,8 +38,8 @@ const TrainingPlanTest = () => {
         <div>
             <h1>Training Plans</h1>
             <pre>{JSON.stringify(trainingPlans, null, 2)}</pre>
-            {/*<h1>Workouts</h1>*/}
-            {/*<pre>{JSON.stringify(workouts, null, 2)}</pre>*/}
+            <h1>Workouts</h1>
+            <pre>{JSON.stringify(workouts, null, 2)}</pre>
         </div>
     );
 
