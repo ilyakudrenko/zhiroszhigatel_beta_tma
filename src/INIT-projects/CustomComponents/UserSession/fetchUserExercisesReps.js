@@ -3,8 +3,9 @@ import axios from 'axios';
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserExercises = async ( exerciseId ) =>{
-    try{
 
+    try{
+        console.log(exerciseId);
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/reps`, {
             params: { exerciseId },
         });
