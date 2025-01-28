@@ -145,11 +145,11 @@ const INITCardItemTraining = ({trainingPlan}) => {
 
             if (userHasPlan) {
                 // Если план уже добавлен, перенаправляем пользователя
-                if (trainingPlan.title.includes("Базовый уровень")) {
+                if (trainingPlan.description.includes("Базовый уровень")) {
                     navigate("/trainingnavigation");
                     return; // Выходим из функции
                 }
-                if (trainingPlan.title.includes("Продвинутый уровень")) {
+                if (trainingPlan.description.includes("Продвинутый уровень")) {
                     navigate("/protrainingnavigation");
                     return; // Выходим из функции
                 }
