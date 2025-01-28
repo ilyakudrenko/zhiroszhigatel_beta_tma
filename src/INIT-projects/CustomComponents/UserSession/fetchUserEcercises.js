@@ -5,7 +5,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserExercises = async ( workoutId ) => {
     try{
-
+        console.log(workoutId);
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/exercises`, {
             params: { workoutId }
         });
