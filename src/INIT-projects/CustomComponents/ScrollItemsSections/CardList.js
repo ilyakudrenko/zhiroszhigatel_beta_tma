@@ -130,9 +130,8 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
 
 const INITCardItemTraining = ({trainingPlan}) => {
 
-    const [showModal, setShowModal] = React.useState(false);
     const navigate = useNavigate();
-
+    const [showModal, setShowModal] = React.useState(false);
 
     const handleCardClick = async () => {
         try {
@@ -148,13 +147,16 @@ const INITCardItemTraining = ({trainingPlan}) => {
                 // Если план уже добавлен, перенаправляем пользователя
                 if (trainingPlan.title.includes("Базовый уровень")) {
                     navigate("/trainingnavigation");
-                } else if (trainingPlan.title.includes("Продвинутый уровень")) {
-                    navigate("/protrainingnavigation");
+                    return; // Выходим из функции
                 }
-            } else {
-                // Если план не добавлен, открываем модальное окно
-                setShowModal(true);
+                if (trainingPlan.title.includes("Продвинутый уровень")) {
+                    navigate("/protrainingnavigation");
+                    return; // Выходим из функции
+                }
             }
+
+            // Если план не добавлен, открываем модальное окно
+            setShowModal(true);
         } catch (error) {
             console.error("Ошибка проверки тренировочного плана пользователя:", error);
             alert("Произошла ошибка. Попробуйте позже.");
@@ -235,7 +237,7 @@ const INITCardItemTraining = ({trainingPlan}) => {
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, navigateToTrainingPlan}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan}) => {
     return (
         <div>
             <div
