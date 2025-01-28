@@ -12,6 +12,8 @@ import INITHelp from "../Help/Help";
 import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
 import fetchUserTrainingPlan from "../UserSession/fetchUserTrainingPlan";
+import { useNavigate } from "react-router-dom";
+
 
 /**
  * INITCardItem Component
@@ -128,7 +130,9 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
 
 const INITCardItemTraining = ({trainingPlan}) => {
 
-    const [showModal, setShowModal] = React.useState(false); // Управляем модальным окном
+    const [showModal, setShowModal] = React.useState(false);
+    const navigate = useNavigate();
+
 
     const handleCardClick = async () => {
         try {
@@ -141,8 +145,12 @@ const INITCardItemTraining = ({trainingPlan}) => {
             );
 
             if (userHasPlan) {
-                // Если план уже добавлен, показываем alert
-                alert("У вас уже добавлен этот план тренировок");
+                // Если план уже добавлен, перенаправляем пользователя
+                if (trainingPlan.title.includes("Базовый уровень")) {
+                    navigate("/trainingnavigation");
+                } else if (trainingPlan.title.includes("Продвинутый уровень")) {
+                    navigate("/protrainingnavigation");
+                }
             } else {
                 // Если план не добавлен, открываем модальное окно
                 setShowModal(true);
