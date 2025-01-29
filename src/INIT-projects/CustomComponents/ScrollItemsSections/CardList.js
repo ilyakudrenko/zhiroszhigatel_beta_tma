@@ -128,7 +128,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan }) => {
+const INITCardItemTraining = ({ trainingPlan, owned }) => {
     const navigate = useNavigate();
     const [showModal, setShowModal] = React.useState(false);
 
@@ -157,7 +157,7 @@ const INITCardItemTraining = ({ trainingPlan }) => {
 
     return (
         <>
-            {showModal ? (
+            {owned ? (
                 <Modal
                     header={<ModalHeader after={<ModalClose><Icon28Close
                         style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}

@@ -22,6 +22,7 @@ import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
+import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -44,6 +45,7 @@ const HomePage = () => {
     const [freeGuides, setFreeGuides] = useState(null);
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
+    const [usertrainingPlan, setUserTrainingPlan] = useState([]);
 
 
     useEffect(() => {
@@ -61,6 +63,9 @@ const HomePage = () => {
                 // Fetch training plans
                 const plans = await fetchAllTrainingPlans();
                 setTrainingPlans(plans);
+
+                const userTraining = await fetchUserTrainingPlan();
+                setUserTrainingPlan(userTraining?.[0]);
 
                 setLoading(false);   // End loading after session starts
 
@@ -191,6 +196,7 @@ const HomePage = () => {
                 >
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
+                        userOwnedTrainingPlan={!!usertrainingPlan}
                         // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
                     />
                 </HorizontalScroll>
