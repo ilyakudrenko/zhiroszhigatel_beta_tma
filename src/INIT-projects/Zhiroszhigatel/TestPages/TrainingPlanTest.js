@@ -41,6 +41,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                 );
                 setExercises(allExercises.flat());
 
+
+
                 // console.log(allExercises.flat());
                 //
                 // const tmp = allExercises.flat();
@@ -65,6 +67,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                     })
                 );
                 setReps(allReps.flat());
+
+                console.log(allExercises.flat());
 
 
             } catch (error) {
