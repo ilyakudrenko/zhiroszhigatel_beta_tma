@@ -23,8 +23,11 @@ const MealPlanTasting = () => {
             try {
                 setLoading(true);
                 const data = await fetchUserMealPlan();
+                console.log(data);
                 const data_days = await fetchUserMealPlanDays();
+                console.log(data_days);
                 const data_meals = await fetchUserMealPlanDaysMeals();
+                console.log(data_meals);
                 setMealPlanDaysMeals(data_meals);
                 setMealPlans(data);
                 setMealPlanDays(data_days);
