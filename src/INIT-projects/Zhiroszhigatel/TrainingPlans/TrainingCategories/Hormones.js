@@ -12,7 +12,10 @@ const INITHormones = () => {
                 <Section>
                     <Cell multiline>
                         <p>Занятие с врачом эндокринологом. Анвар
-                            <a href="https://www.instagram.com/dr.aibolit_spb_/" style="color: #82caff; text-decoration: underline; text-decoration-color: #82caff;"> Instagram</a>
+                            <a
+                                href="https://www.instagram.com/dr.aibolit_spb_/"
+                                style={{ color: '#82caff', textDecoration: 'underline', textDecorationColor: '#82caff' }}>
+                            > Instagram</a>
                         </p>
                     </Cell>
                     <Cell multiline>
