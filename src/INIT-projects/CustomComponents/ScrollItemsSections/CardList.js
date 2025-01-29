@@ -129,39 +129,13 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
 );
 
 const INITCardItemTraining = ({ trainingPlan, owned }) => {
-    const navigate = useNavigate();
-    const [showModal, setShowModal] = React.useState(false);
-
-    const handleCardClick = async () => {
-        try {
-            // Проверяем планы тренировок пользователя
-            const userTrainingPlans = await fetchUserTrainingPlan();
-
-            // Проверяем, есть ли у пользователя текущий план тренировок
-            const userHasPlan = userTrainingPlans.some(
-                (plan) => plan.trainingPlanId === trainingPlan.trainingPlanId
-            );
-
-            if (userHasPlan) {
-                // Если план уже добавлен, сразу перенаправляем пользователя
-                navigate(trainingPlan.title.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation");
-            } else {
-                // Если план не добавлен, открываем модальное окно
-                setShowModal(true);
-            }
-        } catch (error) {
-            console.error("Ошибка проверки тренировочного плана пользователя:", error);
-            alert("Произошла ошибка. Попробуйте позже.");
-        }
-    };
-
     return (
         <>
             {owned ? (
                 <Card
                     style={{ flexShrink: 0, minWidth: '254px' }}
                     type="ambient"
-                    onClick={handleCardClick} // Привязываем обработчик клика
+                    onClick={navigate(trainingPlan.title.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation")} // Привязываем обработчик клика
                 >
                     <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                     <img
