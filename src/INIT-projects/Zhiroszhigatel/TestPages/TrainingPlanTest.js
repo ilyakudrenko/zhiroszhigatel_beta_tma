@@ -70,9 +70,16 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 console.log(allExercises.flat());
 
+
+                //Test Fetch
                 let tmp = allExercises.flat();
                 console.log("TMP:");
                 console.log(tmp);
+                const test = await Promise.all(
+                    tmp.map(data => fetchUserExercisesReps(data.exerciseId))
+                );
+                console.log(test.flat());
+                setRepsTest(test.flat());
 
 
             } catch (error) {
@@ -103,8 +110,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
             <pre>{JSON.stringify(reps, null, 2)}</pre>
 
 
-            {/*<h1>Reps Test</h1>*/}
-            {/*<pre>{JSON.stringify(repsTest, null, 2)}</pre>*/}
+            <h1>Reps Test</h1>
+            <pre>{JSON.stringify(repsTest, null, 2)}</pre>
 
 
         </div>
