@@ -11,6 +11,7 @@ import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
+import INITHormones from "./TrainingCategories/Hormones";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -32,15 +33,13 @@ const TrainingPlanNavigation = () => {
 
             <INITDivider color='transparent' thickness="10%"/>
 
-
-            {/*Базовый план тренировок*/}
+            {/*Урок из тренажерного зала*/}
             <Banner
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                callout={<Badge type={"number"}>бонус</Badge>}
-                description="test"
-                header="basic training plan"
+                description="Как делать надо, как делать не надо."
+                header="Урок из тренажерного зала"
                 // onCloseIcon={function noRefCheck(){}}
                 type="section"
                 style={roundedCellStyle}
@@ -53,7 +52,27 @@ const TrainingPlanNavigation = () => {
             </Banner>
             <INITDivider color='transparent' thickness="10%"/>
 
-            {/*БОНУС Знания о питании*/}
+
+            {/*Базовый план тренировок*/}
+            <Banner
+                background={<img alt="Nasa streams"
+                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 style={{width: '150%'}}/>}
+                description="2-3 раза в неделю"
+                header="Программа тренировок FULL BODY"
+                // onCloseIcon={function noRefCheck(){}}
+                type="section"
+                style={roundedCellStyle}
+            >
+                <React.Fragment key=".0">
+                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                        Перейти
+                    </Button>
+                </React.Fragment>
+            </Banner>
+            <INITDivider color='transparent' thickness="10%"/>
+
+            {/*БОНУС Гормоны виноваты в ожирении*/}
             <Modal
                 header={<ModalHeader
                     after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Знания о питании</ModalHeader>}
@@ -63,8 +82,8 @@ const TrainingPlanNavigation = () => {
                                          src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                          style={{width: '150%'}}/>}
                         callout={<Badge type={"number"}>бонус</Badge>}
-                        description="Рекомендованная литература про питание"
-                        header="Знания о питании"
+                        description="Врач эндокринолог поясняет, как гормоны связанный с ожирением, нужно ли сдавать анализы и какие"
+                        header="Гормоны виноваты в ожирении"
                         // onCloseIcon={function noRefCheck(){}}
                         type="section"
                         style={roundedCellStyle}
@@ -77,7 +96,7 @@ const TrainingPlanNavigation = () => {
                     </Banner>
                 }
             >
-                <INITBonus />
+                <INITHormones />
             </Modal>
             <INITDivider color='transparent' thickness="10%"/>
 
