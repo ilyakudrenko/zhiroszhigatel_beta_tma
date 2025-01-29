@@ -21,7 +21,7 @@ const GymLessons = () => {
                     >
                         <div style={{textAlign: "center"}}>
                             <iframe
-                                width="100%"
+                                width="95%"
                                 height="215"
                                 src="https://www.youtube.com/embed/wgv6awhnr6w"
                                 style={{
@@ -85,7 +85,7 @@ const GymLessons = () => {
                     >
                         <div style={{textAlign: "center"}}>
                             <iframe
-                                width="100%"
+                                width="95%"
                                 height="215"
                                 src="https://www.youtube.com/embed/FrzZWrXk_UM"
                                 style={{
