@@ -43,17 +43,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
 
 
-                // console.log(allExercises.flat());
-                //
-                // const tmp = allExercises.flat();
-                // // console.log(exercises);
-                // const allRepsTest = await Promise.all(
-                //     tmp.map((exerciseTmp) => fetchUserExercises(exerciseTmp.exerciseId))
-                // );
-                // // const repsTestGive = allRepsTest.flat();
-                // // setRepsTest(repsTestGive);
-                // // console.log(repsTestGive);
-                // setRepsTest(allRepsTest.flat());
+
 
                 //Fetch reps for all exercises
                 const allReps = await Promise.all(
@@ -79,7 +69,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                     tmp.map(data => fetchUserExercisesReps(data.exerciseId))
                 );
                 console.log(test.flat());
-                setRepsTest(test.flat());
+                setRepsTest(test);
 
 
             } catch (error) {
