@@ -8,7 +8,7 @@ const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 };
 
-const INITTrainingBuyButton = ({ title, trainingId, price }) => {
+const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const navigate = useNavigate();
     const [isGreen, setIsGreen] = useState(false);
 
@@ -40,7 +40,16 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             await addUserTraining(user.id, trainingId);
 
             setIsGreen(true); // Успешно добавлено
-            navigate("/trainingnavigation");
+
+            // Проверяем название тренировочного плана и направляем на нужную страницу
+            if (description.includes("Базовый уровень")) {
+                navigate("/trainingnavigation");
+            } else if (description.includes("Продвинутый уровень")) {
+                navigate("/protrainingnavigation");
+            } else {
+                alert("План тренировок не найден! :(")
+            }
+
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
             console.error(error);

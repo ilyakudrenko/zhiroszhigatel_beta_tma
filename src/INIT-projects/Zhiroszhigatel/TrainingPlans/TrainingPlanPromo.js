@@ -60,7 +60,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 )}
             </Section>
 
-            <INITTrainingBuyButton title={trainingPlan.title} trainingId={trainingPlan.trainingPlanId} price={trainingPlan.price} />
+            <INITTrainingBuyButton title={trainingPlan.title} description={trainingPlan.description} trainingId={trainingPlan.trainingPlanId} price={trainingPlan.price} />
         </List>
     );
 };
