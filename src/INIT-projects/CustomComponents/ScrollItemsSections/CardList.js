@@ -132,8 +132,12 @@ const INITCardItemTraining = ({trainingPlan}) => {
 
     const navigate = useNavigate();
     const [showModal, setShowModal] = React.useState(false);
+    const [isProcessing, setIsProcessing] = React.useState(false); // Флаг для предотвращения двойного клика
 
     const handleCardClick = async () => {
+        if (isProcessing) return; // Если запрос уже идет — ничего не делаем
+        setIsProcessing(true);
+
         try {
             // Проверяем планы тренировок пользователя
             const userTrainingPlans = await fetchUserTrainingPlan();
@@ -145,21 +149,20 @@ const INITCardItemTraining = ({trainingPlan}) => {
 
             if (userHasPlan) {
                 // Если план уже добавлен, перенаправляем пользователя
-                if (trainingPlan.description.includes("Базовый уровень")) {
+                if (trainingPlan.title.includes("Базовый уровень")) {
                     navigate("/trainingnavigation");
-                    return;
-                }
-                if (trainingPlan.description.includes("Продвинутый уровень")) {
+                } else if (trainingPlan.title.includes("Продвинутый уровень")) {
                     navigate("/protrainingnavigation");
-                    return;
                 }
+            } else {
+                // Если план не добавлен, ОТКРЫВАЕМ модальное окно немедленно
+                setShowModal(true);
             }
-
-            // Если план не добавлен, открываем модальное окно
-            setShowModal(true);
         } catch (error) {
             console.error("Ошибка проверки тренировочного плана пользователя:", error);
             alert("Произошла ошибка. Попробуйте позже.");
+        } finally {
+            setIsProcessing(false); // Разрешаем повторное нажатие после обработки
         }
     };
 
