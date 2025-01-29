@@ -6,14 +6,15 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 const INITHormones = () => {
     return (
         <AppRoot>
-            <Title>БОНУС Гормоны виноваты в ожирении</Title>
             <List>
+                <Title>БОНУС Гормоны виноваты в ожирении</Title>
+
                 <Section>
                     <Cell multiline>
-                        <h2>Занятие с врачом эндокринологом. Анвар
+                        <p>Занятие с врачом эндокринологом. Анвар
                             <a href="https://www.instagram.com/dr.aibolit_spb_/"> Instagram</a>
-                        </h2>
-                        <h2>Тема: Гормоны и их связь с ожирением. Нужно ли сдавать анализы при похудении.</h2>
+                        </p>
+                        <p>Тема: Гормоны и их связь с ожирением. Нужно ли сдавать анализы при похудении.</p>
                     </Cell>
                 </Section>
 
