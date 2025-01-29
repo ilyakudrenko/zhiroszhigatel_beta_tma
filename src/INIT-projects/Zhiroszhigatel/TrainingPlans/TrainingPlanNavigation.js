@@ -75,22 +75,23 @@ const TrainingPlanNavigation = () => {
             {/*БОНУС Гормоны виноваты в ожирении*/}
             <Modal
                 header={<ModalHeader
-                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>БОНУС Гормоны виноваты в ожирении</ModalHeader>}
+                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>
+                    БОНУС Гормоны виноваты в ожирении
+                </ModalHeader>}
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
                                          src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                          style={{width: '150%'}}/>}
                         callout={<Badge type={"number"}>бонус</Badge>}
-                        description="Врач эндокринолог поясняет, как гормоны связанный с ожирением, нужно ли сдавать анализы и какие"
+                        description="Врач эндокринолог поясняет, как гормоны связаны с ожирением, нужно ли сдавать анализы и какие"
                         header="Гормоны виноваты в ожирении"
-                        // onCloseIcon={function noRefCheck(){}}
                         type="section"
                         style={roundedCellStyle}
                     >
                         <React.Fragment key=".0">
                             <Button size="s">
-                                Перейти
+                                Открыть
                             </Button>
                         </React.Fragment>
                     </Banner>

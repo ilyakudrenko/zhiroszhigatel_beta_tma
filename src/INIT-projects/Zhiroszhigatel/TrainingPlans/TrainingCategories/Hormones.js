@@ -3,8 +3,6 @@ import {AppRoot, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 
-
-
 const INITHormones = () => {
     return (
         <AppRoot>
