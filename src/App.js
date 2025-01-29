@@ -19,6 +19,7 @@ import ProTrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPl
 import TrainingProgram from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/TrainingProgram";
 import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTest";
 import ColorTestPage from "./INIT-projects/Zhiroszhigatel/TestPages/colorTesting";
+import GymLessons from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/GymLessons";
 
 const App = () => {
     const location = useLocation();
@@ -48,6 +49,7 @@ const App = () => {
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
+                    <Route path="/gymlessons" element={<GymLessons />} />
 
 
                     //Testing Page
@@ -77,6 +79,7 @@ const App = () => {
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
                     <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
+                    <Route path="/gymlessons" element={<GymLessons />} />
 
 
                     {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}

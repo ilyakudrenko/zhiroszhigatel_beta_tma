@@ -27,11 +27,6 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <div>
-                Базовый уровень
-            </div>
-
-            <INITDivider color='transparent' thickness="10%"/>
 
             {/*Урок из тренажерного зала*/}
             <Banner
@@ -45,7 +40,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                    <Button size="s" onClick={() => navigate("/gymlessons")}>
                         Перейти
                     </Button>
                 </React.Fragment>

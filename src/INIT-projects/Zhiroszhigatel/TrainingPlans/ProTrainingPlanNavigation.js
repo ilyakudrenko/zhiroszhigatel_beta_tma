@@ -27,11 +27,6 @@ const ProTrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <div>
-                Продвинутый уровень
-            </div>
-
-            <INITDivider color='transparent' thickness="10%"/>
 
             {/*Урок из тренажерного зала*/}
             <Banner
@@ -64,7 +59,7 @@ const ProTrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                    <Button size="s" onClick={() => navigate("/gymlessons")}>
                         Перейти
                     </Button>
                 </React.Fragment>
