@@ -70,6 +70,10 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 console.log(allExercises.flat());
 
+                let tmp = allExercises.flat();
+                console.log("TMP:");
+                console.log(tmp);
+
 
             } catch (error) {
                 console.error("Error fetching data:", error);
