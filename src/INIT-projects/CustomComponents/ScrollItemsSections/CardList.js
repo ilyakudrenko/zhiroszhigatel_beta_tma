@@ -133,7 +133,7 @@ const INITCardItemTraining = ({ trainingPlan, owned }) => {
 
     const handleCardClick = () => {
         if (owned) {
-            navigate(trainingPlan.title.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation");
+            navigate(trainingPlan.description.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation");
         }
     };
 
