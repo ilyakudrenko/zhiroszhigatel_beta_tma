@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { getSession } from "../../../CustomComponents/UserSession/session";
+import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 
 const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -11,6 +12,8 @@ const handleClickHaptic = (effect = 'light') => {
 const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const navigate = useNavigate();
     const [isGreen, setIsGreen] = useState(false);
+    const [isSnackbarVisible, setSnackbarVisible] = useState(false);
+
 
     const addUserTraining = async (userId, trainingId) => {
         const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
@@ -40,15 +43,17 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             await addUserTraining(user.id, trainingId);
 
             setIsGreen(true); // Успешно добавлено
-
-            // Проверяем название тренировочного плана и направляем на нужную страницу
-            if (description.includes("Базовый уровень")) {
-                navigate("/trainingnavigation");
-            } else if (description.includes("Продвинутый уровень")) {
-                navigate("/protrainingnavigation");
-            } else {
-                alert("План тренировок не найден! :(")
-            }
+            setSnackbarVisible(true);
+            setTimeout(async () => {
+                // Проверяем название тренировочного плана и направляем на нужную страницу
+                if (description.includes("Базовый уровень")) {
+                    navigate("/trainingnavigation");
+                } else if (description.includes("Продвинутый уровень")) {
+                    navigate("/protrainingnavigation");
+                } else {
+                    alert("План тренировок не найден! :(")
+                }
+            },2000)
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
@@ -56,28 +61,48 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         }
     };
 
+    const handleCloseSnackbar = () => {
+        setSnackbarVisible(false);
+    };
+
     return (
-        <div style={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            paddingBottom: '20px',
-            zIndex: 1000, // Ensure it’s on top of other elements
-        }}>
-            <Button
-                mode="filled"
-                size="l"
-                onClick={handleButtonClick}
-                style={{
-                    backgroundColor: isGreen ? '#53E651' : '',
-                }}
-            >
-                Купить: {price}
-            </Button>
-        </div>
+        <AppRoot>
+            <div style={{
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                paddingBottom: '20px',
+                zIndex: 1000, // Ensure it’s on top of other elements
+            }}>
+                <Button
+                    mode="filled"
+                    size="l"
+                    onClick={handleButtonClick}
+                    style={{
+                        backgroundColor: isGreen ? '#53E651' : '',
+                    }}
+                >
+                    Купить: {price}
+                </Button>
+            </div>
+
+            {isSnackbarVisible && (
+                <Snackbar
+                    before={<INITProfileIcon/>}
+                    children={title}
+                    description="Добавлен в библиотеку(вы можите найти его в профиле)"
+                    duration={2000}
+                    onClose={handleCloseSnackbar}
+                    style={{
+                        zIndex: 1000, // Ensure it’s on top of other elements
+                    }}
+                >
+                </Snackbar>
+            )}
+        </AppRoot>
     );
 };
 
