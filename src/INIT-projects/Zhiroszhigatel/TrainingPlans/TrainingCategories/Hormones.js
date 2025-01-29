@@ -41,59 +41,58 @@ const INITHormones = () => {
                             <li>Работу сердца – ЭКГ, полисомнография (сонное апноэ)</li>
                         </ul>
                     </Cell>
+
+                    <INITDivider color='transparent' thickness="10%"/>
+
+                    <Cell multiline subhead="Основные рекомендации при работе с лишним весом:">
+                        <ul style={{ listStyleType: 'none' }}>
+                            <li>Частое питание малыми порциями для контроля голода</li>
+                            <li>Кардио нагрузки – основной инструмент для сжигания жира</li>
+                        </ul>
+                    </Cell>
+
+                    <INITDivider color='transparent' thickness="10%"/>
+
+                    <Cell multiline subhead="Что делать предлагает Анвар:">
+                        <ol>
+                            <li>Понять, что причина лишнего веса – это вы. Взять на себя ответственность.</li>
+                            <li>Добавить физическую активность, особенно кардио.</li>
+                            <li>Снизить калорийность питания, исключить простые сахара.</li>
+                            <li>Если самостоятельно не получается – обратиться к эндокринологу.</li>
+                        </ol>
+
+                        <ul style={{ listStyleType: 'none' }}>
+                            <li>Добавки для щитовидной железы: йод (йодамарин 200 мкг), селен</li>
+                            <li>Витамины:
+                                <ul>
+                                    <li>Витамин D3 (2000–5000 МЕ ежедневно)</li>
+                                    <li>Витамины группы B (Нейробион) – особенно при депрессии</li>
+                                    <li>Креатин моногидрат – для силовых тренировок</li>
+                                    <li>Омега-3, альфа-липоевая кислота</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </Cell>
+
+                    <INITDivider color='transparent' thickness="10%"/>
+
+                    <Cell multiline>
+                        <div style={{ textAlign: "center" }}>
+                            <iframe
+                                width="95%"
+                                height="215"
+                                src="https://www.youtube.com/embed/ZpNk3vIhjQw"
+                                style={{
+                                    border: "none",
+                                    borderRadius: 16,
+                                    padding: 5,
+                                }}
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </Cell>
                 </Section>
-
-                <INITDivider color='transparent' thickness="10%"/>
-
-                <Cell multiline subhead="Основные рекомендации при работе с лишним весом:">
-                    <ul style={{ listStyleType: 'none' }}>
-                        <li>Частое питание малыми порциями для контроля голода</li>
-                        <li>Кардио нагрузки – основной инструмент для сжигания жира</li>
-                    </ul>
-                </Cell>
-
-                <INITDivider color='transparent' thickness="10%"/>
-
-                <Cell multiline subhead="Что делать предлагает Анвар:">
-                    <ol>
-                        <li>Понять, что причина лишнего веса – это вы. Взять на себя ответственность.</li>
-                        <li>Добавить физическую активность, особенно кардио.</li>
-                        <li>Снизить калорийность питания, исключить простые сахара.</li>
-                        <li>Если самостоятельно не получается – обратиться к эндокринологу.</li>
-                    </ol>
-
-                    <ul style={{ listStyleType: 'none' }}>
-                        <li>Добавки для щитовидной железы: йод (йодамарин 200 мкг), селен</li>
-                        <li>Витамины:
-                            <ul>
-                                <li>Витамин D3 (2000–5000 МЕ ежедневно)</li>
-                                <li>Витамины группы B (Нейробион) – особенно при депрессии</li>
-                                <li>Креатин моногидрат – для силовых тренировок</li>
-                                <li>Омега-3, альфа-липоевая кислота</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </Cell>
-
-                <INITDivider color='transparent' thickness="10%"/>
-
-                <Cell multiline>
-                    <div style={{ textAlign: "center" }}>
-                        <iframe
-                            width="95%"
-                            height="215"
-                            src="https://www.youtube.com/embed/ZpNk3vIhjQw"
-                            style={{
-                                border: "none",
-                                borderRadius: 16,
-                                padding: 5,
-                            }}
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                </Cell>
-
             </List>
         </AppRoot>
     );
