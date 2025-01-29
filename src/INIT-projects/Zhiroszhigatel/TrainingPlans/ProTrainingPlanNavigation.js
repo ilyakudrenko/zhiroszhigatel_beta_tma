@@ -40,7 +40,7 @@ const ProTrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                    <Button size="s" onClick={() => navigate("/gymlessons")}>
                         Перейти
                     </Button>
                 </React.Fragment>
@@ -59,7 +59,7 @@ const ProTrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/gymlessons")}>
+                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
                         Перейти
                     </Button>
                 </React.Fragment>
