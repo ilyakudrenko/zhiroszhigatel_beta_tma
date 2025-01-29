@@ -41,6 +41,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                 );
                 setExercises(allExercises.flat());
 
+                console.log(allExercises.flat());
+
                 // console.log(exercises);
                 const allRepsTest = await Promise.all(
                     allExercises.flat().map((exercise) => {
