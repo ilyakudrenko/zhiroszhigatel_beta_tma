@@ -18,6 +18,7 @@ import TrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans
 import ProTrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/ProTrainingPlanNavigation";
 import TrainingProgram from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/TrainingProgram";
 import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTest";
+import ColorTestPage from "./INIT-projects/Zhiroszhigatel/TestPages/colorTesting";
 
 const App = () => {
     const location = useLocation();
@@ -78,7 +79,8 @@ const App = () => {
                     <Route path="/basictrainingprogram" element={<TrainingProgram />} />
 
 
-                    <Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />
+                    {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}
+                    <Route path="/testingPage" element={<ColorTestPage />} />
                 </Routes>
         )
     );
