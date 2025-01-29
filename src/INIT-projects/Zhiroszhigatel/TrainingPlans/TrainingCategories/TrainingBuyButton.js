@@ -53,7 +53,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 } else {
                     alert("План тренировок не найден! :(")
                 }
-            },2500)
+            },2000)
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
@@ -92,9 +92,9 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             {isSnackbarVisible && (
                 <Snackbar
                     before={<INITProfileIcon/>}
-                    children={title} {description}
+                    children={title}
                     description="Добавлен в библиотеку(вы можите найти его в профиле)"
-                    duration={2500}
+                    duration={2000}
                     onClose={handleCloseSnackbar}
                     style={{
                         zIndex: 1000, // Ensure it’s on top of other elements
