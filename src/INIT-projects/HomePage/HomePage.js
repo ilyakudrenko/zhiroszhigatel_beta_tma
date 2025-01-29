@@ -45,7 +45,7 @@ const HomePage = () => {
     const [freeGuides, setFreeGuides] = useState(null);
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
-    const [usertrainingPlan, setUserTrainingPlan] = useState([]);
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]); // Храним список всех купленных планов
 
 
     useEffect(() => {
@@ -64,8 +64,9 @@ const HomePage = () => {
                 const plans = await fetchAllTrainingPlans();
                 setTrainingPlans(plans);
 
-                const userTraining = await fetchUserTrainingPlan();
-                setUserTrainingPlan(userTraining?.[0]);
+                // Получаем все планы тренировок пользователя
+                const userTrainings = await fetchUserTrainingPlan();
+                setUserTrainingPlans(userTrainings || []); // Если нет данных, передаем пустой массив
 
                 setLoading(false);   // End loading after session starts
 
@@ -196,7 +197,7 @@ const HomePage = () => {
                 >
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
-                        userOwnedTrainingPlan={!!usertrainingPlan}
+                        userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов
                         // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
                     />
                 </HorizontalScroll>

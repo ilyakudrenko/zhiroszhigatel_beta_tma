@@ -128,21 +128,26 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan, owned }) => {
+const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
     const navigate = useNavigate();
 
+    // Проверяем, куплен ли именно этот план
+    const isOwned = userOwnedTrainingPlans.some(
+        (plan) => plan.trainingPlanId === trainingPlan.trainingPlanId
+    );
+
     const handleCardClick = () => {
-        if (owned) {
+        if (isOwned) {
             navigate(trainingPlan.description.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation");
         }
     };
 
-    if (owned) {
+    if (isOwned) {
         return (
             <Card
                 style={{ flexShrink: 0, minWidth: '254px' }}
                 type="ambient"
-                onClick={handleCardClick} // ✅ Теперь сразу редиректит!
+                onClick={handleCardClick}
             >
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
@@ -215,7 +220,7 @@ const INITCardItemTraining = ({ trainingPlan, owned }) => {
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlan}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlans}) => {
     return (
         <div>
             <div
@@ -262,7 +267,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                             <INITCardItemTraining
                                 key={i}
                                 trainingPlan={item}
-                                owned={userOwnedTrainingPlan}
+                                userOwnedTrainingPlans={userOwnedTrainingPlans} // Передаем список купленных планов
                             />
                         )
                     }
