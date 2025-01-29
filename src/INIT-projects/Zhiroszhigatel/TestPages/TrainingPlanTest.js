@@ -41,17 +41,17 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                 );
                 setExercises(allExercises.flat());
 
-                console.log(allExercises.flat());
-
-                const tmp = allExercises.flat();
-                // console.log(exercises);
-                const allRepsTest = await Promise.all(
-                    tmp.map((exerciseTmp) => fetchUserExercises(exerciseTmp.exerciseId))
-                );
-                // const repsTestGive = allRepsTest.flat();
-                // setRepsTest(repsTestGive);
-                // console.log(repsTestGive);
-                setRepsTest(allRepsTest.flat());
+                // console.log(allExercises.flat());
+                //
+                // const tmp = allExercises.flat();
+                // // console.log(exercises);
+                // const allRepsTest = await Promise.all(
+                //     tmp.map((exerciseTmp) => fetchUserExercises(exerciseTmp.exerciseId))
+                // );
+                // // const repsTestGive = allRepsTest.flat();
+                // // setRepsTest(repsTestGive);
+                // // console.log(repsTestGive);
+                // setRepsTest(allRepsTest.flat());
 
                 //Fetch reps for all exercises
                 const allReps = await Promise.all(
@@ -95,8 +95,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
             <pre>{JSON.stringify(reps, null, 2)}</pre>
 
 
-            <h1>Reps Test</h1>
-            <pre>{JSON.stringify(repsTest, null, 2)}</pre>
+            {/*<h1>Reps Test</h1>*/}
+            {/*<pre>{JSON.stringify(repsTest, null, 2)}</pre>*/}
 
 
         </div>
