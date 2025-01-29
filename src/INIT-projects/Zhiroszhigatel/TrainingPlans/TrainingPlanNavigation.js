@@ -26,6 +26,10 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
+            <H1>Базовый уровень</H1>
+
+            <INITDivider color='transparent' thickness="10%"/>
+
 
             {/*Базовый план тренировок*/}
             <Banner
@@ -45,6 +49,7 @@ const TrainingPlanNavigation = () => {
                     </Button>
                 </React.Fragment>
             </Banner>
+            <INITDivider color='transparent' thickness="10%"/>
 
             {/*БОНУС Знания о питании*/}
             <Modal

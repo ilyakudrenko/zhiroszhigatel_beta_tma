@@ -26,7 +26,9 @@ const ProTrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
+            <H1>Базовый уровень</H1>
 
+            <INITDivider color='transparent' thickness="10%"/>
 
             {/*БОНУС Знания о питании*/}
             <Modal

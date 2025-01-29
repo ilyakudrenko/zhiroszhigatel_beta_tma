@@ -129,24 +129,51 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
 );
 
 const INITCardItemTraining = ({ trainingPlan, owned }) => {
-
     const navigate = useNavigate();
 
     const handleCardClick = () => {
         if (owned) {
-            // Перенос юзера при наличии плана
             navigate(trainingPlan.title.includes("Базовый уровень") ? "/trainingnavigation" : "/protrainingnavigation");
         }
     };
 
-    return (
-        <>
-            {owned ? (
-                <Card
-                    style={{ flexShrink: 0, minWidth: '254px' }}
-                    type="ambient"
-                    onClick={handleCardClick}
+    if (owned) {
+        return (
+            <Card
+                style={{ flexShrink: 0, minWidth: '254px' }}
+                type="ambient"
+                onClick={handleCardClick} // ✅ Теперь сразу редиректит!
+            >
+                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                <img
+                    alt={trainingPlan.title}
+                    src={trainingPlan.imageSrc}
+                    style={{
+                        display: 'block',
+                        height: 308,
+                        objectFit: 'cover',
+                        width: 254
+                    }}
+                />
+                <CardCell
+                    readOnly
+                    subtitle={trainingPlan.description}
                 >
+                    {trainingPlan.title}
+                </CardCell>
+            </Card>
+        );
+    }
+
+    return (
+        <Modal
+            header={<ModalHeader after={<ModalClose><Icon28Close
+                style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+            style={{
+                backgroundColor: 'var(--tgui--secondary_bg_color)',
+            }}
+            trigger={
+                <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
                     <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                     <img
                         alt={trainingPlan.title}
@@ -161,39 +188,14 @@ const INITCardItemTraining = ({ trainingPlan, owned }) => {
                     <CardCell
                         readOnly
                         subtitle={trainingPlan.description}
-                    >{trainingPlan.title}</CardCell>
+                    >
+                        {trainingPlan.title}
+                    </CardCell>
                 </Card>
-            ) : (
-                <Modal
-                    header={<ModalHeader after={<ModalClose><Icon28Close
-                        style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
-                    style={{
-                        backgroundColor: 'var(--tgui--secondary_bg_color)',
-                    }}
-                    trigger={
-                        <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
-                            <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
-                            <img
-                                alt={trainingPlan.title}
-                                src={trainingPlan.imageSrc}
-                                style={{
-                                    display: 'block',
-                                    height: 308,
-                                    objectFit: 'cover',
-                                    width: 254
-                                }}
-                            />
-                            <CardCell
-                                readOnly
-                                subtitle={trainingPlan.description}
-                            >{trainingPlan.title}</CardCell>
-                        </Card>
-                    }
-                >
-                    <TrainingPlanPromo trainingPlan={trainingPlan} />
-                </Modal>
-            )}
-        </>
+            }
+        >
+            <TrainingPlanPromo trainingPlan={trainingPlan} />
+        </Modal>
     );
 };
 
