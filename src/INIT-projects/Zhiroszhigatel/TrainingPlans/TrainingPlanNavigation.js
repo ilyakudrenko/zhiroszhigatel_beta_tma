@@ -75,7 +75,7 @@ const TrainingPlanNavigation = () => {
             {/*БОНУС Гормоны виноваты в ожирении*/}
             <Modal
                 header={<ModalHeader
-                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Знания о питании</ModalHeader>}
+                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>БОНУС Гормоны виноваты в ожирении</ModalHeader>}
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
