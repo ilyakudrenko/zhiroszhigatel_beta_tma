@@ -43,12 +43,10 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 console.log(allExercises.flat());
 
+                const tmp = allExercises.flat();
                 // console.log(exercises);
                 const allRepsTest = await Promise.all(
-                    allExercises.flat().map((exercise) => {
-                        // console.log(exercise.trainingPlanId);
-                        fetchUserExercisesReps(exercise.exerciseId)
-                    })
+                    tmp.map((exerciseTmp) => fetchUserExercises(exerciseTmp.exerciseId))
                 );
                 // const repsTestGive = allRepsTest.flat();
                 // setRepsTest(repsTestGive);
