@@ -196,7 +196,8 @@ const HomePage = () => {
                 >
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
-                        userOwnedTrainingPlan={usertrainingPlan && usertrainingPlan.length > 0}
+                        userOwnedTrainingPlan={!!usertrainingPlan && !!usertrainingPlan.length > 0}
+                        // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
                     />
                 </HorizontalScroll>
 

@@ -26,7 +26,9 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <H1>Базовый уровень</H1>
+            <div>
+                Базовый уровень
+            </div>
 
             <INITDivider color='transparent' thickness="10%"/>
 

@@ -26,7 +26,9 @@ const ProTrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <H1>Базовый уровень</H1>
+            <div>
+                Продвинутый уровень
+            </div>
 
             <INITDivider color='transparent' thickness="10%"/>
 
