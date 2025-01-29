@@ -12,8 +12,10 @@ const INITHormones = () => {
                 <Section>
                     <Cell multiline>
                         <p>Занятие с врачом эндокринологом. Анвар
-                            <a href="https://www.instagram.com/dr.aibolit_spb_/"> Instagram</a>
+                            <a href="https://www.instagram.com/dr.aibolit_spb_/" style="color: #82caff; text-decoration: underline; text-decoration-color: #82caff;"> Instagram</a>
                         </p>
+                    </Cell>
+                    <Cell multiline>
                         <p>Тема: Гормоны и их связь с ожирением. Нужно ли сдавать анализы при похудении.</p>
                     </Cell>
                 </Section>
@@ -42,16 +44,12 @@ const INITHormones = () => {
                         </ul>
                     </Cell>
 
-                    <INITDivider color='transparent' thickness="10%"/>
-
                     <Cell multiline subhead="Основные рекомендации при работе с лишним весом:">
                         <ul style={{ listStyleType: 'none' }}>
                             <li>Частое питание малыми порциями для контроля голода</li>
                             <li>Кардио нагрузки – основной инструмент для сжигания жира</li>
                         </ul>
                     </Cell>
-
-                    <INITDivider color='transparent' thickness="10%"/>
 
                     <Cell multiline subhead="Что делать предлагает Анвар:">
                         <ol>
@@ -73,8 +71,6 @@ const INITHormones = () => {
                             </li>
                         </ul>
                     </Cell>
-
-                    <INITDivider color='transparent' thickness="10%"/>
 
                     <Cell multiline>
                         <div style={{ textAlign: "center" }}>
