@@ -45,7 +45,7 @@ const HomePage = () => {
     const [freeGuides, setFreeGuides] = useState(null);
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
-    const [usertrainingPlan, setUserTrainingPlan] = useState([]);
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]); // ✅ Храним массив купленных планов
 
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const HomePage = () => {
                 setTrainingPlans(plans);
 
                 const userTraining = await fetchUserTrainingPlan();
-                setUserTrainingPlan(userTraining?.[0]);
+                setUserTrainingPlans(userTraining || []); // ✅ Теперь массив, а не одиночный объект
 
                 setLoading(false);   // End loading after session starts
 
@@ -102,6 +102,10 @@ const HomePage = () => {
         return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
     }
 
+    // ✅ Функция, проверяющая, куплен ли план тренировок
+    const getUserOwnedTrainingPlans = (trainingPlanId) => {
+        return userTrainingPlans.some(plan => plan.trainingPlanId === trainingPlanId);
+    };
 
     return (
         <AppRoot
@@ -196,7 +200,7 @@ const HomePage = () => {
                 >
                     <INITCardsList
                         items={trainingPlans} // Массив тренировочных планов
-                        userOwnedTrainingPlan={!!usertrainingPlan}
+                        userOwnedTrainingPlans={getUserOwnedTrainingPlans} // ✅ Передаём функцию
                         // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
                     />
                 </HorizontalScroll>
