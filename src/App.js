@@ -82,8 +82,8 @@ const App = () => {
                     <Route path="/gymlessons" element={<GymLessons />} />
 
 
-                    {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}
-                    <Route path="/testingPage" element={<ColorTestPage />} />
+                    <Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />
+                    {/*<Route path="/testingPage" element={<ColorTestPage />} />*/}
                 </Routes>
         )
     );
