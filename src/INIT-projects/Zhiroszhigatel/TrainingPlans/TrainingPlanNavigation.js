@@ -12,7 +12,6 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
-import fetchAllTrainingPlans from "../../CustomComponents/UserSession/fetchAllTrainingPlans";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -24,42 +23,18 @@ const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const trainingPlanId = location.state?.trainingPlanId;
 
-    const [trainingPlan, setTrainingPlan] = useState(null);
+    // Определяем уровень тренировок на основе переданных данных
+    const trainingLevel = location.state?.trainingLevel || "basic";
 
-    useEffect(() => {
-        if (!trainingPlanId) {
-            navigate("/");
-            return;
-        }
-
-        const fetchTrainingPlan = async () => {
-            try {
-                const allPlans = await fetchAllTrainingPlans();
-                const selectedPlan = allPlans.find(plan => plan.trainingPlanId === trainingPlanId);
-                setTrainingPlan(selectedPlan || null);
-            } catch (error) {
-                console.error("Ошибка загрузки тренировочного плана:", error);
-                setTrainingPlan(null);
-            }
-        };
-
-        fetchTrainingPlan();
-    }, [trainingPlanId, navigate]);
-
-    if (!trainingPlan) {
-        return <p style={{ color: 'red', textAlign: 'center' }}>Ошибка: тренировочный план не найден</p>;
-    }
-
-    const trainingDescription = trainingPlan.trainingPlanId === 'a0102070-d847-11ef-bfbf-a2aa7cf0e641'
+    // Меняем описание и маршрут в зависимости от уровня
+    const trainingDescription = trainingLevel === "basic"
         ? "2-3 раза в неделю"
         : "4 раза в неделю, для продвинутого уровня";
 
-    const trainingRoute = trainingPlan.trainingPlanId === 'a0102070-d847-11ef-bfbf-a2aa7cf0e641'
+    const trainingRoute = trainingLevel === "basic"
         ? "/basictrainingprogram"
         : "/protrainingprogram";
-
 
 
     INITBackButton();
