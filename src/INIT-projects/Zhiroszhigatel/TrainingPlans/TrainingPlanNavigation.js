@@ -24,31 +24,42 @@ const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const trainingPlanId = location.state?.trainingPlanId; // Получаем ID выбранного плана
+    const trainingPlanId = location.state?.trainingPlanId;
 
     const [trainingPlan, setTrainingPlan] = useState(null);
 
     useEffect(() => {
+        if (!trainingPlanId) {
+            navigate("/");
+            return;
+        }
+
         const fetchTrainingPlan = async () => {
-            const allPlans = await fetchAllTrainingPlans(); // Загружаем все планы
-            const selectedPlan = allPlans.find(plan => plan.trainingPlanId === trainingPlanId);
-            setTrainingPlan(selectedPlan || null); // Если не найдено, ставим null
+            try {
+                const allPlans = await fetchAllTrainingPlans();
+                const selectedPlan = allPlans.find(plan => plan.trainingPlanId === trainingPlanId);
+                setTrainingPlan(selectedPlan || null);
+            } catch (error) {
+                console.error("Ошибка загрузки тренировочного плана:", error);
+                setTrainingPlan(null);
+            }
         };
 
         fetchTrainingPlan();
-    }, [trainingPlanId]);
+    }, [trainingPlanId, navigate]);
 
     if (!trainingPlan) {
-        return <p>Загрузка...</p>; // Заглушка, если план еще не загрузился
+        return <p style={{ color: 'red', textAlign: 'center' }}>Ошибка: тренировочный план не найден</p>;
     }
 
-    const trainingDescription = trainingPlan.title.includes("Базовый")
+    const trainingDescription = trainingPlan.trainingPlanId === 1
         ? "2-3 раза в неделю"
         : "4 раза в неделю, для продвинутого уровня";
 
-    const trainingRoute = trainingPlan.title.includes("Базовый")
+    const trainingRoute = trainingPlan.trainingPlanId === 1
         ? "/basictrainingprogram"
         : "/protrainingprogram";
+
 
 
     INITBackButton();
