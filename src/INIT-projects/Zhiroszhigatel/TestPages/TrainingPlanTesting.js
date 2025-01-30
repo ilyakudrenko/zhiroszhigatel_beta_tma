@@ -97,20 +97,20 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
             <List>
                 {
                     filteredExercises.map((exercise, index) => (
-                    <Section
-                        key={index}
-                        header="TEST TEST TEST"
-                    >
-                        <Cell
-                            multiline
-                            subhead="Упражнение"
+                        <Section
+                            key={index}
+                            header="TEST TEST TEST"
                         >
-                            {exercise.exerciseName || "Не указано"}
-                        </Cell>
-                        <Cell
-                            multiline
-                            subhead="Подходы * Повторения по неделям"
-                        >
+                            <Cell
+                                multiline
+                                subhead="Упражнение"
+                            >
+                                {exercise.exerciseName || "Не указано"}
+                            </Cell>
+                            <Cell
+                                multiline
+                                subhead="Подходы * Повторения по неделям"
+                            >
                             <span>
                                 {reps
                                     .filter((rep) => rep.repExercise_id === exercise.exerciseId)
@@ -120,52 +120,81 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
                                         </span>
                                     ))}
                             </span>
-                        </Cell>
-                        <Cell
-                            multiline
-                            subhead="Применение. Мышцы."
-                        >
-                            {exercise.exerciseMuscle_group || "Не указано"}
-                        </Cell>
-                        <Cell
-                            multiline
-                            subhead="Видео уроки"
-                        >
-                            <a
-                                href={exercise.exerciseURL_youtube}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            </Cell>
+                            <Cell
+                                multiline
+                                subhead="Применение. Мышцы."
                             >
-                                YouTube
-                            </a>{" "}
-                            |{" "}
-                            <a
-                                href={exercise.exerciseURL_google}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                {exercise.exerciseMuscle_group || "Не указано"}
+                            </Cell>
+                            <Cell
+                                multiline
+                                subhead="Видео уроки"
                             >
-                                Google Drive
-                            </a>
-                        </Cell>
-                    </Section>
+                                <a
+                                    href={exercise.exerciseURL_youtube}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    YouTube
+                                </a>{" "}
+                                |{" "}
+                                <a
+                                    href={exercise.exerciseURL_google}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Google Drive
+                                </a>
+                            </Cell>
+                        </Section>
                     ))}
+                <div
+                    style={{
+                        position: "fixed",
+                        bottom: 0,
+                        left: 0,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        paddingBottom: "20px",
+                        zIndex: 1000,
+                    }}
+                >
+                    <Button
+                        mode="filled"
+                        disabled={currentWorkoutIndex === 0}
+                        onClick={handlePreviousWorkout}
+                        style={{ marginRight: "10px" }}
+                    >
+                        Previous
+                    </Button>
+                    <Button
+                        mode="filled"
+                        disabled={currentWorkoutIndex === workouts.length - 1}
+                        onClick={handleNextWorkout}
+                    >
+                        Next
+                    </Button>
+                </div>
             </List>
         </AppRoot>
-    );
+);
 };
 
 export default TrainingPlanTesting;
 
 
 //
-// <List>
-//     {/* Training Plan Header */}
-//     <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
-//         {trainingPlans[0]?.title || "Training Plan"}
-//     </Title>
-//     <Caption style={{ marginBottom: "20px" }}>
-//         {trainingPlans[0]?.description || "No additional information."}
-//     </Caption>
+//
+//     <List>
+        // {/* Training Plan Header */}
+        // <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
+        // {trainingPlans[0]?.title || "Training Plan"}
+        // </Title>
+        // <Caption style={{marginBottom: "20px"}}>
+        // {trainingPlans[0]?.description || "No additional information."}
+        // </Caption>
 //
 //     {/* Current Workout */}
 //     {currentWorkout && (
