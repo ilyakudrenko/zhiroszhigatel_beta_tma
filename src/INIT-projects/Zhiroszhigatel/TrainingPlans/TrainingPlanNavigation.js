@@ -12,6 +12,7 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
+import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -23,19 +24,40 @@ const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const training_id = location.state?.training_id;
 
-    // Определяем уровень тренировок на основе переданных данных
-    const trainingLevel = location.state?.trainingLevel || "basic";
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]);
+    const [selectedPlan, setSelectedPlan] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Меняем описание и маршрут в зависимости от уровня
-    const trainingDescription = trainingLevel === "basic"
-        ? "2-3 раза в неделю"
-        : "4 раза в неделю, для продвинутого уровня";
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userPlans = await fetchUserTrainingPlan();
+                setUserTrainingPlans(userPlans);
 
-    const trainingRoute = trainingLevel === "basic"
-        ? "/basictrainingprogram"
-        : "/protrainingprogram";
+                // Проверяем, есть ли у пользователя выбранный план
+                const matchedPlan = userPlans.find(plan => plan.trainingPlanId === training_id);
+                setSelectedPlan(matchedPlan);
+            } catch (error) {
+                console.error("Ошибка загрузки тренировочных планов:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, [training_id]);
 
+    if (loading) return <p>Загрузка...</p>;
+
+    if (!selectedPlan) {
+        return (
+            <AppRoot>
+                <p>Выбранный план не найден. Возможно, его нужно приобрести.</p>
+                <Button onClick={() => navigate("/home")}>Вернуться назад</Button>
+            </AppRoot>
+        );
+    }
 
     INITBackButton();
 
@@ -70,13 +92,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={trainingDescription}
-                header="Программа тренировок FULL BODY"
+                description={selectedPlan.description}
+                header="selectedPlan.title"
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate(trainingRoute)}>
+                    <Button size="s" onClick={() => navigate(`/trainingprogram/${training_id}`)}>
                         Перейти
                     </Button>
                 </React.Fragment>
