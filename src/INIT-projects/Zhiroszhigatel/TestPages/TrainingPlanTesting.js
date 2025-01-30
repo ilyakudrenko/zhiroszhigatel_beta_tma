@@ -6,8 +6,9 @@ import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcer
 import fetchUserExercisesReps from "../../CustomComponents/UserSession/fetchUserExercisesReps";
 import {AppRoot, Button, Caption, Cell, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 
+
+
 const TrainingPlanTesting = ({ trainingPlanId }) => {
-    const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
     const [exercises, setExercises] = useState([]);
@@ -20,10 +21,6 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-
-                // Fetch training plan details
-                const plans = await fetchUserTrainingPlan();
-                setTrainingPlans(plans);
 
                 // Fetch workouts for the selected training plan
                 const fetchedWorkouts = await fetchUserTrainingPlanWorkouts(
@@ -71,15 +68,8 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
     if (loading) {
         return (
             <AppRoot>
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "50vh",
-                    }}
-                >
-                    <Spinner size="l" />
+                <div style={{ textAlign: "center", padding: "20px" }}>
+                    <Text>Loading...</Text>
                 </div>
             </AppRoot>
         );
@@ -92,70 +82,59 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
 
     return (
         <AppRoot>
-            <List>
-                {/* Training Plan Header */}
-                <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
-                    {trainingPlans[0]?.title || "Training Plan"}
+            <div style={{ padding: "15px" }}>
+                <Title level="2" weight="bold">
+                    {currentWorkout?.trainingPlanWorkout_name || "Workout"}
                 </Title>
-                <Caption style={{ marginBottom: "20px" }}>
-                    {trainingPlans[0]?.description || "No additional information."}
-                </Caption>
+                <Caption>{currentWorkout?.trainingPlanWorkout_description}</Caption>
 
-                {/* Current Workout */}
-                {currentWorkout && (
-                    <Section header={`Workout: ${currentWorkout.trainingPlanWorkout_name}`}>
-                        <Caption>{currentWorkout.trainingPlanWorkout_description}</Caption>
-                        <Title level="3" weight="bold" style={{ marginTop: "10px" }}>
-                            Exercises
+                {/* Exercises Section */}
+                {filteredExercises.map((exercise, index) => (
+                    <Section key={index} style={{ marginTop: "20px" }}>
+                        <Title level="3" weight="bold">
+                            Упражнение
                         </Title>
+                        <Text>{exercise.exerciseName}</Text>
 
-                        {/* Exercises */}
-                        {filteredExercises.map((exercise, index) => (
-                            <Section
-                                key={index}
-                                header={exercise.exerciseName || "Exercise"}
+                        <Text weight="medium" style={{ marginTop: "10px" }}>
+                            Подходы * Повторения по неделям
+                        </Text>
+                        <Text>
+                            {reps
+                                .filter((rep) => rep.repExercise_id === exercise.exerciseId)
+                                .map((rep) => rep.repRepetitions)
+                                .join(" | ")}
+                        </Text>
+
+                        <Text weight="medium" style={{ marginTop: "10px" }}>
+                            Применение. Мышцы.
+                        </Text>
+                        <Text>{exercise.exerciseMuscle_group || "N/A"}</Text>
+
+                        <Text weight="medium" style={{ marginTop: "10px" }}>
+                            Видео уроки.
+                        </Text>
+                        <div>
+                            <a
+                                href={exercise.exerciseURL_youtube}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ display: "block", marginBottom: "5px" }}
                             >
-                                <Cell>
-                                    <b>Muscle Group:</b> {exercise.exerciseMuscle_group || "N/A"}
-                                </Cell>
-                                <Cell>
-                                    <b>Video Links:</b>
-                                    <a
-                                        href={exercise.exerciseURL_youtube}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        YouTube
-                                    </a>{" "}
-                                    |{" "}
-                                    <a
-                                        href={exercise.exerciseURL_google}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        Google Drive
-                                    </a>
-                                </Cell>
-
-                                {/* Repetitions */}
-                                <Title level="4" weight="bold" style={{ marginTop: "10px" }}>
-                                    Repetitions
-                                </Title>
-                                <List>
-                                    {reps
-                                        .filter((rep) => rep.repExercise_id === exercise.exerciseId)
-                                        .map((rep, repIndex) => (
-                                            <Cell key={repIndex}>
-                                                Week {rep.repWeek_number}: {rep.repRepetitions}
-                                            </Cell>
-                                        ))}
-                                </List>
-                            </Section>
-                        ))}
+                                Ссылка на урок (YouTube)
+                            </a>
+                            <a
+                                href={exercise.exerciseURL_google}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Ссылка на урок (Google Drive)
+                            </a>
+                        </div>
                     </Section>
-                )}
+                ))}
 
-                {/* Workout Navigation */}
+                {/* Navigation Buttons */}
                 <div
                     style={{
                         display: "flex",
@@ -179,7 +158,7 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
                         Next
                     </Button>
                 </div>
-            </List>
+            </div>
         </AppRoot>
     );
 };
