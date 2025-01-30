@@ -12,7 +12,6 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
-import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -24,37 +23,16 @@ const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const trainingPlanId = location.state?.trainingPlanId; // Получаем ID выбранного плана
 
-    const [userTrainingPlans, setUserTrainingPlans] = useState([]);
+    // Определяем уровень тренировок на основе переданных данных
+    const trainingLevel = location.state?.trainingLevel || "basic";
 
-    useEffect(() => {
-        if (!trainingPlanId) {
-            navigate("/"); // Если ID нет, редирект на главную
-            return;
-        }
-
-        const fetchUserPlans = async () => {
-            try {
-                const userPlans = await fetchUserTrainingPlan(); // Получаем купленные планы пользователя
-                setUserTrainingPlans(userPlans || []);
-            } catch (error) {
-                console.error("Ошибка загрузки купленных планов:", error);
-            }
-        };
-
-        fetchUserPlans();
-    }, [trainingPlanId, navigate]);
-
-    // Проверяем, куплен ли этот план
-    const isOwned = userTrainingPlans.some(plan => plan.trainingPlanId === trainingPlanId);
-
-    // Определяем маршрут и описание в зависимости от плана
-    const trainingDescription = trainingPlanId === 1
+    // Меняем описание и маршрут в зависимости от уровня
+    const trainingDescription = trainingLevel === "basic"
         ? "2-3 раза в неделю"
         : "4 раза в неделю, для продвинутого уровня";
 
-    const trainingRoute = trainingPlanId === 1
+    const trainingRoute = trainingLevel === "basic"
         ? "/basictrainingprogram"
         : "/protrainingprogram";
 
@@ -88,23 +66,21 @@ const TrainingPlanNavigation = () => {
 
 
             {/* План тренировок */}
-            {isOwned ? (
-                <Banner
-                    background={<img alt="Training Plan"
-                                     src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                     style={{ width: '150%' }} />}
-                    description={trainingDescription}
-                    header="Программа тренировок FULL BODY"
-                    type="section"
-                    style={roundedCellStyle}
-                >
+            <Banner
+                background={<img alt="Nasa streams"
+                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 style={{width: '150%'}}/>}
+                description={trainingDescription}
+                header="Программа тренировок FULL BODY"
+                type="section"
+                style={roundedCellStyle}
+            >
+                <React.Fragment key=".0">
                     <Button size="s" onClick={() => navigate(trainingRoute)}>
                         Перейти
                     </Button>
-                </Banner>
-            ) : (
-                <p style={{ color: 'red', textAlign: 'center' }}>Ошибка: у вас нет доступа к этому плану</p>
-            )}
+                </React.Fragment>
+            </Banner>
             <INITDivider color='transparent' thickness="10%"/>
 
             {/*БОНУС Гормоны виноваты в ожирении*/}
