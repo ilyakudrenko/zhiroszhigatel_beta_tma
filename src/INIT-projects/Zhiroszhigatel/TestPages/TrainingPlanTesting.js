@@ -95,11 +95,14 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
     return (
         <AppRoot>
             <List>
+                <Title>
+                    {currentWorkout.name}
+                </Title>
                 {
                     filteredExercises.map((exercise, index) => (
                         <Section
                             key={index}
-                            header="TEST TEST TEST"
+                            header={index}
                         >
                             <Cell
                                 multiline
