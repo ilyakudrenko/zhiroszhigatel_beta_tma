@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import INITBackButton from "../../../Hooks/BackButton";
 import {AppRoot, Badge, Banner, Button, Modal} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
@@ -22,6 +22,20 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Определяем уровень тренировок на основе переданных данных
+    const trainingLevel = location.state?.trainingLevel || "basic";
+
+    // Меняем описание и маршрут в зависимости от уровня
+    const trainingDescription = trainingLevel === "basic"
+        ? "2-3 раза в неделю"
+        : "4 раза в неделю, для продвинутого уровня";
+
+    const trainingRoute = trainingLevel === "basic"
+        ? "/basictrainingprogram"
+        : "/protrainingprogram";
+
 
     INITBackButton();
 
@@ -48,19 +62,18 @@ const TrainingPlanNavigation = () => {
             <INITDivider color='transparent' thickness="10%"/>
 
 
-            {/*Базовый план тренировок*/}
+            {/* План тренировок */}
             <Banner
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description="2-3 раза в неделю"
+                description={trainingDescription}
                 header="Программа тренировок FULL BODY"
-                // onCloseIcon={function noRefCheck(){}}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/basictrainingprogram")}>
+                    <Button size="s" onClick={() => navigate(trainingRoute)}>
                         Перейти
                     </Button>
                 </React.Fragment>
