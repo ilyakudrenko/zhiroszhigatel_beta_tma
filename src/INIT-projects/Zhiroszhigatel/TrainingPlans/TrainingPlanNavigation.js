@@ -52,11 +52,11 @@ const TrainingPlanNavigation = () => {
         return <p style={{ color: 'red', textAlign: 'center' }}>Ошибка: тренировочный план не найден</p>;
     }
 
-    const trainingDescription = trainingPlan.trainingPlanId === 1
+    const trainingDescription = trainingPlan.trainingPlanId === 'a0102070-d847-11ef-bfbf-a2aa7cf0e641'
         ? "2-3 раза в неделю"
         : "4 раза в неделю, для продвинутого уровня";
 
-    const trainingRoute = trainingPlan.trainingPlanId === 1
+    const trainingRoute = trainingPlan.trainingPlanId === 'a0102070-d847-11ef-bfbf-a2aa7cf0e641'
         ? "/basictrainingprogram"
         : "/protrainingprogram";
 
