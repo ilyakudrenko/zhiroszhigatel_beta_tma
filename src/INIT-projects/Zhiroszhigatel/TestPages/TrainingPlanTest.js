@@ -32,7 +32,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
-
+                console.log(allWorkouts.flat());
 
 
                 //Fetch exercises for all user workouts
@@ -63,13 +63,11 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
 
                 //Test Fetch
                 let tmp = allExercises.flat();
-                console.log("TMP:");
-                console.log(tmp);
                 const test = await Promise.all(
                     tmp.map(data => fetchUserExercisesReps(data.exerciseId))
                 );
                 console.log(test.flat());
-                setRepsTest(test);
+                setRepsTest(test.flat());
 
 
             } catch (error) {
