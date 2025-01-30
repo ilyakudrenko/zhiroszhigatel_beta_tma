@@ -10,9 +10,7 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [exercises, setExercises] = useState([]);
-    // const [exercisesTest, setExercisesTest] = useState([]);
     const [reps, setReps] = useState([]);
-    const [repsTest, setRepsTest] = useState([]);
 
     const [loading, setLoading] = useState(true);
 
@@ -21,15 +19,13 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
+
                 // Fetch training plans
                 const plans = await fetchUserTrainingPlan();
                 setTrainingPlans(plans);
 
-                // Fetch workouts for all plans
-                // const allWorkouts = await Promise.all(
-                //     plans.map((plan) => fetchUserTrainingPlanWorkouts(plan.trainingPlanId))
-                // );
 
+                // Fetch workouts for all plans
                 const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
                 console.log(allWorkouts.flat());
@@ -40,34 +36,16 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
                     allWorkouts.map((allWorkouts) => fetchUserExercises(allWorkouts.trainingPlanWorkout_id))
                 );
                 setExercises(allExercises.flat());
-
-
-
-
-
-                //Fetch reps for all exercises
-                const allReps = await Promise.all(
-                    allExercises.map((exerciseGroup) => {
-                        return Promise.all(
-                            exerciseGroup.map((exercise) => {
-                                // console.log(exercise);
-                                return fetchUserExercisesReps(exercise.exerciseId);
-                            })
-                        );
-                    })
-                );
-                setReps(allReps.flat());
-
                 console.log(allExercises.flat());
 
 
-                //Test Fetch
-                let tmp = allExercises.flat();
-                const test = await Promise.all(
-                    tmp.map(data => fetchUserExercisesReps(data.exerciseId))
+                //Fetch reps for all exercises
+                let tmp_rep = allExercises.flat();
+                const allReps = await Promise.all(
+                    tmp_rep.map(data => fetchUserExercisesReps(data.exerciseId))
                 );
-                console.log(test.flat());
-                setRepsTest(test.flat());
+                console.log(allReps.flat());
+                setReps(allReps.flat());
 
 
             } catch (error) {
@@ -97,13 +75,8 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
             <h1>Reps</h1>
             <pre>{JSON.stringify(reps, null, 2)}</pre>
 
-
-            <h1>Reps Test</h1>
-            <pre>{JSON.stringify(repsTest, null, 2)}</pre>
-
-
         </div>
-    );//redeploy
+    );
 
 };
 
