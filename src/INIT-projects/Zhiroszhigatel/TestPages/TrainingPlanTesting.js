@@ -8,17 +8,23 @@ import {AppRoot, Button, Caption, Cell, List, Section, Spinner, Title} from "@te
 
 
 const TrainingPlanTesting = ({ trainingPlanId }) => {
+    const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
     const [exercises, setExercises] = useState([]);
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    INITBackButton();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
+
+                // Fetch training plan details
+                const plans = await fetchUserTrainingPlan();
+                setTrainingPlans(plans);
 
                 // Fetch workouts for the selected training plan
                 const fetchedWorkouts = await fetchUserTrainingPlanWorkouts(
@@ -66,8 +72,15 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
     if (loading) {
         return (
             <AppRoot>
-                <div style={{ textAlign: "center", padding: "20px" }}>
-                    <Text>Loading...</Text>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh",
+                    }}
+                >
+                    <Spinner size="l" />
                 </div>
             </AppRoot>
         );
@@ -80,85 +93,155 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
 
     return (
         <AppRoot>
-            <div style={{ padding: "15px" }}>
-                <Title level="2" weight="bold">
-                    {currentWorkout?.trainingPlanWorkout_name || "Workout"}
-                </Title>
-                <Caption>{currentWorkout?.trainingPlanWorkout_description}</Caption>
-
-                {/* Exercises Section */}
-                {filteredExercises.map((exercise, index) => (
-                    <Section key={index} style={{ marginTop: "20px" }}>
-                        <Title level="3" weight="bold">
-                            Упражнение
-                        </Title>
-                        <Text>{exercise.exerciseName}</Text>
-
-                        <Text weight="medium" style={{ marginTop: "10px" }}>
-                            Подходы * Повторения по неделям
-                        </Text>
-                        <Text>
-                            {reps
-                                .filter((rep) => rep.repExercise_id === exercise.exerciseId)
-                                .map((rep) => rep.repRepetitions)
-                                .join(" | ")}
-                        </Text>
-
-                        <Text weight="medium" style={{ marginTop: "10px" }}>
-                            Применение. Мышцы.
-                        </Text>
-                        <Text>{exercise.exerciseMuscle_group || "N/A"}</Text>
-
-                        <Text weight="medium" style={{ marginTop: "10px" }}>
-                            Видео уроки.
-                        </Text>
-                        <div>
+            <List>
+                {
+                    filteredExercises.map((exercise, index) => (
+                    <Section
+                        key={index}
+                        header="TEST TEST TEST"
+                    >
+                        <Cell
+                            multiline
+                            subhead="Упражнение"
+                        >
+                            {exercise.exerciseName || "Не указано"}
+                        </Cell>
+                        <Cell
+                            multiline
+                            subhead="Подходы * Повторения по неделям"
+                        >
+                            <span>
+                                {reps
+                                    .filter((rep) => rep.repExercise_id === exercise.exerciseId)
+                                    .map((rep, repIndex) => (
+                                        <span key={repIndex}>
+                                            {rep.repRepetitions} |
+                                        </span>
+                                    ))}
+                            </span>
+                        </Cell>
+                        <Cell
+                            multiline
+                            subhead="Применение. Мышцы."
+                        >
+                            {exercise.exerciseMuscle_group || "Не указано"}
+                        </Cell>
+                        <Cell
+                            multiline
+                            subhead="Видео уроки"
+                        >
                             <a
                                 href={exercise.exerciseURL_youtube}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ display: "block", marginBottom: "5px" }}
                             >
-                                Ссылка на урок (YouTube)
-                            </a>
+                                YouTube
+                            </a>{" "}
+                            |{" "}
                             <a
                                 href={exercise.exerciseURL_google}
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Ссылка на урок (Google Drive)
+                                Google Drive
                             </a>
-                        </div>
+                        </Cell>
                     </Section>
-                ))}
-
-                {/* Navigation Buttons */}
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        marginTop: "20px",
-                    }}
-                >
-                    <Button
-                        mode="filled"
-                        disabled={currentWorkoutIndex === 0}
-                        onClick={handlePreviousWorkout}
-                        style={{ marginRight: "10px" }}
-                    >
-                        Previous
-                    </Button>
-                    <Button
-                        mode="filled"
-                        disabled={currentWorkoutIndex === workouts.length - 1}
-                        onClick={handleNextWorkout}
-                    >
-                        Next
-                    </Button>
-                </div>
-            </div>
+                    ))}
+            </List>
         </AppRoot>
     );
 };
 
 export default TrainingPlanTesting;
+
+
+//
+// <List>
+//     {/* Training Plan Header */}
+//     <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
+//         {trainingPlans[0]?.title || "Training Plan"}
+//     </Title>
+//     <Caption style={{ marginBottom: "20px" }}>
+//         {trainingPlans[0]?.description || "No additional information."}
+//     </Caption>
+//
+//     {/* Current Workout */}
+//     {currentWorkout && (
+//         <Section header={`Workout: ${currentWorkout.trainingPlanWorkout_name}`}>
+//             <Caption>{currentWorkout.trainingPlanWorkout_description}</Caption>
+//             <Title level="3" weight="bold" style={{ marginTop: "10px" }}>
+//                 Exercises
+//             </Title>
+//
+//             {/* Exercises */}
+//             {filteredExercises.map((exercise, index) => (
+//                 <Section
+//                     key={index}
+//                     header={exercise.exerciseName || "Exercise"}
+//                 >
+//                     <Cell>
+//                         <b>Muscle Group:</b> {exercise.exerciseMuscle_group || "N/A"}
+//                     </Cell>
+//                     <Cell>
+//                         <b>Video Links:</b>
+//                         <a
+//                             href={exercise.exerciseURL_youtube}
+//                             target="_blank"
+//                             rel="noopener noreferrer"
+//                         >
+//                             YouTube
+//                         </a>{" "}
+//                         |{" "}
+//                         <a
+//                             href={exercise.exerciseURL_google}
+//                             target="_blank"
+//                             rel="noopener noreferrer"
+//                         >
+//                             Google Drive
+//                         </a>
+//                     </Cell>
+//
+//                     {/* Repetitions */}
+//                     <Title level="4" weight="bold" style={{ marginTop: "10px" }}>
+//                         Repetitions
+//                     </Title>
+//                     <List>
+//                         {reps
+//                             .filter((rep) => rep.repExercise_id === exercise.exerciseId)
+//                             .map((rep, repIndex) => (
+//                                 <Cell key={repIndex}>
+//                                     Week {rep.repWeek_number}: {rep.repRepetitions}
+//                                 </Cell>
+//                             ))}
+//                     </List>
+//                 </Section>
+//             ))}
+//         </Section>
+//     )}
+//
+//     {/* Workout Navigation */}
+//     <div
+//         style={{
+//             display: "flex",
+//             justifyContent: "center",
+//             marginTop: "20px",
+//         }}
+//     >
+//         <Button
+//             mode="filled"
+//             disabled={currentWorkoutIndex === 0}
+//             onClick={handlePreviousWorkout}
+//             style={{ marginRight: "10px" }}
+//         >
+//             Previous
+//         </Button>
+//         <Button
+//             mode="filled"
+//             disabled={currentWorkoutIndex === workouts.length - 1}
+//             onClick={handleNextWorkout}
+//         >
+//             Next
+//         </Button>
+//     </div>
+// </List>
