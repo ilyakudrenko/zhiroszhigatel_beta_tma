@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
 import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
@@ -15,7 +14,6 @@ const TrainingPlanTesting = ({ trainingPlanId }) => {
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    INITBackButton();
 
     useEffect(() => {
         const fetchData = async () => {
