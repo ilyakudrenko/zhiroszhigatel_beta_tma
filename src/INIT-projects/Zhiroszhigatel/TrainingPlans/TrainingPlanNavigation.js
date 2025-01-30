@@ -12,6 +12,7 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
+import fetchAllTrainingPlans from "../../CustomComponents/UserSession/fetchAllTrainingPlans";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -23,16 +24,29 @@ const TrainingPlanNavigation = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const trainingPlanId = location.state?.trainingPlanId; // Получаем ID выбранного плана
 
-    // Определяем уровень тренировок на основе переданных данных
-    const trainingLevel = location.state?.trainingLevel || "basic";
+    const [trainingPlan, setTrainingPlan] = useState(null);
 
-    // Меняем описание и маршрут в зависимости от уровня
-    const trainingDescription = trainingLevel === "basic"
+    useEffect(() => {
+        const fetchTrainingPlan = async () => {
+            const allPlans = await fetchAllTrainingPlans(); // Загружаем все планы
+            const selectedPlan = allPlans.find(plan => plan.trainingPlanId === trainingPlanId);
+            setTrainingPlan(selectedPlan || null); // Если не найдено, ставим null
+        };
+
+        fetchTrainingPlan();
+    }, [trainingPlanId]);
+
+    if (!trainingPlan) {
+        return <p>Загрузка...</p>; // Заглушка, если план еще не загрузился
+    }
+
+    const trainingDescription = trainingPlan.title.includes("Базовый")
         ? "2-3 раза в неделю"
         : "4 раза в неделю, для продвинутого уровня";
 
-    const trainingRoute = trainingLevel === "basic"
+    const trainingRoute = trainingPlan.title.includes("Базовый")
         ? "/basictrainingprogram"
         : "/protrainingprogram";
 

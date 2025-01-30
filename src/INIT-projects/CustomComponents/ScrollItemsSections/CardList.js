@@ -138,8 +138,9 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
 
     const handleCardClick = () => {
         if (isOwned) {
-            const trainingLevel = trainingPlan.title.includes("Базовый") ? "basic" : "pro";
-            navigate("/trainingnavigation", { state: { trainingLevel } });
+            if (isOwned) {
+                navigate("/trainingnavigation", { state: { trainingPlanId: trainingPlan.trainingPlanId } });
+            }
         }
     };
 
