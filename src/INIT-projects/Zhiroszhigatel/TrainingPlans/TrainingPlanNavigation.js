@@ -22,18 +22,28 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const trainingPlan = location.state?.trainingPlan;
-    const btnID = location.state?.training_id;
+    // const trainingPlan = location.state?.trainingPlan;
+    // const btnID = location.state?.training_id;
+
+    // Загружаем данные из переданного state или sessionStorage
+    const trainingPlan = location.state || JSON.parse(sessionStorage.getItem("selectedTrainingPlan")) || {};
+
+    // Если данных нет, редиректим на главную
+    useEffect(() => {
+        if (!trainingPlan.trainingId) {
+            navigate("/");
+        }
+    }, [trainingPlan, navigate]);
 
 
     INITBackButton();
 
     return (
         <AppRoot>
-            <div>
-                {trainingPlan.trainingPlanId}
-                {btnID}
-            </div>
+            {/*<div>*/}
+            {/*    {trainingPlan.trainingPlanId}*/}
+            {/*    {btnID}*/}
+            {/*</div>*/}
 
             {/*Урок из тренажерного зала*/}
             <Banner
