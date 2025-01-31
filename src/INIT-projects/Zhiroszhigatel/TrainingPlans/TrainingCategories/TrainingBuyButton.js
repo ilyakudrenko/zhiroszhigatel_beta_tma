@@ -44,9 +44,21 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
 
             // setIsGreen(true); // Успешно добавлено
             setSnackbarVisible(true);
-            setTimeout(async () => {
-                navigate("/trainingnavigation");
-            },2000)
+
+            // Ждем обновления данных в базе
+            let attempts = 0;
+            let isTrainingUpdated = false;
+
+            while (attempts < 5 && !isTrainingUpdated) {
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // Ждем 1 секунду
+
+                const updatedPlans = await fetchUserTrainingPlan();
+                isTrainingUpdated = updatedPlans.some(plan => plan.trainingPlanId === trainingId);
+                attempts++;
+            }
+
+            // После успешного обновления переходим на страницу навигации
+            navigate("/trainingnavigation", { state: { training_id: trainingId } });
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
