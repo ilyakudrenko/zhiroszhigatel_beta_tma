@@ -48,10 +48,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => {
-                        console.log("Navigating with training_id:", training_id);
-                        navigate("/testingPage", { state: { trainingPlanId: training_id } });
-                    }}>
+                    <Button size="s" onClick={() => navigate("/gymlessons")}>
                         Перейти
                     </Button>
                 </React.Fragment>
@@ -70,7 +67,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/")}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: training_id } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
