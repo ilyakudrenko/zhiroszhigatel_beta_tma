@@ -24,6 +24,7 @@ const TrainingPlanNavigation = () => {
     const location = useLocation();
     const training_id = location.state?.training_id;
 
+
     INITBackButton();
 
     return (
@@ -47,7 +48,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/gymlessons")}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: training_id } })}>
                         Перейти
                     </Button>
                 </React.Fragment>

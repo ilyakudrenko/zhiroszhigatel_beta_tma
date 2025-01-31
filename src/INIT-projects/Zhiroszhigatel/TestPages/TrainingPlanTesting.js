@@ -5,16 +5,20 @@ import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcer
 import fetchUserExercisesReps from "../../CustomComponents/UserSession/fetchUserExercisesReps";
 import {AppRoot, Button, Caption, Cell, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
+import {useLocation} from "react-router-dom";
 
 
 
-const TrainingPlanTesting = ({ trainingPlanId }) => {
+const TrainingPlanTesting = ({  }) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
     const [exercises, setExercises] = useState([]);
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
+    const trainingPlanId = location.state?.training_id;
+
 
     INITBackButton();
 
