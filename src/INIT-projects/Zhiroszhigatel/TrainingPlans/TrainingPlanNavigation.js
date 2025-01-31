@@ -28,31 +28,25 @@ const TrainingPlanNavigation = () => {
     const [trainingPlan, setTrainingPlan] = useState(null);
     const [loading, setLoading] = useState(true);
 
-// Загружаем данные из переданного state или sessionStorage
+    // Загружаем данные
     useEffect(() => {
         let storedTrainingPlan = location.state || JSON.parse(sessionStorage.getItem("selectedTrainingPlan"));
 
-        if (!storedTrainingPlan) {
-            navigate("/"); // Если данных нет, редиректим на главную
-        } else {
+        if (storedTrainingPlan) {
             setTrainingPlan(storedTrainingPlan);
         }
 
         setLoading(false);
-    }, [location, navigate]);
+    }, [location]);
 
     if (loading) return <div>Загрузка...</div>; // Показываем индикатор загрузки
-
-    if (!trainingPlan) {
-        return null; // Не рендерим ничего, если данных нет
-    }
 
     INITBackButton();
 
     return (
         <AppRoot>
             <div>
-                {trainingPlan.trainingId}
+                {trainingPlan?.trainingId || "ID отсутствует"}
             </div>
 
             {/*Урок из тренажерного зала*/}
