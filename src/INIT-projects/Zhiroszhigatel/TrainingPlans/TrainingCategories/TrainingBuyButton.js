@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { getSession } from "../../../CustomComponents/UserSession/session";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
+import fetchUserTrainingPlan from "../../../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
