@@ -25,6 +25,7 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [trainingPlanWorkouts, setTrainingPlanWorkouts] = useState([]);
+    const [selectedTrainingID, setSelectedTrainingID] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -34,11 +35,12 @@ const TrainingPlanNavigation = () => {
         const loadTrainingPlans = async () => {
             try {
                 const data = await fetchUserTrainingPlan(); // Fetch user training plans
-                const workoutsData = await fetchUserTrainingPlanWorkouts(data[0]?.trainingPlanId); // Fetch workouts
-                console.log(data);
-                console.log(workoutsData);
-                setTrainingPlans(data);
-                setTrainingPlanWorkouts(workoutsData);
+                if (data.length > 0) {
+                    setTrainingPlans(data);
+                    setSelectedTrainingID(data[0].trainingPlanId); // Store trainingPlanId
+                    const workoutsData = await fetchUserTrainingPlanWorkouts(data[0].trainingPlanId); // Fetch workouts
+                    setTrainingPlanWorkouts(workoutsData);
+                }
             } catch (err) {
                 setError("Failed to fetch training plans. Please try again.");
             }
@@ -46,6 +48,7 @@ const TrainingPlanNavigation = () => {
 
         loadTrainingPlans();
     }, []);
+
 
     if (error) {
         return (
@@ -87,13 +90,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={trainingPlans[0]?.title || "Training Plan"}
-                header="Ваш План Тренировок"
+                description={trainingPlans[0]?.description || "не найдено!"}
+                header={trainingPlans[0]?.title || "не найдено!"}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/trainingplan")}>
+                    <Button size="s" onClick={() => navigate("/trainingplan", { state: { trainingPlanId: selectedTrainingID } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
