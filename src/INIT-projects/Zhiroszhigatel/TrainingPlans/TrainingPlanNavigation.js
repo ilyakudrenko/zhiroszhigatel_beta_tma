@@ -40,10 +40,9 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            {/*<div>*/}
-            {/*    {trainingPlan.trainingPlanId}*/}
-            {/*    {btnID}*/}
-            {/*</div>*/}
+            <div>
+                {trainingPlan.trainingPlanId}
+            </div>
 
             {/*Урок из тренажерного зала*/}
             <Banner
