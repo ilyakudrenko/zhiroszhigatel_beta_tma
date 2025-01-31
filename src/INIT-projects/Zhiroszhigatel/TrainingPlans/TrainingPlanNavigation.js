@@ -64,6 +64,9 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
+            <div>
+                {selectedTrainingID}
+            </div>
 
             {/*Урок из тренажерного зала*/}
             <Banner
