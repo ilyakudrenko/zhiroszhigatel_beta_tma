@@ -70,13 +70,15 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={trainingPlan.description}
-                header={trainingPlan.title}
+                description={trainingPlan.description || "Описание недоступно"}
+                header={trainingPlan.title || "Название отсутствует"}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", {
+                        state: { trainingPlanId: trainingPlan.trainingId }
+                    })}>
                         Перейти
                     </Button>
                 </React.Fragment>
