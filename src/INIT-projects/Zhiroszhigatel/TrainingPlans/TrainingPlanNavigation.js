@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import INITBackButton from "../../../Hooks/BackButton";
-import {AppRoot, Badge, Banner, Button, Modal, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Banner, Button, Modal, Section, Spinner} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import {
     ModalHeader
@@ -26,7 +26,6 @@ const TrainingPlanNavigation = () => {
 
     const trainingPlan = location.state?.trainingPlan;
     const btnTrainingID = location.state?.training_id;
-    const trainingPlanId = trainingPlan?.trainingPlanId || btnTrainingID;
 
     const [trainingTitle, setTrainingTitle] = useState("");
     const [trainingDescription, setTrainingDescription] = useState("");
@@ -37,7 +36,7 @@ const TrainingPlanNavigation = () => {
         const fetchData = async () => {
             try {
                 const allTrainingPlans = await fetchAllTrainingPlans();
-                const selectedPlan = allTrainingPlans.find(plan => plan.trainingPlanId === trainingPlanId);
+                const selectedPlan = allTrainingPlans.find(plan => plan.trainingPlanId === btnTrainingID || plan.trainingPlanId === trainingPlan.trainingPlanId);
 
                 if (selectedPlan) {
                     setTrainingTitle(selectedPlan.title);
@@ -52,12 +51,29 @@ const TrainingPlanNavigation = () => {
         };
 
         fetchData();
-    }, [trainingPlanId]);
+    }, [btnTrainingID, trainingPlan.trainingPlanId]);
 
     INITBackButton();
 
     if (loading) {
-        return <AppRoot>Loading...</AppRoot>;
+        return (
+            <AppRoot>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh", // Full viewport height to center vertically
+                    }}
+                >
+                    <div style={{ textAlign: "center" }}>
+                        <Spinner size="l" />
+                        {" "}
+                        <br />
+                    </div>
+                </div>
+            </AppRoot>
+        );
     }
 
     return (
@@ -103,7 +119,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingID || btnTrainingID } })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: btnTrainingID || trainingID } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
