@@ -23,20 +23,21 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
+
     const trainingPlan = location.state?.trainingPlan;
     const btnTrainingID = location.state?.training_id;
+    const trainingPlanId = trainingPlan?.trainingPlanId || btnTrainingID;
 
     const [trainingTitle, setTrainingTitle] = useState("");
     const [trainingDescription, setTrainingDescription] = useState("");
-    const [trainingID, setTrainingID] = useState("");
-
+    const [trainingID, setTrainingID] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const allTrainingPlans = await fetchAllTrainingPlans(); // Fetch all training plans
-                const selectedPlan = allTrainingPlans.find(plan => plan.trainingPlanId === trainingPlan.trainingPlanId || plan.trainingPlanId === btnTrainingID);
+                const allTrainingPlans = await fetchAllTrainingPlans();
+                const selectedPlan = allTrainingPlans.find(plan => plan.trainingPlanId === trainingPlanId);
 
                 if (selectedPlan) {
                     setTrainingTitle(selectedPlan.title);
@@ -62,6 +63,8 @@ const TrainingPlanNavigation = () => {
     return (
         <AppRoot>
             <div>
+                {trainingPlanId}
+                <br />
                 {trainingPlan.trainingPlanId}
                 <br/>
                 {btnTrainingID}
@@ -100,7 +103,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingID } })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingID || btnTrainingID } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
