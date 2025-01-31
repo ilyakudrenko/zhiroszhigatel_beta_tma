@@ -138,7 +138,7 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
 
     const handleCardClick = () => {
         if (isOwned) {
-            navigate("/trainingnavigation", { state: { training_id: trainingPlan.trainingPlanId } });
+            navigate("/trainingnavigation", { state: { training_id: trainingPlan.trainingPlanId, title: trainingPlan.title, description: trainingPlan.description } });
         }
     };
 

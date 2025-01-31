@@ -23,6 +23,9 @@ const TrainingPlanNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const training_id = location.state?.training_id;
+    const training_title = location.state?.title;
+    const training_description = location.state?.description;
+
 
 
     INITBackButton();
@@ -61,8 +64,8 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description="tesd description "
-                header="test title"
+                description={training_description}
+                header={training_title}
                 type="section"
                 style={roundedCellStyle}
             >
