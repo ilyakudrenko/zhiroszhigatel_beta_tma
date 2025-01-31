@@ -15,7 +15,6 @@ import MealPlanNavigation from "./INIT-projects/Zhiroszhigatel/MealPlans/MealPla
 import CookingLesson from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingLesson";
 import INITCookingTools from "./INIT-projects/Zhiroszhigatel/MealPlans/MealsCategories/CookingTools";
 import TrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingPlanNavigation";
-import ProTrainingPlanNavigation from "./INIT-projects/Zhiroszhigatel/TrainingPlans/ProTrainingPlanNavigation";
 import TrainingProgram from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/TrainingProgram";
 import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTest";
 import ColorTestPage from "./INIT-projects/Zhiroszhigatel/TestPages/colorTesting";
@@ -48,8 +47,7 @@ const App = () => {
 
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
-                    <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
-                    <Route path="/basictrainingprogram" element={<TrainingProgram />} />
+                    <Route path="/trainingprogram" element={<TrainingProgram />} />
                     <Route path="/gymlessons" element={<GymLessons />} />
 
 
@@ -78,8 +76,7 @@ const App = () => {
 
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
-                    <Route path="/protrainingnavigation" element={<ProTrainingPlanNavigation />} />
-                    <Route path="/basictrainingprogram" element={<TrainingProgram />} />
+                    <Route path="/trainingprogram" element={<TrainingProgram />} />
                     <Route path="/gymlessons" element={<GymLessons />} />
 
 

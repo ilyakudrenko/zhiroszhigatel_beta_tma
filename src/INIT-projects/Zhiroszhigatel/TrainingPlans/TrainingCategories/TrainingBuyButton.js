@@ -45,7 +45,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             // setIsGreen(true); // Успешно добавлено
             setSnackbarVisible(true);
             setTimeout(async () => {
-                navigate("/");
+                navigate("/trainingnavigation");
             },2000)
 
         } catch (error) {
