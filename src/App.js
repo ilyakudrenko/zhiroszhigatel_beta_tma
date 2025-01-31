@@ -52,7 +52,7 @@ const App = () => {
 
 
                     //Testing Page
-                    <Route path="/testingPage" element={<TrainingPlanTest />} />
+                    {/*<Route path="/testingPage" element={<TrainingPlanTest />} />*/}
 
                 </Routes>
 
@@ -72,7 +72,7 @@ const App = () => {
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
                     {/*test*/}
-                    <Route path="/test" element={<INITCookingTools />} />
+                    <Route path="/coocingtools" element={<INITCookingTools />} />
                     {/*<Route path="/rations" element={<MealPlanTasting />} />*/}
 
                     {/*Training Plans.*/}
@@ -82,7 +82,7 @@ const App = () => {
 
 
                     {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}
-                    <Route path="/testingPage" element={<TrainingPlanTesting />} />
+                    {/*<Route path="/testingPage" element={<TrainingPlanTesting />} />*/}
                     {/*<Route path="/testingPage" element={<ColorTestPage />} />*/}
                 </Routes>
         )
