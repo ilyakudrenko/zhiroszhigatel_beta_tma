@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import INITBackButton from "../../../Hooks/BackButton";
-import {AppRoot, Badge, Banner, Button, Modal} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Banner, Button, Modal, Section} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import {
     ModalHeader
@@ -12,7 +12,6 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
-import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -21,43 +20,9 @@ const roundedCellStyle = {
 };
 
 const TrainingPlanNavigation = () => {
-
     const navigate = useNavigate();
     const location = useLocation();
     const training_id = location.state?.training_id;
-
-    const [userTrainingPlans, setUserTrainingPlans] = useState([]);
-    const [selectedPlan, setSelectedPlan] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userPlans = await fetchUserTrainingPlan();
-                setUserTrainingPlans(userPlans);
-
-                // Проверяем, есть ли у пользователя выбранный план
-                const matchedPlan = userPlans.find(plan => plan.trainingPlanId === training_id);
-                setSelectedPlan(matchedPlan);
-            } catch (error) {
-                console.error("Ошибка загрузки тренировочных планов:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, [training_id]);
-
-    if (loading) return <p>Загрузка...</p>;
-
-    if (!selectedPlan) {
-        return (
-            <AppRoot>
-                <p>Выбранный план не найден. Возможно, его нужно приобрести.</p>
-                <Button onClick={() => navigate("/home")}>Вернуться назад</Button>
-            </AppRoot>
-        );
-    }
 
     INITBackButton();
 
@@ -66,6 +31,9 @@ const TrainingPlanNavigation = () => {
             <div>
                 Navigation Page
             </div>
+            <INITDivider color='transparent' thickness="10%"/>
+
+            <Section header={training_id}></Section>
 
             {/*Урок из тренажерного зала*/}
             <Banner
@@ -92,13 +60,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={selectedPlan.description}
-                header="selectedPlan.title"
+                description="tesd description "
+                header="test title"
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate(`/trainingprogram/${training_id}`)}>
+                    <Button size="s" onClick={() => navigate("/")}>
                         Перейти
                     </Button>
                 </React.Fragment>
@@ -108,7 +76,8 @@ const TrainingPlanNavigation = () => {
             {/*БОНУС Гормоны виноваты в ожирении*/}
             <Modal
                 header={<ModalHeader
-                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>БОНУС Гормоны виноваты в ожирении</ModalHeader>}
+                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>БОНУС
+                    Гормоны виноваты в ожирении</ModalHeader>}
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
@@ -129,14 +98,15 @@ const TrainingPlanNavigation = () => {
                     </Banner>
                 }
             >
-                <INITHormones />
+                <INITHormones/>
             </Modal>
             <INITDivider color='transparent' thickness="10%"/>
 
             {/*Мои приборы для простого и вкусного похудения*/}
             <Modal
                 header={<ModalHeader
-                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Мои приборы для простого и вкусного похудения</ModalHeader>}
+                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Мои
+                    приборы для простого и вкусного похудения</ModalHeader>}
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
@@ -157,7 +127,7 @@ const TrainingPlanNavigation = () => {
                     </Banner>
                 }
             >
-                <INITCookingTools />
+                <INITCookingTools/>
             </Modal>
 
             <INITDivider color='transparent' thickness="10%"/>
@@ -165,7 +135,8 @@ const TrainingPlanNavigation = () => {
             {/*Сборник рецептов перекусов*/}
             <Modal
                 header={<ModalHeader
-                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Сборник рецептов перекусов</ModalHeader>}
+                    after={<ModalClose><Icon28Close style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>Сборник
+                    рецептов перекусов</ModalHeader>}
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
@@ -186,7 +157,7 @@ const TrainingPlanNavigation = () => {
                     </Banner>
                 }
             >
-                <INITRecipes />
+                <INITRecipes/>
             </Modal>
             <INITDivider color='transparent' thickness="10%"/>
         </AppRoot>

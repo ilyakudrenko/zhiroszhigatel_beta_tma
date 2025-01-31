@@ -142,13 +142,12 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
         }
     };
 
-
     if (isOwned) {
         return (
             <Card
                 style={{ flexShrink: 0, minWidth: '254px' }}
                 type="ambient"
-                onClick={handleCardClick}
+                onClick={handleCardClick} // ✅ Теперь сразу редиректит!
             >
                 <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                 <img
