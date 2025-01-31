@@ -22,31 +22,15 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    // const trainingPlan = location.state?.trainingPlan;
-    // const btnID = location.state?.training_id;
+    const trainingPlan = location.state?.trainingPlan;
 
-    const [trainingPlan, setTrainingPlan] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    // Загружаем данные
-    useEffect(() => {
-        let storedTrainingPlan = location.state || JSON.parse(sessionStorage.getItem("selectedTrainingPlan"));
-
-        if (storedTrainingPlan) {
-            setTrainingPlan(storedTrainingPlan);
-        }
-
-        setLoading(false);
-    }, [location]);
-
-    if (loading) return <div>Загрузка...</div>; // Показываем индикатор загрузки
 
     INITBackButton();
 
     return (
         <AppRoot>
             <div>
-                {trainingPlan?.trainingId || "ID отсутствует"}
+                {trainingPlan.trainingPlanId}
             </div>
 
             {/*Урок из тренажерного зала*/}
@@ -74,15 +58,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={trainingPlan.description || "Описание недоступно"}
-                header={trainingPlan.title || "Название отсутствует"}
+                description={trainingPlan.description}
+                header={trainingPlan.title}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", {
-                        state: { trainingPlanId: trainingPlan.trainingId }
-                    })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
