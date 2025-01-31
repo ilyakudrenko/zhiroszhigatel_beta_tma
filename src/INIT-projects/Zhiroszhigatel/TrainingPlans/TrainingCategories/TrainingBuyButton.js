@@ -43,18 +43,18 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             // Добавление тренировки пользователю
             await addUserTraining(user.id, trainingId);
 
-            // Сохранение данных в sessionStorage
+            // Сохраняем данные в sessionStorage
             const trainingPlanData = { trainingId, title, description };
             sessionStorage.setItem("selectedTrainingPlan", JSON.stringify(trainingPlanData));
 
-            // Перенаправление на страницу тренировочного плана
-            navigate("/trainingnavigation", { state: trainingPlanData });
+            // Ждём, пока данные сохранятся
+            await new Promise(resolve => setTimeout(resolve, 300));
 
             // setIsGreen(true); // Успешно добавлено
             setSnackbarVisible(true);
 
-            // После успешного обновления переходим на страницу навигации
-            navigate("/trainingnavigation");
+            // Переход на страницу тренировочного плана
+            navigate("/trainingnavigation", { state: trainingPlanData });
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');

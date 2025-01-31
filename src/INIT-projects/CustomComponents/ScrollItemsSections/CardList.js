@@ -138,7 +138,16 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
 
     const handleCardClick = () => {
         if (isOwned) {
-            // Сохраняем данные перед переходом
+            // Загружаем текущие данные из sessionStorage
+            const existingPlan = JSON.parse(sessionStorage.getItem("selectedTrainingPlan"));
+
+            // Если данные уже есть и совпадают, просто переходим
+            if (existingPlan && existingPlan.trainingId === trainingPlan.trainingId) {
+                navigate("/trainingnavigation", { state: existingPlan });
+                return;
+            }
+
+            // Сохраняем новые данные перед переходом
             sessionStorage.setItem("selectedTrainingPlan", JSON.stringify(trainingPlan));
 
             navigate("/trainingnavigation", { state: trainingPlan });

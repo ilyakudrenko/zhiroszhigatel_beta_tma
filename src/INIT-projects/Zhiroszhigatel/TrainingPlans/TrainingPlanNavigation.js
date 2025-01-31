@@ -25,16 +25,27 @@ const TrainingPlanNavigation = () => {
     // const trainingPlan = location.state?.trainingPlan;
     // const btnID = location.state?.training_id;
 
-    // Загружаем данные из переданного state или sessionStorage
-    const trainingPlan = location.state || JSON.parse(sessionStorage.getItem("selectedTrainingPlan")) || {};
+    const [trainingPlan, setTrainingPlan] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Если данных нет, редиректим на главную
+// Загружаем данные из переданного state или sessionStorage
     useEffect(() => {
-        if (!trainingPlan.trainingId) {
-            navigate("/");
-        }
-    }, [trainingPlan, navigate]);
+        let storedTrainingPlan = location.state || JSON.parse(sessionStorage.getItem("selectedTrainingPlan"));
 
+        if (!storedTrainingPlan) {
+            navigate("/"); // Если данных нет, редиректим на главную
+        } else {
+            setTrainingPlan(storedTrainingPlan);
+        }
+
+        setLoading(false);
+    }, [location, navigate]);
+
+    if (loading) return <div>Загрузка...</div>; // Показываем индикатор загрузки
+
+    if (!trainingPlan) {
+        return null; // Не рендерим ничего, если данных нет
+    }
 
     INITBackButton();
 
