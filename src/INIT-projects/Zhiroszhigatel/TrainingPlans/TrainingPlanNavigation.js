@@ -67,7 +67,7 @@ const TrainingPlanNavigation = () => {
             <div>
                 {selectedTrainingID}
             </div>
-
+            {/*test*/}
             {/*Урок из тренажерного зала*/}
             <Banner
                 background={<img alt="Nasa streams"
