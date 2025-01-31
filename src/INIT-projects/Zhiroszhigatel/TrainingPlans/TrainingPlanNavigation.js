@@ -25,7 +25,6 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [trainingPlanWorkouts, setTrainingPlanWorkouts] = useState([]);
-    const [selectedTrainingID, setSelectedTrainingID] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -35,12 +34,11 @@ const TrainingPlanNavigation = () => {
         const loadTrainingPlans = async () => {
             try {
                 const data = await fetchUserTrainingPlan(); // Fetch user training plans
-                if (data.length > 0) {
-                    setTrainingPlans(data);
-                    setSelectedTrainingID(data[0].trainingPlanId); // Store trainingPlanId
-                    const workoutsData = await fetchUserTrainingPlanWorkouts(data[0].trainingPlanId); // Fetch workouts
-                    setTrainingPlanWorkouts(workoutsData);
-                }
+                const workoutsData = await fetchUserTrainingPlanWorkouts(data[0]?.trainingPlanId); // Fetch workouts
+                console.log(data);
+                console.log(workoutsData);
+                setTrainingPlans(data);
+                setTrainingPlanWorkouts(workoutsData);
             } catch (err) {
                 setError("Failed to fetch training plans. Please try again.");
             }
@@ -48,7 +46,6 @@ const TrainingPlanNavigation = () => {
 
         loadTrainingPlans();
     }, []);
-
 
     if (error) {
         return (
@@ -64,10 +61,7 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <div>
-                {selectedTrainingID}
-            </div>
-            {/*test*/}
+
             {/*Урок из тренажерного зала*/}
             <Banner
                 background={<img alt="Nasa streams"
@@ -99,7 +93,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/trainingplan", { state: { trainingPlanId: selectedTrainingID } })}>
+                    <Button size="s" onClick={() => navigate("/trainingplan")}>
                         Перейти
                     </Button>
                 </React.Fragment>
