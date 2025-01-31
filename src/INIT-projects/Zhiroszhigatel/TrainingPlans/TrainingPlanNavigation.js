@@ -29,9 +29,6 @@ const TrainingPlanNavigation = () => {
 
     return (
         <AppRoot>
-            <div>
-                {trainingPlan.trainingPlanId}
-            </div>
 
             {/*Урок из тренажерного зала*/}
             <Banner
@@ -64,7 +61,7 @@ const TrainingPlanNavigation = () => {
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
+                    <Button size="s" onClick={() => navigate("/trainingprogram", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
