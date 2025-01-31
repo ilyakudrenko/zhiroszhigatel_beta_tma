@@ -9,7 +9,7 @@ import {useLocation} from "react-router-dom";
 
 
 
-const TrainingPlanTesting = ({  }) => {
+const TrainingPlanTesting = ({}) => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
@@ -17,7 +17,9 @@ const TrainingPlanTesting = ({  }) => {
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
     const location = useLocation();
-    const trainingPlanId = location.state?.training_id;
+    // const trainingPlanId = location.state?.training_id;
+    const trainingPlanId = 'a0102070-d847-11ef-bfbf-a2aa7cf0e641'
+
 
 
     INITBackButton();
