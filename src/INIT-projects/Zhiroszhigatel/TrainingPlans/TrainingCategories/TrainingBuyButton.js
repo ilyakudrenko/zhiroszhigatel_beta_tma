@@ -46,8 +46,9 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             // setIsGreen(true); // Успешно добавлено
             setSnackbarVisible(true);
 
-            // После успешного обновления переходим на страницу навигации
-            navigate("/trainingnavigation");
+            setTimeout(() => {
+                window.location.reload(); // Reloads the current page
+            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
