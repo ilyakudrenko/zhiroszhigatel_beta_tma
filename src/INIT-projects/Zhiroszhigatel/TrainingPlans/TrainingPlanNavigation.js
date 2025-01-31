@@ -12,6 +12,7 @@ import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
+import fetchAllTrainingPlans from "../../CustomComponents/UserSession/fetchAllTrainingPlans";
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -22,23 +23,51 @@ const roundedCellStyle = {
 const TrainingPlanNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const training_id = location.state?.training_id;
-    const training_title = location.state?.title;
-    const training_description = location.state?.description;
     const trainingPlan = location.state?.trainingPlan;
+    const btnTrainingID = location.state?.training_id;
 
+    const [trainingTitle, setTrainingTitle] = useState("");
+    const [trainingDescription, setTrainingDescription] = useState("");
+    const [trainingID, setTrainingID] = useState("");
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const allTrainingPlans = await fetchAllTrainingPlans(); // Fetch all training plans
+                const selectedPlan = allTrainingPlans.find(plan => plan.trainingPlanId === trainingPlan.trainingPlanId || plan.trainingPlanId === btnTrainingID);
+
+                if (selectedPlan) {
+                    setTrainingTitle(selectedPlan.title);
+                    setTrainingDescription(selectedPlan.description);
+                    setTrainingID(selectedPlan.trainingPlanId);
+                }
+            } catch (error) {
+                console.error("Error fetching training plans:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [trainingPlanId]);
 
     INITBackButton();
+
+    if (loading) {
+        return <AppRoot>Loading...</AppRoot>;
+    }
 
     return (
         <AppRoot>
             <div>
-                Navigation Page
+                {trainingPlan.trainingPlanId}
+                <br/>
+                {btnTrainingID}
+                <br/>
+                {trainingID}
             </div>
-            <INITDivider color='transparent' thickness="10%"/>
-
-            <Section header={training_id}></Section>
 
             {/*Урок из тренажерного зала*/}
             <Banner
@@ -65,13 +94,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={trainingPlan.description}
-                header={trainingPlan.title}
+                description={trainingDescription}
+                header={trainingTitle}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingID } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
