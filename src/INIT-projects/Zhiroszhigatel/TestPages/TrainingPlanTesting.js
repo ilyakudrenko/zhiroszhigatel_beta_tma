@@ -17,9 +17,7 @@ const TrainingPlanTesting = ({}) => {
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
     const location = useLocation();
-    // const trainingPlanId = location.state?.training_id;
     const trainingPlanId = location.state?.trainingPlanId;
-
 
 
     INITBackButton();
