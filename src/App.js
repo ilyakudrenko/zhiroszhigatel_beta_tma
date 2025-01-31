@@ -38,12 +38,12 @@ const App = () => {
 
 
                     //Meal Plans.
-                    <Route path="/rations" element={<MealPlanTasting />} />
+                    <Route path="/rations" element={<RationsDays />} />
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
                     {/*test*/}
-                    <Route path="/test" element={<INITCookingTools />} />
+                    <Route path="/coocingtools" element={<INITCookingTools />} />
 
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
@@ -67,12 +67,13 @@ const App = () => {
                     <Route path="/calculator" element={<Calculator />} />
 
                     //Meal Plans.
-                    <Route path="/rations" element={<MealPlanTasting />} />
+                    <Route path="/rations" element={<RationsDays />} />
                     <Route path="/mealnavigation" element={<MealPlanNavigation />} />
                     <Route path="/cookingLesson" element={<CookingLesson />} />
                     {/*<Route path="/rations" element={<RationsDays />} />*/}
                     {/*test*/}
                     <Route path="/test" element={<INITCookingTools />} />
+                    {/*<Route path="/rations" element={<MealPlanTasting />} />*/}
 
                     {/*Training Plans.*/}
                     <Route path="/trainingnavigation" element={<TrainingPlanNavigation />} />
