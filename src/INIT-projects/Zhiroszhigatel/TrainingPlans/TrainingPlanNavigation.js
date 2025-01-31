@@ -25,6 +25,7 @@ const TrainingPlanNavigation = () => {
     const training_id = location.state?.training_id;
     const training_title = location.state?.title;
     const training_description = location.state?.description;
+    const trainingPlan = location.state?.trainingPlan;
 
 
 
@@ -64,13 +65,13 @@ const TrainingPlanNavigation = () => {
                 background={<img alt="Nasa streams"
                                  src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
                                  style={{width: '150%'}}/>}
-                description={training_description}
-                header={training_title}
+                description={trainingPlan.description}
+                header={trainingPlan.title}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: training_id } })}>
+                    <Button size="s" onClick={() => navigate("/testingPage", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
                         Перейти
                     </Button>
                 </React.Fragment>
