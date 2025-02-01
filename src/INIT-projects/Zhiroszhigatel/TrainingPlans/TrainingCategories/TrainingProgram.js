@@ -99,7 +99,7 @@ const TrainingProgram = () => {
         <AppRoot>
             <List>
                 <Title>
-                    {currentWorkout.name}
+                    {currentWorkout.name ? currentWorkout.name : "Название не найдено"}
                 </Title>
                 {
                     filteredExercises.map((exercise, index) => (
