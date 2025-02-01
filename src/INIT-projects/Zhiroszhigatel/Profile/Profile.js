@@ -22,6 +22,7 @@ import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circ
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import mealsData from "../MealPlans/MealPlans.json";
+import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 
 
 const handleClickHaptic = (effect = 'light') =>{
@@ -35,6 +36,7 @@ const Profile = () => {
     const [error, setError] = useState(null);
     const [userLibrary, setUserLibrary] = useState([]); // State for user's guides
     const [mealPlan, setMealPlan] = useState(null); // State for user's meal plan
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]); // State for user's training plans
 
 
 
@@ -51,6 +53,9 @@ const Profile = () => {
 
                 const mealPlanData = await fetchUserMealPlan(); // Fetch user meal plan
                 setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
+
+                const trainingPlans = await fetchUserTrainingPlan(); // Fetch user training plans
+                setUserTrainingPlans(trainingPlans);
             } catch (err) {
                 console.error("Failed to retrieve data:", err);
                 setError("Failed to initialize session or fetch data.");
@@ -211,6 +216,33 @@ const Profile = () => {
                             onClick={() => navigate("/")}
                         >
                             в главное меню
+                        </Button>
+                    </Blockquote>
+                </div>
+            )}
+
+            <INITDivider color="transparent" thickness="10%"/>
+
+            {/* Training Plans Section */}
+            <Caption caps level="1" weight="3" style={{ margin: '5%' }}>
+                Ваши тренировочные планы
+            </Caption>
+            <INITDivider color='transparent' thickness="10%"/>
+
+            {userTrainingPlans.length > 0 ? (
+                <HorizontalScroll>
+                    <INITCardsList
+                        items={userTrainingPlans}
+                        userOwnedTrainingPlans={userTrainingPlans} // Pass training plans
+                    />
+                </HorizontalScroll>
+            ) : (
+                <div>
+                    <Blockquote type="text">
+                        <p>У вас пока нет купленных планов тренировок.</p>
+                        <p>Вы можете приобрести их в разделе тренировок.</p>
+                        <Button mode="filled" size="s" onClick={() => navigate("/trainingnavigation")}>
+                            К разделу тренировок
                         </Button>
                     </Blockquote>
                 </div>
