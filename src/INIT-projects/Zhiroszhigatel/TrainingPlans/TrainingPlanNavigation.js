@@ -16,6 +16,10 @@ import INITHormones from "./TrainingCategories/Hormones";
 import gymlessonsImg from "../TrainingPlans/CardImages/Tbanner3.png";
 import trainingprogramImg from "../TrainingPlans/CardImages/Tbanner1.png";
 import hormonesImg from "../TrainingPlans/CardImages/Tbanner2.png";
+import snackImg from "../TrainingPlans/CardImages/snack.jpg";
+import cookingtoolsImg from "../TrainingPlans/CardImages/cookingtoolsimage.jpg";
+
+
 
 
 const roundedCellStyle = {
@@ -64,7 +68,12 @@ const TrainingPlanNavigation = () => {
             <Banner
                 background={<img alt="Nasa streams"
                                  src={trainingprogramImg}
-                                 style={{width: '150%'}}/>}
+                                 style={{
+                                     width: "100%",
+                                     height: "100%",
+                                     objectFit: "cover" // Ensures the image fills the available space
+                                 }}
+                            />}
                 description={trainingPlan.description}
                 header={trainingPlan.title}
                 type="section"
@@ -87,7 +96,12 @@ const TrainingPlanNavigation = () => {
                     <Banner
                         background={<img alt="Nasa streams"
                                          src={hormonesImg}
-                                         style={{width: '150%'}}/>}
+                                         style={{
+                                             width: "100%",
+                                             height: "100%",
+                                             objectFit: "cover" // Ensures the image fills the available space
+                                         }}
+                                    />}
                         callout={<Badge type={"number"}>бонус</Badge>}
                         description="Врач эндокринолог поясняет, как гормоны связанный с ожирением, нужно ли сдавать анализы и какие"
                         header="Гормоны виноваты в ожирении"
@@ -115,8 +129,13 @@ const TrainingPlanNavigation = () => {
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
-                                         src={hormonesImg}
-                                         style={{width: '150%'}}/>}
+                                         src={cookingtoolsImg}
+                                         style={{
+                                             width: "100%",
+                                             height: "100%",
+                                             objectFit: "cover" // Ensures the image fills the available space
+                                         }}
+                                    />}
                         //callout="Urgent notification"
                         //description=""
                         header="Мои приборы для простого и вкусного похудения"
@@ -145,8 +164,13 @@ const TrainingPlanNavigation = () => {
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
-                                         src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                         style={{width: '150%'}}/>}
+                                         src={snackImg}
+                                         style={{
+                                             width: "100%",
+                                             height: "100%",
+                                             objectFit: "cover" // Ensures the image fills the available space
+                                         }}
+                                    />}
                         //callout="Urgent notification"
                         //description=""
                         header="Сборник рецептов перекусов"
