@@ -151,6 +151,11 @@ const TrainingProgram = () => {
                                 subhead="Видео уроки"
                             >
 
+                                {/*<iframe width="996" height="616" src="https://www.youtube.com/embed/UOICjnwypmk"*/}
+                                {/*        title="жим штанги лежа на наклонной скамье" frameBorder="0"*/}
+                                {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
+                                {/*        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>*/}
+
                                 <div style={{textAlign: "center"}}>
                                     <iframe
                                         width="95%"
