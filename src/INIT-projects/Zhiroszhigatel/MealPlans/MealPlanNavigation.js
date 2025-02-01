@@ -15,6 +15,13 @@ import INITBonus from "./MealsCategories/Bonus";
 import INITCookingTools from "./MealsCategories/CookingTools";
 import INITRecipes from "./MealsCategories/Recipes";
 
+import cookinglesosnImg from "../MealPlans/Images/cookingles.png";
+import rationsbannerImg from "../MealPlans/Images/rationsbanner.png";
+import zopbonusImg from "../MealPlans/Images/zopbonus.png";
+import snackImg from "../TrainingPlans/CardImages/snack.jpg";
+import cookingtoolsImg from "../TrainingPlans/CardImages/cookingtoolsimage.jpg";
+
+
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
@@ -67,8 +74,13 @@ const MealPlanNavigation = () => {
            {/*Рационы*/}
            <Banner
                background={<img alt="Nasa streams"
-                                src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                style={{width: '150%'}}/>}
+                                src={rationsbannerImg}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover" // Ensures the image fills the available space
+                                }}
+                            />}
                //callout="Urgent notification"
                description= {mealPlans[0]?.mealPlan_title || "Meal Plan"}
                header="Ваш Рацион"
@@ -87,8 +99,13 @@ const MealPlanNavigation = () => {
            {/*Кулинарный урок вкусняшек*/}
            <Banner
                background={<img alt="Nasa streams"
-                                src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                style={{width: '150%'}}/>}
+                                src={cookinglesosnImg}
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover" // Ensures the image fills the available space
+                                }}
+                            />}
                //callout="Urgent notification"
                description="Видео рецепты моих вкусняш, на которых я похудел на 30 кг"
                header="Кулинарный урок вкусняшек"
@@ -111,8 +128,13 @@ const MealPlanNavigation = () => {
                trigger={
                    <Banner
                        background={<img alt="Nasa streams"
-                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                        style={{width: '150%'}}/>}
+                                        src={zopbonusImg}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover" // Ensures the image fills the available space
+                                        }}
+                                    />}
                        callout={<Badge type={"number"}>бонус</Badge>}
                        description="Рекомендованная литература про питание"
                        header="Знания о питании"
@@ -139,8 +161,13 @@ const MealPlanNavigation = () => {
                trigger={
                    <Banner
                        background={<img alt="Nasa streams"
-                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                        style={{width: '150%'}}/>}
+                                        src={cookingtoolsImg}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover" // Ensures the image fills the available space
+                                        }}
+                                    />}
                        //callout="Urgent notification"
                        //description=""
                        header="Мои приборы для простого и вкусного похудения"
@@ -168,8 +195,13 @@ const MealPlanNavigation = () => {
                trigger={
                    <Banner
                        background={<img alt="Nasa streams"
-                                        src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
-                                        style={{width: '150%'}}/>}
+                                        src={snackImg}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover" // Ensures the image fills the available space
+                                        }}
+                                    />}
                        //callout="Urgent notification"
                        //description=""
                        header="Сборник рецептов перекусов"
