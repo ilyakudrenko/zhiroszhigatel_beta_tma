@@ -23,7 +23,7 @@ import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
-import bannerLink from "Images/photo_2025-01-31 22.51.55.jpeg";
+
 
 const roundedCellStyle = {
     borderRadius: '16px',
@@ -138,7 +138,7 @@ const HomePage = () => {
             <INITDivider color='transparent' thickness="10%"/>
 
             <INITBanner
-                imageSrc={bannerLink}
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/photo_2025-01-31%2022.51.55.jpeg"
                 header="Поддержим доктора!!!"
                 description="Первый участник реалити ТелоСтройки - педиатр из Красноярска!"
             />
