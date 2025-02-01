@@ -7,20 +7,26 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
-const handleClick = () => {
+const handleClick = ( ) => {
     alert("Button clicked!");
 };
 
-const INITBanner = () => {
+const INITBanner = ({
+    imageSrc,
+    header,
+    description,
+
+
+                    }) => {
     return (
         <AppRoot>
             <Banner
-                background={<img alt="Nasa streams"
-                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                background={<img alt="Новый Апдейт"
+                                 src={imageSrc}
                                  style={{width: '150%'}}/>}
-                callout="Urgent notification"
-                description="Start exploring TON in a new, better way"
-                header="Introducing TON Space"
+                callout="Новое уведомление"
+                description={description}
+                header={header}
                 // onCloseIcon={function noRefCheck(){}}
                 type="section"
                 style={roundedCellStyle}
