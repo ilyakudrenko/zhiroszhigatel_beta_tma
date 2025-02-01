@@ -138,7 +138,7 @@ const HomePage = () => {
             <INITDivider color='transparent' thickness="10%"/>
 
             <INITBanner
-                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/photo_2025-01-31%2022.51.55.jpeg"
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Поддержим доктора!!!"
                 description="Первый участник реалити ТелоСтройки - педиатр из Красноярска!"
                 infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
