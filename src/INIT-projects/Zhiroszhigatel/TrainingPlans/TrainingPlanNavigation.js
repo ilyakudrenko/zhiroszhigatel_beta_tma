@@ -13,6 +13,11 @@ import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
 
+import gymlessonsImg from "../TrainingPlans/CardImages/Tbanner3.png";
+import trainingprogramImg from "../TrainingPlans/CardImages/Tbanner1.png";
+import hormonesImg from "../TrainingPlans/CardImages/Tbanner2.png";
+
+
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
@@ -33,7 +38,7 @@ const TrainingPlanNavigation = () => {
             {/*Урок из тренажерного зала*/}
             <Banner
                 background={<img alt="Nasa streams"
-                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 src={gymlessonsImg}
                                  style={{width: '150%'}}/>}
                 description="Как делать надо, как делать не надо."
                 header="Урок из тренажерного зала"
@@ -53,7 +58,7 @@ const TrainingPlanNavigation = () => {
             {/* План тренировок */}
             <Banner
                 background={<img alt="Nasa streams"
-                                 src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                 src={trainingprogramImg}
                                  style={{width: '150%'}}/>}
                 description={trainingPlan.description}
                 header={trainingPlan.title}
@@ -105,7 +110,7 @@ const TrainingPlanNavigation = () => {
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
-                                         src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                         src={hormonesImg}
                                          style={{width: '150%'}}/>}
                         //callout="Urgent notification"
                         //description=""
