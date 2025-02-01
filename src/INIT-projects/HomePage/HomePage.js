@@ -109,7 +109,10 @@ const HomePage = () => {
     return (
         <AppRoot
             style={{
-                backgroundColor: 'var(--tgui--secondary_bg_color)'
+                backgroundColor: 'var(--tgui--secondary_bg_color)',
+                height: "100vh",
+                overflowY: "auto",
+                WebkitOverflowScrolling: "touch" // Enables smooth scrolling
             }}
         >
             <FixTelegramBehavior />

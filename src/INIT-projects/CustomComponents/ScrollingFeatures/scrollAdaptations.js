@@ -2,26 +2,27 @@ import { useEffect } from "react";
 
 const FixTelegramBehavior = () => {
     useEffect(() => {
-        // Ensure the Telegram Web App is expanded to prevent minimize gestures
         if (window.Telegram && window.Telegram.WebApp) {
             window.Telegram.WebApp.expand();
         }
 
-        // Prevent overscroll behavior
-        const preventScroll = (event) => {
-            event.preventDefault();
+        const handleTouchStart = (event) => {
+            const target = event.target;
+            const isScrollable = target.scrollHeight > target.clientHeight;
+
+            if (!isScrollable) {
+                event.preventDefault(); // Prevent Telegram's default pull-to-close behavior
+            }
         };
 
-        document.addEventListener("touchmove", preventScroll, { passive: false });
-        document.addEventListener("wheel", preventScroll, { passive: false });
+        document.addEventListener("touchstart", handleTouchStart, { passive: false });
 
         return () => {
-            document.removeEventListener("touchmove", preventScroll);
-            document.removeEventListener("wheel", preventScroll);
+            document.removeEventListener("touchstart", handleTouchStart);
         };
     }, []);
 
-    return null; // This component doesn't render anything
+    return null;
 };
 
 export default FixTelegramBehavior;
