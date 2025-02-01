@@ -23,6 +23,7 @@ import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
+import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
 
 
 const roundedCellStyle = {
@@ -111,6 +112,7 @@ const HomePage = () => {
                 backgroundColor: 'var(--tgui--secondary_bg_color)'
             }}
         >
+            <FixTelegramBehavior />
             {/*<INITHelp />*/}
                 <Section
                 >
