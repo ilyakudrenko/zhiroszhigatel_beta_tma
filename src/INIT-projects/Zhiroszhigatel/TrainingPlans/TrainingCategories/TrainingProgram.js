@@ -155,7 +155,7 @@ const TrainingProgram = () => {
                                     <iframe
                                         width="95%"
                                         height="215"
-                                        src={exercise.exerciseURL_youtube}
+                                        src={`https://www.youtube.com/embed/${exercise.exerciseURL_youtube}`}
                                         style={{
                                             border: "none",
                                             borderRadius: 16,
