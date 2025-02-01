@@ -43,7 +43,7 @@ const INITBanner = ({
                         rel="noopener noreferrer"
                     >
                         <Button size="s">
-                            8====D
+                            Перейти
                         </Button>
                     </a>
                 </React.Fragment>
