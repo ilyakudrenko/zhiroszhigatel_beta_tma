@@ -39,7 +39,12 @@ const TrainingPlanNavigation = () => {
             <Banner
                 background={<img alt="Nasa streams"
                                  src={gymlessonsImg}
-                                 style={{width: '150%'}}/>}
+                                 style={{
+                                     width: "100%",
+                                     height: "100%",
+                                     objectFit: "cover" // Ensures the image fills the available space
+                                 }}
+                            />}
                 description="Как делать надо, как делать не надо."
                 header="Урок из тренажерного зала"
                 // onCloseIcon={function noRefCheck(){}}
@@ -81,7 +86,7 @@ const TrainingPlanNavigation = () => {
                 trigger={
                     <Banner
                         background={<img alt="Nasa streams"
-                                         src="https://www.nasa.gov/wp-content/uploads/2023/10/streams.jpg?resize=1536,864"
+                                         src={hormonesImg}
                                          style={{width: '150%'}}/>}
                         callout={<Badge type={"number"}>бонус</Badge>}
                         description="Врач эндокринолог поясняет, как гормоны связанный с ожирением, нужно ли сдавать анализы и какие"
