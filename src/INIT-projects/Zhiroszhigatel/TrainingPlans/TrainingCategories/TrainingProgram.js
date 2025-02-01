@@ -5,7 +5,9 @@ import fetchUserTrainingPlan from "../../../CustomComponents/UserSession/fetchUs
 import fetchUserTrainingPlanWorkouts from "../../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
 import fetchUserExercises from "../../../CustomComponents/UserSession/fetchUserEcercises";
 import fetchUserExercisesReps from "../../../CustomComponents/UserSession/fetchUserExercisesReps";
-import {AppRoot, Button, Cell, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
+
+import workoutImg from "../CardImages/workoutimage.jpg";
 
 const TrainingProgram = () => {
 
@@ -98,6 +100,17 @@ const TrainingProgram = () => {
     return (
         <AppRoot>
             <List>
+
+                <Image
+                    src= {workoutImg}
+                    style={{
+                        width: '100%',
+                        height: '40vh',
+                        objectFit: 'cover',
+                        borderRadius: '8px'
+                    }}
+                />
+
                 <Title>
                     {currentWorkout.trainingPlanWorkout_name ? currentWorkout.trainingPlanWorkout_name : "Название не найдено"}
                 </Title>
@@ -105,7 +118,7 @@ const TrainingProgram = () => {
                     filteredExercises.map((exercise, index) => (
                         <Section
                             key={index}
-                            header={index}
+                            // header={index}
                         >
                             <Cell
                                 multiline
@@ -137,18 +150,41 @@ const TrainingProgram = () => {
                                 multiline
                                 subhead="Видео уроки"
                             >
-                                <a
-                                    href={exercise.exerciseURL_youtube}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    YouTube
-                                </a>{" "}
-                                |{" "}
+
+                                <div style={{textAlign: "center"}}>
+                                    <iframe
+                                        width="95%"
+                                        height="215"
+                                        src={exercise.exerciseURL_youtube}
+                                        style={{
+                                            border: "none",
+                                            borderRadius: 16,
+                                            padding: 5,
+                                        }}
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+
+                                {/*<a*/}
+                                {/*    href={exercise.exerciseURL_youtube}*/}
+                                {/*    target="_blank"*/}
+                                {/*    rel="noopener noreferrer"*/}
+                                {/*>*/}
+                                {/*    YouTube*/}
+                                {/*</a>*/}
+
+                                <br/>
+
                                 <a
                                     href={exercise.exerciseURL_google}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    style={{
+                                        color: '#82caff',
+                                        textDecoration: 'underline',
+                                        textDecorationColor: '#82caff'
+                                    }}
                                 >
                                     Google Drive
                                 </a>
@@ -171,7 +207,7 @@ const TrainingProgram = () => {
                         mode="filled"
                         disabled={currentWorkoutIndex === 0}
                         onClick={handlePreviousWorkout}
-                        style={{ marginRight: "10px" }}
+                        style={{marginRight: "10px" }}
                     >
                         Previous
                     </Button>
