@@ -224,10 +224,6 @@ const Profile = () => {
             <INITDivider color="transparent" thickness="10%"/>
 
             {/* Training Plans Section */}
-            <Caption caps level="1" weight="3" style={{ margin: '5%' }}>
-                Ваши тренировочные планы
-            </Caption>
-            <INITDivider color='transparent' thickness="10%"/>
 
             {userTrainingPlans.length > 0 ? (
                 <HorizontalScroll>
@@ -239,10 +235,10 @@ const Profile = () => {
             ) : (
                 <div>
                     <Blockquote type="text">
-                        <p>У вас пока нет купленных планов тренировок.</p>
-                        <p>Вы можете приобрести их в разделе тренировок.</p>
-                        <Button mode="filled" size="s" onClick={() => navigate("/trainingnavigation")}>
-                            К разделу тренировок
+                        <p>В вашей библиотеке пока нету тренировок.</p>
+                        <p>Вы можете добавить их из главного меню.</p>
+                        <Button mode="filled" size="s" onClick={() => navigate("/")}>
+                            в главное меню
                         </Button>
                     </Blockquote>
                 </div>
