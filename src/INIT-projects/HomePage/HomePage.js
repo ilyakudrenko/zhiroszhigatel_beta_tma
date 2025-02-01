@@ -141,6 +141,7 @@ const HomePage = () => {
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/photo_2025-01-31%2022.51.55.jpeg"
                 header="Поддержим доктора!!!"
                 description="Первый участник реалити ТелоСтройки - педиатр из Красноярска!"
+                infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
             />
 
             {/*Free Guides*/}

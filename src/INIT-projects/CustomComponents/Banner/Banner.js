@@ -15,7 +15,7 @@ const INITBanner = ({
     imageSrc,
     header,
     description,
-
+    infoLink,
 
                     }) => {
     return (
@@ -23,7 +23,12 @@ const INITBanner = ({
             <Banner
                 background={<img alt="Новый Апдейт"
                                  src={imageSrc}
-                                 style={{width: '150%'}}/>}
+                                 style={{
+                                     width: "100%",
+                                     height: "100%",
+                                     objectFit: "cover"
+                                 }}
+                            />}
                 callout="Новое уведомление"
                 description={description}
                 header={header}
@@ -32,9 +37,15 @@ const INITBanner = ({
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={handleClick}>
-                        Try it out
-                    </Button>
+                    <a
+                        href={infoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Button size="s">
+                            Перейти
+                        </Button>
+                    </a>
                 </React.Fragment>
             </Banner>
         </AppRoot>
