@@ -37,12 +37,12 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             handleClickHaptic('light');
 
             const user = getSession(); // Получение текущей сессии пользователя
+            const userId = user?.id || window.Telegram.WebApp.initDataUnsafe?.user?.id; // ✅ Проверяем ID пользователя
+
             if (!user || !user.id) {
                 alert('❌ Пользователь не авторизован!');
                 return;
             }
-
-            const userId = user.id; // ✅ Исправляем ошибку: добавляем userId
 
             console.log(`📢 Отправка запроса на покупку: userId=${userId}, trainingId=${trainingId}, price=${price}`);
 
