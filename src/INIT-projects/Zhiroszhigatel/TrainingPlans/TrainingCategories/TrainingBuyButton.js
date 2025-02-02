@@ -32,18 +32,21 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     };
 
     const handleButtonClick = async () => {
+
         try {
             handleClickHaptic('light');
-            const user = getSession(); // Получение текущей сессии пользователя
-            if (!user || !user.id) {
-                alert('Пользователь не авторизован!');
+
+            // Гарантированно получаем chat_id
+            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
+            if (!userId) {
+                alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
                 return;
             }
 
-            // Отправляем запрос боту на создание инвойса
+            // Отправляем запрос боту
             const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
-                chat_id: user.id, // Отправляем боту ID юзера
-                text: `/buy ${trainingId} ${price} ${title}` // Отправляем боту команду с ID тренировки и ценой
+                chat_id: userId, // ✅ Теперь chat_id передается правильно
+                text: `/buy ${trainingId} ${price} ${title}`
             });
 
             if (response.data.ok) {
@@ -54,20 +57,34 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 alert("Ошибка при запросе оплаты!");
             }
 
-            // // Добавление тренировки пользователю
-            // await addUserTraining(user.id, trainingId);
-            //
-            // // setIsGreen(true); // Успешно добавлено
-            // setSnackbarVisible(true);
-            //
-            // setTimeout(() => {
-            //     window.location.reload(); // Reloads the current page
-            // }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
-
         } catch (error) {
-            alert('Ошибка при добавлении тренировки. Попробуйте позже.');
-            console.error(error);
+            console.error("❌ Ошибка при запросе оплаты:", error);
+            alert("Ошибка при запросе оплаты, попробуйте снова.");
         }
+
+
+        // try {
+        //     handleClickHaptic('light');
+        //     const user = getSession(); // Получение текущей сессии пользователя
+        //     if (!user || !user.id) {
+        //         alert('Пользователь не авторизован!');
+        //         return;
+        //     }
+        //
+        //     // Добавление тренировки пользователю
+        //     await addUserTraining(user.id, trainingId);
+        //
+        //     // setIsGreen(true); // Успешно добавлено
+        //     setSnackbarVisible(true);
+        //
+        //     setTimeout(() => {
+        //         window.location.reload(); // Reloads the current page
+        //     }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+        //
+        // } catch (error) {
+        //     alert('Ошибка при добавлении тренировки. Попробуйте позже.');
+        //     console.error(error);
+        // }
     };
 
     const handleCloseSnackbar = () => {
