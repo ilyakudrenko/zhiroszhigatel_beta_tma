@@ -45,7 +45,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             console.log(`📤 Отправка данных боту: UserID=${userId}, TrainingID=${trainingId}, Цена=${price}, Название=${title}`);
 
             // Mini App отправляет данные как текстовое сообщение в бот
-            await axios.get(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage`, {
+            await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
                 params: {
                     chat_id: userId,
                     text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
