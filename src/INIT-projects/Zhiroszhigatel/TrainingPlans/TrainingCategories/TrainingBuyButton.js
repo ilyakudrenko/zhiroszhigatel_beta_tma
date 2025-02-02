@@ -40,15 +40,29 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Добавление тренировки пользователю
-            await addUserTraining(user.id, trainingId);
+            // Отправляем запрос боту на создание инвойса
+            const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
+                chat_id: user.id, // Отправляем боту ID юзера
+                text: `/buy ${trainingId} ${price} ${title}` // Отправляем боту команду с ID тренировки и ценой
+            });
 
-            // setIsGreen(true); // Успешно добавлено
-            setSnackbarVisible(true);
+            if (response.data.ok) {
+                console.log("✅ Запрос на оплату успешно отправлен боту!");
+                setSnackbarVisible(true);
+            } else {
+                console.error("❌ Ошибка отправки запроса:", response.data);
+                alert("Ошибка при запросе оплаты!");
+            }
 
-            setTimeout(() => {
-                window.location.reload(); // Reloads the current page
-            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+            // // Добавление тренировки пользователю
+            // await addUserTraining(user.id, trainingId);
+            //
+            // // setIsGreen(true); // Успешно добавлено
+            // setSnackbarVisible(true);
+            //
+            // setTimeout(() => {
+            //     window.location.reload(); // Reloads the current page
+            // }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
