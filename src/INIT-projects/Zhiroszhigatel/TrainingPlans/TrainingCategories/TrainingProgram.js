@@ -214,14 +214,14 @@ const TrainingProgram = () => {
                         onClick={handlePreviousWorkout}
                         style={{marginRight: "10px" }}
                     >
-                        Previous
+                        ←
                     </Button>
                     <Button
                         mode="filled"
                         disabled={currentWorkoutIndex === workouts.length - 1}
                         onClick={handleNextWorkout}
                     >
-                        Next
+                        →
                     </Button>
                 </div>
             </List>

@@ -25,7 +25,7 @@ import cookingtoolsImg from "../TrainingPlans/CardImages/cookingtoolsimage.jpg";
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
-    backgroundColor: 'balck',
+    backgroundColor: 'black',
 };
 
 const handleClick = () => {
