@@ -36,27 +36,30 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            const user = getSession(); // Получение текущей сессии пользователя
-            const userId = user?.id || window.Telegram.WebApp.initDataUnsafe?.user?.id; // ✅ Проверяем ID пользователя
-
-            if (!user || !user.id) {
-                alert('❌ Пользователь не авторизован!');
+            // Гарантированно получаем chat_id
+            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
+            if (!userId) {
+                alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
                 return;
             }
 
-            console.log(`📢 Отправка запроса на покупку: userId=${userId}, trainingId=${trainingId}, price=${price}`);
-
-            // Отправляем команду /buy в чат боту
-            await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
-                chat_id: userId,  // ✅ Используем userId
+            // Отправляем запрос боту
+            const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
+                chat_id: userId, // ✅ Теперь chat_id передается правильно
                 text: `/buy ${trainingId} ${price} ${title}`
             });
 
-            setSnackbarVisible(true);
+            if (response.data.ok) {
+                console.log("✅ Запрос на оплату успешно отправлен боту!");
+                setSnackbarVisible(true);
+            } else {
+                console.error("❌ Ошибка отправки запроса:", response.data);
+                alert("Ошибка при запросе оплаты!");
+            }
 
         } catch (error) {
             console.error("❌ Ошибка при запросе оплаты:", error);
-            alert("Ошибка при запросе оплаты. Попробуйте снова.");
+            alert("Ошибка при запросе оплаты, попробуйте снова.");
         }
 
 
