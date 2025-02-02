@@ -20,6 +20,9 @@ import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingP
 import ColorTestPage from "./INIT-projects/Zhiroszhigatel/TestPages/colorTesting";
 import GymLessons from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/GymLessons";
 import TrainingPlanTesting from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTesting";
+import {viewport} from "@telegram-apps/sdk";
+
+viewport.expand()
 
 const App = () => {
     const location = useLocation();
