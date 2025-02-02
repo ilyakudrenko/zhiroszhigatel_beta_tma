@@ -36,37 +36,27 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            const user = getSession();
+            const user = getSession(); // Получение текущей сессии пользователя
             if (!user || !user.id) {
-                alert('Пользователь не авторизован!');
+                alert('❌ Пользователь не авторизован!');
                 return;
             }
 
-            // **ЛОГИРУЕМ ЗАПРОС В КОНСОЛЬ**
-            console.log("📤 Отправляем запрос боту: ", {
-                chat_id: user.id,
-                trainingId,
-                price,
-                title
-            });
+            const userId = user.id; // ✅ Исправляем ошибку: добавляем userId
 
-            // Отправляем запрос боту
-            const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
-                chat_id: userId, // ✅ Теперь chat_id передается правильно
+            console.log(`📢 Отправка запроса на покупку: userId=${userId}, trainingId=${trainingId}, price=${price}`);
+
+            // Отправляем команду /buy в чат боту
+            await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
+                chat_id: userId,  // ✅ Используем userId
                 text: `/buy ${trainingId} ${price} ${title}`
             });
 
-            if (response.data.ok) {
-                console.log("✅ Запрос на оплату успешно отправлен боту!");
-                setSnackbarVisible(true);
-            } else {
-                console.error("❌ Ошибка отправки запроса:", response.data);
-                alert("Ошибка при запросе оплаты!");
-            }
+            setSnackbarVisible(true);
 
         } catch (error) {
             console.error("❌ Ошибка при запросе оплаты:", error);
-            alert("Ошибка при запросе оплаты, попробуйте снова.");
+            alert("Ошибка при запросе оплаты. Попробуйте снова.");
         }
 
 
