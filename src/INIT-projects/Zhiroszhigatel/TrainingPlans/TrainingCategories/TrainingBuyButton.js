@@ -49,8 +49,11 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Проверяем, доступен ли API Telegram
-            if (window.Telegram && window.Telegram.WebApp) {
+            // Проверяем доступность Telegram WebApp API
+            console.log("📢 Checking Telegram WebApp API:", window.Telegram.WebApp);
+
+            // Проверяем, доступен ли requestBilling
+            if (window.Telegram?.WebApp?.requestBilling) {
                 console.log("✅ Telegram WebApp API доступен!");
 
                 window.Telegram.WebApp.requestBilling({
@@ -74,8 +77,8 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 });
 
             } else {
-                console.error("❌ Telegram WebApp API не найден!");
-                alert("Вы не в Telegram Mini App! Запустите приложение в Telegram.");
+                console.error("❌ requestBilling API не найден!");
+                alert("Вы не в Telegram Mini App или API не поддерживается. Проверьте поддержку в @BotFather.");
             }
 
         } catch (error) {
