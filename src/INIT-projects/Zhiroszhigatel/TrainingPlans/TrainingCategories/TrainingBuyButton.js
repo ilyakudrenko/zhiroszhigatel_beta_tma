@@ -36,10 +36,9 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            // Гарантированно получаем chat_id
-            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
-            if (!userId) {
-                alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
+            const user = getSession();
+            if (!user || !user.id) {
+                alert('Пользователь не авторизован!');
                 return;
             }
 
