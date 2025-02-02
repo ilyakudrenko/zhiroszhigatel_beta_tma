@@ -201,7 +201,7 @@ const RationsDays = () => {
                             marginRight: "10px",
                         }}
                     >
-                        <-
+                        ←
                     </Button>
                     <Button
                         mode="filled"
@@ -212,7 +212,7 @@ const RationsDays = () => {
                             marginLeft: "10px",
                         }}
                     >
-                        ->
+                        →
                     </Button>
                 </div>
             </List>
