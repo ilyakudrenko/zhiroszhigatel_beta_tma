@@ -47,7 +47,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             console.log(`📢 Отправка запроса на покупку: userId=${userId}, trainingId=${trainingId}, price=${price}`);
 
             // Отправляем команду /buy в чат боту
-            await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
+            await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
                 chat_id: userId,  // ✅ Используем userId
                 text: `/buy ${trainingId} ${price} ${title}`
             });
