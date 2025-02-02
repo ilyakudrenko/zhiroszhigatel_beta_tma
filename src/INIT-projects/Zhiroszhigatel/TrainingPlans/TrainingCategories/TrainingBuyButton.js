@@ -34,55 +34,24 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const handleButtonClick = async () => {
         try {
             handleClickHaptic('light');
-            const user = getSession();
+            const user = getSession(); // Получение текущей сессии пользователя
             if (!user || !user.id) {
                 alert('Пользователь не авторизован!');
                 return;
             }
 
-            // Проверяем, есть ли у пользователя этот план тренировок
-            const userPlans = await fetchUserTrainingPlan();
-            const isAlreadyOwned = userPlans.some(plan => plan.trainingPlanId === trainingId);
+            // Добавление тренировки пользователю
+            await addUserTraining(user.id, trainingId);
 
-            if (isAlreadyOwned) {
-                alert("Этот план тренировок уже приобретен.");
-                return;
-            }
+            // setIsGreen(true); // Успешно добавлено
+            setSnackbarVisible(true);
 
-            // Проверяем доступность Telegram WebApp API
-            console.log("📢 Checking Telegram WebApp API:", window.Telegram.WebApp);
-
-            // Проверяем, доступен ли requestBilling
-            if (window.Telegram?.WebApp?.requestBilling) {
-                console.log("✅ Telegram WebApp API доступен!");
-
-                window.Telegram.WebApp.requestBilling({
-                    currency: "USD",
-                    amount: price * 100, // Telegram принимает цену в центах
-                    description: title,
-                    payload: JSON.stringify({ user_id: user.id, training_id: trainingId }),
-                    success: async () => {
-                        console.log("✅ Оплата успешна!");
-                        await addUserTraining(user.id, trainingId);
-
-                        setSnackbarVisible(true);
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 1800);
-                    },
-                    error: (err) => {
-                        console.error("❌ Ошибка оплаты:", err);
-                        alert("Оплата не удалась, попробуйте снова.");
-                    }
-                });
-
-            } else {
-                console.error("❌ requestBilling API не найден!");
-                alert("Вы не в Telegram Mini App или API не поддерживается. Проверьте поддержку в @BotFather.");
-            }
+            setTimeout(() => {
+                window.location.reload(); // Reloads the current page
+            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
         } catch (error) {
-            alert('Ошибка при обработке покупки. Попробуйте позже.');
+            alert('Ошибка при добавлении тренировки. Попробуйте позже.');
             console.error(error);
         }
     };
