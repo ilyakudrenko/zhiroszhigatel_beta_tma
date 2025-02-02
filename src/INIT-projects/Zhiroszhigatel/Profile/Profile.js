@@ -134,12 +134,12 @@ const Profile = () => {
             <Section>
                 <Cell
                     before={<Icon32ProfileColoredSquare />}
-                    subtitle="Manage ads and payment settings"
+                    subtitle="упрввление оплатой и подписками"
                 >
-                    My Ads
+                    Кошелек
                 </Cell>
                 <ButtonCell before={<Icon28AddCircle />} onClick={() => navigate("/testingPage")}>
-                    Create Ad
+                   Добавить способ оплаты
                 </ButtonCell>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
