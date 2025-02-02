@@ -34,24 +34,52 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const handleButtonClick = async () => {
         try {
             handleClickHaptic('light');
-            const user = getSession(); // Получение текущей сессии пользователя
+            const user = getSession();
             if (!user || !user.id) {
                 alert('Пользователь не авторизован!');
                 return;
             }
 
-            // Добавление тренировки пользователю
-            await addUserTraining(user.id, trainingId);
+            // Проверяем, есть ли у пользователя этот план тренировок
+            const userPlans = await fetchUserTrainingPlan();
+            const isAlreadyOwned = userPlans.some(plan => plan.trainingPlanId === trainingId);
 
-            // setIsGreen(true); // Успешно добавлено
-            setSnackbarVisible(true);
+            if (isAlreadyOwned) {
+                alert("Этот план тренировок уже приобретен.");
+                return;
+            }
 
-            setTimeout(() => {
-                window.location.reload(); // Reloads the current page
-            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+            // Telegram Stars Payment API
+            if (window.Telegram && window.Telegram.WebApp) {
+                console.log("✅ Telegram WebApp API доступен!");
+
+                window.Telegram.WebApp.requestBilling({
+                    currency: "XTR", // Telegram Stars currency
+                    amount: price * 100, // Stars are handled in 100ths (500 = 5.00 Stars)
+                    description: title,
+                    payload: `purchase_${user.id}_${trainingId}_${Date.now()}`, // Unique payload
+                    success: async () => {
+                        console.log("✅ Оплата успешна!");
+                        await addUserTraining(user.id, trainingId);
+
+                        setSnackbarVisible(true);
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1800);
+                    },
+                    error: (err) => {
+                        console.error("❌ Ошибка оплаты:", err);
+                        alert("Оплата не удалась, попробуйте снова.");
+                    }
+                });
+
+            } else {
+                console.error("❌ Telegram WebApp API не найден!");
+                alert("Вы не в Telegram Mini App! Запустите приложение в Telegram.");
+            }
 
         } catch (error) {
-            alert('Ошибка при добавлении тренировки. Попробуйте позже.');
+            alert('Ошибка при обработке покупки. Попробуйте позже.');
             console.error(error);
         }
     };
@@ -80,7 +108,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                         backgroundColor: isGreen ? '#53E651' : '',
                     }}
                 >
-                    Купить: {price}
+                    Купить: {price} ⭐
                 </Button>
             </div>
 
