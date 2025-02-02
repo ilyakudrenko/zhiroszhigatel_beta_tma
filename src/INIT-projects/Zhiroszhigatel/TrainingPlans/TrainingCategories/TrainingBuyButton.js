@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
+import { AppRoot, Button, Snackbar } from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { getSession } from "../../../CustomComponents/UserSession/session";
@@ -12,9 +12,7 @@ const handleClickHaptic = (effect = 'light') => {
 
 const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const navigate = useNavigate();
-    const [isGreen, setIsGreen] = useState(false);
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
-
 
     const addUserTraining = async (userId, trainingId) => {
         const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
@@ -31,7 +29,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         }
     };
 
-    const handleButtonClick = async () => {
+    const handlePayment = async () => {
         try {
             handleClickHaptic('light');
             const user = getSession();
@@ -40,43 +38,38 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Проверяем, есть ли у пользователя этот план тренировок
-            const userPlans = await fetchUserTrainingPlan();
-            const isAlreadyOwned = userPlans.some(plan => plan.trainingPlanId === trainingId);
+            // Проверяем поддержку Telegram API
+            console.log("🚀 Checking Telegram WebApp API:", window.Telegram.WebApp);
+            console.log("🔍 Available methods:", Object.keys(window.Telegram.WebApp));
 
-            if (isAlreadyOwned) {
-                alert("Этот план тренировок уже приобретен.");
+            if (!window.Telegram.WebApp.requestBilling) {
+                console.error("❌ requestBilling API не найден!");
+                alert("Ваш Telegram не поддерживает оплату звездами! Обновите приложение.");
                 return;
             }
 
-            // Telegram Stars Payment API
-            if (window.Telegram && window.Telegram.WebApp) {
-                console.log("✅ Telegram WebApp API доступен!");
+            // Обновляем WebApp перед вызовом платежа
+            window.Telegram.WebApp.ready();
 
-                window.Telegram.WebApp.requestBilling({
-                    currency: "XTR", // Telegram Stars currency
-                    amount: price * 100, // Stars are handled in 100ths (500 = 5.00 Stars)
-                    description: title,
-                    payload: `purchase_${user.id}_${trainingId}_${Date.now()}`, // Unique payload
-                    success: async () => {
-                        console.log("✅ Оплата успешна!");
-                        await addUserTraining(user.id, trainingId);
-
-                        setSnackbarVisible(true);
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 1800);
-                    },
-                    error: (err) => {
-                        console.error("❌ Ошибка оплаты:", err);
-                        alert("Оплата не удалась, попробуйте снова.");
-                    }
-                });
-
-            } else {
-                console.error("❌ Telegram WebApp API не найден!");
-                alert("Вы не в Telegram Mini App! Запустите приложение в Telegram.");
-            }
+            // Запрос платежа звездами
+            window.Telegram.WebApp.requestBilling({
+                currency: "XTR", // Telegram Stars
+                amount: price * 100, // Сумма в центах (100 = 1 звезда)
+                description: title,
+                payload: `purchase_${user.id}_${trainingId}_${Date.now()}`,
+                success: async () => {
+                    console.log("✅ Оплата успешна!");
+                    await addUserTraining(user.id, trainingId);
+                    setSnackbarVisible(true);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1800);
+                },
+                error: (err) => {
+                    console.error("❌ Ошибка оплаты:", err);
+                    alert("Оплата не удалась, попробуйте снова.");
+                }
+            });
 
         } catch (error) {
             alert('Ошибка при обработке покупки. Попробуйте позже.');
@@ -98,32 +91,26 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 paddingBottom: '20px',
-                zIndex: 1000, // Ensure it’s on top of other elements
+                zIndex: 1000,
             }}>
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={handleButtonClick}
-                    style={{
-                        backgroundColor: isGreen ? '#53E651' : '',
-                    }}
+                    onClick={handlePayment}
                 >
-                    Купить: {price} ⭐
+                    Купить за: {price} ⭐
                 </Button>
             </div>
 
             {isSnackbarVisible && (
                 <Snackbar
-                    before={<INITProfileIcon/>}
+                    before={<INITProfileIcon />}
                     children={title}
-                    description="Добавлен в библиотеку(вы можите найти его в профиле)"
+                    description="Добавлен в библиотеку (вы можете найти его в профиле)"
                     duration={2000}
                     onClose={handleCloseSnackbar}
-                    style={{
-                        zIndex: 1000, // Ensure it’s on top of other elements
-                    }}
-                >
-                </Snackbar>
+                    style={{ zIndex: 1000 }}
+                />
             )}
         </AppRoot>
     );
