@@ -40,15 +40,48 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Добавление тренировки пользователю
-            await addUserTraining(user.id, trainingId);
+            // Проверяем, есть ли у пользователя этот план тренировок
+            const userPlans = await fetchUserTrainingPlan();
+            const isAlreadyOwned = userPlans.some(plan => plan.trainingPlanId === trainingId);
 
-            // setIsGreen(true); // Успешно добавлено
-            setSnackbarVisible(true);
+            if (isAlreadyOwned) {
+                alert("Этот план тренировок уже приобретен.");
+                return;
+            }
 
-            setTimeout(() => {
-                window.location.reload(); // Reloads the current page
-            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+            // Telegram Stars Payment API
+            window.Telegram.WebApp.requestBilling({
+                price: price * 100, // Цена в центах (например, 1$ = 100)
+                description: `Покупка тренировочного плана: ${title}`,
+                payload: JSON.stringify({ user_id: user.id, training_id: trainingId }),
+
+                success: async (response) => {
+                    console.log("Оплата прошла успешно!", response);
+
+                    // Добавляем план пользователю после оплаты
+                    await addUserTraining(user.id, trainingId);
+
+                    setSnackbarVisible(true);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1800);
+                },
+
+                error: (err) => {
+                    console.error("Ошибка оплаты:", err);
+                    alert("Оплата не удалась, попробуйте снова.");
+                }
+            });
+
+            // // Добавление тренировки пользователю
+            // await addUserTraining(user.id, trainingId);
+            //
+            // // setIsGreen(true); // Успешно добавлено
+            // setSnackbarVisible(true);
+            //
+            // setTimeout(() => {
+            //     window.location.reload(); // Reloads the current page
+            // }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
         } catch (error) {
             alert('Ошибка при добавлении тренировки. Попробуйте позже.');
