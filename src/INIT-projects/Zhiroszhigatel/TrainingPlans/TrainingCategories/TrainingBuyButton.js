@@ -43,6 +43,14 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
+            // **ЛОГИРУЕМ ЗАПРОС В КОНСОЛЬ**
+            console.log("📤 Отправляем запрос боту: ", {
+                chat_id: user.id,
+                trainingId,
+                price,
+                title
+            });
+
             // Отправляем запрос боту
             const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
                 chat_id: userId, // ✅ Теперь chat_id передается правильно
