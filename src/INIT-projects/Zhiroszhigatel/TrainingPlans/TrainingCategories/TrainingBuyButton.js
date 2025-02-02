@@ -36,34 +36,28 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            // Получаем `userId` из Telegram Mini App
             const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
             if (!userId) {
                 alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
                 return;
             }
 
-            const buyCommand = `/buy ${trainingId} ${price} ${title}`;
+            console.log(`📤 Отправка данных боту: UserID=${userId}, TrainingID=${trainingId}, Цена=${price}, Название=${title}`);
 
-            console.log(`📩 Отправка запроса: ${buyCommand}`);
-
-            // Отправляем команду боту через Telegram API
-            const response = await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                chat_id: userId, // ✅ Передаем chat_id
-                text: buyCommand // ✅ Передаем команду для бота
+            // Mini App отправляет данные как текстовое сообщение в бот
+            await axios.get(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage`, {
+                params: {
+                    chat_id: userId,
+                    text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
+                }
             });
 
-            if (response.data.ok) {
-                console.log("✅ Запрос на оплату успешно отправлен боту!");
-                setSnackbarVisible(true);
-            } else {
-                console.error("❌ Ошибка отправки запроса:", response.data);
-                alert("Ошибка при запросе оплаты!");
-            }
+            console.log("✅ Запрос на оплату отправлен в бот!");
+            setSnackbarVisible(true);
 
         } catch (error) {
-            console.error("❌ Ошибка при запросе оплаты:", error);
-            alert("Ошибка при запросе оплаты, попробуйте снова.");
+            console.error("❌ Ошибка при отправке запроса:", error);
+            alert("Ошибка при отправке запроса, попробуйте снова.");
         }
 
 
