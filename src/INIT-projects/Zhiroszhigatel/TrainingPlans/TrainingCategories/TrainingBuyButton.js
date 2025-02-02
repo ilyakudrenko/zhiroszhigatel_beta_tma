@@ -44,7 +44,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             }
 
             // Отправляем запрос боту
-            const response = await axios.post(`https://api.telegram.org/bot7761056672:AAEe8gPZjn3L47D-nrQvUOtAA3nPNnMVfzM/sendMessage`, {
+            const response = await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
                 chat_id: userId, // ✅ Теперь chat_id передается правильно
                 text: `/buy ${trainingId} ${price} ${title}`
             });
