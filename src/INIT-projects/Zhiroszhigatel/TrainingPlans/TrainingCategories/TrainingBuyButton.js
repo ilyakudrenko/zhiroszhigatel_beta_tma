@@ -43,10 +43,14 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
+            const buyCommand = `/buy ${trainingId} ${price} ${title}`;
+
+            console.log(`📩 Отправка запроса: ${buyCommand}`);
+
             // Отправляем команду боту через Telegram API
             const response = await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
                 chat_id: userId, // ✅ Передаем chat_id
-                text: `/buy ${trainingId} ${price} ${title}` // ✅ Передаем команду для бота
+                text: buyCommand // ✅ Передаем команду для бота
             });
 
             if (response.data.ok) {
