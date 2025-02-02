@@ -36,17 +36,17 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            // Гарантированно получаем chat_id
+            // Получаем `userId` из Telegram Mini App
             const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
             if (!userId) {
                 alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
                 return;
             }
 
-            // Отправляем запрос боту
+            // Отправляем команду боту через Telegram API
             const response = await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                chat_id: userId, // ✅ Теперь chat_id передается правильно
-                text: `/buy ${trainingId} ${price} ${title}`
+                chat_id: userId, // ✅ Передаем chat_id
+                text: `/buy ${trainingId} ${price} ${title}` // ✅ Передаем команду для бота
             });
 
             if (response.data.ok) {
