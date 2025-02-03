@@ -74,7 +74,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                     payload: JSON.stringify({ user_id: userId, training_id: trainingId }), // Уникальный payload
                     provider_token: "", // Оставляем пустым (для Stars)
                     currency: "XTR", // Валюта (Telegram Stars)
-                    prices: JSON.stringify([{ label: title, amount: price * 100 }]) // Цена в Stars
+                    prices: JSON.stringify([{ label: title, amount: price }]) // Цена в Stars
                 }
             });
 
