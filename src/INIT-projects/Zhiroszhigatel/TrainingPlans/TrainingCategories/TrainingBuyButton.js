@@ -93,23 +93,21 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
 
     useEffect(() => {
         // Отслеживаем событие успешной оплаты
-        window.Telegram.WebApp.onEvent("invoiceClosed", async (event) => {
+        const handleInvoiceClosed = async (event) => {
             if (event.status === "paid") {
                 console.log("✅ Оплата успешна! Добавляем тренировку в базу данных...");
 
                 try {
-                     const user = getSession(); // Получение текущей сессии пользователя
-                        if (!user || !user.id) {
-                            alert('Пользователь не авторизован!');
-                           return;
+                    const user = getSession();
+                    if (!user || !user.id) {
+                        alert("Ошибка: пользователь не найден.");
+                        return;
                     }
 
                     // Добавление тренировки пользователю
                     await addUserTraining(user.id, trainingId);
 
-                    console.log("✅ Тренировка добавлена:", response.data);
-                    alert("Тренировка успешно добавлена в вашу библиотеку!");
-
+                    alert("✅ Тренировка успешно добавлена в вашу библиотеку!");
                 } catch (error) {
                     console.error("❌ Ошибка при добавлении тренировки:", error);
                     alert("Ошибка при добавлении тренировки. Попробуйте позже.");
@@ -117,13 +115,14 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             } else {
                 console.warn("❌ Оплата не была завершена.");
             }
-        });
+        };
+
+        window.Telegram.WebApp.onEvent("invoiceClosed", handleInvoiceClosed);
 
         return () => {
-            // Очищаем обработчик при размонтировании компонента
-            window.Telegram.WebApp.offEvent("invoiceClosed");
+            window.Telegram.WebApp.offEvent("invoiceClosed", handleInvoiceClosed);
         };
-    }, []);
+    }, [trainingId]); // Добавил trainingId в зависимости, чтобы избежать undefined
 
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
