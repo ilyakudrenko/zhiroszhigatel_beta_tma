@@ -35,35 +35,47 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
 
         try {
             handleClickHaptic('light');
+            const user = getSession();
 
-            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
-            if (!userId) {
-                alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
+            if (!user || !user.id) {
+                alert('Пользователь не авторизован!');
                 return;
             }
 
-            // Формируем данные платежа
-            const paymentData = {
-                user_id: userId,
-                training_id: trainingId,
-                price: price,
-                title: title
-            };
+            if (window.Telegram && window.Telegram.WebApp) {
+                console.log("✅ Telegram WebApp API доступен!");
 
-            // Mini App отправляет данные как текстовое сообщение в бот
-            await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                params: {
-                    chat_id: userId,
-                    text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
-                }
-            });
+                // Открываем платежное окно Telegram Stars
+                window.Telegram.WebApp.requestBilling({
+                    currency: "XTR", // Оплата звездами
+                    amount: price * 100, // Количество звезд (перевод в центы)
+                    description: `Покупка: ${title}`,
+                    payload: JSON.stringify({ user_id: user.id, training_id: trainingId }),
+                    success: async () => {
+                        console.log("✅ Оплата успешна!");
 
-            console.log("✅ Запрос на оплату отправлен в бот!");
-            setSnackbarVisible(true);
+                        // Отправляем подтверждение боту
+                        await axios.post(`https://YOUR_BOT_API_URL/payment-success`, {
+                            user_id: user.id,
+                            training_id: trainingId,
+                        });
+
+                        setSnackbarVisible(true);
+                    },
+                    error: (err) => {
+                        console.error("❌ Ошибка оплаты:", err);
+                        alert("Оплата не удалась, попробуйте снова.");
+                    }
+                });
+
+            } else {
+                console.error("❌ Telegram WebApp API не найден!");
+                alert("Вы не в Telegram Mini App! Запустите приложение в Telegram.");
+            }
 
         } catch (error) {
-            console.error("❌ Ошибка при отправке запроса:", error);
-            alert("Ошибка при отправке запроса, попробуйте снова.");
+            alert('Ошибка при обработке покупки. Попробуйте позже.');
+            console.error(error);
         }
 
 
