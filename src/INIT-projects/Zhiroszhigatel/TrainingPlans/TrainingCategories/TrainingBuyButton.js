@@ -42,23 +42,15 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Формируем данные платежа
-            const paymentData = {
+            // Отправляем данные платежа в API бота
+            await axios.post(`https://your-server.com/request-payment`, {
                 user_id: userId,
                 training_id: trainingId,
                 price: price,
                 title: title
-            };
-
-            // Mini App отправляет данные как текстовое сообщение в бот
-            await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                params: {
-                    chat_id: userId,
-                    text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
-                }
             });
 
-            console.log("✅ Запрос на оплату отправлен в бот!");
+            console.log("✅ Запрос на оплату отправлен!");
             setSnackbarVisible(true);
 
         } catch (error) {
