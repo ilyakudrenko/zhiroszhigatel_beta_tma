@@ -43,7 +43,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
             }
 
             // Отправляем данные платежа в API бота
-            await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/request-payment`, {
+            await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
                 user_id: userId,
                 training_id: trainingId,
                 price: price,
