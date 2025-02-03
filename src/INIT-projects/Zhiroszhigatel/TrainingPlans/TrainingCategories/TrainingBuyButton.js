@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -56,8 +56,9 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     //     }
     // };
 
-    const helloButtonClick = async () => {
+    const handleBuyClick = async () => {
         try {
+            handleClickHaptic('light');
             // Получаем user_id из Telegram Mini App
             const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
             if (!userId) {
@@ -90,6 +91,39 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         }
     };
 
+    useEffect(() => {
+        // Отслеживаем событие успешной оплаты
+        window.Telegram.WebApp.onEvent("invoiceClosed", async (event) => {
+            if (event.status === "paid") {
+                console.log("✅ Оплата успешна! Добавляем тренировку в базу данных...");
+
+                try {
+                     const user = getSession(); // Получение текущей сессии пользователя
+                        if (!user || !user.id) {
+                            alert('Пользователь не авторизован!');
+                           return;
+                    }
+
+                    // Добавление тренировки пользователю
+                    await addUserTraining(user.id, trainingId);
+
+                    console.log("✅ Тренировка добавлена:", response.data);
+                    alert("Тренировка успешно добавлена в вашу библиотеку!");
+
+                } catch (error) {
+                    console.error("❌ Ошибка при добавлении тренировки:", error);
+                    alert("Ошибка при добавлении тренировки. Попробуйте позже.");
+                }
+            } else {
+                console.warn("❌ Оплата не была завершена.");
+            }
+        });
+
+        return () => {
+            // Очищаем обработчик при размонтировании компонента
+            window.Telegram.WebApp.offEvent("invoiceClosed");
+        };
+    }, []);
 
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
@@ -110,7 +144,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={helloButtonClick}
+                    onClick={handleBuyClick}
                     style={{
                         backgroundColor: isGreen ? '#53E651' : '',
                     }}
