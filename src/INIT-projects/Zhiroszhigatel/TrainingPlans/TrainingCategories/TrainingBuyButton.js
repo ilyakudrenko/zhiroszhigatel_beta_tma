@@ -81,6 +81,16 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         // }
     };
 
+    const helloButtonClick = async () => {
+        try {
+            window.Telegram.WebApp.sendData("HELLO_BUTTON");
+            console.log("✅ Запрос на отправку 'Hello world' отправлен!");
+        } catch (error) {
+            console.error("❌ Ошибка при отправке запроса:", error);
+        }
+    };
+
+
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
     };
@@ -100,7 +110,7 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={handleButtonClick}
+                    onClick={helloButtonClick}
                     style={{
                         backgroundColor: isGreen ? '#53E651' : '',
                     }}
