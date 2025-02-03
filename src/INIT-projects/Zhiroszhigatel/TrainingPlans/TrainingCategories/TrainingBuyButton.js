@@ -42,15 +42,13 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 return;
             }
 
-            // Отправляем данные платежа в API бота
+            // ✅ Отправляем запрос в API бота
             await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                user_id: userId,
-                training_id: trainingId,
-                price: price,
-                title: title
+                chat_id: userId,
+                text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
             });
 
-            console.log("✅ Запрос на оплату отправлен!");
+            console.log("✅ Запрос на оплату отправлен в бот!");
             setSnackbarVisible(true);
 
         } catch (error) {
