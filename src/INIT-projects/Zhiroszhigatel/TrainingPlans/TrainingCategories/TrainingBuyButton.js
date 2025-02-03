@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -59,20 +59,35 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
     const handleBuyClick = async () => {
         try {
             handleClickHaptic('light');
-            // Получаем user_id из Telegram Mini App
-            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
-            if (!userId) {
-                alert("Ошибка: Не удалось получить user ID. Запустите через Telegram.");
+
+            // Получаем user_id из сессии (из локального хранилища или API)
+            const user = getSession();
+            if (!user || !user.id) {
+                alert("Ошибка: пользователь не найден.");
                 return;
             }
+
+            // Получаем Telegram ID из Telegram WebApp
+            const telegramId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
+            if (!telegramId) {
+                alert("Ошибка: Не удалось получить Telegram ID. Запустите через Telegram.");
+                return;
+            }
+
+            // Формируем payload с двумя ID
+            const payload = {
+                telegram_id: telegramId,
+                user_id: user.id, // ID пользователя из базы данных
+                training_id: trainingId
+            };
 
             // Отправляем GET-запрос боту (через Telegram API) для отправки инвойса
             const response = await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendInvoice`, {
                 params: {
-                    chat_id: userId, // Кому отправлять счет
+                    chat_id: telegramId, // Отправляем инвойс по Telegram ID
                     title: title, // Заголовок платежа
                     description: "Доступ к эксклюзивному плану тренировок", // Описание
-                    payload: JSON.stringify({ user_id: userId, training_id: trainingId }), // Уникальный payload
+                    payload: JSON.stringify(payload), // Теперь передаем два ID
                     provider_token: "", // Оставляем пустым (для Stars)
                     currency: "XTR", // Валюта (Telegram Stars)
                     prices: JSON.stringify([{ label: title, amount: price }]) // Цена в Stars
@@ -91,38 +106,6 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         }
     };
 
-    useEffect(() => {
-        // Отслеживаем событие успешной оплаты
-        const handleInvoiceClosed = async (event) => {
-            if (event.status === "paid") {
-                console.log("✅ Оплата успешна! Добавляем тренировку в базу данных...");
-
-                try {
-                    const user = getSession();
-                    if (!user || !user.id) {
-                        alert("Ошибка: пользователь не найден.");
-                        return;
-                    }
-
-                    // Добавление тренировки пользователю
-                    await addUserTraining(user.id, trainingId);
-
-                    alert("✅ Тренировка успешно добавлена в вашу библиотеку!");
-                } catch (error) {
-                    console.error("❌ Ошибка при добавлении тренировки:", error);
-                    alert("Ошибка при добавлении тренировки. Попробуйте позже.");
-                }
-            } else {
-                console.warn("❌ Оплата не была завершена.");
-            }
-        };
-
-        window.Telegram.WebApp.onEvent("invoiceClosed", handleInvoiceClosed);
-
-        return () => {
-            window.Telegram.WebApp.offEvent("invoiceClosed", handleInvoiceClosed);
-        };
-    }, [trainingId]); // Добавил trainingId в зависимости, чтобы избежать undefined
 
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
