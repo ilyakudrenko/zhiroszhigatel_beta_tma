@@ -31,62 +31,62 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
         }
     };
 
-    const handleButtonClick = async () => {
-
-        try {
-            handleClickHaptic('light');
-
-            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
-            if (!userId) {
-                alert("Ошибка: Telegram user ID не найден. Запустите через Telegram.");
-                return;
-            }
-
-            // ✅ Отправляем запрос в API бота
-            await axios.post(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendMessage`, {
-                chat_id: userId,
-                text: `PAYMENT_REQUEST|${trainingId}|${price}|${title}`
-            });
-
-            console.log("✅ Запрос на оплату отправлен в бот!");
-            setSnackbarVisible(true);
-
-        } catch (error) {
-            console.error("❌ Ошибка при отправке запроса:", error);
-            alert("Ошибка при отправке запроса, попробуйте снова.");
-        }
-
-
-        // try {
-        //     handleClickHaptic('light');
-        //     const user = getSession(); // Получение текущей сессии пользователя
-        //     if (!user || !user.id) {
-        //         alert('Пользователь не авторизован!');
-        //         return;
-        //     }
-        //
-        //     // Добавление тренировки пользователю
-        //     await addUserTraining(user.id, trainingId);
-        //
-        //     // setIsGreen(true); // Успешно добавлено
-        //     setSnackbarVisible(true);
-        //
-        //     setTimeout(() => {
-        //         window.location.reload(); // Reloads the current page
-        //     }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
-        //
-        // } catch (error) {
-        //     alert('Ошибка при добавлении тренировки. Попробуйте позже.');
-        //     console.error(error);
-        // }
-    };
+    // const handleButtonClick = async () => {
+    //     try {
+    //         handleClickHaptic('light');
+    //         const user = getSession(); // Получение текущей сессии пользователя
+    //         if (!user || !user.id) {
+    //             alert('Пользователь не авторизован!');
+    //             return;
+    //         }
+    //
+    //         // Добавление тренировки пользователю
+    //         await addUserTraining(user.id, trainingId);
+    //
+    //         // setIsGreen(true); // Успешно добавлено
+    //         setSnackbarVisible(true);
+    //
+    //         setTimeout(() => {
+    //             window.location.reload(); // Reloads the current page
+    //         }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+    //
+    //     } catch (error) {
+    //         alert('Ошибка при добавлении тренировки. Попробуйте позже.');
+    //         console.error(error);
+    //     }
+    // };
 
     const helloButtonClick = async () => {
         try {
-            window.Telegram.WebApp.sendData("HELLO_BUTTON");
-            console.log("✅ Запрос на отправку 'Hello world' отправлен!");
+            // Получаем user_id из Telegram Mini App
+            const userId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
+            if (!userId) {
+                alert("Ошибка: Не удалось получить user ID. Запустите через Telegram.");
+                return;
+            }
+
+            // Отправляем GET-запрос боту (через Telegram API) для отправки инвойса
+            const response = await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendInvoice`, {
+                params: {
+                    chat_id: userId, // Кому отправлять счет
+                    title: title, // Заголовок платежа
+                    description: "Доступ к эксклюзивному плану тренировок", // Описание
+                    payload: JSON.stringify({ user_id: userId, training_id: trainingId }), // Уникальный payload
+                    provider_token: "", // Оставляем пустым (для Stars)
+                    currency: "XTR", // Валюта (Telegram Stars)
+                    prices: JSON.stringify([{ label: title, amount: price * 100 }]) // Цена в Stars
+                }
+            });
+
+            if (response.data.ok) {
+                console.log("✅ Инвойс на оплату успешно отправлен!");
+            } else {
+                console.error("❌ Ошибка запроса к боту:", response.data);
+                alert("Ошибка при отправке инвойса!");
+            }
         } catch (error) {
             console.error("❌ Ошибка при отправке запроса:", error);
+            alert("Ошибка при запросе платежа, попробуйте снова.");
         }
     };
 
