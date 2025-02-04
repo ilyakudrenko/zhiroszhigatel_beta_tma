@@ -19,6 +19,7 @@ const CookieTest = () => {
                 window.Telegram.WebApp.initData);
 
         // POST the initData to the backend.
+        console.log(initData);
         axios
             .post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData })
             .then((response) => {
