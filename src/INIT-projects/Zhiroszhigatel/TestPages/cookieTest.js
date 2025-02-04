@@ -25,9 +25,12 @@ const CookieTest = () => {
             .then((response) => {
                 // Save the response from the server (e.g., sessionID, user info, message)
                 setLoginResponse(response.data);
+                console.log("🟢 Login Response Headers:", response.headers);
+                console.log("🟢 Login Response Data:", response.data);
             })
             .catch((err) => {
                 // If there's an error (or validation fails), capture the error message.
+                console.error("🔴 Login Error:", err.response?.data || err.message);
                 setError(err.response?.data?.error || err.message);
             });
     }, []);
