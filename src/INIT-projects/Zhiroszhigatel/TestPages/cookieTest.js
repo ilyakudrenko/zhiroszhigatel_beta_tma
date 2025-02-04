@@ -21,7 +21,7 @@ const CookieTest = () => {
         // POST the initData to the backend.
         console.log(initData);
         axios
-            .post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData })
+            .post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData },{withCredentials: true })
             .then((response) => {
                 // Save the response from the server (e.g., sessionID, user info, message)
                 setLoginResponse(response.data);
