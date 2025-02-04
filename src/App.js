@@ -20,7 +20,7 @@ import TrainingPlanTest from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingP
 import ColorTestPage from "./INIT-projects/Zhiroszhigatel/TestPages/colorTesting";
 import GymLessons from "./INIT-projects/Zhiroszhigatel/TrainingPlans/TrainingCategories/GymLessons";
 import TrainingPlanTesting from "./INIT-projects/Zhiroszhigatel/TestPages/TrainingPlanTesting";
-
+import CookieTest from "./INIT-projects/Zhiroszhigatel/TestPages/cookieTest";
 
 const App = () => {
     const location = useLocation();
@@ -84,7 +84,7 @@ const App = () => {
 
                     {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}
                     {/*<Route path="/testingPage" element={<TrainingPlanTesting />} />*/}
-                    {/*<Route path="/testingPage" element={<ColorTestPage />} />*/}
+                    <Route path="/testingPage" element={<CookieTest />} />
                 </Routes>
         )
     );
