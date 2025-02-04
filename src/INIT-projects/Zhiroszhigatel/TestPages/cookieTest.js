@@ -16,8 +16,7 @@ const CookieTest = () => {
         const initData =
             (window.Telegram &&
                 window.Telegram.WebApp &&
-                window.Telegram.WebApp.initData) ||
-            "auth_date=1680000000&query_id=ABC123&user=%7B%22id%22%3A12345%2C%22username%22%3A%22testuser%22%7D&hash=YOUR_COMPUTED_HASH";
+                window.Telegram.WebApp.initData);
 
         // POST the initData to the backend.
         axios
