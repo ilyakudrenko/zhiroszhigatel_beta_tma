@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import INITBackButton from "../../../Hooks/BackButton";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const CookieTest = () => {
     const [loginResponse, setLoginResponse] = useState(null);
     const [error, setError] = useState(null);
-
+    INITBackButton();
     useEffect(() => {
         // Telegram WebApp typically injects the initData string.
         // For example, you can access it via:
