@@ -114,9 +114,9 @@ const HomePage = () => {
 
     return (
         <AppRoot
-            style={{
-                backgroundColor: 'var(--tgui--secondary_bg_color)',
-            }}
+            // style={{
+            //     backgroundColor: 'var(--tgui--secondary_bg_color)',
+            // }}
         >
             {/*<INITHelp />*/}
                 <Section
