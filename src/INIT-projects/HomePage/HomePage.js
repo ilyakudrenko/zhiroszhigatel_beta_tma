@@ -48,6 +48,7 @@ const HomePage = () => {
     const [mealPlan, setMealPlan] = useState(null);
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [userTrainingPlans, setUserTrainingPlans] = useState([]); // Храним список всех купленных планов
+    const [textColor, setTextColor] = useState("#FFFFFF");
 
 
     useEffect(() => {
@@ -78,6 +79,11 @@ const HomePage = () => {
         };
 
         initialize();
+
+        if (window.Telegram?.WebApp?.themeParams?.text_color) {
+            setTextColor(window.Telegram.WebApp.themeParams.text_color);
+        }
+
     }, []);
 
     if (loading)
@@ -117,7 +123,7 @@ const HomePage = () => {
                 >
                     <Cell
                         after={<Icon24ChevronRight/>}
-                        before={<INITProfileIcon/>}
+                        before={<INITProfileIcon color={textColor} />}
                         onClick={() => {
                             handleClickHaptic('light');
                             navigate("/profile")}}
@@ -126,7 +132,7 @@ const HomePage = () => {
                     </Cell>
                     <Cell
                         after={<Icon24ChevronRight/>}
-                        before={<INITMessageBadgeIcon color="white"/>}
+                        before={<INITMessageBadgeIcon color={textColor} />}
                         onClick={() => {
                             handleClickHaptic('light');
                             navigate("/support")}}

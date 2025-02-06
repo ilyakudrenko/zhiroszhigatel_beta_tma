@@ -31,8 +31,8 @@ const App = () => {
                 <Routes>
                     {/*<Route path="/" element={<TestPage />} />*/}
                     {/*<Route path="/" element={<Calculator />} />*/}
-                    {/*<Route path="/" element={<HomePage />} />*/}
-                    <Route path="/" element={<CookieTest />} />
+                    <Route path="/" element={<HomePage />} />
+                    {/*<Route path="/" element={<CookieTest />} />*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
@@ -62,8 +62,8 @@ const App = () => {
                 <Routes>
                     {/*<Route path="/" element={<TestPage />} />*/}
                     {/*<Route path="/" element={<Calculator />} />*/}
-                    {/*<Route path="/" element={<HomePage />}/>*/}
-                    <Route path="/" element={<CookieTest />}/>
+                    <Route path="/" element={<HomePage />}/>
+                    {/*<Route path="/" element={<CookieTest />}/>*/}
                     <Route path="/item" element={<ItemCoursePromo />} />
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
