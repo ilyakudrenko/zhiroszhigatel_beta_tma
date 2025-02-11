@@ -18,7 +18,8 @@ const TestJWT = () => {
         console.log("🔹 initData from Telegram:", initData);
 
         axios.post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData }, {
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
         })
             .then((response) => {
                 setLoginResponse(response.data);
