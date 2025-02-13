@@ -30,10 +30,10 @@ const TestJWTprotected = () => {
     };
 
     const testProtectedRoute = () => {
-        if (!token) {
-            setError("No token available. Please login first.");
-            return;
-        }
+        // if (!token) {
+        //     setError("No token available. Please login first.");
+        //     return;
+        // }
 
         axios.get(`${BACKEND_PUBLIC_URL}/protected-route`, {
             headers: { 'Authorization': `Bearer ${token}` }
