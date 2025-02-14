@@ -24,6 +24,7 @@ import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
+import useUserSession from "../CustomComponents/userSessionJWT/session";
 
 
 const roundedCellStyle = {
@@ -50,12 +51,16 @@ const HomePage = () => {
     const [userTrainingPlans, setUserTrainingPlans] = useState([]); // Храним список всех купленных планов
     const [textColor, setTextColor] = useState("#FFFFFF");
 
+    //JWT management
+    const { userSession, loadingUser,logoutUser} = useUserSession();
+
+
 
     useEffect(() => {
         const initialize = async () => {
             try {
                 // await startSession(); // Start the session
-                await initializeUserSession();
+                // await initializeUserSession();
                 const guides = await fetchAllGuides();
                 setFreeGuides(guides);
 
@@ -86,7 +91,7 @@ const HomePage = () => {
 
     }, []);
 
-    if (loading)
+    if (loading || loadingUser)
         return (
             <AppRoot>
                 <div
@@ -119,6 +124,7 @@ const HomePage = () => {
             // }}
         >
             {/*<INITHelp />*/}
+            <p>Welcome {userSession.token}</p>
                 <Section
                 >
                     <Cell
