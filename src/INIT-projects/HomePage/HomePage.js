@@ -60,7 +60,7 @@ const HomePage = () => {
         const initialize = async () => {
             try {
                 // await startSession(); // Start the session
-                // await initializeUserSession();
+                await initializeUserSession();
                 const guides = await fetchAllGuides();
                 setFreeGuides(guides);
 
