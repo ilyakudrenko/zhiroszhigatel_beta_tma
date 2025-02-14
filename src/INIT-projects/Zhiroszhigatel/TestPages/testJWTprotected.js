@@ -1,69 +1,64 @@
 import React, { useState } from "react";
-import axios from "axios";
 import INITBackButton from "../../../Hooks/BackButton";
-
-const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+import useUserSession from "../../CustomComponents/userSessionJWT/session";
 
 const TestJWTprotected = () => {
-    const [loginResponse, setLoginResponse] = useState(null);
+    const { userSession, loading, logoutUser } = useUserSession();
+    const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
-    const [token, setToken] = useState(null);
 
     INITBackButton();
 
-    const handleLogin = () => {
-        const initData = window.Telegram?.WebApp?.initData || "";
-        console.log("🔹 initData from Telegram:", initData);
+    const testProtectedRoute = async () => {
+        if (!userSession?.token) {
+            setError("No active session. Please log in first.");
+            return;
+        }
 
-        axios.post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData }, {
-            headers: { 'Content-Type': 'application/json' }
-        })
-            .then((response) => {
-                setLoginResponse(response.data);
-                setToken(response.data.token);
-                console.log("🟢 Login Response Data:", response.data);
-            })
-            .catch((err) => {
-                console.error("🔴 Login Error:", err.response?.data || err.message);
-                setError(err.response?.data?.error || err.message);
+        try {
+            const res = await fetch(`${process.env.REACT_APP_BACKEND_PUBLIC_URL}/protected-route`, {
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${userSession.token}`,
+                    'Content-Type': 'application/json'
+                }
             });
+
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.error || "Unknown error");
+            }
+
+            setResponse(data);
+        } catch (err) {
+            setError(err.message);
+        }
     };
 
-    const testProtectedRoute = () => {
-        // if (!token) {
-        //     setError("No token available. Please login first.");
-        //     return;
-        // }
-
-        axios.get(`${BACKEND_PUBLIC_URL}/protected-route`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-            .then((response) => {
-                console.log("🟢 Protected Route Response:", response.data);
-                setLoginResponse(response.data);
-            })
-            .catch((err) => {
-                console.error("🔴 Protected Route Error:", err.response?.data || err.message);
-                setError(err.response?.data?.error || err.message);
-            });
-    };
+    if (loading) {
+        return <p>Loading user session...</p>;
+    }
 
     return (
         <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
-            <h1>JWT Authentication Test</h1>
-            <button onClick={handleLogin} style={{ marginRight: "10px", padding: "10px" }}>Login</button>
-            <button onClick={testProtectedRoute} style={{ padding: "10px" }}>Test Protected Route</button>
-            {loginResponse ? (
+            <h1>JWT Session Test</h1>
+            {userSession ? (
+                <>
+                    <p>Welcome, {userSession.first_name}!</p>
+                    <p>Token: {userSession.token}</p>
+                    <button onClick={testProtectedRoute} style={{ padding: "10px", marginTop: "10px" }}>Test Protected Route</button>
+                    <button onClick={logoutUser} style={{ padding: "10px", marginTop: "10px", marginLeft: "10px" }}>Logout</button>
+                </>
+            ) : (
+                <p>No active session. Please log in via Telegram.</p>
+            )}
+            {response && (
                 <div>
-                    <h2>Response</h2>
-                    <pre>{JSON.stringify(loginResponse, null, 2)}</pre>
+                    <h2>Protected Route Response</h2>
+                    <pre>{JSON.stringify(response, null, 2)}</pre>
                 </div>
-            ) : error ? (
-                <div style={{ color: "red" }}>
-                    <h2>Error</h2>
-                    <p>{error}</p>
-                </div>
-            ) : null}
+            )}
+            {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
 };
