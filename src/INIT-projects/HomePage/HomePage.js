@@ -63,7 +63,7 @@ const HomePage = () => {
                 console.log("🔷Initializing🔷");
                 await initializeUserSession();
                 console.log("🔷 Old session 🔷")
-                console.log("🔷JWT created🔷", userSession.token);
+                console.log("🔷JWT created🔷");
                 const guides = await fetchAllGuidesJWT();
                 setFreeGuides(guides);
                 console.log("🔷Guides logged🔷", guides);
