@@ -46,7 +46,7 @@ const useUserSession = () => {
                 sessionStorage.setItem("userSession", JSON.stringify(sessionData));
                 setUserSession(sessionData);
             }
-            console.log("🟪 Authentication was successfully successfully 🟪");
+            console.log("🟪 Authentication was successfully 🟪");
         } catch (error) {
             console.error("User authentication failed:", error);
         } finally {

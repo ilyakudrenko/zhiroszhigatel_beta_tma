@@ -63,10 +63,6 @@ const HomePage = () => {
                 console.log("🔷Initializing🔷");
                 await initializeUserSession();
                 console.log("🔷 Old session 🔷")
-
-                if(!userSession || !userSession.token){
-                    throw new Error("User is not authenticated with JWT");
-                }
                 console.log("🔷JWT created🔷", userSession.token);
                 const guides = await fetchAllGuidesJWT();
                 setFreeGuides(guides);
