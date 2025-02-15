@@ -14,7 +14,7 @@ import INITBackButton from "../../../Hooks/BackButton";
 import { Spinner } from "@telegram-apps/telegram-ui";
 import {getSession} from "../../CustomComponents/UserSession/session";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
-import fetchUserLibrary from "../../CustomComponents/UserSession/fetchUserLibrary";
+import fetchUserLibrary from "../../CustomComponents/userSessionJWT/fetchUserLibraryJWT";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 import {useNavigate} from "react-router-dom";
