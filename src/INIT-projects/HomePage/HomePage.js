@@ -60,27 +60,30 @@ const HomePage = () => {
         const initialize = async () => {
             try {
                 // await startSession(); // Start the session
+                console.log("🔷Initializing🔷");
                 await initializeUserSession();
                 if(!userSession || !userSession.token){
                     throw new Error("User is not authenticated with JWT");
                 }
+                console.log("🔷JWT created🔷", userSession.token);
                 const guides = await fetchAllGuidesJWT();
                 setFreeGuides(guides);
-
+                console.log("🔷Guides logged🔷", guides);
                 // Fetch user's meal plan
                 const userMealPlan = await fetchUserMealPlan();
                 setMealPlan(userMealPlan?.[0]);
-
+                console.log("🔷MealPlan logged🔷", userMealPlan);
                 // Fetch training plans
                 const plans = await fetchAllTrainingPlans();
                 setTrainingPlans(plans);
+                console.log("🔷Plans logged🔷", plans);
 
                 // Получаем все планы тренировок пользователя
                 const userTrainings = await fetchUserTrainingPlan();
                 setUserTrainingPlans(userTrainings || []); // Если нет данных, передаем пустой массив
-
+                console.log("🔷UserTraining  logged🔷", userTrainings);
                 setLoading(false);   // End loading after session starts
-
+                console.log("🔷Loading ended🔷");
             } catch (err) {
                 setError("Failed to initialize session.");
             }
