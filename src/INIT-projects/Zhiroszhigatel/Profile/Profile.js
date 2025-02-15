@@ -78,7 +78,10 @@ const Profile = () => {
             }
         };
 
-        fetchData();
+        if(!sessionLoading){
+            fetchData();
+        }
+
     }, [userSessionJWT, sessionLoading]);
 
     if (loading)
