@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getSession } from "./session"; // Adjust the path to your session.js file
+import { getSession } from "./session"; // Adjust the path to your sessionJWT.js file
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 

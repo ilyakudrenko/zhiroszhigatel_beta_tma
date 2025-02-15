@@ -24,7 +24,7 @@ import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
-import useUserSession from "../CustomComponents/userSessionJWT/session";
+import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 
 
 const roundedCellStyle = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import INITBackButton from "../../../Hooks/BackButton";
-import useUserSession from "../../CustomComponents/userSessionJWT/session";
+import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 const TestJWTprotected = () => {
     const { userSession, loading, logoutUser } = useUserSession();

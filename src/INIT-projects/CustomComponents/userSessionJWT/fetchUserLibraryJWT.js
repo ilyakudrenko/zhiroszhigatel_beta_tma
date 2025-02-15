@@ -1,5 +1,5 @@
 import axios from "axios";
-import useUserSession from "./session";
+import useUserSession from "./sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 

@@ -3,7 +3,7 @@ import { Button, Snackbar } from "@telegram-apps/telegram-ui";
 import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
-import useUserSession from "../../CustomComponents/userSessionJWT/session";
+import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
