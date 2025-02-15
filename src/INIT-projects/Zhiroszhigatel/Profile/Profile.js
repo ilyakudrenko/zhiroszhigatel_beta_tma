@@ -76,7 +76,7 @@ const Profile = () => {
         };
 
         fetchData();
-    }, []);
+    }, [userSessionJWT, sessionLoading]);
 
     if (loading)
         return (
