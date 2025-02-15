@@ -101,13 +101,16 @@ const HomePage = () => {
             }
         };
 
-        initialize();
+        if(!sessionLoading){
+            initialize();
+        }
+
 
         if (window.Telegram?.WebApp?.themeParams?.text_color) {
             setTextColor(window.Telegram.WebApp.themeParams.text_color);
         }
 
-    }, []);
+    }, [sessionLoading, userSession]);
 
     if (loading)
         return (
