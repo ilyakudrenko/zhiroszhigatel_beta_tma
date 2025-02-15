@@ -16,7 +16,7 @@ const GuideButton = ({ guide_id, title }) => {
 
 
     useEffect(() => {
-        if(!loadingSession){
+        if(loadingSession){
             console.log("UserSession loading");
             return;
         }
@@ -44,7 +44,7 @@ const GuideButton = ({ guide_id, title }) => {
                 const isGuideAdded = userGuides.some((guide) => guide.id === guide_id);
                 setIsAdded(isGuideAdded);
             } catch (error) {
-                console.error("Error checking guide status:", error);
+                console.error("❌ Error checking guide status:", error);
             }
         };
 
@@ -112,6 +112,7 @@ const GuideButton = ({ guide_id, title }) => {
                 mode="filled"
                 size="l"
                 onClick={handleButtonClick}
+                disabled={loadingSession || !userSession || !userSession.token}
                 style={{
                     backgroundColor: isAdded ? "#FF6347" : "", // Red if added
                 }}
