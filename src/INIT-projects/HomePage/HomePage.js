@@ -66,6 +66,7 @@ const HomePage = () => {
 
 
                 console.log("🔷JWT creation🔷");
+                console.log("🔷JWT session info🔷", userSession);
                 console.log("🔷JWT info🔷", userSession.token);
                 console.log("🔷JWT done🔷");
 
