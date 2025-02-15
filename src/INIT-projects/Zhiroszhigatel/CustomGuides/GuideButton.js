@@ -8,11 +8,15 @@ import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const GuideButton = ({ guide_id, title }) => {
+    const {userSession, loading: loadingSession} = useUserSession();
     const [isAdded, setIsAdded] = useState(false); // State to track if the guide is added
     const [isSnackbarVisible, setSnackbarVisible] = useState(false); // Snackbar visibility state
     const [snackbarMessage, setSnackbarMessage] = useState("");
 
-    const {userSession} = useUserSession();
+    if(!loadingSession){
+        console.log("UserSession loading");
+        return;
+    }
     if (!userSession || !userSession.token) {
         throw new Error("User is not authenticated");
     }
