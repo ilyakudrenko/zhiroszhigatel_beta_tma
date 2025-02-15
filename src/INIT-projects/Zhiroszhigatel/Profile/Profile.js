@@ -23,6 +23,7 @@ import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/
 import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
 import mealsData from "../MealPlans/MealPlans.json";
 import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
+import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 
 const handleClickHaptic = (effect = 'light') =>{
@@ -30,6 +31,7 @@ const handleClickHaptic = (effect = 'light') =>{
 }
 
 const Profile = () => {
+    const {userSessionJWT, loading: sessionLoading} = useUserSession();
     const navigate = useNavigate();
     const [userSession, setUserSession] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -44,11 +46,20 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            if(sessionLoading){
+                return;
+            }
+            if(!userSessionJWT || !userSessionJWT.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                setError("User not authenticated");
+                setLoading(false);
+                return;
+            }
             try {
                 const session = getSession(); // Retrieve session data
                 setUserSession(session);
 
-                const library = await fetchUserLibrary(); // Fetch user library
+                const library = await fetchUserLibrary(userSessionJWT.token); // Fetch user library
                 setUserLibrary(library);
 
                 const mealPlanData = await fetchUserMealPlan(); // Fetch user meal plan

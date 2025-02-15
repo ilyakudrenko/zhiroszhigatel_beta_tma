@@ -7,6 +7,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 /**
  * Fetches the user's library of guides and formats it into a JSON array.
  * Uses JWT authentication from session storage.
+ * @param {string} token - The JWT token for authentication.
  * @returns {Promise<Array>} A promise that resolves to the formatted guidesData array.
  */
 const fetchUserLibrary = async (token) => {
@@ -18,7 +19,7 @@ const fetchUserLibrary = async (token) => {
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`,
             {
                 headers:{
-                    Authorization: `Bearer ${userSession.token}`,
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 }
             });
