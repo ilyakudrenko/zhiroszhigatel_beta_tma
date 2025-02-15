@@ -52,7 +52,7 @@ const HomePage = () => {
     const [textColor, setTextColor] = useState("#FFFFFF");
 
     //JWT management
-    const { userSession, loadingUser,logoutUser} = useUserSession();
+    const { userSession } = useUserSession();
 
 
 
@@ -61,6 +61,9 @@ const HomePage = () => {
             try {
                 // await startSession(); // Start the session
                 await initializeUserSession();
+                if(!userSession || !userSession.token){
+                    throw new Error("User is not authenticated with JWT");
+                }
                 const guides = await fetchAllGuidesJWT();
                 setFreeGuides(guides);
 
@@ -91,7 +94,7 @@ const HomePage = () => {
 
     }, []);
 
-    if (loading || loadingUser)
+    if (loading)
         return (
             <AppRoot>
                 <div
