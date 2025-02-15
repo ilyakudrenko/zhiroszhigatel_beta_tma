@@ -42,6 +42,7 @@ const handleClick = () => {
 };
 
 const HomePage = () => {
+    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -51,13 +52,20 @@ const HomePage = () => {
     const [userTrainingPlans, setUserTrainingPlans] = useState([]); // Храним список всех купленных планов
     const [textColor, setTextColor] = useState("#FFFFFF");
 
-    //JWT management
-    const { userSession } = useUserSession();
-
 
 
     useEffect(() => {
         const initialize = async () => {
+            if(sessionLoading){
+                console.log("🔷Waiting for session load🔷");
+                return;
+            }
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                setError("User not authenticated");
+                setLoading(false);
+                return;
+            }
             try {
                 // await startSession(); // Start the session
                 console.log("🔷Initializing🔷");
@@ -65,9 +73,8 @@ const HomePage = () => {
                 console.log("🔷 Old session 🔷")
 
 
-                console.log("🔷JWT creation🔷");
+                console.log("🔷 JWT Token Available:", userSession.token);
                 console.log("🔷JWT session info🔷", userSession);
-                console.log("🔷JWT info🔷", userSession.token);
                 console.log("🔷JWT done🔷");
 
 
