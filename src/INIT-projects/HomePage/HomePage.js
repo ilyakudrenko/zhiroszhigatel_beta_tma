@@ -17,7 +17,6 @@ import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
-import fetchAllGuides from "../CustomComponents/UserSession/fetchAllGuides";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
@@ -25,6 +24,7 @@ import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrain
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
+import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
 
 
 const roundedCellStyle = {
@@ -61,7 +61,7 @@ const HomePage = () => {
             try {
                 // await startSession(); // Start the session
                 await initializeUserSession();
-                const guides = await fetchAllGuides();
+                const guides = await fetchAllGuidesJWT();
                 setFreeGuides(guides);
 
                 // Fetch user's meal plan
