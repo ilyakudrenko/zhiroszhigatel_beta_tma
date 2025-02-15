@@ -13,15 +13,18 @@ const GuideButton = ({ guide_id, title }) => {
     const [isSnackbarVisible, setSnackbarVisible] = useState(false); // Snackbar visibility state
     const [snackbarMessage, setSnackbarMessage] = useState("");
 
-    if(!loadingSession){
-        console.log("UserSession loading");
-        return;
-    }
-    if (!userSession || !userSession.token) {
-        throw new Error("User is not authenticated");
-    }
+
 
     useEffect(() => {
+        if(!loadingSession){
+            console.log("UserSession loading");
+            return;
+        }
+        if (!userSession || !userSession.token) {
+            console.error("❌ User is not authenticated, cannot fetch guide status.");
+            return;
+        }
+
         const checkGuideStatus = async () => {
             try {
                 // Get user session
@@ -46,7 +49,7 @@ const GuideButton = ({ guide_id, title }) => {
         };
 
         checkGuideStatus();
-    }, [guide_id]);
+    }, [guide_id, userSession, loadingSession]);
 
     const handleButtonClick = async () => {
         try {
