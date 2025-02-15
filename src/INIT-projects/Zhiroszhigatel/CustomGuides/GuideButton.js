@@ -52,6 +52,11 @@ const GuideButton = ({ guide_id, title }) => {
     }, [guide_id, userSession, loadingSession]);
 
     const handleButtonClick = async () => {
+        if (loadingSession || !userSession || !userSession.token) {
+            console.error("❌ Cannot modify guide, user is not authenticated.");
+            return;
+        }
+
         try {
             if (isAdded) {
                 // Remove the guide if it's already added
