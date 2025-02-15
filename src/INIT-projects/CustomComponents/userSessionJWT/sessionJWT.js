@@ -4,20 +4,24 @@ import axios from "axios";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const useUserSession = () => {
+    console.log("🟪 Got into the JWT page 🟪");
     const [userSession, setUserSession] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const storedSession = sessionStorage.getItem("userSession");
         if (storedSession) {
+            console.log("🟪 Session stored already 🟪");
             setUserSession(JSON.parse(storedSession));
             setLoading(false);
         } else {
+            console.log("🟪 New session creating 🟪");
             authenticateUser();
         }
     }, []);
 
     const authenticateUser = async () => {
+        console.log("🟪 Authentication was called 🟪");
         try {
             const initData = window.Telegram?.WebApp?.initData || "";
             if (!initData) {
@@ -42,6 +46,7 @@ const useUserSession = () => {
                 sessionStorage.setItem("userSession", JSON.stringify(sessionData));
                 setUserSession(sessionData);
             }
+            console.log("🟪 Authentication was successfully successfully 🟪");
         } catch (error) {
             console.error("User authentication failed:", error);
         } finally {
