@@ -45,18 +45,19 @@ const Profile = () => {
     INITBackButton(); // Back button for the profile
 
     useEffect(() => {
+        if(sessionLoading){
+            console.log("🔷 Waiting for session to load...");
+            return;
+        }
+        console.log("🔹 Checking userSessionJWT:", userSessionJWT); // Debugging log
+        if(!userSessionJWT || !userSessionJWT.token){
+            console.error("❌ No valid session found, aborting fetch.");
+            setError("User not authenticated");
+            setLoading(false);
+            return;
+        }
         const fetchData = async () => {
-            if(sessionLoading){
-                console.log("🔷 Waiting for session to load...");
-                return;
-            }
-            console.log("🔹 Checking userSessionJWT:", userSessionJWT); // Debugging log
-            if(!userSessionJWT || !userSessionJWT.token){
-                console.error("❌ No valid session found, aborting fetch.");
-                setError("User not authenticated");
-                setLoading(false);
-                return;
-            }
+
             try {
                 const session = getSession(); // Retrieve session data
                 setUserSession(session);
