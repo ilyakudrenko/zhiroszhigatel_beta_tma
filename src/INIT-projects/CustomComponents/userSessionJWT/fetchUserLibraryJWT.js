@@ -9,14 +9,10 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
  * Uses JWT authentication from session storage.
  * @returns {Promise<Array>} A promise that resolves to the formatted guidesData array.
  */
-const fetchUserLibrary = async () => {
+const fetchUserLibrary = async (token) => {
     try {
-        // Retrieve the user session
-        const {userSession} = useUserSession();
-        // const userId = userSession.id; // Get the user's database ID
-
-        if (!userSession || !userSession.token) {
-            throw new Error("User is not authenticated");
+        if (token) {
+            throw new Error("User is not authenticated for the fetchUserLibrary");
         }
         // Send a request to the backend to fetch the user's library
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`,

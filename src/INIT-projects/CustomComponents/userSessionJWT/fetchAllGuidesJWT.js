@@ -11,7 +11,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 const fetchAllGuides = async (token) => {
     try {
         if (!token) {
-            throw new Error("User is not authenticated");
+            throw new Error("User is not authenticated for the fetchAllGuidesJWT");
         }
         // Fetch free guides from the backend
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/all`, {
