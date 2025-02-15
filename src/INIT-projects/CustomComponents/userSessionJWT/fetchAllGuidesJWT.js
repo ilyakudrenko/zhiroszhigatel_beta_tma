@@ -1,24 +1,22 @@
 import axios from 'axios';
-import useUserSession from "./sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 // console.log(BACKEND_PUBLIC_URL);
 /**
  * Fetches the user's library of guides and formats it into a JSON array.
  * Uses JWT authentication from session storage.
+ * @param {string} token - The JWT token for authentication.
  * @returns {Promise<Array>} A promise that resolves to the formatted guidesData array.
  */
-const fetchAllGuides = async () => {
+const fetchAllGuides = async (token) => {
     try {
-
-        const {userSession} = useUserSession();
-        if (!userSession || !userSession.token) {
+        if (!token) {
             throw new Error("User is not authenticated");
         }
         // Fetch free guides from the backend
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/all`, {
             headers:{
-                Authorization: `Bearer ${userSession.token}`,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             }
         });

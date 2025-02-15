@@ -78,7 +78,7 @@ const HomePage = () => {
                 console.log("🔷JWT done🔷");
 
 
-                const guides = await fetchAllGuidesJWT();
+                const guides = await fetchAllGuidesJWT(userSession.token);
                 setFreeGuides(guides);
                 console.log("🔷Guides logged🔷", guides);
                 // Fetch user's meal plan
