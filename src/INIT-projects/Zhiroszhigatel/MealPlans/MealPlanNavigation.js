@@ -66,7 +66,7 @@ const MealPlanNavigation = () => {
         };
 
         loadMealPlans();
-    }, []);
+    }, [userSession, sessionLoading]);
 
     if(error){
         return (

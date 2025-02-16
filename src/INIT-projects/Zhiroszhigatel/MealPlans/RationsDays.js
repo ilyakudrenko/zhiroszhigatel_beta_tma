@@ -52,7 +52,7 @@ const RationsDays = () => {
         };
 
         loadMealPlans();
-    }, []);
+    }, [userSession, sessionLoading]);
 
     const handleNext = () => {
         if (currentDayIndex < mealPlanDays.length - 1) {
