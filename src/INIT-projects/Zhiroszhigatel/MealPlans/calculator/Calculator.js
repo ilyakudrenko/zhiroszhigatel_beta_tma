@@ -17,6 +17,7 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import { useNavigate } from "react-router-dom";
 import {getSession} from "../../../CustomComponents/UserSession/session";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
+import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -24,11 +25,12 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const Calculator = () => {
     INITBackButton();
+    const {userSession, loading: sessionLoading} = useUserSession();
     const navigate = useNavigate();
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
+    const [error, setError] = useState(null);
 
-
-    const userSession = getSession();
+    // const userSession = getSession();
 
     const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
@@ -106,9 +108,18 @@ const Calculator = () => {
     };
 
     const saveMealPlan = async () => {
+        if(sessionLoading){
+            console.log("🔹Waiting for session🔹")
+            return;
+        }
+        if(!userSession || !userSession.token){
+            console.error("❌ No valid session found, aborting fetch.");
+            setError("User not authenticated");
+            return;
+        }
         try {
 
-            const userId = userSession.id; // Здесь необходимо подставить ID текущего пользователя
+            const userId = userSession.token;
             const mealPlanId = mealPlan?.id;
 
             if (!userId || !mealPlanId) {
@@ -118,7 +129,13 @@ const Calculator = () => {
 
             await axios.post(
                 `${BACKEND_PUBLIC_URL}/user_mealplans/save-mealplan`,
-                { userId, mealPlanId }
+                { mealPlanId },
+                {
+                    headers:{
+                        Authorization: `Bearer ${userId}`,
+                        "Content-Type": "application/json",
+                    }
+                }
             );
 
             setSnackbarVisible(true);
@@ -140,7 +157,9 @@ const Calculator = () => {
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
     };
-
+    if (error) {
+        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+    }
     return (
         <AppRoot>
             <Section header="Инструкция">
