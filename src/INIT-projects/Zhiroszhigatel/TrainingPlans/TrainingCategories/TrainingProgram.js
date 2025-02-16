@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import INITBackButton from "../../../../Hooks/BackButton";
-import fetchUserTrainingPlan from "../../../CustomComponents/UserSession/fetchUserTrainingPlan";
-import fetchUserTrainingPlanWorkouts from "../../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
+import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
+import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import fetchUserExercises from "../../../CustomComponents/UserSession/fetchUserEcercises";
 import fetchUserExercisesReps from "../../../CustomComponents/UserSession/fetchUserExercisesReps";
 import {AppRoot, Button, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 
 import workoutImg from "../CardImages/workoutimage.jpg";
+import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 
 const TrainingProgram = () => {
-
+    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
@@ -25,15 +26,25 @@ const TrainingProgram = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            if(sessionLoading){
+                console.log("🔷Waiting for session load🔷");
+                return;
+            }
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                // setError("User not authenticated");
+                setLoading(false);
+                return;
+            }
             try {
                 setLoading(true);
 
                 // Fetch training plan details
-                const plans = await fetchUserTrainingPlan();
+                const plans = await fetchUserTrainingPlanJWT(userSession.token);
                 setTrainingPlans(plans);
 
                 // Fetch workouts for the selected training plan
-                const fetchedWorkouts = await fetchUserTrainingPlanWorkouts(
+                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT( userSession.token,
                     trainingPlanId
                 );
                 setWorkouts(fetchedWorkouts);

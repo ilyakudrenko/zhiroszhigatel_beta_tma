@@ -11,7 +11,7 @@ import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTempl
 import INITHelp from "../Help/Help";
 import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
-import fetchUserTrainingPlan from "../UserSession/fetchUserTrainingPlan";
+import fetchUserTrainingPlanJWT from "../userSessionJWT/fetchUserTrainingPlanJWT";
 import { useNavigate } from "react-router-dom";
 
 

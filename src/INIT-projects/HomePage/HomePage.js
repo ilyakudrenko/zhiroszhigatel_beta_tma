@@ -21,7 +21,7 @@ import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlanJWT from "../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
-import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
+import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
@@ -91,7 +91,7 @@ const HomePage = () => {
                 console.log("🔷Plans logged🔷", plans);
 
                 // Получаем все планы тренировок пользователя
-                const userTrainings = await fetchUserTrainingPlan();
+                const userTrainings = await fetchUserTrainingPlanJWT(userSession.token);
                 setUserTrainingPlans(userTrainings || []); // Если нет данных, передаем пустой массив
                 console.log("🔷UserTraining  logged🔷", userTrainings);
                 setLoading(false);   // End loading after session starts

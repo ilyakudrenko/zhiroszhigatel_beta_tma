@@ -22,7 +22,7 @@ import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circ
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
 import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import mealsData from "../MealPlans/MealPlans.json";
-import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
+import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 
@@ -68,7 +68,7 @@ const Profile = () => {
                 const mealPlanData = await fetchUserMealPlanJWT(); // Fetch user meal plan
                 setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
 
-                const trainingPlans = await fetchUserTrainingPlan(); // Fetch user training plans
+                const trainingPlans = await fetchUserTrainingPlanJWT(); // Fetch user training plans
                 setUserTrainingPlans(trainingPlans);
             } catch (err) {
                 console.error("Failed to retrieve data:", err);

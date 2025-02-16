@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
-import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
+import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
+import fetchUserTrainingPlanWorkoutsJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
 import fetchUserExercisesReps from "../../CustomComponents/UserSession/fetchUserExercisesReps";
 import {AppRoot, Button, Caption, Cell, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
@@ -28,11 +28,11 @@ const TrainingPlanTesting = ({}) => {
                 setLoading(true);
 
                 // Fetch training plan details
-                const plans = await fetchUserTrainingPlan();
+                const plans = await fetchUserTrainingPlanJWT();
                 setTrainingPlans(plans);
 
                 // Fetch workouts for the selected training plan
-                const fetchedWorkouts = await fetchUserTrainingPlanWorkouts(
+                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT(
                     trainingPlanId
                 );
                 setWorkouts(fetchedWorkouts);

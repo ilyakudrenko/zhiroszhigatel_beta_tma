@@ -1,15 +1,23 @@
 import axios from 'axios';
-import {getSession} from "./session";
+import {getSession} from "../UserSession/session";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const fetchUserTrainingPlanWorkouts = async ( trainingPlanId ) => {
+const fetchUserTrainingPlanWorkoutsJWT = async (token , trainingPlanId  ) => {
     // console.log("Training Id Passed:", trainingPlanId);
     try {
-        const userSession = await getSession();
-        const userId = userSession.id;
-
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/${trainingPlanId}/${userId}`, {})
+        // const userSession = await getSession();
+        // const userId = userSession.id;
+        if(!token){
+            console.error("🚫Token not found. 🚫");
+            return;
+        }
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/${trainingPlanId}/load`,{
+            headers:{
+                Authorization: `Bearer ${userSession.token}`,
+                "Content-Type": "application/json",
+            }
+        })
 
         const workoutsData = response.data.map((workout) => ({
             trainingPlanWorkout_id:workout.id,
@@ -27,4 +35,4 @@ const fetchUserTrainingPlanWorkouts = async ( trainingPlanId ) => {
     }
 }
 
-export default fetchUserTrainingPlanWorkouts;
+export default fetchUserTrainingPlanWorkoutsJWT;

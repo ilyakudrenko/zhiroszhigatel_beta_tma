@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
-import fetchUserTrainingPlanWorkouts from "../../CustomComponents/UserSession/fetchUserTrainingPlanWorkouts";
+import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
+import fetchUserTrainingPlanWorkoutsJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import {AppRoot} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
@@ -21,12 +21,12 @@ const TrainingPlanTest = ( {trainingPlanId}) => {
             try {
 
                 // Fetch training plans
-                const plans = await fetchUserTrainingPlan();
+                const plans = await fetchUserTrainingPlanJWT();
                 setTrainingPlans(plans);
 
 
                 // Fetch workouts for all plans
-                const allWorkouts = await fetchUserTrainingPlanWorkouts(trainingPlanId);
+                const allWorkouts = await fetchUserTrainingPlanWorkoutsJWT(trainingPlanId);
                 setWorkouts(allWorkouts.flat());
                 console.log(allWorkouts.flat());
 

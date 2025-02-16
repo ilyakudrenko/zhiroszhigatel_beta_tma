@@ -1,15 +1,20 @@
 import axios from "axios";
-import {getSession} from "./session";
+import {getSession} from "../UserSession/session";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const fetchUserTrainingPlan = async () => {
+const fetchUserTrainingPlanJWT = async (token) => {
     try{
-        const userSession = await getSession();
-        const userId = userSession.id;
+        if(!token){
+            console.error("🚫Token not found. 🚫");
+            return;
+        }
 
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_training`, {
-            params: { userId },
+            headers:{
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            }
         });
 
         const trainingPlansData = response.data.map((trainingPlan) => ({
@@ -28,4 +33,4 @@ const fetchUserTrainingPlan = async () => {
     }
 }
 
-export default fetchUserTrainingPlan;
+export default fetchUserTrainingPlanJWT;
