@@ -12,7 +12,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
  */
 const fetchUserLibrary = async (token) => {
     try {
-        if (token) {
+        if (!token) {
             throw new Error("User is not authenticated for the fetchUserLibrary");
         }
         // Send a request to the backend to fetch the user's library
