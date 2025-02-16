@@ -25,7 +25,7 @@ const handleClickHaptic = (effect = 'light') => {
 };
 
 const Profile = () => {
-    const { userSessionJWT, loading: sessionLoading } = useUserSession();
+    const { userSession, loading: sessionLoading } = useUserSession();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -41,7 +41,7 @@ const Profile = () => {
 
         console.log("🔹 Checking userSessionJWT:", userSessionJWT); // Debugging log
 
-        if (!userSessionJWT || !userSessionJWT.token) {
+        if (!userSession || !userSession.token) {
             console.error("❌ No valid session found, aborting fetch.");
             setError("User not authenticated");
             setLoading(false);
@@ -50,8 +50,8 @@ const Profile = () => {
 
         const fetchData = async () => {
             try {
-                console.log("✅ Fetching user library with token:", userSessionJWT.token);
-                const library = await fetchUserLibrary(userSessionJWT.token);
+                console.log("✅ Fetching user library with token:", userSession.token);
+                const library = await fetchUserLibrary(userSession.token);
                 setUserLibrary(library);
             } catch (err) {
                 console.error("❌ Failed to retrieve data:", err);
@@ -62,7 +62,7 @@ const Profile = () => {
         };
 
         fetchData();
-    }, [userSessionJWT, sessionLoading]);
+    }, [userSession, sessionLoading]);
 
     if (loading)
         return (
