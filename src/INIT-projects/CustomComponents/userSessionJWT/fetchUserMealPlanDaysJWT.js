@@ -1,5 +1,5 @@
 import axios from "axios";
-import fetchUserMealPlanJWT from "../userSessionJWT/fetchUserMealPlanJWT";
+import fetchUserMealPlanJWT from "./fetchUserMealPlanJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -20,7 +20,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
  *
  * @throws {Error} Throws an error if the request fails (e.g., missing token, network error, no meal plans found).
  */
-const fetchUserMealPlanDays = async (token) => {
+const fetchUserMealPlanDaysJWT = async (token) => {
     try {
         const mealPlan = await fetchUserMealPlanJWT(token);
         console.log(mealPlan);
@@ -45,4 +45,4 @@ const fetchUserMealPlanDays = async (token) => {
     }
 }
 
-export default fetchUserMealPlanDays;
+export default fetchUserMealPlanDaysJWT;

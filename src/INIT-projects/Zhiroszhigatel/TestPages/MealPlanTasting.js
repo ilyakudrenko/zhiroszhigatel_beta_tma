@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {AppRoot, Button, Caption, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
-import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
+import fetchUserMealPlanDaysJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanDaysJWT";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
-import fetchUserMealPlanDaysMeals from "../../CustomComponents/UserSession/fetchUserMealPlanDaysMeals";
+import fetchUserMealPlanDaysMeals from "../../CustomComponents/userSessionJWT/fetchUserMealPlanDaysMealsJWT";
 import imageTitle from "../MealPlans/Images/imageTitle.jpg";
 
 const MealPlanTasting = () => {
@@ -24,7 +24,7 @@ const MealPlanTasting = () => {
                 setLoading(true);
                 const data = await fetchUserMealPlanJWT();
                 console.log(data);
-                const data_days = await fetchUserMealPlanDays();
+                const data_days = await fetchUserMealPlanDaysJWT();
                 console.log(data_days);
                 const data_meals = await fetchUserMealPlanDaysMeals();
                 console.log(data_meals);

@@ -4,7 +4,7 @@ import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
 import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
-import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
+import fetchUserMealPlanDaysJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanDaysJWT";
 import {useNavigate} from "react-router-dom";
 import {
     ModalHeader
@@ -55,7 +55,7 @@ const MealPlanNavigation = () => {
             }
             try {
                 const data = await fetchUserMealPlanJWT(userSession.token);
-                const data_days = await fetchUserMealPlanDays(userSession.token);
+                const data_days = await fetchUserMealPlanDaysJWT(userSession.token);
                 console.log(data);
                 console.log(data_days);
                 setMealPlans(data);
