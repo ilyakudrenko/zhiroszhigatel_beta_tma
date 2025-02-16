@@ -9,7 +9,9 @@ const useUserSession = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        console.log("🟪 Use effect started 🟪")
         const storedSession = sessionStorage.getItem("userSession");
+        console.log(storedSession);
         if (storedSession) {
             console.log("🟪 Session stored already 🟪");
             setUserSession(JSON.parse(storedSession));
