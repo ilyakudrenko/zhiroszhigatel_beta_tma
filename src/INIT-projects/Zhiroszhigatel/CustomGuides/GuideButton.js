@@ -61,6 +61,7 @@ const GuideButton = ({ guide_id, title }) => {
             if (isAdded) {
                 // Remove the guide if it's already added
                 await axios.delete(`${BACKEND_PUBLIC_URL}/user_guides/delete`, {
+                    data: {guide_id},
                     headers:{
                         Authorization: `Bearer ${userSession.token}`,
                         "Content-Type": "application/json",
@@ -73,6 +74,9 @@ const GuideButton = ({ guide_id, title }) => {
                 // Add the guide to the library
                 await axios.post(
                     `${BACKEND_PUBLIC_URL}/user_guides/add`, {
+                        guide_id,
+                    },
+                    {
                         headers:{
                             Authorization: `Bearer ${userSession.token}`,
                             "Content-Type": "application/json",
