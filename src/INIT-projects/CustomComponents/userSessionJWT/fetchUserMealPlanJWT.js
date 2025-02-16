@@ -5,6 +5,11 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserMealPlanJWT = async (token) => {
     try {
+        if(!token){
+            console.error("🚫 No token available 🚫")
+        }else{
+            console.log("🍔 Token passed to the mealplan fetch🍔", token)
+        }
 
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_mealplans/mealLibrary`, {
             headers: {
