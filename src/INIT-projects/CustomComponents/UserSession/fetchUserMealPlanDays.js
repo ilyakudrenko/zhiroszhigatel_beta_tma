@@ -3,9 +3,26 @@ import fetchUserMealPlanJWT from "../userSessionJWT/fetchUserMealPlanJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const fetchUserMealPlanDays = async () => {
+/**
+ * Fetches the daily meal plan details for a user's first available meal plan.
+ *
+ * @param {string} token - The JWT authentication token required to authorize the request.
+ *                         This token is used to first fetch the user's meal plans before retrieving meal plan days.
+ *
+ * @returns {Promise<Array>} A promise that resolves to an array of meal plan days, each containing:
+ *                           - mealPlanDays_id: Unique identifier for the meal plan day.
+ *                           - mealPlanDays_meal_plan_id: The ID of the associated meal plan.
+ *                           - mealPlanDays_day_number: The sequence day number in the meal plan.
+ *                           - mealPlanDays_total_kcal: Total calories for the day.
+ *                           - mealPlanDays_total_protein: Total protein intake for the day.
+ *                           - mealPlanDays_total_fat: Total fat intake for the day.
+ *                           - mealPlanDays_total_carbs: Total carbohydrate intake for the day.
+ *
+ * @throws {Error} Throws an error if the request fails (e.g., missing token, network error, no meal plans found).
+ */
+const fetchUserMealPlanDays = async (token) => {
     try {
-        const mealPlan = await fetchUserMealPlanJWT();
+        const mealPlan = await fetchUserMealPlanJWT(token);
         console.log(mealPlan);
         console.log(mealPlan[0].mealPlan_id)
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_mealplans/days/${mealPlan[0].mealPlan_id}`);

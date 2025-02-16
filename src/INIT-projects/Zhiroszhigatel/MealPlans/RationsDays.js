@@ -7,10 +7,11 @@ import fetchUserMealPlanDaysMeals from "../../CustomComponents/UserSession/fetch
 import {AppRoot, Button, Caption, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import imageTitle from "./Images/imageTitle.jpg";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
+import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 
 const RationsDays = () => {
-
+    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
     const [mealPlans, setMealPlans] = useState([]);
     const [mealPlanDays, setMealPlanDays] = useState([]);
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
@@ -22,13 +23,23 @@ const RationsDays = () => {
 
     useEffect(() => {
         const loadMealPlans = async () => {
+            if(sessionLoading){
+                console.log("🔷Waiting for session load🔷");
+                return;
+            }
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                setError("User not authenticated");
+                setLoading(false);
+                return;
+            }
             try {
                 setLoading(true);
-                const data = await fetchUserMealPlanJWT();
+                const data = await fetchUserMealPlanJWT(userSession.token);
                 console.log(data);
-                const data_days = await fetchUserMealPlanDays();
+                const data_days = await fetchUserMealPlanDays(userSession.token);
                 console.log(data_days);
-                const data_meals = await fetchUserMealPlanDaysMeals();
+                const data_meals = await fetchUserMealPlanDaysMeals(userSession.token);
                 console.log(data_meals);
                 setMealPlanDaysMeals(data_meals);
                 setMealPlans(data);

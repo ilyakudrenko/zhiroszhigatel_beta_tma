@@ -20,6 +20,7 @@ import rationsbannerImg from "../MealPlans/Images/rationsbanner.png";
 import zopbonusImg from "../MealPlans/Images/zopbonus.png";
 import snackImg from "../TrainingPlans/CardImages/snack.jpg";
 import cookingtoolsImg from "../TrainingPlans/CardImages/cookingtoolsimage.jpg";
+import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 
 const roundedCellStyle = {
@@ -33,6 +34,7 @@ const handleClick = () => {
 };
 
 const MealPlanNavigation = () => {
+    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
     const [mealPlans, setMealPlans] = useState([]);
     const [mealPlanDays, setMealPlanDays] = useState([]);
     const [error, setError] = useState(null);
@@ -42,9 +44,18 @@ const MealPlanNavigation = () => {
 
     useEffect(() => {
         const loadMealPlans = async () => {
+            if(sessionLoading){
+                console.log("🔷Waiting for session load🔷");
+                return;
+            }
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                setError("User not authenticated");
+                return;
+            }
             try {
-                const data = await fetchUserMealPlanJWT();
-                const data_days = await fetchUserMealPlanDays();
+                const data = await fetchUserMealPlanJWT(userSession.token);
+                const data_days = await fetchUserMealPlanDays(userSession.token);
                 console.log(data);
                 console.log(data_days);
                 setMealPlans(data);
