@@ -3,7 +3,7 @@ import {AppRoot, Badge, Banner, Button, Modal, Section} from "@telegram-apps/tel
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
-import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
+import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
 import {useNavigate} from "react-router-dom";
 import {
@@ -43,7 +43,7 @@ const MealPlanNavigation = () => {
     useEffect(() => {
         const loadMealPlans = async () => {
             try {
-                const data = await fetchUserMealPlan();
+                const data = await fetchUserMealPlanJWT();
                 const data_days = await fetchUserMealPlanDays();
                 console.log(data);
                 console.log(data_days);

@@ -1,14 +1,17 @@
 import axios from 'axios';
-import { getSession } from "./session";
+import { getSession } from "../UserSession/session";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const fetchUserMealPlan = async () => {
+const fetchUserMealPlanJWT = async (token) => {
     try {
-        const userSession = await getSession();
-        const userId = userSession.id;
 
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_mealplans/${userId}`);
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_mealplans/mealLibrary`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            }
+        });
 
         const mealPlansData = response.data.map((mealPlan) => ({
             mealPlan_id: mealPlan.id,
@@ -24,5 +27,5 @@ const fetchUserMealPlan = async () => {
 }
 
 
-export default fetchUserMealPlan;
+export default fetchUserMealPlanJWT;
 

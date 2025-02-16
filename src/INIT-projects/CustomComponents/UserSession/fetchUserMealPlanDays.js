@@ -1,11 +1,11 @@
 import axios from "axios";
-import fetchUserMealPlan from "./fetchUserMealPlan";
+import fetchUserMealPlanJWT from "../userSessionJWT/fetchUserMealPlanJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserMealPlanDays = async () => {
     try {
-        const mealPlan = await fetchUserMealPlan();
+        const mealPlan = await fetchUserMealPlanJWT();
         console.log(mealPlan);
         console.log(mealPlan[0].mealPlan_id)
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_mealplans/days/${mealPlan[0].mealPlan_id}`);

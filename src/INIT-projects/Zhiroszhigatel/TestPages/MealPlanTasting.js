@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {AppRoot, Button, Caption, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
+import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchUserMealPlanDays from "../../CustomComponents/UserSession/fetchUserMealPlanDays";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITBackButton from "../../../Hooks/BackButton";
@@ -22,7 +22,7 @@ const MealPlanTasting = () => {
         const loadMealPlans = async () => {
             try {
                 setLoading(true);
-                const data = await fetchUserMealPlan();
+                const data = await fetchUserMealPlanJWT();
                 console.log(data);
                 const data_days = await fetchUserMealPlanDays();
                 console.log(data_days);

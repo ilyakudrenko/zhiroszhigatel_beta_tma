@@ -19,7 +19,7 @@ import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
-import fetchUserMealPlan from "../CustomComponents/UserSession/fetchUserMealPlan";
+import fetchUserMealPlanJWT from "../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
 import fetchUserTrainingPlan from "../CustomComponents/UserSession/fetchUserTrainingPlan";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
@@ -82,7 +82,7 @@ const HomePage = () => {
                 setFreeGuides(guides);
                 console.log("🔷Guides logged🔷", guides);
                 // Fetch user's meal plan
-                const userMealPlan = await fetchUserMealPlan();
+                const userMealPlan = await fetchUserMealPlanJWT(userSession.token);
                 setMealPlan(userMealPlan?.[0]);
                 console.log("🔷MealPlan logged🔷", userMealPlan);
                 // Fetch training plans

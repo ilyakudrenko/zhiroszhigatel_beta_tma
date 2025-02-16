@@ -20,7 +20,7 @@ import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 import {useNavigate} from "react-router-dom";
 import {Icon28AddCircle} from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
 import {Icon32ProfileColoredSquare} from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
-import fetchUserMealPlan from "../../CustomComponents/UserSession/fetchUserMealPlan";
+import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import mealsData from "../MealPlans/MealPlans.json";
 import fetchUserTrainingPlan from "../../CustomComponents/UserSession/fetchUserTrainingPlan";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
@@ -65,7 +65,7 @@ const Profile = () => {
                 const library = await fetchUserLibrary(userSessionJWT.token); // Fetch user library
                 setUserLibrary(library);
 
-                const mealPlanData = await fetchUserMealPlan(); // Fetch user meal plan
+                const mealPlanData = await fetchUserMealPlanJWT(); // Fetch user meal plan
                 setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
 
                 const trainingPlans = await fetchUserTrainingPlan(); // Fetch user training plans
