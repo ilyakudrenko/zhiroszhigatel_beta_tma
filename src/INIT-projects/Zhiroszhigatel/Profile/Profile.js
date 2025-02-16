@@ -39,7 +39,7 @@ const Profile = () => {
             return;
         }
 
-        console.log("🔹 Checking userSessionJWT:", userSessionJWT); // Debugging log
+        console.log("🔹 Checking userSessionJWT:", userSession); // Debugging log
 
         if (!userSession || !userSession.token) {
             console.error("❌ No valid session found, aborting fetch.");
