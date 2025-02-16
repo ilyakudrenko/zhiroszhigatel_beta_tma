@@ -59,6 +59,7 @@ const GuideButton = ({ guide_id, title }) => {
 
         try {
             if (isAdded) {
+                console.log("📙guide_id passed📙", guide_id);
                 // Remove the guide if it's already added
                 await axios.delete(`${BACKEND_PUBLIC_URL}/user_guides/delete`, {
                     data: {guide_id},
@@ -72,10 +73,10 @@ const GuideButton = ({ guide_id, title }) => {
                 setSnackbarMessage("Гайд удален из библиотеки!");
             } else {
                 // Add the guide to the library
+                console.log("📙guide_id passed📙", guide_id);
                 await axios.post(
-                    `${BACKEND_PUBLIC_URL}/user_guides/add`, {
-                        guide_id,
-                    },
+                    `${BACKEND_PUBLIC_URL}/user_guides/add`,
+                    {guide_id},
                     {
                         headers:{
                             Authorization: `Bearer ${userSession.token}`,
