@@ -56,6 +56,12 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             console.log("✅ Тренировка успешно добавлена");
 
             setSnackbarVisible(true);
+
+            setTimeout(() => {
+                window.location.reload(); // Reloads the current page
+            }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+
+
         } catch (error) {
             console.error("❌ Ошибка при добавлении тренировки:", error);
             setError("Ошибка при добавлении тренировки. Попробуйте снова.");
