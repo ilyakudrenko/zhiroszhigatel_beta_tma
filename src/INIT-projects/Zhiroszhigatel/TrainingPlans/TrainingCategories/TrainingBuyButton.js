@@ -39,11 +39,12 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
 
             // Extract Telegram ID from session
             const telegramId = userSession.telegram_id;
+            const userToken = userSession.token; // Extract token
 
             // Form payload with necessary IDs
             const payload = {
                 telegram_id: telegramId,
-                user_id: userSession.telegram_id,
+                user_id: userToken,
                 training_id: trainingId
             };
 
@@ -64,8 +65,8 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 console.log("✅ Инвойс на оплату успешно отправлен!");
 
                 // Fetch updated training plans and workouts for the user
-                await fetchUserTrainingPlanJWT(userSession.token);
-                await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingId);
+                await fetchUserTrainingPlanJWT(userToken);
+                await fetchUserTrainingPlanWorkoutsJWT(userToken, trainingId);
 
                 setSnackbarVisible(true);
                 setTimeout(() => {
