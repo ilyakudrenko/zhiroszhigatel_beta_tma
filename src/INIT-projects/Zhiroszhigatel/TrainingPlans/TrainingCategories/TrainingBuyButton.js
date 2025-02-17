@@ -38,6 +38,12 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
 
             const userId = userSession.token;
 
+            console.log("📌 Данные перед отправкой запроса:", {
+                user_id: userId,
+                training_id: trainingId
+            });
+
+
             // **Добавляем тренировочный план в базу данных**
             const response = await axios.post(`${BACKEND_PUBLIC_URL}/trainings/add-training`, {
                 user_id: userId,
