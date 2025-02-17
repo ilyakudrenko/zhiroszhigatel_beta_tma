@@ -44,17 +44,21 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 training_id: trainingId
             });
 
+            if (!userId || !trainingId) {
+                alert('Пользователь или план тренировок не определен.');
+                return;
+            }
 
-            // **Добавляем тренировочный план в базу данных**
-            const response = await axios.post(`${BACKEND_PUBLIC_URL}/trainings/add-training`, {
-                user_id: userId,
-                training_id: trainingId,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${userId}`,
-                    "Content-Type": "application/json",
+            await axios.post(
+                `${BACKEND_PUBLIC_URL}/trainings/add-training`,
+                { trainingId },
+                {
+                    headers:{
+                        Authorization: `Bearer ${userId}`,
+                        "Content-Type": "application/json",
+                    }
                 }
-            });
+            );
 
             console.log("✅ Тренировка успешно добавлена:", response.data);
 
