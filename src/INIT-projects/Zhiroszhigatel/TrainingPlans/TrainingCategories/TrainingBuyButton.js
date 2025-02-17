@@ -26,59 +26,39 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         try {
             handleClickHaptic('light');
 
-            if (sessionLoading) {
-                console.log("🔹 Waiting for session data... 🔹");
+            if(sessionLoading){
+                console.log("🔹Waiting for session🔹")
                 return;
             }
-
-            if (!userSession || !userSession.token) {
-                console.error("❌ No valid session found. Aborting.");
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
                 setError("User not authenticated");
                 return;
             }
 
-            // Extract Telegram ID from session
-            const telegramId = userSession.telegram_id;
-            const userToken = userSession.token; // Extract token
+            const userId = userSession.token;
 
-            // Form payload with necessary IDs
-            const payload = {
-                telegram_id: telegramId,
-                user_id: userSession.telegram_id,
-                training_id: trainingId
-            };
-
-            // Request Telegram bot to send an invoice
-            const response = await axios.get(`https://api.telegram.org/bot${BOT_TOKEN}/sendInvoice`, {
-                params: {
-                    chat_id: telegramId, // Now using Telegram ID from session
-                    title: title,
-                    description: "Доступ к эксклюзивному плану тренировок",
-                    payload: JSON.stringify(payload),
-                    provider_token: "", // Stars provider token
-                    currency: "XTR",
-                    prices: JSON.stringify([{ label: title, amount: price }])
+            // **Добавляем тренировочный план в базу данных**
+            const response = await axios.post(`${BACKEND_PUBLIC_URL}/trainings/add-training`, {
+                user_id: userId,
+                training_id: trainingId,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${userId}`,
+                    "Content-Type": "application/json",
                 }
             });
 
-            if (response.data.ok) {
-                console.log("✅ Инвойс на оплату успешно отправлен!");
+            console.log("✅ Тренировка успешно добавлена:", response.data);
 
-                // Fetch updated training plans and workouts for the user
-                await fetchUserTrainingPlanJWT(userToken);
-                await fetchUserTrainingPlanWorkoutsJWT(userToken, trainingId);
+            // ✅ Обновляем список тренировок после добавления
+            await fetchUserTrainingPlanJWT(userSession.token);
+            await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingId);
 
-                setSnackbarVisible(true);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1800);
-            } else {
-                console.error("❌ Ошибка запроса к боту:", response.data);
-                alert("Ошибка при отправке инвойса!");
-            }
+            setSnackbarVisible(true);
         } catch (error) {
-            console.error("❌ Ошибка при запросе платежа:", error);
-            alert("Ошибка при запросе платежа, попробуйте снова.");
+            console.error("❌ Ошибка при добавлении тренировки:", error);
+            setError("Ошибка при добавлении тренировки. Попробуйте снова.");
         }
     };
 
