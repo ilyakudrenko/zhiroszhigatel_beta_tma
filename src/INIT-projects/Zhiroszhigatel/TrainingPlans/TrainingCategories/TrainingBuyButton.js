@@ -37,7 +37,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             }
 
 
-            const userId = userSession.telegram_id;
+            const userId = userSession.token;
 
             console.log("📌 Данные перед отправкой запроса:", {
                 user_id: userId,
