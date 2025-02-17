@@ -36,6 +36,12 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 return;
             }
 
+            if (!trainingId) {
+                console.error("❌ Ошибка: trainingId отсутствует!");
+                setError("Ошибка: ID тренировки не передан!");
+                return;
+            }
+
             const userId = userSession.token;
 
             console.log("📌 Данные перед отправкой запроса:", {
