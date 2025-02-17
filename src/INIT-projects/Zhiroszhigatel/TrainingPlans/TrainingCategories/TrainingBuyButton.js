@@ -44,7 +44,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             // Form payload with necessary IDs
             const payload = {
                 telegram_id: telegramId,
-                user_id: userToken,
+                user_id: userSession.telegram_id,
                 training_id: trainingId
             };
 
