@@ -5,114 +5,89 @@ import axios from 'axios';
 import { getSession } from "../../../CustomComponents/UserSession/session";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
+import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
+import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
+
+
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+const BOT_TOKEN = process.env.REACT_APP_BOT_TOKEN;
 
 const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 };
 
-const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
+const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const navigate = useNavigate();
-    const [isGreen, setIsGreen] = useState(false);
+    const { userSession, loading: sessionLoading } = useUserSession();
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
-
-
-    const addUserTraining = async (userId, trainingId) => {
-        const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
-
-        try {
-            const response = await axios.post(`${BACKEND_PUBLIC_URL}/trainings/add-training`, {
-                user_id: userId,
-                training_id: trainingId,
-            });
-            return response.data;
-        } catch (error) {
-            console.error('Ошибка добавления тренировки:', error);
-            throw error;
-        }
-    };
-
-    // const handleButtonClick = async () => {
-    //     try {
-    //         handleClickHaptic('light');
-    //         const user = getSession(); // Получение текущей сессии пользователя
-    //         if (!user || !user.id) {
-    //             alert('Пользователь не авторизован!');
-    //             return;
-    //         }
-    //
-    //         // Добавление тренировки пользователю
-    //         await addUserTraining(user.id, trainingId);
-    //
-    //         // setIsGreen(true); // Успешно добавлено
-    //         setSnackbarVisible(true);
-    //
-    //         setTimeout(() => {
-    //             window.location.reload(); // Reloads the current page
-    //         }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
-    //
-    //     } catch (error) {
-    //         alert('Ошибка при добавлении тренировки. Попробуйте позже.');
-    //         console.error(error);
-    //     }
-    // };
+    const [error, setError] = useState(null);
 
     const handleBuyClick = async () => {
         try {
             handleClickHaptic('light');
 
-            // Получаем user_id из сессии (из локального хранилища или API)
-            const user = getSession();
-            if (!user || !user.id) {
-                alert("Ошибка: пользователь не найден.");
+            if (sessionLoading) {
+                console.log("🔹 Waiting for session data... 🔹");
                 return;
             }
 
-            // Получаем Telegram ID из Telegram WebApp
-            const telegramId = window.Telegram.WebApp.initDataUnsafe?.user?.id;
-            if (!telegramId) {
-                alert("Ошибка: Не удалось получить Telegram ID. Запустите через Telegram.");
+            if (!userSession || !userSession.token) {
+                console.error("❌ No valid session found. Aborting.");
+                setError("User not authenticated");
                 return;
             }
 
-            // Формируем payload с двумя ID
+            // Extract Telegram ID from session
+            const telegramId = userSession.telegram_id;
+
+            // Form payload with necessary IDs
             const payload = {
                 telegram_id: telegramId,
-                user_id: user.id, // ID пользователя из базы данных
+                user_id: userSession.telegram_id,
                 training_id: trainingId
             };
 
-            // Отправляем GET-запрос боту (через Telegram API) для отправки инвойса
-            const response = await axios.get(`https://api.telegram.org/bot${process.env.REACT_APP_BOT_TOKEN}/sendInvoice`, {
+            // Request Telegram bot to send an invoice
+            const response = await axios.get(`https://api.telegram.org/bot${BOT_TOKEN}/sendInvoice`, {
                 params: {
-                    chat_id: telegramId, // Отправляем инвойс по Telegram ID
-                    title: title, // Заголовок платежа
-                    description: "Доступ к эксклюзивному плану тренировок", // Описание
-                    payload: JSON.stringify(payload), // Теперь передаем два ID
-                    provider_token: "", // Оставляем пустым (для Stars)
-                    currency: "XTR", // Валюта (Telegram Stars)
-                    prices: JSON.stringify([{ label: title, amount: price }]) // Цена в Stars
+                    chat_id: telegramId, // Now using Telegram ID from session
+                    title: title,
+                    description: "Доступ к эксклюзивному плану тренировок",
+                    payload: JSON.stringify(payload),
+                    provider_token: "", // Stars provider token
+                    currency: "XTR",
+                    prices: JSON.stringify([{ label: title, amount: price }])
                 }
             });
 
             if (response.data.ok) {
                 console.log("✅ Инвойс на оплату успешно отправлен!");
+
+                // Fetch updated training plans and workouts for the user
+                await fetchUserTrainingPlanJWT(userSession.token);
+                await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingId);
+
+                setSnackbarVisible(true);
                 setTimeout(() => {
-                    window.location.reload(); // Reloads the current page
-                }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
+                    window.location.reload();
+                }, 1800);
             } else {
                 console.error("❌ Ошибка запроса к боту:", response.data);
                 alert("Ошибка при отправке инвойса!");
             }
         } catch (error) {
-            console.error("❌ Ошибка при отправке запроса:", error);
+            console.error("❌ Ошибка при запросе платежа:", error);
             alert("Ошибка при запросе платежа, попробуйте снова.");
         }
     };
 
-
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
     };
+
+    if (error) {
+        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+    }
 
     return (
         <AppRoot>
@@ -124,32 +99,28 @@ const INITTrainingBuyButton = ({ title, description, trainingId, price }) => {
                 display: 'flex',
                 justifyContent: 'center',
                 paddingBottom: '20px',
-                zIndex: 1000, // Ensure it’s on top of other elements
+                zIndex: 1000,
             }}>
                 <Button
                     mode="filled"
                     size="l"
                     onClick={handleBuyClick}
-                    style={{
-                        backgroundColor: isGreen ? '#53E651' : '',
-                    }}
                 >
-                    Купить: {price}
+                    Купить: {price} Stars
                 </Button>
             </div>
 
             {isSnackbarVisible && (
                 <Snackbar
-                    before={<INITProfileIcon/>}
+                    before={<INITProfileIcon />}
                     children={title}
-                    description="Добавлен в библиотеку(вы можите найти его в профиле)"
+                    description="Инвойс отправлен в Telegram"
                     duration={2000}
                     onClose={handleCloseSnackbar}
                     style={{
-                        zIndex: 1000, // Ensure it’s on top of other elements
+                        zIndex: 1000,
                     }}
-                >
-                </Snackbar>
+                />
             )}
         </AppRoot>
     );
