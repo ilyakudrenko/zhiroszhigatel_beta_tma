@@ -35,13 +35,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 return;
             }
 
-
             const userId = userSession.token;
-
-            console.log("📌 Данные перед отправкой запроса:", {
-                user_id: userId,
-                training_id: trainingId
-            });
 
             if (!userId || !trainingId) {
                 alert('Пользователь или план тренировок не определен.');
@@ -60,10 +54,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             );
 
             console.log("✅ Тренировка успешно добавлена");
-
-            // ✅ Обновляем список тренировок после добавления
-            await fetchUserTrainingPlanJWT(userId);
-            await fetchUserTrainingPlanWorkoutsJWT(userId, trainingId);
 
             setSnackbarVisible(true);
         } catch (error) {
