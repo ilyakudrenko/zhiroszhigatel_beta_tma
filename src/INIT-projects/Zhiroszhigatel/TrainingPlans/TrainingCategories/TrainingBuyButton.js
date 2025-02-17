@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { getSession } from "../../../CustomComponents/UserSession/session";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
@@ -63,8 +62,8 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             console.log("✅ Тренировка успешно добавлена");
 
             // ✅ Обновляем список тренировок после добавления
-            await fetchUserTrainingPlanJWT(userSession.token);
-            await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingId);
+            await fetchUserTrainingPlanJWT(userId);
+            await fetchUserTrainingPlanWorkoutsJWT(userId, trainingId);
 
             setSnackbarVisible(true);
         } catch (error) {
