@@ -20,7 +20,7 @@ import INITBanner from "../CustomComponents/Banner/Banner";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlanJWT from "../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
-import fetchAllTrainingPlans from "../CustomComponents/UserSession/fetchAllTrainingPlans";
+import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAllTrainingPlansJWT";
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
@@ -86,7 +86,7 @@ const HomePage = () => {
                 setMealPlan(userMealPlan?.[0]);
                 console.log("🔷MealPlan logged🔷", userMealPlan);
                 // Fetch training plans
-                const plans = await fetchAllTrainingPlans();
+                const plans = await fetchAllTrainingPlansJWT();
                 setTrainingPlans(plans);
                 console.log("🔷Plans logged🔷", plans);
 

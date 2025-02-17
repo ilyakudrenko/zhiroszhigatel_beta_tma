@@ -5,7 +5,7 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
  * Fetch all training plans from the backend and format them into the desired JSON structure.
  * @returns {Promise<Array>} A promise that resolves to the formatted training plans array.
  */
-const fetchAllTrainingPlans = async () => {
+const fetchAllTrainingPlansJWT = async () => {
     try {
         // Fetch training plans from the backend
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/training-plans`);
@@ -30,4 +30,4 @@ const fetchAllTrainingPlans = async () => {
     }
 };
 
-export default fetchAllTrainingPlans;
+export default fetchAllTrainingPlansJWT;

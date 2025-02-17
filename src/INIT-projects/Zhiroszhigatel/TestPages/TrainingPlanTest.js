@@ -3,8 +3,8 @@ import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetc
 import fetchUserTrainingPlanWorkoutsJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import {AppRoot} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
-import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
-import fetchUserExercisesReps from "../../CustomComponents/UserSession/fetchUserExercisesReps";
+import fetchUserExercises from "../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
+import fetchUserExercisesReps from "../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
 
 const TrainingPlanTest = ( {trainingPlanId}) => {
     const [trainingPlans, setTrainingPlans] = useState([]);

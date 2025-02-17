@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getSession} from "./session";
+import {getSession} from "../UserSession/session";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 

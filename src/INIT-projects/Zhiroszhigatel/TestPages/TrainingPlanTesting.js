@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import fetchUserTrainingPlanWorkoutsJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
-import fetchUserExercises from "../../CustomComponents/UserSession/fetchUserEcercises";
-import fetchUserExercisesReps from "../../CustomComponents/UserSession/fetchUserExercisesReps";
+import fetchUserExercises from "../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
+import fetchUserExercisesReps from "../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
 import {AppRoot, Button, Caption, Cell, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import {useLocation} from "react-router-dom";

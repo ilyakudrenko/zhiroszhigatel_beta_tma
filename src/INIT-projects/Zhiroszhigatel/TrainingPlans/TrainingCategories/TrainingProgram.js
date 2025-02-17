@@ -3,8 +3,8 @@ import {useLocation} from "react-router-dom";
 import INITBackButton from "../../../../Hooks/BackButton";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
-import fetchUserExercises from "../../../CustomComponents/UserSession/fetchUserEcercises";
-import fetchUserExercisesReps from "../../../CustomComponents/UserSession/fetchUserExercisesReps";
+import fetchUserExercises from "../../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
+import fetchUserExercisesReps from "../../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
 import {AppRoot, Button, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 
 import workoutImg from "../CardImages/workoutimage.jpg";
