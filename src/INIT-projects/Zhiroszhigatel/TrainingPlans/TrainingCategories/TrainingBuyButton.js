@@ -60,7 +60,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 }
             );
 
-            console.log("✅ Тренировка успешно добавлена:", response.data);
+            console.log("✅ Тренировка успешно добавлена");
 
             // ✅ Обновляем список тренировок после добавления
             await fetchUserTrainingPlanJWT(userSession.token);
