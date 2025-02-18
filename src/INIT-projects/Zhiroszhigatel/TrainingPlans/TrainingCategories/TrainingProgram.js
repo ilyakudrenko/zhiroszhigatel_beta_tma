@@ -72,7 +72,7 @@ const TrainingProgram = () => {
         };
 
         fetchData();
-    }, [userSession, trainingPlanId]);
+    }, [trainingPlanId]);
 
     const handleNextWorkout = () => {
         if (currentWorkoutIndex < workouts.length - 1) {
