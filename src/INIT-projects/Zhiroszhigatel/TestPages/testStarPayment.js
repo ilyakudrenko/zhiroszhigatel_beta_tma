@@ -1,88 +1,64 @@
 import React, { useState } from "react";
-import INITBackButton from "../../../Hooks/BackButton";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
+import INITBackButton from "../../../Hooks/BackButton";
+
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const TestStarPayment = () => {
-    const { userSession, loading, logoutUser } = useUserSession();
-    const [response, setResponse] = useState(null);
+    const { userSession, loading } = useUserSession();
+    const [paymentStatus, setPaymentStatus] = useState(null);
     const [error, setError] = useState(null);
 
     INITBackButton();
 
-    // Initialize Telegram WebApp
-    const tg = window.Telegram.WebApp;
-
-    // Function to open the payment popup
-    const openPaymentPopup = async () => {
+    async function initiatePayment() {
         try {
-            const confirmResult = await tg.showConfirm(`Do you want to make a test purchase for 1 Telegram Star?`);
-
-            if (confirmResult) {
-                console.log("✅ User confirmed the payment.");
-                await processPayment(1); // Pass 1 Star for testing
-            } else {
-                console.log("❌ User canceled the payment.");
+            if (!userSession || !userSession.token) {
+                console.error("❌ No valid session token found.");
+                setError("User is not authenticated.");
+                return;
             }
-        } catch (error) {
-            console.error("Error displaying payment popup:", error);
-        }
-    };
 
-    // Function to send a test payment request
-    const processPayment = async (priceInStars) => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_PUBLIC_URL}/payments/test-payment`, {
+            const response = await fetch(`${BACKEND_PUBLIC_URL}/test-payment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${userSession.token}`, // Ensure authentication
+                    Authorization: `Bearer ${userSession.token}`,
                 },
                 body: JSON.stringify({
-                    amount: priceInStars, // Amount in Telegram Stars
-                    description: "Test Payment Transaction",
+                    title: "Test Course Purchase",
+                    description: "Testing Telegram Stars payment",
+                    payload: "test_payment_transaction_12345", // Unique identifier for the order
+                    currency: "XTR", // Telegram Stars currency
+                    prices: [{ label: "Test Purchase", amount: 100 }], // 1 Star (100 units)
                 }),
             });
 
-            const result = await response.json();
+            const data = await response.json();
 
-            if (result.success) {
-                console.log("✅ Payment successful!", result);
-                alert("✅ Payment completed! Test transaction succeeded.");
+            if (data.success) {
+                const invoiceLink = data.invoiceLink;
+                openInvoice(invoiceLink);
             } else {
-                console.error("❌ Payment failed:", result);
-                alert("❌ Payment failed. Try again.");
+                console.error("Failed to create invoice:", data.error);
+                setError("Failed to initiate payment. Please try again.");
             }
         } catch (error) {
-            console.error("❌ Error processing payment:", error);
-            alert("❌ Payment error. Please try again.");
+            console.error("Error initiating payment:", error);
+            setError("An error occurred. Please try again.");
         }
-    };
+    }
 
-    const testProtectedRoute = async () => {
-        if (!userSession?.token) {
-            setError("No active session. Please log in first.");
-            return;
-        }
-
-        try {
-            const res = await fetch(`${process.env.REACT_APP_BACKEND_PUBLIC_URL}/protected-route`, {
-                method: "GET",
-                headers: {
-                    'Authorization': `Bearer ${userSession.token}`,
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            const data = await res.json();
-            if (!res.ok) {
-                throw new Error(data.error || "Unknown error");
+    function openInvoice(invoiceLink) {
+        const tg = window.Telegram.WebApp;
+        tg.openInvoice(invoiceLink, (status) => {
+            if (status === "paid") {
+                setPaymentStatus("✅ Payment successful! You now have access to the course.");
+            } else {
+                setPaymentStatus("❌ Payment failed or was canceled.");
             }
-
-            setResponse(data);
-        } catch (err) {
-            setError(err.message);
-        }
-    };
+        });
+    }
 
     if (loading) {
         return <p>Loading user session...</p>;
@@ -90,30 +66,18 @@ const TestStarPayment = () => {
 
     return (
         <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
-            <h1>JWT Session Test</h1>
+            <h1>Test Telegram Stars Payment</h1>
             {userSession ? (
                 <>
                     <p>Welcome, {userSession.first_name}!</p>
-                    <p>Token: {userSession.token}</p>
-                    <button onClick={testProtectedRoute} style={{ padding: "10px", marginTop: "10px" }}>
-                        Test Protected Route
-                    </button>
-                    <button onClick={openPaymentPopup} style={{ padding: "10px", marginTop: "10px", marginLeft: "10px" }}>
+                    <button onClick={initiatePayment} style={{ padding: "10px", marginTop: "10px" }}>
                         Test Payment (1 Star)
-                    </button>
-                    <button onClick={logoutUser} style={{ padding: "10px", marginTop: "10px", marginLeft: "10px" }}>
-                        Logout
                     </button>
                 </>
             ) : (
                 <p>No active session. Please log in via Telegram.</p>
             )}
-            {response && (
-                <div>
-                    <h2>Protected Route Response</h2>
-                    <pre>{JSON.stringify(response, null, 2)}</pre>
-                </div>
-            )}
+            {paymentStatus && <p style={{ color: "green" }}>{paymentStatus}</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
         </div>
     );
