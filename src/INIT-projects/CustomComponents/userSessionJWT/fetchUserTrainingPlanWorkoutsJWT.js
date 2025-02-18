@@ -12,7 +12,8 @@ const fetchUserTrainingPlanWorkoutsJWT = async (token , trainingPlanId  ) => {
             console.error("🚫Token not found. 🚫");
             return;
         }
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/${trainingPlanId}/load`,{
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/load`,{
+            params: { trainingPlanId },
             headers:{
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
