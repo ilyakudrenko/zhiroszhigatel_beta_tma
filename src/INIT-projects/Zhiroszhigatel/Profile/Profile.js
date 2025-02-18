@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {
-    AppRoot,
+    AppRoot, Avatar,
     Blockquote,
     Button,
     ButtonCell,
@@ -103,6 +103,23 @@ const Profile = () => {
 
     return (
         <AppRoot>
+            <Section>
+                <Cell
+                    //after={<Badge type="number">99</Badge>}
+                    before={
+                        <Avatar
+                            size={48}
+                            src={userSession.photo_url}
+                        />
+                    }
+                    //description="Description"
+                    //subhead={userSession.id_db}
+                    subtitle={userSession.username}
+                    //titleBadge={<Badge type="dot" />}
+                >
+                    {userSession.first_name} {userSession.last_name}
+                </Cell>
+            </Section>
             <INITDivider color='transparent' thickness="10%"/>
             <Section>
                 <Cell before={<Icon32ProfileColoredSquare />} subtitle="управление оплатой и подписками">
