@@ -24,6 +24,8 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const [paymentStatus, setPaymentStatus] = useState(null);
 
     const handlePayment = () => {
+        handleClickHaptic('light');
+
         initiatePayment(
             userSession,
             setPaymentStatus,
@@ -34,10 +36,9 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         );
     };
 
-    const handleBuyClick = async () => {
-        try {
-            handleClickHaptic('light');
 
+    const successfulPayment = async () => {
+        try {
             if(sessionLoading){
                 console.log("🔹Waiting for session🔹")
                 return;
@@ -109,6 +110,8 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
+            {paymentStatus && successfulPayment}
+            {error && <p style={{ color: "red" }}>{error}</p>}
 
             {isSnackbarVisible && (
                 <Snackbar
