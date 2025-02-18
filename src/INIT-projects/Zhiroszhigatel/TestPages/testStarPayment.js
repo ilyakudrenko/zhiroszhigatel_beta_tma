@@ -19,7 +19,7 @@ const TestStarPayment = () => {
                 return;
             }
 
-            const response = await fetch(`${BACKEND_PUBLIC_URL}/test-payment`, {
+            const response = await fetch(`${BACKEND_PUBLIC_URL}/payments/test-payment`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
