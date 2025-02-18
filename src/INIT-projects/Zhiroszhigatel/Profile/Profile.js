@@ -64,7 +64,7 @@ const Profile = () => {
                 const mealPlanData = await fetchUserMealPlanJWT(userSession.token); // Fetch user meal plan
                 setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
 
-                const trainingPlans = await fetchUserTrainingPlanJWT(); // Fetch user training plans
+                const trainingPlans = await fetchUserTrainingPlanJWT(userSession.token); // Fetch user training plans
                 setUserTrainingPlans(trainingPlans);
             } catch (err) {
                 console.error("❌ Failed to retrieve data:", err);
