@@ -14,7 +14,7 @@ const fetchUserTrainingPlanWorkoutsJWT = async (token , trainingPlanId  ) => {
         }
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/${trainingPlanId}/load`,{
             headers:{
-                Authorization: `Bearer ${userSession.token}`,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             }
         })
