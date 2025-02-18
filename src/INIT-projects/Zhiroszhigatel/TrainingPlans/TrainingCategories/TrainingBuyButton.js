@@ -23,25 +23,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const [error, setError] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState(null);
 
-    const handlePayment = () => {
-        handleClickHaptic('light');
-
-        initiatePayment(
-            userSession,
-            setPaymentStatus,
-            setError,
-            title, // Title
-            "Доступ к эксклюзивному контенту", // Description
-            price // Price in Stars
-        );
-    };
-
-    useEffect(() => {
-        if (paymentStatus === "paid") {
-            successfulPayment();
-        }
-    }, [paymentStatus]); // Runs when `paymentStatus` changes
-
 
     const successfulPayment = async () => {
         try {
@@ -86,6 +67,25 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             console.error("❌ Ошибка при добавлении тренировки:", error);
             setError("Ошибка при добавлении тренировки. Попробуйте снова.");
         }
+    };
+
+    useEffect(() => {
+        if (paymentStatus === "paid") {
+            successfulPayment();
+        }
+    }, [paymentStatus]); // Runs when `paymentStatus` changes
+
+    const handlePayment = () => {
+        handleClickHaptic('light');
+
+        initiatePayment(
+            userSession,
+            setPaymentStatus,
+            setError,
+            title, // Title
+            "Доступ к эксклюзивному контенту", // Description
+            price // Price in Stars
+        );
     };
 
     const handleCloseSnackbar = () => {
