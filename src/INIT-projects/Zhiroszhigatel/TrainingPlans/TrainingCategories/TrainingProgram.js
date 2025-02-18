@@ -26,53 +26,79 @@ const TrainingProgram = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if(sessionLoading){
-                console.log("🔷Waiting for session load🔷");
-                return;
-            }
-            if(!userSession || !userSession.token){
-                console.error("❌ No valid session found, aborting fetch.");
-                // setError("User not authenticated");
-                setLoading(false);
-                return;
-            }
             try {
+                console.log("📌 Старт загрузки данных...");
+
+                // ⏳ Ждем загрузки сессии
+                if (sessionLoading) {
+                    console.log("⏳ Ждем загрузку сессии...");
+                    return;
+                }
+
+                // ❌ Если нет userSession или trainingPlanId, ошибка
+                if (!userSession || !userSession.token) {
+                    console.error("❌ Ошибка: пользователь не авторизован.");
+                    setError("Ошибка авторизации. Попробуйте перезайти.");
+                    setLoading(false);
+                    return;
+                }
+
+                if (!trainingPlanId) {
+                    console.error("❌ Ошибка: ID тренировочного плана не найден.");
+                    setError("ID тренировочного плана отсутствует.");
+                    setLoading(false);
+                    return;
+                }
+
+                console.log(`✅ Загружаем тренировки для trainingPlanId: ${trainingPlanId}`);
+
                 setLoading(true);
 
-                // Fetch training plan details
+                // 📌 Загружаем данные
                 const plans = await fetchUserTrainingPlanJWT(userSession.token);
+                console.log("✅ Получены планы:", plans);
                 setTrainingPlans(plans);
 
-                // Fetch workouts for the selected training plan
-                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT( userSession.token,
+                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT(
+                    userSession.token,
                     trainingPlanId
                 );
+                console.log("✅ Получены тренировки:", fetchedWorkouts);
                 setWorkouts(fetchedWorkouts);
 
-                // Fetch exercises for each workout
+                if (fetchedWorkouts.length === 0) {
+                    console.warn("⚠️ Нет тренировок для данного плана.");
+                    setError("Нет доступных тренировок.");
+                    setLoading(false);
+                    return;
+                }
+
                 const fetchedExercises = await Promise.all(
                     fetchedWorkouts.map((workout) =>
                         fetchUserExercises(workout.trainingPlanWorkout_id)
                     )
                 );
+                console.log("✅ Получены упражнения:", fetchedExercises);
                 setExercises(fetchedExercises.flat());
 
-                // Fetch repetitions for all exercises
                 const fetchedReps = await Promise.all(
                     fetchedExercises.flat().map((exercise) =>
                         fetchUserExercisesReps(exercise.exerciseId)
                     )
                 );
+                console.log("✅ Получены повторения:", fetchedReps);
                 setReps(fetchedReps.flat());
+
+                setLoading(false);
             } catch (error) {
-                console.error("Error fetching training plan data:", error);
-            } finally {
+                console.error("❌ Ошибка загрузки данных:", error);
+                setError("Ошибка загрузки данных. Попробуйте снова.");
                 setLoading(false);
             }
         };
 
         fetchData();
-    }, [trainingPlanId]);
+    }, [userSession, trainingPlanId]);
 
     const handleNextWorkout = () => {
         if (currentWorkoutIndex < workouts.length - 1) {
