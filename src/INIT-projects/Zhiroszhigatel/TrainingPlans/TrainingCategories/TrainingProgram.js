@@ -6,6 +6,7 @@ import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSess
 import fetchUserExercises from "../../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
 import fetchUserExercisesReps from "../../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
 import { AppRoot, Button, Cell, Image, List, Section, Spinner, Title } from "@telegram-apps/telegram-ui";
+
 import workoutImg from "../CardImages/workoutimage.jpg";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 
@@ -26,7 +27,7 @@ const TrainingProgram = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log("📌 Старт загрузки данных...");
+            console.log("📌 Начало загрузки данных...");
 
             if (sessionLoading) {
                 console.log("🔷 Ожидание загрузки сессии...");
@@ -34,59 +35,63 @@ const TrainingProgram = () => {
             }
 
             if (!userSession || !userSession.token) {
-                console.error("❌ Ошибка: пользователь не найден.");
+                console.error("❌ Ошибка: отсутствует токен пользователя.");
                 setError("Вы не авторизованы.");
                 setLoading(false);
                 return;
             }
 
             if (!trainingPlanId) {
-                console.error("❌ Ошибка: ID тренировочного плана не найден.");
+                console.error("❌ Ошибка: trainingPlanId отсутствует.");
                 setError("ID тренировочного плана отсутствует.");
                 setLoading(false);
                 return;
             }
 
-            console.log(`✅ Загружаем данные для trainingPlanId: ${trainingPlanId}`);
-
             try {
                 setLoading(true);
 
-                // Fetch training plans
+                // Fetch training plan details
+                console.log(`✅ Загружаем планы тренировок для пользователя ${userSession.token}...`);
                 const plans = await fetchUserTrainingPlanJWT(userSession.token);
-                console.log("✅ Получены планы тренировок:", plans);
+                if (!plans || plans.length === 0) {
+                    throw new Error("Нет доступных планов тренировок.");
+                }
                 setTrainingPlans(plans);
+                console.log("✅ Получены планы тренировок:", plans);
 
-                // Fetch workouts
+                // Fetch workouts for the selected training plan
+                console.log(`✅ Загружаем тренировки для trainingPlanId: ${trainingPlanId}...`);
                 const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingPlanId);
+                if (!fetchedWorkouts || fetchedWorkouts.length === 0) {
+                    throw new Error("Нет доступных тренировок в этом плане.");
+                }
+                setWorkouts(fetchedWorkouts);
                 console.log("✅ Получены тренировки:", fetchedWorkouts);
 
-                if (!fetchedWorkouts || fetchedWorkouts.length === 0) {
-                    setError("Нет доступных тренировок.");
-                    setLoading(false);
-                    return;
-                }
-
-                setWorkouts(fetchedWorkouts);
-
-                // Fetch exercises
+                // Fetch exercises for each workout
+                console.log("🔍 Загружаем упражнения...");
                 const fetchedExercises = await Promise.all(
-                    fetchedWorkouts.map((workout) => fetchUserExercises(workout.trainingPlanWorkout_id))
+                    fetchedWorkouts.map((workout) =>
+                        fetchUserExercises(workout.trainingPlanWorkout_id)
+                    )
                 );
-
-                console.log("✅ Получены упражнения:", fetchedExercises.flat());
                 setExercises(fetchedExercises.flat());
+                console.log("✅ Получены упражнения:", fetchedExercises.flat());
 
-                // Fetch repetitions for exercises
+                // Fetch repetitions for all exercises
+                console.log("🔍 Загружаем повторения...");
                 const fetchedReps = await Promise.all(
-                    fetchedExercises.flat().map((exercise) => fetchUserExercisesReps(exercise.exerciseId))
+                    fetchedExercises.flat().map((exercise) =>
+                        fetchUserExercisesReps(exercise.exerciseId)
+                    )
                 );
-
-                console.log("✅ Получены повторения:", fetchedReps.flat());
                 setReps(fetchedReps.flat());
+                console.log("✅ Получены повторения:", fetchedReps.flat());
+
             } catch (error) {
                 console.error("❌ Ошибка при загрузке данных:", error);
-                setError("Ошибка при загрузке данных. Попробуйте снова.");
+                setError(error.message || "Ошибка при загрузке данных. Попробуйте снова.");
             } finally {
                 setLoading(false);
             }
@@ -112,12 +117,14 @@ const TrainingProgram = () => {
     if (loading) {
         return (
             <AppRoot>
-                <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "50vh",
-                }}>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "50vh",
+                    }}
+                >
                     <Spinner size="l" />
                 </div>
             </AppRoot>
@@ -127,38 +134,14 @@ const TrainingProgram = () => {
     if (error) {
         return (
             <AppRoot>
-                <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "50vh",
-                    color: "red",
-                    fontSize: "18px"
-                }}>
+                <div style={{ color: "red", textAlign: "center", paddingTop: "20px", fontSize: "18px" }}>
                     {error}
                 </div>
             </AppRoot>
         );
     }
 
-    if (!workouts.length) {
-        return (
-            <AppRoot>
-                <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "50vh",
-                    color: "gray",
-                    fontSize: "18px"
-                }}>
-                    Нет доступных тренировок.
-                </div>
-            </AppRoot>
-        );
-    }
-
-    const currentWorkout = workouts[currentWorkoutIndex];
+    const currentWorkout = workouts[currentWorkoutIndex] || {};
     const filteredExercises = exercises.filter(
         (exercise) => exercise.exerciseWorkout_id === currentWorkout?.trainingPlanWorkout_id
     );
@@ -166,6 +149,7 @@ const TrainingProgram = () => {
     return (
         <AppRoot>
             <List>
+
                 <Image
                     src={workoutImg}
                     style={{
@@ -180,67 +164,79 @@ const TrainingProgram = () => {
                     {currentWorkout?.trainingPlanWorkout_name || "Название не найдено"}
                 </Title>
 
-                {filteredExercises.map((exercise, index) => (
-                    <Section key={index}>
-                        <Cell multiline subhead="Упражнение">
-                            {exercise.exerciseName || "Не указано"}
-                        </Cell>
-                        <Cell multiline subhead="Подходы * Повторения по неделям">
-                            <span>
-                                {reps
-                                    .filter((rep) => rep.repExercise_id === exercise.exerciseId)
-                                    .map((rep, repIndex) => (
-                                        <span key={repIndex}>
-                                            {rep.repRepetitions} |
-                                        </span>
-                                    ))}
-                            </span>
-                        </Cell>
-                        <Cell multiline subhead="Применение. Мышцы.">
-                            {exercise.exerciseMuscle_group || "Не указано"}
-                        </Cell>
-                        <Cell multiline subhead="Видео уроки">
-                            <div style={{ textAlign: "center" }}>
-                                <iframe
-                                    width="95%"
-                                    height="215"
-                                    src="https://www.youtube.com/embed/UOICjnwypmk"
+                {filteredExercises.length === 0 ? (
+                    <div style={{ textAlign: "center", padding: "20px", fontSize: "16px" }}>
+                        Нет доступных упражнений.
+                    </div>
+                ) : (
+                    filteredExercises.map((exercise, index) => (
+                        <Section key={index}>
+                            <Cell multiline subhead="Упражнение">
+                                {exercise.exerciseName || "Не указано"}
+                            </Cell>
+                            <Cell multiline subhead="Подходы * Повторения по неделям">
+                                <span>
+                                    {reps
+                                        .filter((rep) => rep.repExercise_id === exercise.exerciseId)
+                                        .map((rep, repIndex) => (
+                                            <span key={repIndex}>
+                                                {rep.repRepetitions} |
+                                            </span>
+                                        ))}
+                                </span>
+                            </Cell>
+                            <Cell multiline subhead="Применение. Мышцы.">
+                                {exercise.exerciseMuscle_group || "Не указано"}
+                            </Cell>
+                            <Cell multiline subhead="Видео уроки">
+                                <div style={{ textAlign: "center" }}>
+                                    <iframe
+                                        width="95%"
+                                        height="215"
+                                        src={exercise.exerciseURL_youtube || "https://www.youtube.com/embed/UOICjnwypmk"}
+                                        style={{
+                                            border: "none",
+                                            borderRadius: 16,
+                                            padding: 5,
+                                        }}
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                    ></iframe>
+                                </div>
+                                <br />
+                                <a
+                                    href={exercise.exerciseURL_google}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     style={{
-                                        border: "none",
-                                        borderRadius: 16,
-                                        padding: 5,
+                                        color: '#82caff',
+                                        textDecoration: 'underline',
+                                        textDecorationColor: '#82caff'
                                     }}
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
-                        </Cell>
-                    </Section>
-                ))}
+                                >
+                                    Google Drive
+                                </a>
+                            </Cell>
+                        </Section>
+                    ))
+                )}
 
-                <div style={{
-                    position: "fixed",
-                    bottom: 0,
-                    left: 0,
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    paddingBottom: "20px",
-                    zIndex: 1000,
-                }}>
-                    <Button
-                        mode="filled"
-                        disabled={currentWorkoutIndex === 0}
-                        onClick={handlePreviousWorkout}
-                        style={{ marginRight: "10px" }}
-                    >
+                <div
+                    style={{
+                        position: "fixed",
+                        bottom: 0,
+                        left: 0,
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        paddingBottom: "20px",
+                        zIndex: 1000,
+                    }}
+                >
+                    <Button mode="filled" disabled={currentWorkoutIndex === 0} onClick={handlePreviousWorkout}>
                         ←
                     </Button>
-                    <Button
-                        mode="filled"
-                        disabled={currentWorkoutIndex === workouts.length - 1}
-                        onClick={handleNextWorkout}
-                    >
+                    <Button mode="filled" disabled={currentWorkoutIndex === workouts.length - 1} onClick={handleNextWorkout}>
                         →
                     </Button>
                 </div>
