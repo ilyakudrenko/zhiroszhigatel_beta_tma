@@ -19,6 +19,7 @@ const TrainingProgram = () => {
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
     const location = useLocation();
+    const [error, setError] = useState(null);
     const trainingPlanId = location.state?.trainingPlanId;
 
 
@@ -91,7 +92,7 @@ const TrainingProgram = () => {
 
             } catch (error) {
                 console.error("Error fetching training plan data:", error);
-                setError(error.message || "Ошибка при загрузке данных. Попробуйте снова.");
+                setError(error.message || "Ошибка при загрузке данных. Попробуйте снова."); // ✅ Now it works
             } finally {
                 setLoading(false);
             }
