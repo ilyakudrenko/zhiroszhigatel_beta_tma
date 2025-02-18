@@ -23,6 +23,7 @@ import TrainingPlanTesting from "./INIT-projects/Zhiroszhigatel/TestPages/Traini
 import CookieTest from "./INIT-projects/Zhiroszhigatel/TestPages/cookieTest";
 import TestJWT from "./INIT-projects/Zhiroszhigatel/TestPages/TestJWT";
 import TestJWTprotected from "./INIT-projects/Zhiroszhigatel/TestPages/testJWTprotected";
+import TestStarPayment from "./INIT-projects/Zhiroszhigatel/TestPages/testStarPayment";
 
 const App = () => {
     const location = useLocation();
@@ -89,7 +90,8 @@ const App = () => {
                     {/*<Route path="/testingPage" element={<TrainingPlanTest trainingPlanId='a0102070-d847-11ef-bfbf-a2aa7cf0e641' />} />*/}
                     {/*<Route path="/testingPage" element={<TrainingPlanTesting />} />*/}
                     {/*<Route path="/testingPage" element={<TestJWT />} />*/}
-                    <Route path="/testingPage" element={<TestJWTprotected />} />
+                    {/*<Route path="/testingPage" element={<TestJWTprotected />} />*/}
+                    <Route path="/testingPage" element={<TestStarPayment />} />
                     {/*<Route path="/testingPage" element={<CookieTest />} />*/}
                 </Routes>
         )
