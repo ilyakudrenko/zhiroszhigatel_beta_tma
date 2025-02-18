@@ -30,7 +30,7 @@ const TestStarPayment = () => {
                     description: "Testing Telegram Stars payment",
                     payload: "test_payment_transaction_12345", // Unique identifier for the order
                     currency: "XTR", // Telegram Stars currency
-                    prices: [{ label: "Test Purchase", amount: 1 }], // 1 Star (100 units)
+                    prices: [{ label: "Test Purchase", amount: 100 }], // 1 Star (100 units)
                 }),
             });
 
