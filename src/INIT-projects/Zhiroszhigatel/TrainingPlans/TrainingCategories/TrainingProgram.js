@@ -52,39 +52,50 @@ const TrainingProgram = () => {
 
                 // Fetch training plan details
                 const plans = await fetchUserTrainingPlanJWT(userSession.token);
+                console.log("✅ Получены планы тренировок:", plans);
+                if (plans.length === 0) {
+                    setError("Нет доступных планов тренировок.");
+                    setLoading(false);
+                    return;
+                }
                 setTrainingPlans(plans);
 
                 // Fetch workouts for the selected training plan
-                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT( userSession.token,
-                    trainingPlanId
-                );
+                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingPlanId);
+                console.log("✅ Получены тренировки:", fetchedWorkouts);
+                if (fetchedWorkouts.length === 0) {
+                    setError("Нет доступных тренировок в этом плане.");
+                    setLoading(false);
+                    return;
+                }
                 setWorkouts(fetchedWorkouts);
 
                 // Fetch exercises for each workout
                 const fetchedExercises = await Promise.all(
-                    fetchedWorkouts.map((workout) =>
-                        fetchUserExercises(workout.trainingPlanWorkout_id)
-                    )
+                    fetchedWorkouts.map((workout) => fetchUserExercises(workout.trainingPlanWorkout_id))
                 );
+                console.log("✅ Получены упражнения:", fetchedExercises.flat());
                 setExercises(fetchedExercises.flat());
 
                 // Fetch repetitions for all exercises
                 const fetchedReps = await Promise.all(
-                    fetchedExercises.flat().map((exercise) =>
-                        fetchUserExercisesReps(exercise.exerciseId)
-                    )
+                    fetchedExercises.flat().map((exercise) => fetchUserExercisesReps(exercise.exerciseId))
                 );
+                console.log("✅ Получены повторения:", fetchedReps.flat());
                 setReps(fetchedReps.flat());
-
             } catch (error) {
-                console.error("Error fetching training plan data:", error);
+                console.error("❌ Ошибка при загрузке данных:", error);
+                setError("Ошибка при загрузке данных. Попробуйте снова.");
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchData();
-    }, [userSession, trainingPlanId]);
+        // Ensure data is fetched only when everything is ready
+        if (!sessionLoading && userSession && userSession.token && trainingPlanId) {
+            fetchData();
+        }
+    }, [sessionLoading, userSession, trainingPlanId]);
 
     const handleNextWorkout = () => {
         if (currentWorkoutIndex < workouts.length - 1) {
