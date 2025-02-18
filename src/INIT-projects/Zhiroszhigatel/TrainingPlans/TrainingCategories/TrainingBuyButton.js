@@ -6,6 +6,7 @@ import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
+import { initiatePayment } from "../../../CustomComponents/Payment/Starspayment";
 
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
@@ -20,6 +21,8 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const { userSession, loading: sessionLoading } = useUserSession();
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [error, setError] = useState(null);
+    const [paymentStatus, setPaymentStatus] = useState(null);
+
 
     const handleBuyClick = async () => {
         try {
@@ -91,7 +94,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={handleBuyClick}
+                    onClick={() => initiatePayment(userSession, setPaymentStatus, setError)}
                 >
                     Купить: {price} Stars
                 </Button>
