@@ -18,7 +18,6 @@ import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
 import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
-import {initializeUserSession} from "../CustomComponents/UserSession/session";
 import fetchUserMealPlanJWT from "../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAllTrainingPlansJWT";
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
@@ -69,7 +68,6 @@ const HomePage = () => {
             try {
                 // await startSession(); // Start the session
                 console.log("🔷Initializing🔷");
-                await initializeUserSession();
                 console.log("🔷 Old session 🔷")
 
 
