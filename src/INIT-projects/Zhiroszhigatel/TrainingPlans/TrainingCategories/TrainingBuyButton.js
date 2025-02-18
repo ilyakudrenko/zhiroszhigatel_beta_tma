@@ -28,19 +28,24 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
 
         initiatePayment(
             userSession,
-            setPaymentStatus,
+            (status) => {
+                console.log("📌 Payment Status Changed:", status);
+                setPaymentStatus(status);
+            },
             setError,
-            title, // Title
-            "Доступ к эксклюзивному контенту", // Description
-            price // Price in Stars
+            title,
+            "Доступ к эксклюзивному контенту",
+            price
         );
     };
 
-    // useEffect(() => {
-    //     if (paymentStatus === "paid") {
-    //         successfulPayment();
-    //     }
-    // }, [paymentStatus]); // Runs when `paymentStatus` changes
+    // ✅ Run successfulPayment when paymentStatus updates to "paid"
+    useEffect(() => {
+        if (paymentStatus === "paid") {
+            console.log("🎉 Payment successful! Triggering successfulPayment...");
+            successfulPayment();
+        }
+    }, [paymentStatus]);
 
 
     const successfulPayment = async () => {
@@ -118,9 +123,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
-            {paymentStatus && (
-                successfulPayment
-            )}
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {isSnackbarVisible && (
