@@ -118,7 +118,9 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
-            {paymentStatus && <p style={{ color: "green" }}>{paymentStatus}</p>}
+            {paymentStatus && (
+                successfulPayment
+            )}
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {isSnackbarVisible && (
