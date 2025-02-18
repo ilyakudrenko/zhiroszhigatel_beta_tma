@@ -23,9 +23,30 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const [error, setError] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState(null);
 
+    const handlePayment = () => {
+        handleClickHaptic('light');
+
+        initiatePayment(
+            userSession,
+            setPaymentStatus,
+            setError,
+            title, // Title
+            "Доступ к эксклюзивному контенту", // Description
+            price // Price in Stars
+        );
+    };
+
+    // useEffect(() => {
+    //     if (paymentStatus === "paid") {
+    //         successfulPayment();
+    //     }
+    // }, [paymentStatus]); // Runs when `paymentStatus` changes
+
 
     const successfulPayment = async () => {
         try {
+
+
             if(sessionLoading){
                 console.log("🔹Waiting for session🔹")
                 return;
@@ -69,25 +90,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         }
     };
 
-    useEffect(() => {
-        if (paymentStatus === "paid") {
-            successfulPayment();
-        }
-    }, [paymentStatus]); // Runs when `paymentStatus` changes
-
-    const handlePayment = () => {
-        handleClickHaptic('light');
-
-        initiatePayment(
-            userSession,
-            setPaymentStatus,
-            setError,
-            title, // Title
-            "Доступ к эксклюзивному контенту", // Description
-            price // Price in Stars
-        );
-    };
-
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
     };
@@ -116,7 +118,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
-
+            {paymentStatus && <p style={{ color: "green" }}>{paymentStatus}</p>}
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {isSnackbarVisible && (
