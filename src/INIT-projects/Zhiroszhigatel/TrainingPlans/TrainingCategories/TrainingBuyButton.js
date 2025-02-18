@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -35,6 +35,12 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             price // Price in Stars
         );
     };
+
+    useEffect(() => {
+        if (paymentStatus === "paid") {
+            successfulPayment();
+        }
+    }, [paymentStatus]); // Runs when `paymentStatus` changes
 
 
     const successfulPayment = async () => {
@@ -110,7 +116,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
-            {paymentStatus && successfulPayment}
+
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {isSnackbarVisible && (
