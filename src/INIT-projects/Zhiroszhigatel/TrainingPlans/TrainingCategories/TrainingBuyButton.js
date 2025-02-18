@@ -23,6 +23,16 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     const [error, setError] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState(null);
 
+    const handlePayment = () => {
+        initiatePayment(
+            userSession,
+            setPaymentStatus,
+            setError,
+            title, // Title
+            "Доступ к эксклюзивному контенту", // Description
+            price // Price in Stars
+        );
+    };
 
     const handleBuyClick = async () => {
         try {
@@ -94,7 +104,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={() => initiatePayment(userSession, setPaymentStatus, setError)}
+                    onClick={handlePayment}
                 >
                     Купить: {price} Stars
                 </Button>

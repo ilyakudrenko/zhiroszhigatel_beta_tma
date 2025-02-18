@@ -10,6 +10,17 @@ const TestStarPayment = () => {
 
     INITBackButton();
 
+    const handlePayment = () => {
+        initiatePayment(
+            userSession,
+            setPaymentStatus,
+            setError,
+            "Premium Training Plan", // Title
+            "Access to exclusive workouts", // Description
+            1 // Price in Stars
+        );
+    };
+
     if (loading) {
         return <p>Loading user session...</p>;
     }
@@ -21,7 +32,7 @@ const TestStarPayment = () => {
                 <>
                     <p>Welcome, {userSession.first_name}!</p>
                     <button
-                        onClick={() => initiatePayment(userSession, setPaymentStatus, setError)}
+                        onClick={handlePayment}
                         style={{ padding: "10px", marginTop: "10px" }}
                     >
                         Test Payment (1 Star)

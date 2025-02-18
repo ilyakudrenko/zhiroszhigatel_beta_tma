@@ -1,6 +1,6 @@
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-export async function initiatePayment(userSession, setPaymentStatus, setError) {
+export async function initiatePayment(userSession, setPaymentStatus, setError, title, description, price) {
     try {
         if (!userSession || !userSession.token) {
             console.error("❌ No valid session token found.");
@@ -15,11 +15,11 @@ export async function initiatePayment(userSession, setPaymentStatus, setError) {
                 Authorization: `Bearer ${userSession.token}`,
             },
             body: JSON.stringify({
-                title: "Test Course Purchase",
-                description: "Testing Telegram Stars payment",
+                title: title,
+                description: description,
                 payload: "test_payment_transaction_12345", // Unique identifier for the order
                 currency: "XTR", // Telegram Stars currency
-                prices: [{ label: "Test Purchase", amount: 1 }], // 1 Star (100 units)
+                prices: [{ label: title, amount: price }], // 1 Star (100 units)
             }),
         });
 
