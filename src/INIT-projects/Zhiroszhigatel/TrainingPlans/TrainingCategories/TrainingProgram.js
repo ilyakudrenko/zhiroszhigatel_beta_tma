@@ -75,6 +75,7 @@ const TrainingProgram = () => {
                     )
                 );
                 setReps(fetchedReps.flat());
+                setLoading(false);
             } catch (error) {
                 console.error("Error fetching training plan data:", error);
             } finally {
@@ -83,7 +84,7 @@ const TrainingProgram = () => {
         };
 
         fetchData();
-    }, [userSession, trainingPlanId]);
+    }, [trainingPlanId]);
 
     const handleNextWorkout = () => {
         if (currentWorkoutIndex < workouts.length - 1) {
