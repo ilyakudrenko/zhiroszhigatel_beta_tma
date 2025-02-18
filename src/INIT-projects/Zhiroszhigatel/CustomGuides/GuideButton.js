@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Snackbar } from "@telegram-apps/telegram-ui";
-import { getSession } from "../../CustomComponents/UserSession/session";
 import axios from "axios";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
