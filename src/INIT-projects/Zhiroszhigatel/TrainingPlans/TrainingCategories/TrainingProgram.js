@@ -26,81 +26,53 @@ const TrainingProgram = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log("📌 Старт загрузки данных...");
-
             if(sessionLoading){
                 console.log("🔷Waiting for session load🔷");
                 return;
             }
             if(!userSession || !userSession.token){
                 console.error("❌ No valid session found, aborting fetch.");
-                setError("User not authenticated");
+                // setError("User not authenticated");
                 setLoading(false);
                 return;
             }
-
-            if (!trainingPlanId) {
-                console.error("❌ Ошибка: ID тренировочного плана не найден.");
-                setError("ID тренировочного плана отсутствует.");
-                setLoading(false);
-                return;
-            }
-            console.log(`✅ Загружаем тренировки для trainingPlanId: ${trainingPlanId}`);
-
             try {
                 setLoading(true);
 
                 // Fetch training plan details
-                console.log(`✅ Загружаем планы тренировок для пользователя ${userSession.token}...`);
                 const plans = await fetchUserTrainingPlanJWT(userSession.token);
-                if (!plans || plans.length === 0) {
-                    throw new Error("Нет доступных планов тренировок.");
-                }
                 setTrainingPlans(plans);
-                console.log("✅ Получены планы тренировок:", plans);
 
                 // Fetch workouts for the selected training plan
-                console.log(`✅ Загружаем тренировки для trainingPlanId: ${trainingPlanId}...`);
-                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT(userSession.token, trainingPlanId);
-                if (!fetchedWorkouts || fetchedWorkouts.length === 0) {
-                    throw new Error("Нет доступных тренировок в этом плане.");
-                }
+                const fetchedWorkouts = await fetchUserTrainingPlanWorkoutsJWT( userSession.token,
+                    trainingPlanId
+                );
                 setWorkouts(fetchedWorkouts);
-                console.log("✅ Получены тренировки:", fetchedWorkouts);
 
                 // Fetch exercises for each workout
-                console.log("🔍 Загружаем упражнения...");
                 const fetchedExercises = await Promise.all(
                     fetchedWorkouts.map((workout) =>
                         fetchUserExercises(workout.trainingPlanWorkout_id)
                     )
                 );
                 setExercises(fetchedExercises.flat());
-                console.log("✅ Получены упражнения:", fetchedExercises.flat());
 
                 // Fetch repetitions for all exercises
-                console.log("🔍 Загружаем повторения...");
                 const fetchedReps = await Promise.all(
                     fetchedExercises.flat().map((exercise) =>
                         fetchUserExercisesReps(exercise.exerciseId)
                     )
                 );
                 setReps(fetchedReps.flat());
-                console.log("✅ Получены повторения:", fetchedReps.flat());
-
-
             } catch (error) {
                 console.error("Error fetching training plan data:", error);
-                setError(error.message || "Ошибка при загрузке данных. Попробуйте снова.");
             } finally {
                 setLoading(false);
             }
         };
 
-        if (!sessionLoading && userSession?.token && trainingPlanId) {
-            fetchData();
-        }
-    }, [sessionLoading, userSession, trainingPlanId]);
+        fetchData();
+    }, [trainingPlanId]);
 
     const handleNextWorkout = () => {
         if (currentWorkoutIndex < workouts.length - 1) {
@@ -126,16 +98,6 @@ const TrainingProgram = () => {
                     }}
                 >
                     <Spinner size="l" />
-                </div>
-            </AppRoot>
-        );
-    }
-
-    if (error) {
-        return (
-            <AppRoot>
-                <div style={{ color: "red", textAlign: "center", paddingTop: "20px", fontSize: "18px" }}>
-                    {error}
                 </div>
             </AppRoot>
         );
