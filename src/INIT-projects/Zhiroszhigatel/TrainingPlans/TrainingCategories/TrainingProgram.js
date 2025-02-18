@@ -1,52 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useLocation} from "react-router-dom";
 import INITBackButton from "../../../../Hooks/BackButton";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import fetchUserExercises from "../../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
 import fetchUserExercisesReps from "../../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
-import { AppRoot, Button, Cell, Image, List, Section, Spinner, Title } from "@telegram-apps/telegram-ui";
+import {AppRoot, Button, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
 
 import workoutImg from "../CardImages/workoutimage.jpg";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 
 const TrainingProgram = () => {
-    const { userSession, loading: sessionLoading } = useUserSession();
+    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
     const [exercises, setExercises] = useState([]);
     const [reps, setReps] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
     const location = useLocation();
     const trainingPlanId = location.state?.trainingPlanId;
+
 
     INITBackButton();
 
     useEffect(() => {
         const fetchData = async () => {
-            console.log("📌 Начало загрузки данных...");
+            console.log("📌 Старт загрузки данных...");
 
-            if (sessionLoading) {
-                console.log("🔷 Ожидание загрузки сессии...");
+            if(sessionLoading){
+                console.log("🔷Waiting for session load🔷");
                 return;
             }
-
-            if (!userSession || !userSession.token) {
-                console.error("❌ Ошибка: отсутствует токен пользователя.");
-                setError("Вы не авторизованы.");
+            if(!userSession || !userSession.token){
+                console.error("❌ No valid session found, aborting fetch.");
+                setError("User not authenticated");
                 setLoading(false);
                 return;
             }
 
             if (!trainingPlanId) {
-                console.error("❌ Ошибка: trainingPlanId отсутствует.");
+                console.error("❌ Ошибка: ID тренировочного плана не найден.");
                 setError("ID тренировочного плана отсутствует.");
                 setLoading(false);
                 return;
             }
+            console.log(`✅ Загружаем тренировки для trainingPlanId: ${trainingPlanId}`);
 
             try {
                 setLoading(true);
@@ -89,8 +88,9 @@ const TrainingProgram = () => {
                 setReps(fetchedReps.flat());
                 console.log("✅ Получены повторения:", fetchedReps.flat());
 
+
             } catch (error) {
-                console.error("❌ Ошибка при загрузке данных:", error);
+                console.error("Error fetching training plan data:", error);
                 setError(error.message || "Ошибка при загрузке данных. Попробуйте снова.");
             } finally {
                 setLoading(false);
@@ -141,7 +141,7 @@ const TrainingProgram = () => {
         );
     }
 
-    const currentWorkout = workouts[currentWorkoutIndex] || {};
+    const currentWorkout = workouts[currentWorkoutIndex];
     const filteredExercises = exercises.filter(
         (exercise) => exercise.exerciseWorkout_id === currentWorkout?.trainingPlanWorkout_id
     );
@@ -151,7 +151,7 @@ const TrainingProgram = () => {
             <List>
 
                 <Image
-                    src={workoutImg}
+                    src= {workoutImg}
                     style={{
                         width: '100%',
                         height: '40vh',
@@ -161,39 +161,55 @@ const TrainingProgram = () => {
                 />
 
                 <Title>
-                    {currentWorkout?.trainingPlanWorkout_name || "Название не найдено"}
+                    {currentWorkout.trainingPlanWorkout_name ? currentWorkout.trainingPlanWorkout_name : "Название не найдено"}
                 </Title>
-
-                {filteredExercises.length === 0 ? (
-                    <div style={{ textAlign: "center", padding: "20px", fontSize: "16px" }}>
-                        Нет доступных упражнений.
-                    </div>
-                ) : (
+                {
                     filteredExercises.map((exercise, index) => (
-                        <Section key={index}>
-                            <Cell multiline subhead="Упражнение">
+                        <Section
+                            key={index}
+                            // header={index}
+                        >
+                            <Cell
+                                multiline
+                                subhead="Упражнение"
+                            >
                                 {exercise.exerciseName || "Не указано"}
                             </Cell>
-                            <Cell multiline subhead="Подходы * Повторения по неделям">
-                                <span>
-                                    {reps
-                                        .filter((rep) => rep.repExercise_id === exercise.exerciseId)
-                                        .map((rep, repIndex) => (
-                                            <span key={repIndex}>
-                                                {rep.repRepetitions} |
-                                            </span>
-                                        ))}
-                                </span>
+                            <Cell
+                                multiline
+                                subhead="Подходы * Повторения по неделям"
+                            >
+                            <span>
+                                {reps
+                                    .filter((rep) => rep.repExercise_id === exercise.exerciseId)
+                                    .map((rep, repIndex) => (
+                                        <span key={repIndex}>
+                                            {rep.repRepetitions} |
+                                        </span>
+                                    ))}
+                            </span>
                             </Cell>
-                            <Cell multiline subhead="Применение. Мышцы.">
+                            <Cell
+                                multiline
+                                subhead="Применение. Мышцы."
+                            >
                                 {exercise.exerciseMuscle_group || "Не указано"}
                             </Cell>
-                            <Cell multiline subhead="Видео уроки">
-                                <div style={{ textAlign: "center" }}>
+                            <Cell
+                                multiline
+                                subhead="Видео уроки"
+                            >
+
+                                {/*<iframe width="996" height="616" src="https://www.youtube.com/embed/UOICjnwypmk"*/}
+                                {/*        title="жим штанги лежа на наклонной скамье" frameBorder="0"*/}
+                                {/*        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
+                                {/*        referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>*/}
+
+                                <div style={{textAlign: "center"}}>
                                     <iframe
                                         width="95%"
                                         height="215"
-                                        src={exercise.exerciseURL_youtube || "https://www.youtube.com/embed/UOICjnwypmk"}
+                                        src="https://www.youtube.com/embed/UOICjnwypmk"
                                         style={{
                                             border: "none",
                                             borderRadius: 16,
@@ -203,7 +219,17 @@ const TrainingProgram = () => {
                                         allowFullScreen
                                     ></iframe>
                                 </div>
-                                <br />
+
+                                {/*<a*/}
+                                {/*    href={exercise.exerciseURL_youtube}*/}
+                                {/*    target="_blank"*/}
+                                {/*    rel="noopener noreferrer"*/}
+                                {/*>*/}
+                                {/*    YouTube*/}
+                                {/*</a>*/}
+
+                                <br/>
+
                                 <a
                                     href={exercise.exerciseURL_google}
                                     target="_blank"
@@ -218,9 +244,7 @@ const TrainingProgram = () => {
                                 </a>
                             </Cell>
                         </Section>
-                    ))
-                )}
-
+                    ))}
                 <div
                     style={{
                         position: "fixed",
@@ -233,10 +257,19 @@ const TrainingProgram = () => {
                         zIndex: 1000,
                     }}
                 >
-                    <Button mode="filled" disabled={currentWorkoutIndex === 0} onClick={handlePreviousWorkout}>
+                    <Button
+                        mode="filled"
+                        disabled={currentWorkoutIndex === 0}
+                        onClick={handlePreviousWorkout}
+                        style={{marginRight: "10px" }}
+                    >
                         ←
                     </Button>
-                    <Button mode="filled" disabled={currentWorkoutIndex === workouts.length - 1} onClick={handleNextWorkout}>
+                    <Button
+                        mode="filled"
+                        disabled={currentWorkoutIndex === workouts.length - 1}
+                        onClick={handleNextWorkout}
+                    >
                         →
                     </Button>
                 </div>
