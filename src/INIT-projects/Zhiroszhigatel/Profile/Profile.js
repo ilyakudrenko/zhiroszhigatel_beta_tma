@@ -21,6 +21,7 @@ import { Icon32ProfileColoredSquare } from "@telegram-apps/telegram-ui/dist/icon
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 import mealsData from "../MealPlans/MealPlans.json";
 import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
+import fetchUserTrainingPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 
 const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
@@ -33,6 +34,8 @@ const Profile = () => {
     const [error, setError] = useState(null);
     const [userLibrary, setUserLibrary] = useState([]); // State for user's guides
     const [mealPlan, setMealPlan] = useState(null); // State for user's meal plan
+    const [userTrainingPlans, setUserTrainingPlans] = useState([]); // State for user's training plans
+
 
 
     INITBackButton(); // Back button for the profile
@@ -60,6 +63,9 @@ const Profile = () => {
 
                 const mealPlanData = await fetchUserMealPlanJWT(userSession.token); // Fetch user meal plan
                 setMealPlan(mealPlanData?.[0]); // Assuming it returns an array, use the first meal plan
+
+                const trainingPlans = await fetchUserTrainingPlanJWT(); // Fetch user training plans
+                setUserTrainingPlans(trainingPlans);
             } catch (err) {
                 console.error("❌ Failed to retrieve data:", err);
                 setError("Failed to initialize session or fetch data.");
@@ -173,6 +179,30 @@ const Profile = () => {
             )}
 
             <INITDivider color="transparent" thickness="10%"/>
+
+            {/* Training Plans Section */}
+
+            {userTrainingPlans.length > 0 ? (
+                <HorizontalScroll>
+                    <INITCardsList
+                        items={userTrainingPlans}
+                        userOwnedTrainingPlans={userTrainingPlans} // Pass training plans
+                    />
+                </HorizontalScroll>
+            ) : (
+                <div>
+                    <Blockquote type="text">
+                        <p>В вашей библиотеке пока нету тренировок.</p>
+                        <p>Вы можете добавить их из главного меню.</p>
+                        <Button mode="filled" size="s" onClick={() => navigate("/")}>
+                            в главное меню
+                        </Button>
+                    </Blockquote>
+                </div>
+            )}
+
+            <INITDivider color="transparent" thickness="10%"/>
+
         </AppRoot>
     );
 };
