@@ -119,7 +119,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={handlePayment}
+                    onClick={successfulPayment}
                 >
                     Купить: {price} Stars
                 </Button>
