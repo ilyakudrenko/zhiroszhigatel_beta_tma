@@ -14,7 +14,7 @@ import React from 'react';
  * Example usage:
  * <INITPersonCircleIcon color="blue" width="24" height="24" opacity={0.85} />
  */
-const INITProfileIcon = ({ color = 'white', width = '24px', height = '24px', opacity = 1 }) => (
+const INITProfileIcon = ({color = 'white', width = '24px', height = '24px', opacity = 1}) => (
     <svg
         width={width}
         height={height}

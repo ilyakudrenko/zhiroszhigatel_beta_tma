@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import INITBackButton from "../../../Hooks/BackButton";
-import {AppRoot, Badge, Banner, Button, Modal, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Banner, Button, Modal} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import {
     ModalHeader
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
-import INITBonus from "../MealPlans/MealsCategories/Bonus";
 import INITCookingTools from "../MealPlans/MealsCategories/CookingTools";
 import INITRecipes from "../MealPlans/MealsCategories/Recipes";
 import INITHormones from "./TrainingCategories/Hormones";
@@ -18,8 +17,6 @@ import trainingprogramImg from "../TrainingPlans/CardImages/Tbanner1.png";
 import hormonesImg from "../TrainingPlans/CardImages/Tbanner2.png";
 import snackImg from "../TrainingPlans/CardImages/snack.jpg";
 import cookingtoolsImg from "../TrainingPlans/CardImages/cookingtoolsimage.jpg";
-
-
 
 
 const roundedCellStyle = {
@@ -48,7 +45,7 @@ const TrainingPlanNavigation = () => {
                                      height: "100%",
                                      objectFit: "cover" // Ensures the image fills the available space
                                  }}
-                            />}
+                />}
                 description="Как делать надо, как делать не надо."
                 header="Урок из тренажерного зала"
                 // onCloseIcon={function noRefCheck(){}}
@@ -73,14 +70,15 @@ const TrainingPlanNavigation = () => {
                                      height: "100%",
                                      objectFit: "cover" // Ensures the image fills the available space
                                  }}
-                            />}
+                />}
                 description={trainingPlan.description}
                 header={trainingPlan.title}
                 type="section"
                 style={roundedCellStyle}
             >
                 <React.Fragment key=".0">
-                    <Button size="s" onClick={() => navigate("/trainingprogram", { state: { trainingPlanId: trainingPlan.trainingPlanId } })}>
+                    <Button size="s"
+                            onClick={() => navigate("/trainingprogram", {state: {trainingPlanId: trainingPlan.trainingPlanId}})}>
                         Перейти
                     </Button>
                 </React.Fragment>
@@ -101,7 +99,7 @@ const TrainingPlanNavigation = () => {
                                              height: "100%",
                                              objectFit: "cover" // Ensures the image fills the available space
                                          }}
-                                    />}
+                        />}
                         callout={<Badge type={"number"}>бонус</Badge>}
                         description="Врач эндокринолог поясняет, как гормоны связанный с ожирением, нужно ли сдавать анализы и какие"
                         header="Гормоны виноваты в ожирении"
@@ -135,7 +133,7 @@ const TrainingPlanNavigation = () => {
                                              height: "100%",
                                              objectFit: "cover" // Ensures the image fills the available space
                                          }}
-                                    />}
+                        />}
                         //callout="Urgent notification"
                         //description=""
                         header="Мои приборы для простого и вкусного похудения"
@@ -170,7 +168,7 @@ const TrainingPlanNavigation = () => {
                                              height: "100%",
                                              objectFit: "cover" // Ensures the image fills the available space
                                          }}
-                                    />}
+                        />}
                         //callout="Urgent notification"
                         //description=""
                         header="Сборник рецептов перекусов"

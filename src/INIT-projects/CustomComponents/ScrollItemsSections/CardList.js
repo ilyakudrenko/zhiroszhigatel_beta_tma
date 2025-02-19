@@ -4,15 +4,14 @@ import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/c
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
 import {Card, Modal,} from "@telegram-apps/telegram-ui";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
-import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
+import {
+    ModalHeader
+} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
-import INITHelp from "../Help/Help";
-import trainingImg from "../../Zhiroszhigatel/TrainingPlans/CardImages/training2.jpg"
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
-import fetchUserTrainingPlanJWT from "../userSessionJWT/fetchUserTrainingPlanJWT";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 /**
@@ -74,7 +73,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     <div>
         {owned ? (
             <Card
-                style={{ flexShrink: 0, minWidth: '254px'}}
+                style={{flexShrink: 0, minWidth: '254px'}}
                 type="ambient"
                 onClick={onRedirect} // Redirect if owned
             >
@@ -128,7 +127,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
     </div>
 );
 
-const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
+const INITCardItemTraining = ({trainingPlan, userOwnedTrainingPlans}) => {
     const navigate = useNavigate();
 
     // Проверяем, куплен ли именно этот план
@@ -138,14 +137,21 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
 
     const handleCardClick = () => {
         if (isOwned) {
-            navigate("/trainingnavigation", { state: { trainingPlan: trainingPlan, training_id: trainingPlan.trainingPlanId, title: trainingPlan.title, description: trainingPlan.description } });
+            navigate("/trainingnavigation", {
+                state: {
+                    trainingPlan: trainingPlan,
+                    training_id: trainingPlan.trainingPlanId,
+                    title: trainingPlan.title,
+                    description: trainingPlan.description
+                }
+            });
         }
     };
 
     if (isOwned) {
         return (
             <Card
-                style={{ flexShrink: 0, minWidth: '254px' }}
+                style={{flexShrink: 0, minWidth: '254px'}}
                 type="ambient"
                 onClick={handleCardClick} // ✅ Теперь сразу редиректит!
             >
@@ -173,12 +179,12 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
     return (
         <Modal
             header={<ModalHeader after={<ModalClose><Icon28Close
-                style={{ color: 'var(--tgui--plain_foreground)' }} /></ModalClose>}>{trainingPlan.title}</ModalHeader>}
+                style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{trainingPlan.title}</ModalHeader>}
             style={{
                 backgroundColor: 'var(--tgui--secondary_bg_color)',
             }}
             trigger={
-                <Card style={{ flexShrink: 0, minWidth: '254px' }} type="ambient">
+                <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
                     <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
                     <img
                         alt={trainingPlan.title}
@@ -199,7 +205,7 @@ const INITCardItemTraining = ({ trainingPlan, userOwnedTrainingPlans }) => {
                 </Card>
             }
         >
-            <TrainingPlanPromo trainingPlan={trainingPlan} />
+            <TrainingPlanPromo trainingPlan={trainingPlan}/>
         </Modal>
     );
 };
@@ -233,8 +239,8 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                 }}
             >
                 {items.map((item, i) => {
-                    if(item.cardChip === "Guide"){
-                        return(
+                    if (item.cardChip === "Guide") {
+                        return (
                             <INITCardItem
                                 key={i}
                                 imageSrc={item.imageSrc}
@@ -247,10 +253,10 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                             />
                         )
                     }
-                    if(item.cardChip === "Meal"){
-                        return(
+                    if (item.cardChip === "Meal") {
+                        return (
                             <INITCardItemMeal
-                                key = {i}
+                                key={i}
                                 imageSrc={item.imageSrc}
                                 title={item.title}
                                 description={item.description}
@@ -262,7 +268,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                             />
                         )
                     }
-                    if(item.cardChip === "Training"){
+                    if (item.cardChip === "Training") {
                         return (
                             <INITCardItemTraining
                                 key={i}
@@ -274,7 +280,7 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
 
                     // Default fallback
                     return null;
-                    })}
+                })}
             </div>
         </div>
     );

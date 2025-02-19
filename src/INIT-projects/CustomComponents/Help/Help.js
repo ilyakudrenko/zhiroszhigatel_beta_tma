@@ -1,5 +1,7 @@
 import React from 'react';
-import {ModalHeader} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
+import {
+    ModalHeader
+} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import {IconButton, Modal, Placeholder} from "@telegram-apps/telegram-ui";
@@ -30,7 +32,7 @@ const INITHelp = () => {
                     <img
                         alt="Telegram sticker"
                         src="https://xelene.me/telegram.gif"
-                        style={{ display: 'block', width: '144px', height: '144px' }}
+                        style={{display: 'block', width: '144px', height: '144px'}}
                     />
                 </Placeholder>
             </div>

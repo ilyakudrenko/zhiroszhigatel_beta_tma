@@ -19,7 +19,7 @@ export async function initiatePayment(userSession, setPaymentStatus, setError, t
                 description: description,
                 payload: "test_payment_transaction_12345", // Unique identifier for the order
                 currency: "XTR", // Telegram Stars currency
-                prices: [{ label: title, amount: price }], // 1 Star (100 units)
+                prices: [{label: title, amount: price}], // 1 Star (100 units)
             }),
         });
 

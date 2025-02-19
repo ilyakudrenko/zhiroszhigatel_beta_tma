@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {AppRoot, Button, Cell, List, Section, Title} from "@telegram-apps/telegram-ui";
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import INITBackButton from "../../../../Hooks/BackButton";

@@ -15,7 +15,7 @@ const fetchAllGuides = async (token) => {
         }
         // Fetch free guides from the backend
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/guides/all`, {
-            headers:{
+            headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             }

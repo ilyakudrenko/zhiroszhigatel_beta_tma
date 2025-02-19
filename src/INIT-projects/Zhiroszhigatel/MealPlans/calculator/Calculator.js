@@ -9,10 +9,11 @@ import {
     IconContainer,
     Input,
     Section,
-    Select, Snackbar,
+    Select,
+    Snackbar,
 } from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../../Hooks/BackButton";
-import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
+import {Icon28Stats} from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import {useLocation, useNavigate} from "react-router-dom";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
@@ -22,7 +23,7 @@ import {initiatePayment} from "../../../CustomComponents/Payment/Starspayment";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const handleClickHaptic = (effect = 'light') =>{
+const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 }
 
@@ -33,7 +34,7 @@ const Calculator = () => {
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [error, setError] = useState(null);
     const location = useLocation();
-    const { title, price } = location.state;
+    const {title, price} = location.state;
     const [paymentStatus, setPaymentStatus] = useState(null);
 
 
@@ -81,8 +82,7 @@ const Calculator = () => {
 
         if (weightLoss && total > 1800) {
             total -= 500;
-        }
-        else{
+        } else {
             setWeightLoss(false);
         }
 
@@ -104,7 +104,7 @@ const Calculator = () => {
         try {
             const response = await axios.get(
                 `${BACKEND_PUBLIC_URL}/mealplans/get-mealplan`,
-                { params: { calories: Math.round(total) } }
+                {params: {calories: Math.round(total)}}
             );
             setMealPlan(response.data);
             setMealPlanError(null);
@@ -115,11 +115,11 @@ const Calculator = () => {
     };
 
     const saveMealPlan = async () => {
-        if(sessionLoading){
+        if (sessionLoading) {
             console.log("🔹Waiting for session🔹")
             return;
         }
-        if(!userSession || !userSession.token){
+        if (!userSession || !userSession.token) {
             console.error("❌ No valid session found, aborting fetch.");
             setError("User not authenticated");
             return;
@@ -136,9 +136,9 @@ const Calculator = () => {
 
             await axios.post(
                 `${BACKEND_PUBLIC_URL}/user_mealplans/save-mealplan`,
-                { mealPlanId },
+                {mealPlanId},
                 {
-                    headers:{
+                    headers: {
                         Authorization: `Bearer ${userId}`,
                         "Content-Type": "application/json",
                     }
@@ -148,7 +148,7 @@ const Calculator = () => {
             setSnackbarVisible(true);
             setTimeout(async () => {
                 navigate('/'); // Переход к следующей странице
-            },2000)
+            }, 2000)
         } catch (error) {
             if (error.response && error.response.status === 409) {
                 // Пользователь уже имеет план
@@ -190,12 +190,12 @@ const Calculator = () => {
         setSnackbarVisible(false);
     };
     if (error) {
-        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+        return <AppRoot style={{color: "red"}}>{error}</AppRoot>;
     }
     return (
         <AppRoot>
             <Section header="Инструкция">
-                <div style={{ textAlign: "center" }}>
+                <div style={{textAlign: "center"}}>
                     <iframe
                         width="90%"
                         height="215"
@@ -216,7 +216,7 @@ const Calculator = () => {
                     width: '100%',
                 }}
             >
-                <Section header="Возраст" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
+                <Section header="Возраст" style={{paddingLeft: '10px', paddingRight: '10px', paddingBottom: '10px'}}>
                     <Input
                         placeholder="Укажите свой возраст"
                         value={age}
@@ -225,7 +225,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Рост" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
+                <Section header="Рост" style={{paddingLeft: '10px', paddingRight: '10px', paddingBottom: '10px'}}>
                     <Input
                         placeholder="Укажите свой рост в см"
                         value={height}
@@ -234,7 +234,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Вес" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
+                <Section header="Вес" style={{paddingLeft: '10px', paddingRight: '10px', paddingBottom: '10px'}}>
                     <Input
                         placeholder="Укажите свой вес в кг"
                         value={weight}
@@ -243,7 +243,7 @@ const Calculator = () => {
                     />
                 </Section>
 
-                <Section header="Пол" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
+                <Section header="Пол" style={{paddingLeft: '10px', paddingRight: '10px', paddingBottom: '10px'}}>
                     <Select
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
@@ -253,7 +253,8 @@ const Calculator = () => {
                     </Select>
                 </Section>
 
-                <Section header="Уровень активности" style={{ paddingLeft: '10px',  paddingRight: '10px', paddingBottom: '10px' }}>
+                <Section header="Уровень активности"
+                         style={{paddingLeft: '10px', paddingRight: '10px', paddingBottom: '10px'}}>
                     <Select
                         value={activityLevel}
                         onChange={(e) => setActivityLevel(e.target.value)}
@@ -290,19 +291,19 @@ const Calculator = () => {
                     Рассчитать
                 </Button>
             </Section>
-            <INITDivider color="transparent" thickness="10%" />
+            <INITDivider color="transparent" thickness="10%"/>
             {/* Meal Plan Section */}
             <Section header="Ваш калораж">
-                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                <Cell before={<IconContainer><Icon28Stats/></IconContainer>}>
                     Общие калории: {totalCalories} ккал
                 </Cell>
-                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                <Cell before={<IconContainer><Icon28Stats/></IconContainer>}>
                     Белки: {proteins} г ({proteins * 4} ккал)
                 </Cell>
-                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                <Cell before={<IconContainer><Icon28Stats/></IconContainer>}>
                     Жиры: {fats} г ({fats * 9} ккал)
                 </Cell>
-                <Cell before={<IconContainer><Icon28Stats /></IconContainer>}>
+                <Cell before={<IconContainer><Icon28Stats/></IconContainer>}>
                     Углеводы: {carbs} г ({carbs * 4} ккал)
                 </Cell>
                 {/*{mealPlanError && <Cell style={{ color: 'red' }}>{mealPlanError}</Cell>}*/}

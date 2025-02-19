@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
@@ -30,11 +30,11 @@ const useUserSession = () => {
                 throw new Error("initData is missing");
             }
 
-            const response = await axios.post(`${BACKEND_PUBLIC_URL}/auth/login`, { initData }, {
-                headers: { 'Content-Type': 'application/json' }
+            const response = await axios.post(`${BACKEND_PUBLIC_URL}/auth/login`, {initData}, {
+                headers: {'Content-Type': 'application/json'}
             });
 
-            const { token, user } = response.data;
+            const {token, user} = response.data;
             if (token && user) {
                 const sessionData = {
                     telegram_id: user.id,
@@ -61,7 +61,7 @@ const useUserSession = () => {
         setUserSession(null);
     };
 
-    return { userSession, loading, logoutUser };
+    return {userSession, loading, logoutUser};
 };
 
 export default useUserSession;

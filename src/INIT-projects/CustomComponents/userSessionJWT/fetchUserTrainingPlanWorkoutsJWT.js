@@ -2,25 +2,25 @@ import axios from 'axios';
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const fetchUserTrainingPlanWorkoutsJWT = async (token , trainingPlanId  ) => {
+const fetchUserTrainingPlanWorkoutsJWT = async (token, trainingPlanId) => {
     // console.log("Training Id Passed:", trainingPlanId);
     try {
         // const userSession = await getSession();
         // const userId = userSession.id;
-        if(!token){
+        if (!token) {
             console.error("🚫Token not found. 🚫");
             return;
         }
-        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/load`,{
-            params: { trainingPlanId },
-            headers:{
+        const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_workouts/load`, {
+            params: {trainingPlanId},
+            headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             }
         })
 
         const workoutsData = response.data.map((workout) => ({
-            trainingPlanWorkout_id:workout.id,
+            trainingPlanWorkout_id: workout.id,
             trainingPlanWorkout_training_plan_id: workout.training_plan_id,
             trainingPlanWorkout_name: workout.name,
             trainingPlanWorkout_description: workout.description,

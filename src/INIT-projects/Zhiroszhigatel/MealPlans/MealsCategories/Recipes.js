@@ -33,7 +33,7 @@ const INITRecipes = () => {
 
     if (isLoading) {
         return (
-            <div style={{ textAlign: 'center' }}>
+            <div style={{textAlign: 'center'}}>
                 <p>Загрузка изображений...</p>
             </div>
         );

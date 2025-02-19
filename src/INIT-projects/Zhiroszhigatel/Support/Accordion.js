@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
-import {AccordionSummary} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
-import {AccordionContent} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
+import {
+    AccordionSummary
+} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionSummary/AccordionSummary";
+import {
+    AccordionContent
+} from "@telegram-apps/telegram-ui/dist/components/Blocks/Accordion/components/AccordionContent/AccordionContent";
 import {Accordion, Blockquote} from "@telegram-apps/telegram-ui";
 
 // Helper function to render links and emojis in the content
@@ -13,7 +17,7 @@ const formatContent = (content) => {
             (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #82caff; text-decoration: underline; text-decoration-color: #82caff;">${url}</a>`
         );
         // Return line as HTML to support links
-        return <div key={index} dangerouslySetInnerHTML={{ __html: linkifiedLine }} />;
+        return <div key={index} dangerouslySetInnerHTML={{__html: linkifiedLine}}/>;
     });
 
     return lines;

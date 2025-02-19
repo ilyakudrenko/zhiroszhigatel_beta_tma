@@ -3,7 +3,7 @@ import {Button} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
 
 
-const handleClickHaptic = (effect = 'light') =>{
+const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 }
 
@@ -16,7 +16,7 @@ const INITBuyButton = ({title, price}) => {
     const handleButtonClick = () => {
         handleClickHaptic('light')
         setIsGreen(true); // Toggle the color state
-        navigate("/calculator", { state: { title, price } });
+        navigate("/calculator", {state: {title, price}});
     };
 
     return (

@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import INITBackButton from "../../../../Hooks/BackButton";
 import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
-import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
+import fetchUserTrainingPlanWorkoutsJWT
+    from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
 import fetchUserExercises from "../../../CustomComponents/userSessionJWT/fetchUserExercisesJWT";
 import fetchUserExercisesReps from "../../../CustomComponents/userSessionJWT/fetchUserExercisesRepsJWT";
 import {AppRoot, Button, Cell, Image, List, Section, Spinner, Title} from "@telegram-apps/telegram-ui";
@@ -11,7 +12,7 @@ import workoutImg from "../CardImages/workoutimage.jpg";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
 
 const TrainingProgram = () => {
-    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
+    const {userSession, loading: sessionLoading} = useUserSession(); // JWT Session
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [workouts, setWorkouts] = useState([]);
     const [currentWorkoutIndex, setCurrentWorkoutIndex] = useState(0);
@@ -29,11 +30,11 @@ const TrainingProgram = () => {
         const fetchData = async () => {
             console.log("📌 Старт загрузки данных...");
 
-            if(sessionLoading){
+            if (sessionLoading) {
                 console.log("🔷Waiting for session load🔷");
                 return;
             }
-            if(!userSession || !userSession.token){
+            if (!userSession || !userSession.token) {
                 console.error("❌ No valid session found, aborting fetch.");
                 setError("User not authenticated");
                 setLoading(false);
@@ -126,7 +127,7 @@ const TrainingProgram = () => {
                         height: "50vh",
                     }}
                 >
-                    <Spinner size="l" />
+                    <Spinner size="l"/>
                 </div>
             </AppRoot>
         );
@@ -135,7 +136,7 @@ const TrainingProgram = () => {
     if (error) {
         return (
             <AppRoot>
-                <div style={{ color: "red", textAlign: "center", paddingTop: "20px", fontSize: "18px" }}>
+                <div style={{color: "red", textAlign: "center", paddingTop: "20px", fontSize: "18px"}}>
                     {error}
                 </div>
             </AppRoot>
@@ -152,7 +153,7 @@ const TrainingProgram = () => {
             <List>
 
                 <Image
-                    src= {workoutImg}
+                    src={workoutImg}
                     style={{
                         width: '100%',
                         height: '40vh',
@@ -262,7 +263,7 @@ const TrainingProgram = () => {
                         mode="filled"
                         disabled={currentWorkoutIndex === 0}
                         onClick={handlePreviousWorkout}
-                        style={{marginRight: "10px" }}
+                        style={{marginRight: "10px"}}
                     >
                         ←
                     </Button>

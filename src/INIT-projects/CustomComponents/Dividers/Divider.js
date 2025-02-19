@@ -14,7 +14,7 @@ import React from 'react';
  * Example usage:
  * <INITDivider color="gray" thickness="2px" margin="8px 0" />
  */
-const INITDivider = ({ color = 'red', thickness, margin = '16px 0' }) => (
+const INITDivider = ({color = 'red', thickness, margin = '16px 0'}) => (
     <div
         style={{
             backgroundColor: color, // Sets the background color of the divider

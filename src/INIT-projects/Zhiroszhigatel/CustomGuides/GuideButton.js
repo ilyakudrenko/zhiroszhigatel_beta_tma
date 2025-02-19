@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { Button, Snackbar } from "@telegram-apps/telegram-ui";
+import React, {useEffect, useState} from "react";
+import {Button, Snackbar} from "@telegram-apps/telegram-ui";
 import axios from "axios";
 import INITProfileIcon from "../../CustomComponents/Icons/ProfileIcon";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-const GuideButton = ({ guide_id, title }) => {
+const GuideButton = ({guide_id, title}) => {
     const {userSession, loading: loadingSession} = useUserSession();
     const [isAdded, setIsAdded] = useState(false); // State to track if the guide is added
     const [isSnackbarVisible, setSnackbarVisible] = useState(false); // Snackbar visibility state
     const [snackbarMessage, setSnackbarMessage] = useState("");
 
 
-
     useEffect(() => {
-        if(loadingSession){
+        if (loadingSession) {
             console.log("UserSession loading");
             return;
         }
@@ -32,7 +31,7 @@ const GuideButton = ({ guide_id, title }) => {
                 // Check if the guide is already added for the user
                 const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`,
                     {
-                        headers:{
+                        headers: {
                             Authorization: `Bearer ${userSession.token}`,
                             "Content-Type": "application/json",
                         }
@@ -62,7 +61,7 @@ const GuideButton = ({ guide_id, title }) => {
                 // Remove the guide if it's already added
                 await axios.delete(`${BACKEND_PUBLIC_URL}/user_guides/delete`, {
                     data: {guide_id},
-                    headers:{
+                    headers: {
                         Authorization: `Bearer ${userSession.token}`,
                         "Content-Type": "application/json",
                     }
@@ -77,7 +76,7 @@ const GuideButton = ({ guide_id, title }) => {
                     `${BACKEND_PUBLIC_URL}/user_guides/add`,
                     {guide_id},
                     {
-                        headers:{
+                        headers: {
                             Authorization: `Bearer ${userSession.token}`,
                             "Content-Type": "application/json",
                         }
@@ -126,7 +125,7 @@ const GuideButton = ({ guide_id, title }) => {
 
             {isSnackbarVisible && (
                 <Snackbar
-                    before={<INITProfileIcon />}
+                    before={<INITProfileIcon/>}
                     children={title}
                     description={snackbarMessage}
                     duration={4000}

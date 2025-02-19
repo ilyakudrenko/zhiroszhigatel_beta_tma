@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 const FixTelegramBehavior = () => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const FixTelegramBehavior = () => {
             }
         };
 
-        document.addEventListener("touchstart", handleTouchStart, { passive: false });
+        document.addEventListener("touchstart", handleTouchStart, {passive: false});
 
         return () => {
             document.removeEventListener("touchstart", handleTouchStart);

@@ -11,7 +11,7 @@ import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 
 
 const RationsDays = () => {
-    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
+    const {userSession, loading: sessionLoading} = useUserSession(); // JWT Session
     const [mealPlans, setMealPlans] = useState([]);
     const [mealPlanDays, setMealPlanDays] = useState([]);
     const [mealPlanDaysMeals, setMealPlanDaysMeals] = useState([]);
@@ -23,11 +23,11 @@ const RationsDays = () => {
 
     useEffect(() => {
         const loadMealPlans = async () => {
-            if(sessionLoading){
+            if (sessionLoading) {
                 console.log("🔷Waiting for session load🔷");
                 return;
             }
-            if(!userSession || !userSession.token){
+            if (!userSession || !userSession.token) {
                 console.error("❌ No valid session found, aborting fetch.");
                 setError("User not authenticated");
                 setLoading(false);
@@ -82,10 +82,10 @@ const RationsDays = () => {
                         height: "50vh", // Full viewport height to center vertically
                     }}
                 >
-                    <div style={{ textAlign: "center" }}>
-                        <Spinner size="l" />
+                    <div style={{textAlign: "center"}}>
+                        <Spinner size="l"/>
                         {" "}
-                        <br />
+                        <br/>
                     </div>
                 </div>
             </AppRoot>
@@ -96,7 +96,7 @@ const RationsDays = () => {
         return (
             <AppRoot>
                 <Section>
-                    <p style={{ color: "red", textAlign: "center" }}>{error}</p>
+                    <p style={{color: "red", textAlign: "center"}}>{error}</p>
                 </Section>
             </AppRoot>
         );
@@ -107,7 +107,7 @@ const RationsDays = () => {
             <List>
 
                 <Image
-                    src= {imageTitle}
+                    src={imageTitle}
                     style={{
                         width: '100%',
                         height: '40vh',
@@ -117,7 +117,7 @@ const RationsDays = () => {
                 />
 
                 {/* Заголовок плана питания */}
-                <Title level="2" weight="bold" style={{ marginBottom: "10px" }}>
+                <Title level="2" weight="bold" style={{marginBottom: "10px"}}>
                     {mealPlans[0]?.mealPlan_title || "Meal Plan"}
                 </Title>
 
@@ -126,16 +126,16 @@ const RationsDays = () => {
                     caps
                     level="1"
                     weight="3"
-                    style={{ margin: "5%" }}
+                    style={{margin: "5%"}}
                     multiline
                 >
                     {mealPlans[0]?.mealPlan_description || "No additional details available."}
                 </Caption>
 
-                <INITDivider color="transparent" thickness="10%" />
+                <INITDivider color="transparent" thickness="10%"/>
 
                 {currentDay && (
-                    <Title level="3" weight="bold" style={{ margin: "16px 0" }}>
+                    <Title level="3" weight="bold" style={{margin: "16px 0"}}>
                         День {currentDay.mealPlanDays_day_number}
                     </Title>
                 )}
@@ -158,7 +158,7 @@ const RationsDays = () => {
                     </Section>
                 )}
 
-                <INITDivider color="transparent" thickness="10%" />
+                <INITDivider color="transparent" thickness="10%"/>
 
                 {/* Данные о приемах пищи */}
                 <div>

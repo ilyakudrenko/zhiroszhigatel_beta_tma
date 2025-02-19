@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Placeholder, Spinner } from '@telegram-apps/telegram-ui';
+import React, {useEffect, useState} from 'react';
+import {Placeholder, Spinner} from '@telegram-apps/telegram-ui';
 import GuideButton from "./GuideButton";
 
 /**
@@ -16,7 +16,7 @@ import GuideButton from "./GuideButton";
  *
  * @returns {JSX.Element} A list of images that represent each page of the guide, or an error message if none are found.
  */
-const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
+const INITGuideTemplate = ({guideKey, totalPages, title, guideId}) => {
     const [guideImages, setGuideImages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -50,7 +50,7 @@ const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
                     width: '100%',
                 }}
             >
-                <Spinner size="l" />
+                <Spinner size="l"/>
                 <p>Загрузка контента. Пожалуйста, подождите...</p>
             </div>
         );
@@ -65,7 +65,7 @@ const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
                 <img
                     alt="Telegram sticker"
                     src="https://xelene.me/telegram.gif"
-                    style={{ display: 'block', width: '144px', height: '144px' }}
+                    style={{display: 'block', width: '144px', height: '144px'}}
                 />
             </Placeholder>
         );
@@ -78,11 +78,11 @@ const INITGuideTemplate = ({ guideKey, totalPages, title, guideId}) => {
                     key={index}
                     src={src.default || src}
                     alt={`Guide Page ${index + 1}`}
-                    style={{ width: '100%', display: 'block' }}
+                    style={{width: '100%', display: 'block'}}
                 />
             ))}
 
-            {guideId && <GuideButton guide_id={guideId} title={title} />}
+            {guideId && <GuideButton guide_id={guideId} title={title}/>}
         </div>
     );
 };

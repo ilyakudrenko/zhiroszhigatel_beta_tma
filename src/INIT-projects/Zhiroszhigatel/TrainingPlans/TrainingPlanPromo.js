@@ -1,10 +1,10 @@
 import React from 'react';
-import { Caption, Cell, Image, List, Section, Title } from "@telegram-apps/telegram-ui";
+import {Caption, Cell, Image, List, Section, Title} from "@telegram-apps/telegram-ui";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import imageSrc from "../TrainingPlans/CardImages/training3.jpg";
 import INITTrainingBuyButton from "./TrainingCategories/TrainingBuyButton";
 
-const TrainingPlanPromo = ({ trainingPlan }) => {
+const TrainingPlanPromo = ({trainingPlan}) => {
     return (
         <List>
             <Image
@@ -17,7 +17,7 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 }}
             />
 
-            <Title level="1" weight="bold" style={{ margin: '16px 16px 8px' }}>
+            <Title level="1" weight="bold" style={{margin: '16px 16px 8px'}}>
                 {trainingPlan.title}
             </Title>
 
@@ -26,14 +26,14 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                     key={index}
                     level="1"
                     weight="3"
-                    style={{ margin: '5%' }}
+                    style={{margin: '5%'}}
                     multiline
                 >
                     {desc}
                 </Caption>
             ))}
 
-            <INITDivider color="transparent" thickness="10%" />
+            <INITDivider color="transparent" thickness="10%"/>
 
             <Caption
                 caps
@@ -60,7 +60,8 @@ const TrainingPlanPromo = ({ trainingPlan }) => {
                 )}
             </Section>
 
-            <INITTrainingBuyButton title={trainingPlan.title} description={trainingPlan.description} trainingId={trainingPlan.trainingPlanId} price={trainingPlan.price} />
+            <INITTrainingBuyButton title={trainingPlan.title} description={trainingPlan.description}
+                                   trainingId={trainingPlan.trainingPlanId} price={trainingPlan.price}/>
         </List>
     );
 };

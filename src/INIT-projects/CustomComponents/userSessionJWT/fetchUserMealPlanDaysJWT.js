@@ -39,7 +39,7 @@ const fetchUserMealPlanDaysJWT = async (token) => {
         }));
 
         return mealPlanDaysData;
-    }catch(error){
+    } catch (error) {
         console.error("Failed to fetch user meal plan days", error);
         throw error;
     }

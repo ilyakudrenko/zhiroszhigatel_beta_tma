@@ -7,15 +7,15 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
-const handleClick = ( ) => {
+const handleClick = () => {
     alert("Button clicked!");
 };
 
 const INITBanner = ({
-    imageSrc,
-    header,
-    description,
-    infoLink,
+                        imageSrc,
+                        header,
+                        description,
+                        infoLink,
 
                     }) => {
     return (
@@ -28,7 +28,7 @@ const INITBanner = ({
                                      height: "100%",
                                      objectFit: "cover"
                                  }}
-                            />}
+                />}
                 callout="Новое уведомление"
                 description={description}
                 header={header}

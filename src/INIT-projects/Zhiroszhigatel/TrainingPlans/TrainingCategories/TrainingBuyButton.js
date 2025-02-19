@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {AppRoot, Button, Snackbar} from "@telegram-apps/telegram-ui";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
-import fetchUserTrainingPlanJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
-import fetchUserTrainingPlanWorkoutsJWT from "../../../CustomComponents/userSessionJWT/fetchUserTrainingPlanWorkoutsJWT";
-import { initiatePayment } from "../../../CustomComponents/Payment/Starspayment";
+import {initiatePayment} from "../../../CustomComponents/Payment/Starspayment";
 
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
@@ -16,9 +14,9 @@ const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 };
 
-const INITTrainingBuyButton = ({ title, trainingId, price }) => {
+const INITTrainingBuyButton = ({title, trainingId, price}) => {
     const navigate = useNavigate();
-    const { userSession, loading: sessionLoading } = useUserSession();
+    const {userSession, loading: sessionLoading} = useUserSession();
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [error, setError] = useState(null);
     const [paymentStatus, setPaymentStatus] = useState(null);
@@ -28,11 +26,11 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         try {
 
 
-            if(sessionLoading){
+            if (sessionLoading) {
                 console.log("🔹Waiting for session🔹")
                 return;
             }
-            if(!userSession || !userSession.token){
+            if (!userSession || !userSession.token) {
                 console.error("❌ No valid session found, aborting fetch.");
                 setError("User not authenticated");
                 return;
@@ -47,9 +45,9 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
 
             await axios.post(
                 `${BACKEND_PUBLIC_URL}/trainings/add-training`,
-                { trainingId },
+                {trainingId},
                 {
-                    headers:{
+                    headers: {
                         Authorization: `Bearer ${userId}`,
                         "Content-Type": "application/json",
                     }
@@ -101,7 +99,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
     };
 
     if (error) {
-        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+        return <AppRoot style={{color: "red"}}>{error}</AppRoot>;
     }
 
     return (
@@ -124,11 +122,11 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                     Купить: {price} Stars
                 </Button>
             </div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p style={{color: "red"}}>{error}</p>}
 
             {isSnackbarVisible && (
                 <Snackbar
-                    before={<INITProfileIcon />}
+                    before={<INITProfileIcon/>}
                     children={title}
                     description="Инвойс отправлен в Telegram"
                     duration={2000}

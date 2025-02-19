@@ -14,7 +14,7 @@ import React from 'react';
  * Example usage:
  * <INITMessageBadgeIcon color="blue" width="32" height="32" opacity={1} />
  */
-const INITMessageBadgeIcon = ({ color = 'white', width = '24px', height = '24px', opacity = 1 }) => (
+const INITMessageBadgeIcon = ({color = 'white', width = '24px', height = '24px', opacity = 1}) => (
     <svg
         width={width}
         height={height}

@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {
-    AppRoot, Avatar,
-    Blockquote,
-    Button,
-    ButtonCell,
-    Caption,
-    Cell,
-    Section,
-    Spinner
-} from "@telegram-apps/telegram-ui";
+import {AppRoot, Avatar, Blockquote, Button, Caption, Cell, Section, Spinner} from "@telegram-apps/telegram-ui";
 import INITBackButton from "../../../Hooks/BackButton";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import fetchUserLibrary from "../../CustomComponents/userSessionJWT/fetchUserLibraryJWT";
-import { HorizontalScroll } from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
+import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
-import { useNavigate } from "react-router-dom";
-import { Icon28AddCircle } from "@telegram-apps/telegram-ui/dist/icons/28/add_circle";
-import { Icon32ProfileColoredSquare } from "@telegram-apps/telegram-ui/dist/icons/32/profile_colored_square";
+import {useNavigate} from "react-router-dom";
 import useUserSession from "../../CustomComponents/userSessionJWT/sessionJWT";
 import mealsData from "../MealPlans/MealPlans.json";
 import fetchUserMealPlanJWT from "../../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
@@ -28,14 +17,13 @@ const handleClickHaptic = (effect = 'light') => {
 };
 
 const Profile = () => {
-    const { userSession, loading: sessionLoading } = useUserSession();
+    const {userSession, loading: sessionLoading} = useUserSession();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [userLibrary, setUserLibrary] = useState([]); // State for user's guides
     const [mealPlan, setMealPlan] = useState(null); // State for user's meal plan
     const [userTrainingPlans, setUserTrainingPlans] = useState([]); // State for user's training plans
-
 
 
     INITBackButton(); // Back button for the profile
@@ -88,7 +76,7 @@ const Profile = () => {
                         height: "50vh",
                     }}
                 >
-                    <Spinner size="l" />
+                    <Spinner size="l"/>
                 </div>
             </AppRoot>
         );
@@ -96,7 +84,7 @@ const Profile = () => {
     if (error) {
         return (
             <AppRoot>
-                <div style={{ color: "red" }}>{error}</div>
+                <div style={{color: "red"}}>{error}</div>
             </AppRoot>
         );
     }
@@ -130,14 +118,14 @@ const Profile = () => {
             {/*    </ButtonCell>*/}
             {/*</Section>*/}
             {/*<INITDivider color='transparent' thickness="10%"/>*/}
-            <Caption caps level="1" weight="3" style={{ margin: '5%' }}>
+            <Caption caps level="1" weight="3" style={{margin: '5%'}}>
                 Ваша библиотека
             </Caption>
             <INITDivider color='transparent' thickness="10%"/>
 
             <HorizontalScroll onClick={() => handleClickHaptic('light')}>
                 {userLibrary.length > 0 ? (
-                    <INITCardsList items={userLibrary} />
+                    <INITCardsList items={userLibrary}/>
                 ) : (
                     <div>
                         <Blockquote type="text">
@@ -153,7 +141,7 @@ const Profile = () => {
 
 
             {/* Meal Plan Section */}
-            <INITDivider color="transparent" thickness="10%" />
+            <INITDivider color="transparent" thickness="10%"/>
 
             {/*<Caption*/}
             {/*    caps*/}

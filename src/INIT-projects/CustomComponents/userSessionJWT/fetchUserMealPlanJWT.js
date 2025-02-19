@@ -18,9 +18,9 @@ const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
  */
 const fetchUserMealPlanJWT = async (token) => {
     try {
-        if(!token){
+        if (!token) {
             console.error("🚫 No token available 🚫")
-        }else{
+        } else {
             console.log("🍔 Token passed to the mealplan fetch🍔", token)
         }
 
@@ -38,7 +38,7 @@ const fetchUserMealPlanJWT = async (token) => {
         }));
 
         return mealPlansData;
-    } catch (error){
+    } catch (error) {
         console.error("Failed to fetch user meal plan", error);
         throw error;
     }

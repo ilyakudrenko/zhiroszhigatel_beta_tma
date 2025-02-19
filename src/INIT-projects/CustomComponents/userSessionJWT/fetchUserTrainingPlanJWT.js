@@ -3,14 +3,14 @@ import axios from "axios";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const fetchUserTrainingPlanJWT = async (token) => {
-    try{
-        if(!token){
+    try {
+        if (!token) {
             console.error("🚫Token not found. 🚫");
             return;
         }
 
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/trainings/get_user_training`, {
-            headers:{
+            headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             }

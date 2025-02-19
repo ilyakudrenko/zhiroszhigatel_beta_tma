@@ -1,5 +1,4 @@
 import axios from "axios";
-import useUserSession from "./sessionJWT";
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -18,7 +17,7 @@ const fetchUserLibrary = async (token) => {
         // Send a request to the backend to fetch the user's library
         const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`,
             {
-                headers:{
+                headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 }

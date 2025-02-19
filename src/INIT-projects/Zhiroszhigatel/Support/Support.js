@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppRoot, Button, Section} from "@telegram-apps/telegram-ui";
+import {AppRoot, Section} from "@telegram-apps/telegram-ui";
 import {useNavigate} from "react-router-dom";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import INITAccordionList from "./Accordion";
