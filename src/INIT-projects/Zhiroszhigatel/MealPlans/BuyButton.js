@@ -16,7 +16,7 @@ const INITBuyButton = ({title, price}) => {
     const handleButtonClick = () => {
         handleClickHaptic('light')
         setIsGreen(true); // Toggle the color state
-        navigate("/calculator"); // Navigate to rations
+        navigate("/calculator", { state: { title, price } });
     };
 
     return (
@@ -39,7 +39,7 @@ const INITBuyButton = ({title, price}) => {
                     backgroundColor: isGreen ? '#53E651' : '',
                 }}
             >
-                Купить: ${price}
+                Дальше
             </Button>
         </div>
     );

@@ -143,7 +143,7 @@ const HomePage = () => {
             // }}
         >
             {/*<INITHelp />*/}
-            <p>Welcome {userSession.token}</p>
+            {/*<p>Welcome {userSession.token}</p>*/}
                 <Section
                 >
                     <Cell

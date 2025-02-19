@@ -121,15 +121,15 @@ const Profile = () => {
                 </Cell>
             </Section>
             <INITDivider color='transparent' thickness="10%"/>
-            <Section>
-                <Cell before={<Icon32ProfileColoredSquare />} subtitle="управление оплатой и подписками">
-                    Кошелек
-                </Cell>
-                <ButtonCell before={<Icon28AddCircle />} onClick={() => navigate("/testingPage")}>
-                    Добавить способ оплаты
-                </ButtonCell>
-            </Section>
-            <INITDivider color='transparent' thickness="10%"/>
+            {/*<Section>*/}
+            {/*    <Cell before={<Icon32ProfileColoredSquare />} subtitle="управление оплатой и подписками">*/}
+            {/*        Кошелек*/}
+            {/*    </Cell>*/}
+            {/*    <ButtonCell before={<Icon28AddCircle />} onClick={() => navigate("/testingPage")}>*/}
+            {/*        Добавить способ оплаты*/}
+            {/*    </ButtonCell>*/}
+            {/*</Section>*/}
+            {/*<INITDivider color='transparent' thickness="10%"/>*/}
             <Caption caps level="1" weight="3" style={{ margin: '5%' }}>
                 Ваша библиотека
             </Caption>

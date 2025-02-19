@@ -1,6 +1,6 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     AppRoot,
     Button,
@@ -14,9 +14,10 @@ import {
 import INITBackButton from "../../../../Hooks/BackButton";
 import { Icon28Stats } from "@telegram-apps/telegram-ui/dist/icons/28/stats";
 import INITDivider from "../../../CustomComponents/Dividers/Divider";
-import { useNavigate } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
+
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
@@ -28,6 +29,8 @@ const Calculator = () => {
     const navigate = useNavigate();
     const [isSnackbarVisible, setSnackbarVisible] = useState(false);
     const [error, setError] = useState(null);
+    const location = useLocation();
+    const { title, price } = location.state;
 
     // const userSession = getSession();
 
@@ -151,6 +154,31 @@ const Calculator = () => {
                 alert('Ошибка сохранения данных. Попробуйте снова.');
             }
         }
+    };
+
+    // ✅ Runs `successfulPayment()` when payment is marked as "paid"
+    useEffect(() => {
+        if (paymentStatus === "paid") {
+            console.log("🎉 Payment successful! Running successfulPayment...");
+            saveMealPlan();
+        }
+    }, [paymentStatus]);
+
+    // ✅ Handles initiating payment
+    const handlePayment = () => {
+        handleClickHaptic('light');
+
+        initiatePayment(
+            userSession,
+            (status) => {
+                console.log("📌 Payment Status Changed:", status);
+                setPaymentStatus(status);
+            },
+            setError,
+            title,
+            "Доступ к эксклюзивному контенту",
+            price
+        );
     };
 
     const handleCloseSnackbar = () => {
@@ -281,7 +309,7 @@ const Calculator = () => {
                 mode="filled"
                 size="m"
                 stretched
-                onClick={saveMealPlan}
+                onClick={handlePayment}
                 style={{
                     paddingTop: '10px',
                 }}

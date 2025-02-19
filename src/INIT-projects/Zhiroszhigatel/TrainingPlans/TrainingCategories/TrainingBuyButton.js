@@ -71,15 +71,15 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         }
     };
 
-    // ✅ Runs `successfulPayment()` when payment is marked as "paid"
+
     useEffect(() => {
         if (paymentStatus === "paid") {
             console.log("🎉 Payment successful! Running successfulPayment...");
-            successfulPayment(); // ✅ Executes after successful payment
+            successfulPayment();
         }
     }, [paymentStatus]);
 
-    // ✅ Handles initiating payment
+
     const handlePayment = () => {
         handleClickHaptic('light');
 
@@ -87,7 +87,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             userSession,
             (status) => {
                 console.log("📌 Payment Status Changed:", status);
-                setPaymentStatus(status); // ✅ Update state to trigger `useEffect`
+                setPaymentStatus(status);
             },
             setError,
             title,
