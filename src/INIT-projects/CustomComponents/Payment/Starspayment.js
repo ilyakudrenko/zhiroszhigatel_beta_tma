@@ -41,8 +41,11 @@ export async function initiatePayment(userSession, setPaymentStatus, setError, t
 function openInvoice(invoiceLink, setPaymentStatus) {
     const tg = window.Telegram.WebApp;
     tg.openInvoice(invoiceLink, (status) => {
+        console.log("📌 Invoice closed with status:", status);
+
         if (status === "paid") {
             setPaymentStatus("✅ Payment successful! You now have access to the course.");
+            setPaymentStatus("paid");
         } else {
             setPaymentStatus("❌ Payment failed or was canceled.");
         }

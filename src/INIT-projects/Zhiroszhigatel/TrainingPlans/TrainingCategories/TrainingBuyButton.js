@@ -71,7 +71,15 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         }
     };
 
+    // ✅ Runs `successfulPayment()` when payment is marked as "paid"
+    useEffect(() => {
+        if (paymentStatus === "paid") {
+            console.log("🎉 Payment successful! Running successfulPayment...");
+            successfulPayment(); // ✅ Executes after successful payment
+        }
+    }, [paymentStatus]);
 
+    // ✅ Handles initiating payment
     const handlePayment = () => {
         handleClickHaptic('light');
 
@@ -79,7 +87,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             userSession,
             (status) => {
                 console.log("📌 Payment Status Changed:", status);
-                setPaymentStatus(status);
+                setPaymentStatus(status); // ✅ Update state to trigger `useEffect`
             },
             setError,
             title,
@@ -87,14 +95,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             price
         );
     };
-
-    useEffect(() => {
-            if (paymentStatus === "paid") {
-                console.log("🎉 Payment successful! Triggering successfulPayment...");
-                successfulPayment();
-            }
-        },
-        [paymentStatus]);
 
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
@@ -119,7 +119,7 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
                 <Button
                     mode="filled"
                     size="l"
-                    onClick={successfulPayment}
+                    onClick={handlePayment}
                 >
                     Купить: {price} Stars
                 </Button>
