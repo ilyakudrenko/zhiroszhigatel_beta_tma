@@ -17,11 +17,14 @@ import INITDivider from "../../../CustomComponents/Dividers/Divider";
 import {useLocation, useNavigate} from "react-router-dom";
 import INITProfileIcon from "../../../CustomComponents/Icons/ProfileIcon";
 import useUserSession from "../../../CustomComponents/userSessionJWT/sessionJWT";
+import {initiatePayment} from "../../../CustomComponents/Payment/Starspayment";
 
 
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
-
+const handleClickHaptic = (effect = 'light') =>{
+    window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
+}
 
 const Calculator = () => {
     INITBackButton();
@@ -316,7 +319,7 @@ const Calculator = () => {
                     paddingTop: '10px',
                 }}
             >
-                Дальше
+                Купить: {price} Stars
             </Button>
 
             {isSnackbarVisible && (
