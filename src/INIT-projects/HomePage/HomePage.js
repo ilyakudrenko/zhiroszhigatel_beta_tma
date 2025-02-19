@@ -1,10 +1,5 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {
-    AppRoot,
-    Caption,
-    Cell,
-    Section, Spinner,
-} from '@telegram-apps/telegram-ui';
+import {AppRoot, Caption, Cell, Section, Spinner,} from '@telegram-apps/telegram-ui';
 import React, {useEffect, useState} from "react";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
@@ -12,16 +7,13 @@ import INITCardsList from "../CustomComponents/ScrollItemsSections/CardList";
 import INITDivider from "../CustomComponents/Dividers/Divider";
 import INITMessageBadgeIcon from "../CustomComponents/Icons/MessageBadgeIcon";
 import INITProfileIcon from "../CustomComponents/Icons/ProfileIcon";
-import guidesData from "../Zhiroszhigatel/CustomGuides/Guides_JSON/Guides.json";
 import mealsData from "../Zhiroszhigatel/MealPlans/MealPlans.json"
 import {useNavigate} from "react-router-dom";
 import INITBanner from "../CustomComponents/Banner/Banner";
 // import {startSession} from "../CustomComponents/UserSession/session";
-import TestConnection from "../Zhiroszhigatel/TestPages/testPage";
 import fetchUserMealPlanJWT from "../CustomComponents/userSessionJWT/fetchUserMealPlanJWT";
 import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAllTrainingPlansJWT";
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
-import FixTelegramBehavior from "../CustomComponents/ScrollingFeatures/scrollAdaptations";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
 
@@ -32,7 +24,7 @@ const roundedCellStyle = {
     backgroundColor: 'var(--tgui--secondary_bg_color)',
 };
 
-const handleClickHaptic = (effect = 'light') =>{
+const handleClickHaptic = (effect = 'light') => {
     window.Telegram.WebApp.HapticFeedback.impactOccurred(effect);
 }
 
@@ -41,7 +33,7 @@ const handleClick = () => {
 };
 
 const HomePage = () => {
-    const { userSession, loading: sessionLoading } = useUserSession(); // JWT Session
+    const {userSession, loading: sessionLoading} = useUserSession(); // JWT Session
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -52,14 +44,13 @@ const HomePage = () => {
     const [textColor, setTextColor] = useState("#FFFFFF");
 
 
-
     useEffect(() => {
         const initialize = async () => {
-            if(sessionLoading){
+            if (sessionLoading) {
                 console.log("🔷Waiting for session load🔷");
                 return;
             }
-            if(!userSession || !userSession.token){
+            if (!userSession || !userSession.token) {
                 console.error("❌ No valid session found, aborting fetch.");
                 setError("User not authenticated");
                 setLoading(false);
@@ -99,7 +90,7 @@ const HomePage = () => {
             }
         };
 
-        if(!sessionLoading){
+        if (!sessionLoading) {
             initialize();
         }
 
@@ -121,10 +112,10 @@ const HomePage = () => {
                         height: "50vh", // Full viewport height to center vertically
                     }}
                 >
-                    <div style={{ textAlign: "center" }}>
-                        <Spinner size="l" />
+                    <div style={{textAlign: "center"}}>
+                        <Spinner size="l"/>
                         {" "}
-                        <br />
+                        <br/>
                     </div>
                 </div>
             </AppRoot>
@@ -132,7 +123,7 @@ const HomePage = () => {
 
 
     if (error) {
-        return <AppRoot style={{ color: "red" }}>{error}</AppRoot>;
+        return <AppRoot style={{color: "red"}}>{error}</AppRoot>;
     }
 
 
@@ -144,27 +135,29 @@ const HomePage = () => {
         >
             {/*<INITHelp />*/}
             {/*<p>Welcome {userSession.token}</p>*/}
-                <Section
+            <Section
+            >
+                <Cell
+                    after={<Icon24ChevronRight/>}
+                    before={<INITProfileIcon color={textColor}/>}
+                    onClick={() => {
+                        handleClickHaptic('light');
+                        navigate("/profile")
+                    }}
                 >
-                    <Cell
-                        after={<Icon24ChevronRight/>}
-                        before={<INITProfileIcon color={textColor} />}
-                        onClick={() => {
-                            handleClickHaptic('light');
-                            navigate("/profile")}}
-                    >
-                        Профиль
-                    </Cell>
-                    <Cell
-                        after={<Icon24ChevronRight/>}
-                        before={<INITMessageBadgeIcon color={textColor} />}
-                        onClick={() => {
-                            handleClickHaptic('light');
-                            navigate("/support")}}
-                    >
-                        Задать вопрос
-                    </Cell>
-                </Section>
+                    Профиль
+                </Cell>
+                <Cell
+                    after={<Icon24ChevronRight/>}
+                    before={<INITMessageBadgeIcon color={textColor}/>}
+                    onClick={() => {
+                        handleClickHaptic('light');
+                        navigate("/support")
+                    }}
+                >
+                    Задать вопрос
+                </Cell>
+            </Section>
 
             {/*Some banner for sales*/}
             <INITDivider color='transparent' thickness="10%"/>
@@ -179,66 +172,66 @@ const HomePage = () => {
             {/*Free Guides*/}
 
             <INITDivider color='transparent' thickness="10%"/>
-                <Caption
-                    caps
-                    level="1"
-                    weight="3"
-                    style={{margin: '5%'}}
-                >
-                    Гайды
-                </Caption>
-                <HorizontalScroll
-                    onClick={() =>
-                        handleClickHaptic('light')
-                    }
-                >
-                    <INITCardsList items={freeGuides}/>
-                </HorizontalScroll>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Гайды
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                <INITCardsList items={freeGuides}/>
+            </HorizontalScroll>
 
             {/*Mealplans*/}
 
             <INITDivider color='transparent' thickness="10%"/>
-                <Caption
-                    caps
-                    level="1"
-                    weight="3"
-                    style={{margin: '5%'}}
-                >
-                    Питание
-                </Caption>
-                <HorizontalScroll
-                    onClick={() =>
-                        handleClickHaptic('light')
-                    }
-                >
-                    <INITCardsList
-                        items={mealsData}
-                        userOwnedMealPlan={!!mealPlan} // Pass ownership status
-                        navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
-                    />
-                </HorizontalScroll>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Питание
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                <INITCardsList
+                    items={mealsData}
+                    userOwnedMealPlan={!!mealPlan} // Pass ownership status
+                    navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
+                />
+            </HorizontalScroll>
 
             {/*Training Plans*/}
             <INITDivider color='transparent' thickness="10%"/>
-                <Caption
-                    caps
-                    level="1"
-                    weight="3"
-                    style={{margin: '5%'}}
-                >
-                    Тренировочные планы
-                </Caption>
-                <HorizontalScroll
-                    onClick={() =>
-                        handleClickHaptic('light')
-                        }
-                >
-                    <INITCardsList
-                        items={trainingPlans} // Массив тренировочных планов
-                        userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов
-                        // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
-                    />
-                </HorizontalScroll>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Тренировочные планы
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                <INITCardsList
+                    items={trainingPlans} // Массив тренировочных планов
+                    userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов
+                    // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
+                />
+            </HorizontalScroll>
 
             <INITDivider color='transparent' thickness="10%"/>
 
