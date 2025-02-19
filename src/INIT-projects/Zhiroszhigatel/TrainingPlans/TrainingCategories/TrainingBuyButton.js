@@ -71,12 +71,6 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
         }
     };
 
-    useEffect(() => {
-        if (paymentStatus === "paid") {
-            console.log("🎉 Payment successful! Triggering successfulPayment...");
-            successfulPayment();
-        }
-    }, [paymentStatus]);
 
     const handlePayment = () => {
         handleClickHaptic('light');
@@ -93,6 +87,14 @@ const INITTrainingBuyButton = ({ title, trainingId, price }) => {
             price
         );
     };
+
+    useEffect(() => {
+            if (paymentStatus === "paid") {
+                console.log("🎉 Payment successful! Triggering successfulPayment...");
+                successfulPayment();
+            }
+        },
+        [paymentStatus]);
 
     const handleCloseSnackbar = () => {
         setSnackbarVisible(false);
