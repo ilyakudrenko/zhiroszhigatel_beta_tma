@@ -31,6 +31,8 @@ const Calculator = () => {
     const [error, setError] = useState(null);
     const location = useLocation();
     const { title, price } = location.state;
+    const [paymentStatus, setPaymentStatus] = useState(null);
+
 
     // const userSession = getSession();
 
