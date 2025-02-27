@@ -197,52 +197,59 @@ const HomePage = () => {
                 description="Первый участник реалити ТелоСтройки - педиатр из Красноярска!"
                 infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
             />
+            <INITDivider color='transparent' thickness="10%"/>
+            <INITBanner
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
+                header="Поддержим доктора!!!"
+                description="Первый участник реалити ТелоСтройки - педиатр из Красноярска!"
+                infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
+            />
 
             {/*Mealplans*/}
 
-            {/*<INITDivider color='transparent' thickness="10%"/>*/}
+            <INITDivider color='transparent' thickness="10%"/>
 
-            {/*<Caption*/}
-            {/*    caps*/}
-            {/*    level="1"*/}
-            {/*    weight="3"*/}
-            {/*    style={{margin: '5%'}}*/}
-            {/*>*/}
-            {/*    Питание*/}
-            {/*</Caption>*/}
-            {/*<HorizontalScroll*/}
-            {/*    onClick={() =>*/}
-            {/*        handleClickHaptic('light')*/}
-            {/*    }*/}
-            {/*>*/}
-            {/*    <INITCardsList*/}
-            {/*        items={mealsData}*/}
-            {/*        userOwnedMealPlan={!!mealPlan} // Pass ownership status*/}
-            {/*        navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function*/}
-            {/*    />*/}
-            {/*</HorizontalScroll>*/}
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Питание
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                <INITCardsList
+                    items={mealsData}
+                    userOwnedMealPlan={!!mealPlan} // Pass ownership status
+                    navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
+                />
+            </HorizontalScroll>
 
-            {/*/!*Training Plans*!/*/}
-            {/*<INITDivider color='transparent' thickness="10%"/>*/}
-            {/*<Caption*/}
-            {/*    caps*/}
-            {/*    level="1"*/}
-            {/*    weight="3"*/}
-            {/*    style={{margin: '5%'}}*/}
-            {/*>*/}
-            {/*    Тренировочные планы*/}
-            {/*</Caption>*/}
-            {/*<HorizontalScroll*/}
-            {/*    onClick={() =>*/}
-            {/*        handleClickHaptic('light')*/}
-            {/*    }*/}
-            {/*>*/}
-            {/*    <INITCardsList*/}
-            {/*        items={trainingPlans} // Массив тренировочных планов*/}
-            {/*        userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов*/}
-            {/*        // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа*/}
-            {/*    />*/}
-            {/*</HorizontalScroll>*/}
+            {/*Training Plans*/}
+            <INITDivider color='transparent' thickness="10%"/>
+            <Caption
+                caps
+                level="1"
+                weight="3"
+                style={{margin: '5%'}}
+            >
+                Тренировочные планы
+            </Caption>
+            <HorizontalScroll
+                onClick={() =>
+                    handleClickHaptic('light')
+                }
+            >
+                <INITCardsList
+                    items={trainingPlans} // Массив тренировочных планов
+                    userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов
+                    // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
+                />
+            </HorizontalScroll>
 
             <INITDivider color='transparent' thickness="10%"/>
 
