@@ -175,10 +175,10 @@ const HomePage = () => {
             <Caption
                 caps
                 level="1"
-                weight="3"
+                weight="1"
                 style={{margin: '5%'}}
             >
-                Гайды
+                Бесплатные Гайды
             </Caption>
             <HorizontalScroll
                 onClick={() =>
@@ -207,49 +207,49 @@ const HomePage = () => {
 
             {/*Mealplans*/}
 
-            <INITDivider color='transparent' thickness="10%"/>
+            {/*<INITDivider color='transparent' thickness="10%"/>*/}
 
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{margin: '5%'}}
-            >
-                Питание
-            </Caption>
-            <HorizontalScroll
-                onClick={() =>
-                    handleClickHaptic('light')
-                }
-            >
-                <INITCardsList
-                    items={mealsData}
-                    userOwnedMealPlan={!!mealPlan} // Pass ownership status
-                    navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function
-                />
-            </HorizontalScroll>
+            {/*<Caption*/}
+            {/*    caps*/}
+            {/*    level="1"*/}
+            {/*    weight="3"*/}
+            {/*    style={{margin: '5%'}}*/}
+            {/*>*/}
+            {/*    Питание*/}
+            {/*</Caption>*/}
+            {/*<HorizontalScroll*/}
+            {/*    onClick={() =>*/}
+            {/*        handleClickHaptic('light')*/}
+            {/*    }*/}
+            {/*>*/}
+            {/*    <INITCardsList*/}
+            {/*        items={mealsData}*/}
+            {/*        userOwnedMealPlan={!!mealPlan} // Pass ownership status*/}
+            {/*        navigateToMealPlan={() => navigate('/mealnavigation')} // Pass redirection function*/}
+            {/*    />*/}
+            {/*</HorizontalScroll>*/}
 
-            {/*Training Plans*/}
-            <INITDivider color='transparent' thickness="10%"/>
-            <Caption
-                caps
-                level="1"
-                weight="3"
-                style={{margin: '5%'}}
-            >
-                Тренировочные планы
-            </Caption>
-            <HorizontalScroll
-                onClick={() =>
-                    handleClickHaptic('light')
-                }
-            >
-                <INITCardsList
-                    items={trainingPlans} // Массив тренировочных планов
-                    userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов
-                    // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа
-                />
-            </HorizontalScroll>
+            {/*/!*Training Plans*!/*/}
+            {/*<INITDivider color='transparent' thickness="10%"/>*/}
+            {/*<Caption*/}
+            {/*    caps*/}
+            {/*    level="1"*/}
+            {/*    weight="3"*/}
+            {/*    style={{margin: '5%'}}*/}
+            {/*>*/}
+            {/*    Тренировочные планы*/}
+            {/*</Caption>*/}
+            {/*<HorizontalScroll*/}
+            {/*    onClick={() =>*/}
+            {/*        handleClickHaptic('light')*/}
+            {/*    }*/}
+            {/*>*/}
+            {/*    <INITCardsList*/}
+            {/*        items={trainingPlans} // Массив тренировочных планов*/}
+            {/*        userOwnedTrainingPlans={userTrainingPlans} // Передаем массив купленных планов*/}
+            {/*        // navigateToTrainingPlan={() => navigate('/mealnavigation')} // Логика редиректа*/}
+            {/*    />*/}
+            {/*</HorizontalScroll>*/}
 
             <INITDivider color='transparent' thickness="10%"/>
 
