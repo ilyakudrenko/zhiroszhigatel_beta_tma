@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {AppRoot, Spinner, Caption, HorizontalScroll} from "@telegram-apps/telegram-ui";
+import {AppRoot, Spinner, Caption} from "@telegram-apps/telegram-ui";
+import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
 import INITBackButton from "../../../Hooks/BackButton";
 import INITDivider from "../../CustomComponents/Dividers/Divider";
 import fetchUserLibrary from "../../CustomComponents/userSessionJWT/fetchUserLibraryJWT";
