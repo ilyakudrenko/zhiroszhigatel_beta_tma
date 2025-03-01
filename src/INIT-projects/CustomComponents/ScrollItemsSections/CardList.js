@@ -35,7 +35,7 @@ const CARD_STATUS = {
  *
  * @returns {JSX.Element} A card component that opens a modal with guide details when clicked.
  */
-const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage, guide_id_db, isAdded}) => (
+const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage, guide_id_db}) => (
     <Modal
         header={<ModalHeader after={<ModalClose><Icon28Close
             style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
@@ -44,7 +44,7 @@ const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage
         }}
         trigger={
             <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
-                <CardChip readOnly>{isAdded ? CARD_STATUS.ACTIVE : CARD_STATUS.INACTIVE}</CardChip>
+                <CardChip readOnly>{cardChip}</CardChip>
                 <img
                     alt={title}
                     src={imageSrc}
@@ -229,7 +229,7 @@ const INITCardItemTraining = ({trainingPlan, userOwnedTrainingPlans}) => {
  *
  * @returns {JSX.Element} A horizontally scrollable list of cards.
  */
-const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlans, isAdded}) => {
+const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userOwnedTrainingPlans}) => {
     return (
         <div>
             <div
@@ -253,7 +253,6 @@ const INITCardsList = ({items = [], userOwnedMealPlan, navigateToMealPlan, userO
                                 guideKey={item.guideKey}
                                 numPage={item.numPage}
                                 guide_id_db={item.guide_id_db}
-                                isAdded
                             />
                         )
                     }

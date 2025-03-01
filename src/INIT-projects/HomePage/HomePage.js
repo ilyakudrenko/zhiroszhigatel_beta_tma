@@ -16,7 +16,6 @@ import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAl
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
-import axios from "axios";
 
 
 const roundedCellStyle = {
@@ -43,8 +42,6 @@ const HomePage = () => {
     const [trainingPlans, setTrainingPlans] = useState([]);
     const [userTrainingPlans, setUserTrainingPlans] = useState([]); // Храним список всех купленных планов
     const [textColor, setTextColor] = useState("#FFFFFF");
-    const [isAdded, setIsAdded] = useState(false); // State to track if the guide is added
-    const guide_id = freeGuides.guide_id_db;
 
 
     useEffect(() => {
@@ -102,32 +99,7 @@ const HomePage = () => {
             setTextColor(window.Telegram.WebApp.themeParams.text_color);
         }
 
-        const checkGuideStatus = async () => {
-            try {
-                // Get user session
-                // const userSession = getSession();
-                // const userId = userSession.id;
-                // Check if the guide is already added for the user
-                const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${userSession.token}`,
-                            "Content-Type": "application/json",
-                        }
-                    });
-                const userGuides = response.data;
-
-                // Check if the current guide_id exists in the user's library
-                const isGuideAdded = userGuides.some((guide) => guide.id === guide_id);
-                setIsAdded(isGuideAdded);
-            } catch (error) {
-                console.error("❌ Error checking guide status:", error);
-            }
-        };
-
-        checkGuideStatus();
-
-    }, [guide_id, sessionLoading, userSession]);
+    }, [sessionLoading, userSession]);
 
     if (loading)
         return (
@@ -213,10 +185,7 @@ const HomePage = () => {
                     handleClickHaptic('light')
                 }
             >
-                <INITCardsList
-                    items={freeGuides}
-                    isAdded
-                />
+                <INITCardsList items={freeGuides}/>
             </HorizontalScroll>
 
             <INITDivider color='transparent' thickness="10%"/>
