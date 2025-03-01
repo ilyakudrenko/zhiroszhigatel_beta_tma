@@ -59,7 +59,7 @@ const INITTrainingBuyButton = ({title, trainingId, price}) => {
             setSnackbarVisible(true);
 
             setTimeout(() => {
-                window.location.reload(); // Reloads the current page
+                navigate("/");
             }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
 
