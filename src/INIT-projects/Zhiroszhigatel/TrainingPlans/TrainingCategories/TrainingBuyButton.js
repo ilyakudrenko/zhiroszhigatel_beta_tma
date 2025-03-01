@@ -128,7 +128,7 @@ const INITTrainingBuyButton = ({title, trainingId, price}) => {
                 <Snackbar
                     before={<INITProfileIcon/>}
                     children={title}
-                    description="Инвойс отправлен в Telegram"
+                    description="Тренировка была добавлена к вам в Профиль"
                     duration={2000}
                     onClose={handleCloseSnackbar}
                     style={{
