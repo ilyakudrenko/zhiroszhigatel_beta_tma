@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import {CardChip} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardChip/CardChip";
 import {CardCell} from "@telegram-apps/telegram-ui/dist/components/Blocks/Card/components/CardCell/CardCell";
@@ -12,6 +12,8 @@ import {Icon28Close} from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTemplate";
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import useUserSession from "../userSessionJWT/sessionJWT";
 
 const CARD_STATUS = {
     ACTIVE: "Active",
@@ -35,41 +37,64 @@ const CARD_STATUS = {
  *
  * @returns {JSX.Element} A card component that opens a modal with guide details when clicked.
  */
-const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage, guide_id_db}) => (
-    <Modal
-        header={<ModalHeader after={<ModalClose><Icon28Close
-            style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
-        style={{
-            backgroundColor: 'var(--tgui--secondary_bg_color)',
-        }}
-        trigger={
-            <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
-                <CardChip readOnly>{cardChip}</CardChip>
-                <img
-                    alt={title}
-                    src={imageSrc}
-                    style={{
-                        display: 'block',
-                        height: 308,
-                        objectFit: 'cover',
-                        width: 254
-                    }}
-                />
-                <CardCell readOnly></CardCell>
-            </Card>
-        }
-    >
-        <INITGuideTemplate
-            guideKey={guideKey}
-            totalPages={numPage}
-            title={title}
-            guideId={guide_id_db}
-        />
+const INITCardItem = ({imageSrc, title, description, cardChip, guideKey, numPage, guide_id_db}) => {
 
-        {/*<INITMealPlanPromo />*/}
+    const {userSession, loading: loadingSession} = useUserSession();
+    const [isAdded, setIsAdded] = useState(false);
 
-    </Modal>
-);
+    useEffect(() => {
+        if (loadingSession || !userSession?.token) return;
+
+        const checkGuideStatus = async () => {
+            try {
+                const response = await axios.get(`${BACKEND_PUBLIC_URL}/user_guides/load`, {
+                    headers: {Authorization: `Bearer ${userSession.token}`}
+                });
+                const userGuides = response.data;
+                setIsAdded(userGuides.some(guide => guide.id === guide_id_db));
+            } catch (error) {
+                console.error("Error checking guide status:", error);
+            }
+        };
+        checkGuideStatus();
+    }, [guide_id_db, userSession, loadingSession]);
+
+    return (
+        <Modal
+            header={<ModalHeader after={<ModalClose><Icon28Close
+                style={{color: 'var(--tgui--plain_foreground)'}}/></ModalClose>}>{title}</ModalHeader>}
+            style={{
+                backgroundColor: 'var(--tgui--secondary_bg_color)',
+            }}
+            trigger={
+                <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
+                    <CardChip readOnly>{isAdded ? CARD_STATUS.ACTIVE : CARD_STATUS.INACTIVE}</CardChip>
+                    <img
+                        alt={title}
+                        src={imageSrc}
+                        style={{
+                            display: 'block',
+                            height: 308,
+                            objectFit: 'cover',
+                            width: 254
+                        }}
+                    />
+                    <CardCell readOnly></CardCell>
+                </Card>
+            }
+        >
+            <INITGuideTemplate
+                guideKey={guideKey}
+                totalPages={numPage}
+                title={title}
+                guideId={guide_id_db}
+            />
+
+            {/*<INITMealPlanPromo />*/}
+
+        </Modal>
+    );
+};
 
 
 const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, price, owned, onRedirect}) => (
