@@ -15,6 +15,8 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import useUserSession from "../userSessionJWT/sessionJWT";
 
+const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
+
 const CARD_STATUS = {
     ACTIVE: "Active",
     INACTIVE: "Inactive"
