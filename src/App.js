@@ -24,6 +24,7 @@ import CookieTest from "./INIT-projects/Zhiroszhigatel/TestPages/cookieTest";
 import TestJWT from "./INIT-projects/Zhiroszhigatel/TestPages/TestJWT";
 import TestJWTprotected from "./INIT-projects/Zhiroszhigatel/TestPages/testJWTprotected";
 import TestStarPayment from "./INIT-projects/Zhiroszhigatel/TestPages/testStarPayment";
+import CoursesPage from "./INIT-projects/Zhiroszhigatel/Courses/CoursesPage";
 
 const App = () => {
     const location = useLocation();
@@ -40,6 +41,7 @@ const App = () => {
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/courses" element={<CoursesPage />} />
 
 
                     //Meal Plans.
@@ -71,6 +73,8 @@ const App = () => {
                     <Route path="/support" element={<Support />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/calculator" element={<Calculator />} />
+                    <Route path="/courses" element={<CoursesPage />} />
+
 
                     //Meal Plans.
                     <Route path="/rations" element={<RationsDays />} />

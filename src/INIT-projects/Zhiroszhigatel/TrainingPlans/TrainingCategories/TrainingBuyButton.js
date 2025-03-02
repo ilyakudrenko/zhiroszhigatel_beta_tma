@@ -59,7 +59,7 @@ const INITTrainingBuyButton = ({title, trainingId, price}) => {
             setSnackbarVisible(true);
 
             setTimeout(() => {
-                window.location.reload(); // Reloads the current page
+                navigate("/");
             }, 1800); // Reload after 1.5 seconds to allow Snackbar to be seen
 
 
@@ -128,7 +128,7 @@ const INITTrainingBuyButton = ({title, trainingId, price}) => {
                 <Snackbar
                     before={<INITProfileIcon/>}
                     children={title}
-                    description="Инвойс отправлен в Telegram"
+                    description="Тренировка была добавлена к вам в Профиль"
                     duration={2000}
                     onClose={handleCloseSnackbar}
                     style={{

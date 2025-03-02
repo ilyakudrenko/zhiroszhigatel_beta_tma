@@ -13,7 +13,10 @@ import INITMealPlanPromo from "../../Zhiroszhigatel/MealPlans/MealPlanPromoTempl
 import TrainingPlanPromo from "../../Zhiroszhigatel/TrainingPlans/TrainingPlanPromo";
 import {useNavigate} from "react-router-dom";
 
-
+const CARD_STATUS = {
+    ACTIVE: "Active",
+    INACTIVE: "Inactive"
+};
 /**
  * INITCardItem Component
  *
@@ -77,7 +80,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
                 type="ambient"
                 onClick={onRedirect} // Redirect if owned
             >
-                <CardChip readOnly>{cardChip}</CardChip>
+                <CardChip readOnly>{CARD_STATUS.ACTIVE}</CardChip>
                 <img
                     alt={title}
                     src={imageSrc}
@@ -99,7 +102,7 @@ const INITCardItemMeal = ({imageSrc, title, description, cardChip, mealPlanKey, 
                 }}
                 trigger={
                     <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
-                        <CardChip readOnly>{cardChip}</CardChip>
+                        <CardChip readOnly>{CARD_STATUS.INACTIVE}</CardChip>
                         <img
                             alt={title}
                             src={imageSrc}
@@ -155,7 +158,7 @@ const INITCardItemTraining = ({trainingPlan, userOwnedTrainingPlans}) => {
                 type="ambient"
                 onClick={handleCardClick} // ✅ Теперь сразу редиректит!
             >
-                <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                <CardChip readOnly>{CARD_STATUS.ACTIVE}</CardChip>
                 <img
                     alt={trainingPlan.title}
                     src={trainingPlan.imageSrc}
@@ -185,7 +188,7 @@ const INITCardItemTraining = ({trainingPlan, userOwnedTrainingPlans}) => {
             }}
             trigger={
                 <Card style={{flexShrink: 0, minWidth: '254px'}} type="ambient">
-                    <CardChip readOnly>{trainingPlan.cardChip}</CardChip>
+                    <CardChip readOnly>{CARD_STATUS.INACTIVE}</CardChip>
                     <img
                         alt={trainingPlan.title}
                         src={trainingPlan.imageSrc}
