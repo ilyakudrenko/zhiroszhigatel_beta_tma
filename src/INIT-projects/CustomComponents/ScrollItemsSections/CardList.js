@@ -18,8 +18,8 @@ import useUserSession from "../userSessionJWT/sessionJWT";
 const BACKEND_PUBLIC_URL = process.env.REACT_APP_BACKEND_PUBLIC_URL;
 
 const CARD_STATUS = {
-    ACTIVE: "☭",
-    INACTIVE: "Inactive"
+    ACTIVE: "🟢Добавлен",
+    INACTIVE: "🔴Не Добавлен"
 };
 /**
  * INITCardItem Component
