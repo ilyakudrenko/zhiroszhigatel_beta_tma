@@ -5,13 +5,13 @@ import {
     ModalHeader
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
 import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
-import INITBackButton from "../../../Hooks/BackButton";
 import { Icon28Close } from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
+import INITBackButton from "../../../Hooks/BackButton";
 
-INITBackButton();
 
 const AllGuides = () => {
+    INITBackButton();
     const location = useLocation();
     const guides = location.state?.guides || [];
 
