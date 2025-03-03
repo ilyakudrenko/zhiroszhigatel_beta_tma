@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AppRoot, Modal } from "@telegram-apps/telegram-ui";
+import {AppRoot, Modal, Title} from "@telegram-apps/telegram-ui";
 import {
     ModalHeader
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
@@ -20,6 +20,13 @@ const AllGuides = () => {
 
     return (
         <AppRoot>
+            <Title
+                level="1"
+                weight="2"
+            >
+                Все Бесплатные Гайды
+            </Title>
+
             <div style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
