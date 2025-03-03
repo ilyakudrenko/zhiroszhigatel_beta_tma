@@ -35,7 +35,7 @@ const AllGuides = () => {
     }
 
     return (
-        <AppRoot>
+        <div>
             <div style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
@@ -89,7 +89,7 @@ const AllGuides = () => {
                     />
                 )}
             </Modal>
-        </AppRoot>
+        </div>
     );
 };
 
