@@ -19,6 +19,7 @@ import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuides
 import AllGuides from "../Zhiroszhigatel/CustomGuides/AllGuides";
 
 
+
 const roundedCellStyle = {
     borderRadius: '16px',
     overflow: 'hidden', // Ensures rounded corners display properly
@@ -69,7 +70,7 @@ const HomePage = () => {
 
 
                 const guides = await fetchAllGuidesJWT(userSession.token);
-                setFreeGuides(guides);
+                setFreeGuides(guides || []);
                 console.log("🔷Guides logged🔷", guides);
                 // Fetch user's meal plan
                 const userMealPlan = await fetchUserMealPlanJWT(userSession.token);
@@ -187,11 +188,9 @@ const HomePage = () => {
                 // }
             >
                 Бесплатные Гайды
-                <Button
-                    onClick={() =>
-                        navigate("/allguides")
-                    }
-                >See All</Button>
+                <Button onClick={() => navigate("/allguides", { state: { guides: freeGuides } })}>
+                    See All
+                </Button>
             </Caption>
             <HorizontalScroll
                 onClick={() =>
@@ -265,9 +264,6 @@ const HomePage = () => {
             {/*</HorizontalScroll>*/}
 
             <INITDivider color='transparent' thickness="10%"/>
-
-            {/* ✅ Pass freeGuides to AllGuides */}
-            <AllGuides guides={freeGuides} />
 
         </AppRoot>
     );
