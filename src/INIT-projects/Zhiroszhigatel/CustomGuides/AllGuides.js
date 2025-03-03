@@ -30,8 +30,8 @@ const AllGuides = () => {
             <div style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-                gap: "16px",
-                padding: "16px",
+                gap: "10px",
+                padding: "10px",
             }}>
                 {guides.map((guide, index) => (
                     <Modal
