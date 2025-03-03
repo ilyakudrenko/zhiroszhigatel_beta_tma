@@ -23,36 +23,6 @@ const AllGuides = () => {
 
     return (
         <AppRoot>
-            <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
-                gap: "16px",
-                padding: "16px",
-            }}>
-                {guides.map((guide, index) => (
-                    <div
-                        key={index}
-                        style={{
-                            backgroundColor: "#222",
-                            borderRadius: "10px",
-                            padding: "10px",
-                            textAlign: "center",
-                            color: "white",
-                            cursor: "pointer"
-                        }}
-                        onClick={() => setSelectedGuide(guide)}
-                    >
-                        <img
-                            src={guide.imageSrc}
-                            alt={guide.title}
-                            style={{ width: "100%", borderRadius: "8px" }}
-                        />
-                        <p>{guide.title}</p>
-                    </div>
-                ))}
-            </div>
-
-
             {selectedGuide && (
                 <Modal
                     isOpen={!!selectedGuide}
@@ -66,6 +36,36 @@ const AllGuides = () => {
                         }>
                             {selectedGuide.title}
                         </ModalHeader>
+                    }
+                    trigger={
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+                            gap: "16px",
+                            padding: "16px",
+                        }}>
+                            {guides.map((guide, index) => (
+                                <div
+                                    key={index}
+                                    style={{
+                                        backgroundColor: "#222",
+                                        borderRadius: "10px",
+                                        padding: "10px",
+                                        textAlign: "center",
+                                        color: "white",
+                                        cursor: "pointer"
+                                    }}
+                                    onClick={() => setSelectedGuide(guide)}
+                                >
+                                    <img
+                                        src={guide.imageSrc}
+                                        alt={guide.title}
+                                        style={{width: "100%", borderRadius: "8px"}}
+                                    />
+                                    <p>{guide.title}</p>
+                                </div>
+                            ))}
+                        </div>
                     }
                 >
                     <INITGuideTemplate
