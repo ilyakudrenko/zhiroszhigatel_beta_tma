@@ -178,7 +178,7 @@ const HomePage = () => {
                 caps
                 level="1"
                 weight="1"
-                style={{margin: '5%'}}
+                style={{marginLeft: '5%'}}
                 // after={
                 //     <Button
                 //         onClick={() =>
