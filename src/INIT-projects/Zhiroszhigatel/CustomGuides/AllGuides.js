@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import {AppRoot, Badge, Modal, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Modal, Title} from "@telegram-apps/telegram-ui";
 import {
     ModalHeader
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
@@ -56,10 +56,6 @@ const AllGuides = () => {
                                     cursor: "pointer"
                                 }}
                             >
-                                <Badge
-                                    mode="primary"
-                                    type="dot"
-                                />
                                 <img
                                     src={guide.imageSrc}
                                     alt={guide.title}
