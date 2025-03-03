@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AppRoot, Modal, ModalHeader, ModalClose } from "@telegram-apps/telegram-ui";
+import { AppRoot, Modal} from "@telegram-apps/telegram-ui";
+import {
+    ModalHeader
+} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
+import {ModalClose} from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalClose/ModalClose";
 import INITBackButton from "../../../Hooks/BackButton";
 import { Icon28Close } from "@telegram-apps/telegram-ui/dist/icons/28/close";
 import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";

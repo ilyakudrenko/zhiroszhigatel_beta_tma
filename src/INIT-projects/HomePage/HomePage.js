@@ -188,7 +188,11 @@ const HomePage = () => {
                 // }
             >
                 Бесплатные Гайды
-                <Button onClick={() => navigate("/allguides", { state: { guides: freeGuides } })}>
+                <Button
+                    onClick={() => navigate("/allguides", { state: { guides: freeGuides } })}
+                    mode="plain"
+                    size="s"
+                >
                     See All
                 </Button>
             </Caption>
