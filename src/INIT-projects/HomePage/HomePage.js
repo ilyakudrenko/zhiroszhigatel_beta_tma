@@ -16,7 +16,6 @@ import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAl
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
-import AllGuides from "../Zhiroszhigatel/CustomGuides/AllGuides";
 
 
 
@@ -178,7 +177,12 @@ const HomePage = () => {
                 caps
                 level="1"
                 weight="1"
-                style={{margin: '5%'}}
+                style={{
+                    margin: '5%',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'  
+                }}
                 // after={
                 //     <Button
                 //         onClick={() =>
@@ -187,13 +191,13 @@ const HomePage = () => {
                 //     >See All</Button>
                 // }
             >
-                Бесплатные Гайды
+                <span>Бесплатные Гайды</span>
                 <Button
-                    onClick={() => navigate("/allguides", { state: { guides: freeGuides } })}
+                    onClick={() => navigate("/allguides", {state: {guides: freeGuides}})}
                     mode="plain"
                     size="s"
                 >
-                    See All
+                    Посмотреть Все
                 </Button>
             </Caption>
             <HorizontalScroll
