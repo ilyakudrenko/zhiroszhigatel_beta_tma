@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import {AppRoot, Modal, Title} from "@telegram-apps/telegram-ui";
+import {AppRoot, Badge, Modal, Title} from "@telegram-apps/telegram-ui";
 import {
     ModalHeader
 } from "@telegram-apps/telegram-ui/dist/components/Overlays/Modal/components/ModalHeader/ModalHeader";
@@ -23,6 +23,7 @@ const AllGuides = () => {
             <Title
                 level="1"
                 weight="2"
+                textAlign: "center"
             >
                 Все Бесплатные Гайды
             </Title>
@@ -53,10 +54,13 @@ const AllGuides = () => {
                                     borderRadius: "10px",
                                     padding: "10px",
                                     textAlign: "left",
-                                    color: "white",
                                     cursor: "pointer"
                                 }}
                             >
+                                <Badge
+                                    mode="primary"
+                                    type="dot"
+                                />
                                 <img
                                     src={guide.imageSrc}
                                     alt={guide.title}
