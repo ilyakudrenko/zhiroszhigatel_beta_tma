@@ -265,6 +265,9 @@ const HomePage = () => {
 
             <INITDivider color='transparent' thickness="10%"/>
 
+            {/* ✅ Pass freeGuides to AllGuides */}
+            <AllGuides guides={freeGuides} />
+
         </AppRoot>
     );
 };

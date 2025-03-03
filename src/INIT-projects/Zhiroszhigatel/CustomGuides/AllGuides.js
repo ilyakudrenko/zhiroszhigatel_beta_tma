@@ -1,6 +1,9 @@
 import React from 'react';
 import {AppRoot} from "@telegram-apps/telegram-ui";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
+import INITBackButton from "../../../Hooks/BackButton";
+
+INITBackButton();
 
 const AllGuides = ({ guides = [] }) => {
     if (!Array.isArray(guides)) {
