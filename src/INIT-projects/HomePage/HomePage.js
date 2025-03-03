@@ -177,15 +177,20 @@ const HomePage = () => {
                 level="1"
                 weight="1"
                 style={{margin: '5%'}}
-                after={
-                    <Button
-                        onClick={() =>
-                            navigate("/allguides")
-                        }
-                    >See All</Button>
-                }
+                // after={
+                //     <Button
+                //         onClick={() =>
+                //             navigate("/allguides")
+                //         }
+                //     >See All</Button>
+                // }
             >
                 Бесплатные Гайды
+                <Button
+                    onClick={() =>
+                        navigate("/allguides")
+                    }
+                >See All</Button>
             </Caption>
             <HorizontalScroll
                 onClick={() =>
