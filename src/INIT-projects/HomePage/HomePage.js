@@ -16,6 +16,7 @@ import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAl
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
+import AllGuides from "../Zhiroszhigatel/CustomGuides/AllGuides";
 
 
 const roundedCellStyle = {
