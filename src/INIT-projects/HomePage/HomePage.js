@@ -1,5 +1,5 @@
 import '@telegram-apps/telegram-ui/dist/styles.css';
-import {AppRoot, Caption, Cell, Section, Spinner,} from '@telegram-apps/telegram-ui';
+import {AppRoot, Button, Caption, Cell, Section, Spinner,} from '@telegram-apps/telegram-ui';
 import React, {useEffect, useState} from "react";
 import {Icon24ChevronRight} from "@telegram-apps/telegram-ui/dist/icons/24/chevron_right";
 import {HorizontalScroll} from "@telegram-apps/telegram-ui/dist/components/Service/HorizontalScroll/HorizontalScroll";
@@ -177,6 +177,13 @@ const HomePage = () => {
                 level="1"
                 weight="1"
                 style={{margin: '5%'}}
+                after={
+                    <Button
+                        onClick={() =>
+                            navigate("/allguides")
+                        }
+                    >See All</Button>
+                }
             >
                 Бесплатные Гайды
             </Caption>
