@@ -23,7 +23,6 @@ const AllGuides = () => {
             <Title
                 level="1"
                 weight="2"
-                textAlign: "center"
             >
                 Все Бесплатные Гайды
             </Title>
