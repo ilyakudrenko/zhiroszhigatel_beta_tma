@@ -42,10 +42,10 @@ const AllGuides = () => {
                         trigger={
                             <div
                                 style={{
-                                    backgroundColor: "#222",
+                                    backgroundColor: "transparent",
                                     borderRadius: "10px",
                                     padding: "10px",
-                                    textAlign: "center",
+                                    textAlign: "left",
                                     color: "white",
                                     cursor: "pointer"
                                 }}
