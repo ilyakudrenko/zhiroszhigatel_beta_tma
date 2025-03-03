@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AppRoot } from "@telegram-apps/telegram-ui";
+import { AppRoot, Modal, ModalHeader, ModalClose } from "@telegram-apps/telegram-ui";
+import INITBackButton from "../../../Hooks/BackButton";
+import { Icon28Close } from "@telegram-apps/telegram-ui/dist/icons/28/close";
+import INITGuideTemplate from "../../Zhiroszhigatel/CustomGuides/GuideTemplate";
+
+INITBackButton();
 
 const AllGuides = () => {
     const location = useLocation();
-    const guides = location.state?.guides || []; // ✅ Get guides from HomePage
+    const guides = location.state?.guides || [];
+
+    const [selectedGuide, setSelectedGuide] = useState(null);
 
     if (!guides.length) {
         return <p>No guides available.</p>;
@@ -14,18 +21,23 @@ const AllGuides = () => {
         <AppRoot>
             <div style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", // ✅ Grid structure
+                gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
                 gap: "16px",
                 padding: "16px",
             }}>
                 {guides.map((guide, index) => (
-                    <div key={index} style={{
-                        backgroundColor: "#222",
-                        borderRadius: "10px",
-                        padding: "10px",
-                        textAlign: "center",
-                        color: "white",
-                    }}>
+                    <div
+                        key={index}
+                        style={{
+                            backgroundColor: "#222",
+                            borderRadius: "10px",
+                            padding: "10px",
+                            textAlign: "center",
+                            color: "white",
+                            cursor: "pointer"
+                        }}
+                        onClick={() => setSelectedGuide(guide)}
+                    >
                         <img
                             src={guide.imageSrc}
                             alt={guide.title}
@@ -35,6 +47,31 @@ const AllGuides = () => {
                     </div>
                 ))}
             </div>
+
+
+            {selectedGuide && (
+                <Modal
+                    isOpen={!!selectedGuide}
+                    onClose={() => setSelectedGuide(null)}
+                    style={{ backgroundColor: "var(--tgui--secondary_bg_color)" }}
+                    header={
+                        <ModalHeader after={
+                            <ModalClose>
+                                <Icon28Close style={{ color: 'var(--tgui--plain_foreground)' }} />
+                            </ModalClose>
+                        }>
+                            {selectedGuide.title}
+                        </ModalHeader>
+                    }
+                >
+                    <INITGuideTemplate
+                        guideKey={selectedGuide.guideKey}
+                        totalPages={selectedGuide.numPage}
+                        title={selectedGuide.title}
+                        guideId={selectedGuide.guide_id_db}
+                    />
+                </Modal>
+            )}
         </AppRoot>
     );
 };
