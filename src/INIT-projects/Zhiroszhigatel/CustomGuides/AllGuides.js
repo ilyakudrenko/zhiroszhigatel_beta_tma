@@ -2,7 +2,12 @@ import React from 'react';
 import {AppRoot} from "@telegram-apps/telegram-ui";
 import INITCardsList from "../../CustomComponents/ScrollItemsSections/CardList";
 
-const AllGuides = ({ guides }) => {
+const AllGuides = ({ guides = [] }) => {
+    if (!Array.isArray(guides)) {
+        console.error("❌ Expected an array for guides but received:", guides);
+        return <AppRoot><p style={{ color: "red" }}>Error: Guides data is not available.</p></AppRoot>;
+    }
+
     return (
         <AppRoot>
             <div style={styles.gridContainer}>
