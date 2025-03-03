@@ -178,7 +178,7 @@ const HomePage = () => {
                 level="1"
                 weight="1"
                 style={{
-                    margin: '5%',
+                    marginLeft: '5%',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center'  
