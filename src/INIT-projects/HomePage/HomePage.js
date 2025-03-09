@@ -169,6 +169,24 @@ const HomePage = () => {
                     Курсы
                 </Cell>
             </Section>
+            <INITBanner
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
+                header="Профиль"
+                description=""
+                infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
+            />
+            <INITBanner
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
+                header="Курсы"
+                description=""
+                infoLink="https://youtu.be/outo5bwayKI?si=P-8LeHDNGTjLq3RF"
+            />
+            <INITBanner
+                imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
+                header="Задать вопрос"
+                description=""
+                infoLink={navigate("/support")}
+            />
 
             <INITDivider color='transparent' thickness="10%"/>
 
