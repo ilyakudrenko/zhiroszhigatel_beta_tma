@@ -173,19 +173,31 @@ const HomePage = () => {
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Профиль"
                 description=""
-                infoLink="/profile"
+                infoLink=""
+                onClick={() => {
+                    handleClickHaptic('light');
+                    navigate("/profile")
+                }}
             />
             <INITBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Курсы"
                 description=""
-                infoLink="/courses"
+                infoLink=""
+                onClick={() => {
+                    handleClickHaptic('light');
+                    navigate("/courses")
+                }}
             />
             <INITBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Задать вопрос"
                 description=""
-                infoLink="/support"
+                infoLink=""
+                onClick={() => {
+                    handleClickHaptic('light');
+                    navigate("/support")
+                }}
             />
 
             <INITDivider color='transparent' thickness="10%"/>
