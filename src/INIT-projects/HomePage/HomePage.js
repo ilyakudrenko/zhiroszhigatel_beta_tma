@@ -179,6 +179,7 @@ const HomePage = () => {
                     navigate("/profile")
                 }}
             />
+            <INITDivider color='transparent' thickness="5%"/>
             <INITBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Курсы"
@@ -189,6 +190,7 @@ const HomePage = () => {
                     navigate("/courses")
                 }}
             />
+            <INITDivider color='transparent' thickness="5%"/>
             <INITBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Задать вопрос"
