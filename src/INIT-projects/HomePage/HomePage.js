@@ -241,7 +241,7 @@ const HomePage = () => {
                 <INITCardsList items={freeGuides}/>
             </HorizontalScroll>
 
-            <INITDivider color='blue' thickness="10%"/>
+            <INITDivider color='transparent' thickness="10%"/>
 
             {/*Some banner for sales*/}
             <INITBanner
