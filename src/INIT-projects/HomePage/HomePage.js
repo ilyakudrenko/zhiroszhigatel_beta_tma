@@ -137,43 +137,43 @@ const HomePage = () => {
         >
             {/*<INITHelp />*/}
             {/*<p>Welcome {userSession.token}</p>*/}
-            <Section
-            >
-                <Cell
-                    after={<Icon24ChevronRight/>}
-                    before={<INITProfileIcon color={textColor}/>}
-                    onClick={() => {
-                        handleClickHaptic('light');
-                        navigate("/profile")
-                    }}
-                >
-                    Профиль
-                </Cell>
-                <Cell
-                    after={<Icon24ChevronRight/>}
-                    before={<INITMessageBadgeIcon color={textColor}/>}
-                    onClick={() => {
-                        handleClickHaptic('light');
-                        navigate("/support")
-                    }}
-                >
-                    Задать вопрос
-                </Cell>
-                <Cell
-                    after={<Icon24ChevronRight/>}
-                    before={<INITMessageBadgeIcon color={textColor}/>}
-                    onClick={() => {
-                        handleClickHaptic('light');
-                        navigate("/courses")
-                    }}
-                >
-                    Курсы
-                </Cell>
-            </Section>
+            {/*<Section*/}
+            {/*>*/}
+            {/*    <Cell*/}
+            {/*        after={<Icon24ChevronRight/>}*/}
+            {/*        before={<INITProfileIcon color={textColor}/>}*/}
+            {/*        onClick={() => {*/}
+            {/*            handleClickHaptic('light');*/}
+            {/*            navigate("/profile")*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        Профиль*/}
+            {/*    </Cell>*/}
+            {/*    <Cell*/}
+            {/*        after={<Icon24ChevronRight/>}*/}
+            {/*        before={<INITMessageBadgeIcon color={textColor}/>}*/}
+            {/*        onClick={() => {*/}
+            {/*            handleClickHaptic('light');*/}
+            {/*            navigate("/support")*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        Задать вопрос*/}
+            {/*    </Cell>*/}
+            {/*    <Cell*/}
+            {/*        after={<Icon24ChevronRight/>}*/}
+            {/*        before={<INITMessageBadgeIcon color={textColor}/>}*/}
+            {/*        onClick={() => {*/}
+            {/*            handleClickHaptic('light');*/}
+            {/*            navigate("/courses")*/}
+            {/*        }}*/}
+            {/*    >*/}
+            {/*        Курсы*/}
+            {/*    </Cell>*/}
+            {/*</Section>*/}
             <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Профиль"
-                description=""
+                description="Управление своими данными, курсами и гайдами."
                 infoLink=""
                 onButtonClick={() => {
                     handleClickHaptic('light');
@@ -184,7 +184,7 @@ const HomePage = () => {
             <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Курсы"
-                description=""
+                description="Получите доступ к обучающим материалам."
                 infoLink=""
                 onButtonClick={() => {
                     handleClickHaptic('light');
@@ -195,7 +195,7 @@ const HomePage = () => {
             <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Задать вопрос"
-                description=""
+                description="Свяжитесь с поддержкой и получите помощь."
                 infoLink=""
                 onButtonClick={() => {
                     handleClickHaptic('light');
