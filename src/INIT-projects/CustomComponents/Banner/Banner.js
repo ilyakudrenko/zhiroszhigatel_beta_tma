@@ -16,7 +16,6 @@ const INITBanner = ({
                         header,
                         description,
                         infoLink,
-                        onButtonClick
 
                     }) => {
     return (
@@ -30,7 +29,7 @@ const INITBanner = ({
                                      objectFit: "cover"
                                  }}
                 />}
-                //callout="Новое уведомление"
+                callout="Новое уведомление"
                 description={description}
                 header={header}
                 // onCloseIcon={function noRefCheck(){}}
@@ -43,7 +42,7 @@ const INITBanner = ({
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <Button size="s" onClick={onButtonClick}>
+                        <Button size="s">
                             Перейти
                         </Button>
                     </a>

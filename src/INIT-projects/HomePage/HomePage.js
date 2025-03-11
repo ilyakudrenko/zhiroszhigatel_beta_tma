@@ -16,6 +16,7 @@ import fetchAllTrainingPlansJWT from "../CustomComponents/userSessionJWT/fetchAl
 import fetchUserTrainingPlanJWT from "../CustomComponents/userSessionJWT/fetchUserTrainingPlanJWT";
 import useUserSession from "../CustomComponents/userSessionJWT/sessionJWT";
 import fetchAllGuidesJWT from "../CustomComponents/userSessionJWT/fetchAllGuidesJWT";
+import NavigationBanner from "../CustomComponents/Banner/NavigationBanner";
 
 
 
@@ -169,7 +170,7 @@ const HomePage = () => {
                     Курсы
                 </Cell>
             </Section>
-            <INITBanner
+            <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Профиль"
                 description=""
@@ -180,7 +181,7 @@ const HomePage = () => {
                 }}
             />
             <INITDivider color='transparent' thickness="5%"/>
-            <INITBanner
+            <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Курсы"
                 description=""
@@ -191,7 +192,7 @@ const HomePage = () => {
                 }}
             />
             <INITDivider color='transparent' thickness="5%"/>
-            <INITBanner
+            <NavigationBanner
                 imageSrc="https://raw.githubusercontent.com/ilyakudrenko/zhiroszhigatel_beta_tma/refs/heads/main/src/INIT-projects/HomePage/Images/expanded_more_to_left.jpeg"
                 header="Задать вопрос"
                 description=""
