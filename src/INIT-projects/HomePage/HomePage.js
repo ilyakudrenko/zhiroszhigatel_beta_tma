@@ -174,7 +174,7 @@ const HomePage = () => {
                 header="Профиль"
                 description=""
                 infoLink=""
-                onClick={() => {
+                onButtonClick={() => {
                     handleClickHaptic('light');
                     navigate("/profile")
                 }}
@@ -185,9 +185,9 @@ const HomePage = () => {
                 header="Курсы"
                 description=""
                 infoLink=""
-                onClick={() => {
+                onButtonClick={() => {
                     handleClickHaptic('light');
-                    navigate("/courses")
+                    navigate("/courses");
                 }}
             />
             <INITDivider color='transparent' thickness="5%"/>
@@ -196,7 +196,7 @@ const HomePage = () => {
                 header="Задать вопрос"
                 description=""
                 infoLink=""
-                onClick={() => {
+                onButtonClick={() => {
                     handleClickHaptic('light');
                     navigate("/support")
                 }}

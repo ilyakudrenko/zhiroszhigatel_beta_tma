@@ -16,7 +16,7 @@ const INITBanner = ({
                         header,
                         description,
                         infoLink,
-                        onClick
+                        onButtonClick
 
                     }) => {
     return (
@@ -36,7 +36,6 @@ const INITBanner = ({
                 // onCloseIcon={function noRefCheck(){}}
                 type="section"
                 style={roundedCellStyle}
-                onClick={onClick}
             >
                 <React.Fragment key=".0">
                     <a
@@ -44,7 +43,7 @@ const INITBanner = ({
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <Button size="s">
+                        <Button size="s" onClick={onButtonClick}>
                             Перейти
                         </Button>
                     </a>
